@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vxml version="2.1" xml:lang="en-US"
+		xmlns="http://www.w3.org/2001/vxml"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:gvp="http://www.genesyslab.com/2006/vxml21-extension">
+
+	
+	<!-- Master VXML page used for Single GVP session treatments-->
+	
+	<!-- Global Scripts includes -->
+	<script src="../include/common.js" />
+	<script src="../include/ctic.js" />
+	<script src="../include/json.js" />
+	<script src="../include/DataAccess.js" />
+
+	<!-- Global Vars declarations -->
+	<script>
+		var AppState = new Object();
+		AppState.System = new Object();
+		AppState.System.RetainInputTypeVariableDefaultValue = false;
+		AppState.CallUUID = session.connection.uuid;
+		AppState.ANI = getANI();
+		AppState.DNIS = getDNIS();
+		AppState.USE_LCASE_USERDATAKEY = initSystemTypeVariable('USE_LCASE_USERDATAKEY',0);
+  		
+  		if (session.connection.protocol.sip.headers != undefined &amp;&amp;
+			    session.connection.protocol.sip.headers['x-genesys-gvp-session-id']){
+			AppState.GVPSessionID = session.connection.protocol.sip.headers['x-genesys-gvp-session-id'];
+		} else {
+			AppState.GVPSessionID = 'undefined';
+		}
+  			
+		
+		AppState.APP_LANGUAGE = initSystemTypeVariable('APP_LANGUAGE','en-US');
+		AppState.APP_ASR_LANGUAGE = initSystemTypeVariable('APP_ASR_LANGUAGE','en-US');
+		AppState.PREV_APP_LANGUAGE = initSystemTypeVariable('PREV_APP_LANGUAGE','undefined');
+		AppState.PREV_APP_ASR_LANGUAGE = initSystemTypeVariable('PREV_APP_ASR_LANGUAGE','undefined');
+		AppState.GRAMMARFILEDIR = initSystemTypeVariable('GRAMMARFILEDIR','../Resources/Grammars');
+		AppState.VOXFILEDIR = initSystemTypeVariable('VOXFILEDIR','../Resources/Prompts');
+		AppState.SCRIPTSDIR = initSystemTypeVariable('SCRIPTSDIR','../Scripts');
+		AppState.EnableReports = initSystemTypeVariable('EnableReports',false);
+		AppState.EnableSNMP = initSystemTypeVariable('EnableSNMP',false);
+		AppState.LAST_EVENT_NAME = initSystemTypeVariable('LAST_EVENT_NAME','undefined');
+		AppState.LAST_EVENT_MSG = initSystemTypeVariable('LAST_EVENT_MSG','undefined');
+		AppState.LAST_EVENT_URL = initSystemTypeVariable('LAST_EVENT_URL','undefined');
+		AppState.LAST_EVENT_ELEMENT = initSystemTypeVariable('LAST_EVENT_ELEMENT','undefined');
+		AppState.LAST_EVENT_LINE = initSystemTypeVariable('LAST_EVENT_LINE','undefined');
+		AppState.EnableFCR = initSystemTypeVariable('EnableFCR',true);
+		AppState.COMPOSER_WSSTUBBING = initSystemTypeVariable('COMPOSER_WSSTUBBING','0');
+		AppState.APP_OPM = initSystemTypeVariable('APP_OPM',eval('('+session.connection.protocol.sip.requesturi['parameters']+')'));
+		AppState.OCS_RecordURI = initSystemTypeVariable('OCS_RecordURI',getCallflowRecordURI());
+		AppState.OCS_URI = initSystemTypeVariable('OCS_URI',getCallflowOCSURI());
+		AppState.OCS_Record = initSystemTypeVariable('OCS_Record',getCallflowOCSRecord());
+		AppState.ORSSessionURL = initUserInputTypeVariable('ORSSessionURL',undefined,AppState.System.RetainInputTypeVariableDefaultValue);
+		AppState.treatment_url = initUserInputTypeVariable('treatment_url',undefined,AppState.System.RetainInputTypeVariableDefaultValue);
+		AppState.treatment_lang = initUserInputTypeVariable('treatment_lang',undefined,AppState.System.RetainInputTypeVariableDefaultValue);
+		AppState.treatment_params = initUserInputTypeVariable('treatment_params',undefined,AppState.System.RetainInputTypeVariableDefaultValue);
+		AppState.treatment_id = initUserInputTypeVariable('treatment_id',undefined,AppState.System.RetainInputTypeVariableDefaultValue);
+		AppState.treatment_waitForEnd = initUserInputTypeVariable('treatment_waitForEnd',true,AppState.System.RetainInputTypeVariableDefaultValue);
+		AppState.treatment_GVPRequestID = initUserInputTypeVariable('treatment_GVPRequestID',undefined,AppState.System.RetainInputTypeVariableDefaultValue);
+		AppState.gvp_session_timeout = initUserInputTypeVariable('gvp_session_timeout','360',AppState.System.RetainInputTypeVariableDefaultValue);
+		AppState.composer_treatment_result = new Object();;
+		AppState.trt_done_event = 'composer.dialog.start.done';
+		AppState.trt_error_event = 'error.composer.dialog.start';
+		AppState.nxt_trt_url = undefined;
+		AppState.ORSQueryResult = undefined;
+		AppState.ORSSesDlgDoneUrl = AppState.ORSSessionURL+AppState.trt_done_event;
+		AppState.ORSSesDlgErrorUrl = AppState.ORSSessionURL+AppState.trt_error_event;
+		AppState.waitCounter = 0;
+		AppState.treatment_result = undefined;
+	</script>
+
+	<!-- Global Scripts -->
+	<script srcexpr="AppState.VOXFILEDIR + '/PromptSwitch.js'" />
+	<script srcexpr="AppState.VOXFILEDIR + '/en-US/en-US.js'" />
+	<script>var f = new Format();</script>
+
+	
+	<script srcexpr="AppState.VOXFILEDIR + '/en-US/customprompts.js'" />
+
+	<!-- Global Properties declarations -->
+	<property name="com.genesyslab.logtoasr" value="false" />   	
+	<property name="com.genesyslab.loglevel" value="5" />
+
+	<!-- Metadata information -->
+	<meta name="com.genesyslab.studio.resourcePath" content="/Callflows/Main.callflow"/>
+
+	<!-- Global links -->
+	<form>
+		<block>
+			<goto next="#StartMasterPage" />
+		</block>
+	</form>
+	<!-- This is the Entry block -->
+	<form id="StartMasterPage">
+		<block name="Entry">
+		
+			<goto next="#ExecuteTrt" />
+		</block>
+	</form>	
+    <catch event="connection.disconnect.hangup">
+    	<assign name="AppState.LAST_EVENT_ELEMENT" expr="_element"/>
+    	<assign name="AppState.LAST_EVENT_MSG" expr="_message"/>
+    	<assign name="AppState.LAST_EVENT_NAME" expr="_event"/>
+    	<assign name="AppState.LAST_EVENT_LINE" expr="_line"/>
+    	<assign name="AppState.LAST_EVENT_URL" expr="_url"/>
+		<goto next="#AssignTrtNotApplied" />
+    </catch>
+    
+    <catch event="error">
+    	<assign name="AppState.LAST_EVENT_ELEMENT" expr="_element"/>
+    	<assign name="AppState.LAST_EVENT_MSG" expr="_message"/>
+    	<assign name="AppState.LAST_EVENT_NAME" expr="_event"/>
+    	<assign name="AppState.LAST_EVENT_LINE" expr="_line"/>
+    	<assign name="AppState.LAST_EVENT_URL" expr="_url"/>
+		<goto next="#AssignTrtNotApplied" />
+    </catch>
+
+    
+
+	<!-- This is the Exit block -->
+	<form id="ExitMasterPage">
+		<block>
+			<var name="composer_treatment_result" expr="AppState.composer_treatment_result"/>
+			<exit namelist="composer_treatment_result"/>
+  		</block>
+	</form>
+
+	<!-- This is the Exit block -->
+	<form id="ExitTrtNotApplied">
+		<block>
+			<var name="composer_treatment_result" expr="AppState.composer_treatment_result"/>
+			<exit namelist="composer_treatment_result"/>
+  		</block>
+	</form>
+
+	<!-- This is the Exit block -->
+	<form id="ExitReturnError">
+		<block>
+			<var name="composer_treatment_result" expr="AppState.composer_treatment_result"/>
+			<exit namelist="composer_treatment_result"/>
+  		</block>
+	</form>
+
+	<!-- This is the Assign block -->
+	<form id="AssignTrtNotApplied">
+		<block>
+			
+			<assign name="AppState.composer_treatment_result" expr="'{\&quot;status\&quot;:\&quot;error\&quot;,\&quot;message\&quot;:\&quot;Treatment not Applied. treatment url error\&quot;,\&quot;params\&quot;:{}}'" />	
+			<goto next="#ExitReturnError" />
+		</block>
+	</form>
+
+	<!-- This is the Branching block -->
+	<form id="CheckORSSessionID">
+		<block>
+			<log gvp:level="1">
+				<value expr="'Checking ORS Session Url - AppState.ORSSessionURL: '+AppState.ORSSessionURL"/>
+			</log>
+    	</block>
+		<block>
+			<if cond="AppState.ORSSessionURL==undefined || AppState.ORSSessionURL=='undefined'">
+				<!-- This is the OutLink -->
+				<goto next="#AssignORSEssionIDEmpty" />
+			</if>
+			<goto next="#AssignTrtEventError" />
+		</block>
+    	<catch event="error">
+    		<goto next="#AssignORSEssionIDEmpty" />
+        </catch>
+	</form>
+
+	<!-- This is the Subdialog block -->
+	<form id="ExecuteTrt">
+		<block>
+			<log gvp:level="1">
+				<value expr="'Exeucting Treatment Url: '+AppState.treatment_url"/>
+			</log>
+			
+    	</block>
+
+		<subdialog name="ExecuteTrtSubdialog" srcexpr="AppState.treatment_url">
+		<param name="system_treatment_params" expr="AppState.treatment_params" />
+		<param name="system_treatment_lang" expr="AppState.treatment_lang" />
+			<filled>
+				<if cond="ExecuteTrtSubdialog != 'undefined'">
+  					<assign name="AppState.treatment_result" expr="ExecuteTrtSubdialog" /> 
+  				</if>
+				<goto next="#QueryORSSession" />
+			</filled>
+		</subdialog>
+		<catch event="error">
+		<goto next="#PostTrtErrorEvent"/>
+		</catch>
+	</form>
+	
+	<!-- This is the WebRequest block -->
+	<form id="PostTrtErrorEvent">
+	  <block>
+		<script>
+		    var treatment_GVPRequestID = AppState.treatment_GVPRequestID;
+			var treatment_waitForEnd = AppState.treatment_waitForEnd;
+			var treatment_id = AppState.treatment_id;
+			var treatment_lang = AppState.treatment_lang;
+		</script>
+		<data fetchtimeout="10s" name="PostTrtErrorEventResponse" enctype="application/x-www-form-urlencoded" method="post"
+			srcexpr="AppState.ORSSesDlgErrorUrl" namelist="treatment_GVPRequestID treatment_waitForEnd treatment_id treatment_lang" />
+			
+	    <assign name="AppState.ORSQueryResult" expr="PostTrtErrorEventResponse" />
+	    <goto next="#AssignQueryResult" />
+			
+	   </block>
+		
+		<catch event="error">
+			<goto next="#AssignNxtAxnNotFound" />
+		</catch>
+			
+	</form>
+
+	<!-- This is the WebRequest block -->
+	<form id="QueryORSSession">
+		<block>
+			<log gvp:level="1">
+				<value expr="'POST composer.play.dialog.done event to ORS session:' + AppState.ORSSesDlgDoneUrl"/>
+			</log>
+    	</block>
+	  <block>
+		<script>
+		    var treatment_GVPRequestID = AppState.treatment_GVPRequestID;
+			var treatment_waitForEnd = AppState.treatment_waitForEnd;
+			var treatment_id = AppState.treatment_id;
+			var treatment_lang = AppState.treatment_lang;
+			var composer_treatment_result = JSON.stringify(AppState.treatment_result);
+		</script>
+		<data fetchtimeout="10s" name="QueryORSSessionResponse" enctype="application/x-www-form-urlencoded" method="post" srcexpr="AppState.ORSSesDlgDoneUrl" 
+			namelist="treatment_GVPRequestID treatment_waitForEnd treatment_id treatment_lang composer_treatment_result"/>
+			
+	    <assign name="AppState.ORSQueryResult" expr="QueryORSSessionResponse" />
+	    <goto next="#AssignQueryResult" />
+			
+	   </block>
+		
+		<catch event="error">
+			<goto next="#CheckORSSessionID" />
+		</catch>
+			
+	</form>
+
+	<!-- This is the Branching block -->
+	<form id="CheckNextAction">
+		<block>
+			<log gvp:level="1">
+				<value expr="'Branching treatment id and url: AppState.treatment_id:'+ AppState.treatment_id+' AppState.treatment_url: '+AppState.treatment_url"/>
+			</log>
+    	</block>
+		<block>
+			<if cond="AppState.treatment_id=='exit'">
+				<!-- This is the OutLink -->
+				<goto next="#AssignExitSuccess" />
+			</if>
+			<if cond="AppState.gvp_session_timeout==AppState.waitCounter.toString()">
+				<!-- This is the OutLink -->
+				<goto next="#AssignTimeout" />
+			</if>
+			<if cond="AppState.treatment_id=='wait'">
+				<!-- This is the OutLink -->
+				<goto next="#wait" />
+			</if>
+			<if cond="AppState.treatment_url==undefined">
+				<!-- This is the OutLink -->
+				<goto next="#PostErrorEvent" />
+			</if>
+			<if cond="AppState.treatment_url!=undefined&amp;&amp;AppState.treatment_url!='undefined'&amp;&amp;AppState.treatment_id=='PlaySound'">
+				<!-- This is the OutLink -->
+				<goto next="#VXMLForm1" />
+			</if>
+			<if cond="AppState.treatment_url!=undefined&amp;&amp;AppState.treatment_url!='undefined'">
+				<!-- This is the OutLink -->
+				<goto next="#ExecuteTrt" />
+			</if>
+			<goto next="#QueryORSSession" />
+		</block>
+    	<catch event="error">
+    		<goto next="#AssignNxtAxnNotFound" />
+        </catch>
+	</form>
+
+	<!-- This is the Assign block -->
+	<form id="AssignORSEssionIDEmpty">
+		<block>
+			
+			<assign name="AppState.composer_treatment_result" expr="'{\&quot;status\&quot;:\&quot;error\&quot;,\&quot;message\&quot;:\&quot;ORS Session url is undefined\&quot;,\&quot;params\&quot;:{}}'" />	
+			<goto next="#ExitTrtNotApplied" />
+		</block>
+	</form>
+
+	<!-- This is the Assign block -->
+	<form id="AssignNxtAxnNotFound">
+		<block>
+			
+			<assign name="AppState.composer_treatment_result" expr="'{\&quot;status\&quot;:\&quot;error\&quot;,\&quot;message\&quot;:\&quot;Treatment url is undefined\&quot;,\&quot;params\&quot;:{}}'" />	
+			<goto next="#ExitMasterPage" />
+		</block>
+	</form>
+
+	<!-- This is the Assign block -->
+	<form id="AssignExitSuccess">
+		<block>
+			
+			<assign name="AppState.composer_treatment_result" expr="'{\&quot;status\&quot;:\&quot;success\&quot;,\&quot;message\&quot;:\&quot;Exit treatment done, ending GVP session\&quot;,\&quot;params\&quot;:{}}'" />	
+			<goto next="#ExitMasterPage" />
+		</block>
+	</form>
+
+	<!-- This is the WebRequest block -->
+	<form id="PostErrorEvent">
+	  <block>
+		<script>
+		    var treatment_GVPRequestID = AppState.treatment_GVPRequestID;
+			var treatment_waitForEnd = AppState.treatment_waitForEnd;
+			var treatment_id = AppState.treatment_id;
+			var treatment_lang = AppState.treatment_lang;
+		</script>
+		<data fetchtimeout="10s" name="PostErrorEventResponse" enctype="application/x-www-form-urlencoded" method="post"
+			srcexpr="AppState.ORSSesDlgErrorUrl" namelist="treatment_GVPRequestID treatment_waitForEnd treatment_id treatment_lang" />
+			
+	    <assign name="AppState.ORSQueryResult" expr="PostErrorEventResponse" />
+	    <goto next="#AssignNxtAxnNotFound" />
+			
+	   </block>
+		
+		<catch event="error">
+			<goto next="#AssignNxtAxnNotFound" />
+		</catch>
+			
+	</form>
+
+	<!-- This is the Prompt block -->
+	<form id="wait">
+        
+    	<block name="waitP0">
+  			<goto next="#WaitCounterInc" />
+    	</block>
+	</form>
+
+	<!-- This is the Assign block -->
+	<form id="AssignQueryResult">
+		<block>
+			<log gvp:level="1">
+				<value expr="'Response from ORS AppState.ORSQueryResult:'+AppState.ORSQueryResult.toSource()"/>
+			</log>
+			<log gvp:level="1">
+				<value expr="'AppState.gvp_session_timeout: '+ AppState.gvp_session_timeout+'       '+ 'AppState.waitCounter: '+AppState.waitCounter"/>
+			</log>
+    	</block>
+		<block>
+			
+			<assign name="AppState.treatment_id" expr="AppState.ORSQueryResult.treatment_id" />
+			<assign name="AppState.treatment_params" expr="AppState.ORSQueryResult.treatment_params" />
+			<assign name="AppState.treatment_GVPRequestID" expr="AppState.ORSQueryResult.treatment_GVPRequestID" />
+			<assign name="AppState.treatment_url" expr="AppState.ORSQueryResult.treatment_url" />
+			<assign name="AppState.treatment_lang" expr="AppState.ORSQueryResult.treatment_lang" />
+			<assign name="AppState.treatment_waitForEnd" expr="AppState.ORSQueryResult.treatment_waitForEnd" />
+			<assign name="AppState.waitCounter" expr="AppState.treatment_id=='wait'?AppState.waitCounter:0" />
+			<goto next="#CheckNextAction" />
+		</block>
+	</form>
+
+	<!-- This is the Assign block -->
+	<form id="AssignTrtEventError">
+		<block>
+			
+			<assign name="AppState.composer_treatment_result" expr="'{\&quot;status\&quot;:\&quot;error\&quot;,\&quot;message\&quot;:\&quot;Error sending composer.dialog.start.done event\&quot;,\&quot;params\&quot;:'+AppState.treatment_result+'}'" />	
+			<goto next="#ExitEventError" />
+		</block>
+	</form>
+
+	<!-- This is the Exit block -->
+	<form id="ExitEventError">
+		<block>
+			<var name="composer_treatment_result" expr="AppState.composer_treatment_result"/>
+			<exit namelist="composer_treatment_result"/>
+  		</block>
+	</form>
+
+	<!-- This is the Assign block -->
+	<form id="AssignTimeout">
+		<block>
+			
+			<assign name="AppState.composer_treatment_result" expr="'{\&quot;status\&quot;:\&quot;warning\&quot;,\&quot;message\&quot;:\&quot;GVP Session Timeout. No further actions from Scxml application \&quot;,\&quot;params\&quot;:{}}'" />	
+			<goto next="#ExitMasterPage" />
+		</block>
+	</form>
+
+	<!-- This is the Assign block -->
+	<form id="WaitCounterInc">
+		<block>
+			<log gvp:level="1">
+				<value expr="'Response from ORS AppState.ORSQueryResult:'+AppState.ORSQueryResult.toSource()"/>
+			</log>
+			<log gvp:level="1">
+				<value expr="'AppState.gvp_session_timeout: '+ AppState.gvp_session_timeout+'       '+ 'AppState.waitCounter: '+AppState.waitCounter"/>
+			</log>
+    	</block>
+		<block>
+			
+			<assign name="AppState.waitCounter" expr="parseInt(AppState.waitCounter)+parseInt(1)" />	
+			<goto next="#QueryORSSession" />
+		</block>
+	</form>
+
+	<!-- This is the VXML Form block VXMLForm1 -->
+	<form id="VXMLForm1">
+<block>
+<prompt bargein="true">
+	<audio expr="AppState.treatment_url"></audio>
+</prompt>
+</block>
+	
+		<block>
+			<goto next="#QueryORSSession" />
+		</block>
+	
+    </form>
+
+</vxml>
