@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="src/" kind="src" path=""/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/AvailableMSISDN.jar"/>
+	<classpathentry kind="lib" path="lib/Contract.jar"/>
+	<classpathentry kind="lib" path="lib/CustomerAccountAsset.jar"/>
+	<classpathentry kind="lib" path="lib/CustomerAccountBalance.jar"/>
+	<classpathentry kind="lib" path="lib/CustomerAccountBalanceAndCharge.jar"/>
+	<classpathentry kind="lib" path="lib/FrequentNumber.jar"/>
+	<classpathentry kind="lib" path="lib/LoyaltyBalance.jar"/>
+	<classpathentry kind="lib" path="lib/LoyaltyProduct.jar"/>
+	<classpathentry kind="lib" path="lib/MigrationInfo.jar"/>
+	<classpathentry kind="lib" path="lib/ProductOrder.jar"/>
+	<classpathentry kind="lib" path="lib/ProductOrderItem.jar"/>
+	<classpathentry kind="lib" path="lib/RequestPayment.jar"/>
+	<classpathentry kind="lib" path="lib/TransferCredit.jar"/>
+	<classpathentry kind="lib" path="lib/RequestProductOrder.jar"/>
+	<classpathentry kind="lib" path="lib/RefillOffer.jar"/>
+	<classpathentry kind="lib" path="lib/UsageThresholdsCounter.jar"/>
+	<classpathentry kind="lib" path="lib/RequestPaymentLoyaltyBurn.jar"/>
+	<classpathentry kind="lib" path="lib/AssetProductOffer.jar"/>
+	<classpathentry kind="lib" path="lib/AvailableProductOffer.jar"/>
+	<classpathentry kind="lib" path="lib/Asset.jar"/>
+	<classpathentry kind="lib" path="lib/CustomerAccountBalance_v2.jar"/>
+	<classpathentry kind="lib" path="lib/CustomerAccountBalanceAndCharge_v2.jar"/>
+	<classpathentry kind="lib" path="lib/OneClickToOrder.jar"/>
+	<classpathentry kind="lib" path="lib/AvailableProductOffer_v2.jar"/>
+	<classpathentry kind="lib" path="lib/MSISDN.jar"/>
+	<classpathentry kind="lib" path="lib/CustomerAccount.jar"/>
+	<classpathentry kind="lib" path="lib/ServiceContract.jar"/>
+	<classpathentry kind="lib" path="lib/Notification.jar"/>
+	<classpathentry kind="lib" path="lib/LoyaltyBurn.jar"/>
+	<classpathentry kind="lib" path="lib/ServiceRequest_v1.jar"/>
+	<classpathentry kind="lib" path="lib/econtact/BotMessageBroker.jar"/>
+	<classpathentry kind="lib" path="lib/jersey/jersey-bundle-1.12.jar"/>
+	<classpathentry kind="lib" path="lib/jersey/jersey-client.jar"/>
+	<classpathentry kind="lib" path="lib/ClienteSagenv2.jar"/>
+	<classpathentry kind="lib" path="lib/EvaluacionCrediticia.jar"/>
+	<classpathentry kind="lib" path="lib/Teardown.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.ws.cxf.core.CXF_CLASSPATH_CONTAINER/Apache CXF/2.7.8">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib_DB"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib_GVP"/>
+	<classpathentry kind="lib" path="lib/ServiceRequestActivity.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
