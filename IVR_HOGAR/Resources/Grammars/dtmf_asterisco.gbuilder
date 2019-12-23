@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ASCII"?>
+<model:Grammar xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model="http://studio.genesyslab.com/grammarmanager" id="dtmf_asterisco">
+  <rules id="dtmf_asterisco">
+    <keywordTags tag="1">
+      <locales locale2="dtmf">
+        <synonyms>1</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="2">
+      <locales locale2="dtmf">
+        <synonyms>2</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="3">
+      <locales locale2="dtmf">
+        <synonyms>3</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="4">
+      <locales locale2="dtmf">
+        <synonyms>4</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="5">
+      <locales locale2="dtmf">
+        <synonyms>5</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="6">
+      <locales locale2="dtmf">
+        <synonyms>6</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="7">
+      <locales locale2="dtmf">
+        <synonyms>7</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="8">
+      <locales locale2="dtmf">
+        <synonyms>8</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="9">
+      <locales locale2="dtmf">
+        <synonyms>9</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="0">
+      <locales locale2="dtmf">
+        <synonyms>0</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="x">
+      <locales locale2="dtmf">
+        <synonyms>*</synonyms>
+      </locales>
+    </keywordTags>
+  </rules>
+  <configLocales2>dtmf</configLocales2>
+</model:Grammar>

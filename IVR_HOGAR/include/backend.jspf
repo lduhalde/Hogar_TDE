@@ -1,0 +1,39 @@
+<%@page session="false" %>
+<%@page import="org.json.JSONObject"%>
+<%@page import="com.genesyslab.studio.backendlogic.GVPHttpRequestProcessor"%>
+<%@page import="java.util.Map"%>
+
+<%
+response.setHeader("Cache-Control", "no-cache");
+
+String output = null;
+
+try {
+    // process the post data
+    GVPHttpRequestProcessor processor = new GVPHttpRequestProcessor(request);
+    processor.parseRequest();
+    
+    // "state" encapsulates the state variable submitted by the VXML page
+    JSONObject state = processor.getState();
+    
+    // additional parameters that were passed in the namelist
+    Map<String, String> additionalParams = processor.getAdditionalParams();
+    
+    // perform the logic
+    JSONObject result = performLogic(state, additionalParams);
+    
+	output = result.toString();
+    
+    out.print(output);
+    
+} catch (Exception e) {
+    
+    e.printStackTrace();
+    String msg = e.getMessage();
+    if (null != msg){
+    	msg = msg.replace('"', '\'');
+    }
+	out.print("{\"errorMsg\": \"" + msg + "\"}");
+	
+}
+%>

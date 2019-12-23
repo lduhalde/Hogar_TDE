@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="en-US" version="1.0" root="city_state">
+
+	<rule id="city" scope="public">
+		<one-of>
+			<item>Los Angeles</item>
+			<item>San Jose</item>
+			<item>San Francisco</item>
+			<item>New York</item>
+			<item>Seatle</item>
+			<item>Chicago</item>
+		</one-of>
+	</rule>
+
+	<rule id="state" scope="public">
+		<one-of>
+			<item>California</item>
+			<item>New York</item>
+			<item>Washington</item>
+			<item>Illinois</item>
+		</one-of>
+	</rule>
+
+	<!-- Reference by URI to a local rule -->
+	<!-- Artificial example allows "San Jose, California"! -->
+	<rule id="city_state" scope="public">
+		<ruleref uri="#city" />
+		<ruleref uri="#state" />
+	</rule>
+
+
+</grammar>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+<model:Grammar xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model="http://studio.genesyslab.com/grammarmanager" id="services" root="division">
+  <rules id="division">
+    <keywordTags tag="sales">
+      <locales locale2="dtmf">
+        <synonyms>2</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>sales</synonyms>
+        <synonyms>sale</synonyms>
+        <synonyms>buy</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="customerService">
+      <locales locale2="dtmf">
+        <synonyms>1</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>service</synonyms>
+        <synonyms>customer service</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="techSupport">
+      <locales locale2="dtmf">
+        <synonyms>3</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>technical support</synonyms>
+        <synonyms>support</synonyms>
+      </locales>
+    </keywordTags>
+  </rules>
+  <configLocales2>dtmf</configLocales2>
+  <configLocales2>en_US</configLocales2>
+</model:Grammar>

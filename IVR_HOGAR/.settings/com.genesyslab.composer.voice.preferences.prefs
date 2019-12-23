@@ -1,0 +1,9 @@
+ComposerProject.codegen.mode=DEBUG
+ComposerProject.icm.enabled=false
+ComposerProject.initialize.GVPSessionID=true
+ComposerProject.locale.default=es_CL
+ComposerProject.locales=es_CL
+ComposerProject.locales.custom=Espa\u00F1ol - Chile (es-CL)
+ComposerProject.routing.logLevel.default=Error
+ComposerProject.voice.logLevel.default=Error
+eclipse.preferences.version=1

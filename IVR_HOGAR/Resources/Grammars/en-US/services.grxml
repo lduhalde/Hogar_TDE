@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" mode="voice" version="1.0" root="division" xml:lang="en-US">
+    <rule scope="public" id="division">
+        <one-of>
+            <item>
+                <tag>out='sales'</tag>
+                <one-of>
+                    <item>
+                        <token>sales</token>
+                    </item>
+                    <item>
+                        <token>sale</token>
+                    </item>
+                    <item>
+                        <token>buy</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='customerService'</tag>
+                <one-of>
+                    <item>
+                        <token>service</token>
+                    </item>
+                    <item>
+                        <token>customer service</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='techSupport'</tag>
+                <one-of>
+                    <item>
+                        <token>technical support</token>
+                    </item>
+                    <item>
+                        <token>support</token>
+                    </item>
+                </one-of>
+            </item>
+        </one-of>
+    </rule>
+</grammar>

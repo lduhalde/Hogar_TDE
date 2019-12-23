@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ASCII"?>
+<model:Grammar xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model="http://studio.genesyslab.com/grammarmanager" id="locations" root="cities">
+  <rules id="cities">
+    <keywordTags tag="newYork">
+      <locales locale2="dtmf">
+        <synonyms>5</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>new york</synonyms>
+        <synonyms>big apple</synonyms>
+        <synonyms>bronx</synonyms>
+        <synonyms>queens</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="bayArea">
+      <locales locale2="dtmf">
+        <synonyms>1</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>san francisco</synonyms>
+        <synonyms>oakland</synonyms>
+        <synonyms>san jose</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="chicago">
+      <locales locale2="dtmf">
+        <synonyms>2</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>chicago</synonyms>
+        <synonyms>windy city</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="losAngeles">
+      <locales locale2="dtmf">
+        <synonyms>4</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>los angeles</synonyms>
+        <synonyms>hollywood</synonyms>
+        <synonyms>beverly hills</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="dallas">
+      <locales locale2="dtmf">
+        <synonyms>3</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>dallas</synonyms>
+      </locales>
+    </keywordTags>
+  </rules>
+  <rules id="states">
+    <keywordTags tag="california">
+      <locales locale2="dtmf">
+        <synonyms>1</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>california</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="illinois">
+      <locales locale2="dtmf">
+        <synonyms>2</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>illinois</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="texas">
+      <locales locale2="dtmf">
+        <synonyms>4</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>texas</synonyms>
+      </locales>
+    </keywordTags>
+    <keywordTags tag="newYork">
+      <locales locale2="dtmf">
+        <synonyms>3</synonyms>
+      </locales>
+      <locales locale2="en_US">
+        <synonyms>new york</synonyms>
+      </locales>
+    </keywordTags>
+  </rules>
+  <configLocales2>dtmf</configLocales2>
+  <configLocales2>en_US</configLocales2>
+</model:Grammar>

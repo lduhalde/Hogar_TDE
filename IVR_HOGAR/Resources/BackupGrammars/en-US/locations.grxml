@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" mode="voice" version="1.0" root="cities" xml:lang="en-US">
+    <rule scope="public" id="cities">
+        <one-of>
+            <item>
+                <tag>out='newYork'</tag>
+                <one-of>
+                    <item>
+                        <token>new york</token>
+                    </item>
+                    <item>
+                        <token>big apple</token>
+                    </item>
+                    <item>
+                        <token>bronx</token>
+                    </item>
+                    <item>
+                        <token>queens</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='bayArea'</tag>
+                <one-of>
+                    <item>
+                        <token>san francisco</token>
+                    </item>
+                    <item>
+                        <token>oakland</token>
+                    </item>
+                    <item>
+                        <token>san jose</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='chicago'</tag>
+                <one-of>
+                    <item>
+                        <token>chicago</token>
+                    </item>
+                    <item>
+                        <token>windy city</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='losAngeles'</tag>
+                <one-of>
+                    <item>
+                        <token>los angeles</token>
+                    </item>
+                    <item>
+                        <token>hollywood</token>
+                    </item>
+                    <item>
+                        <token>beverly hills</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='dallas'</tag>
+                <one-of>
+                    <item>
+                        <token>dallas</token>
+                    </item>
+                </one-of>
+            </item>
+        </one-of>
+    </rule>
+    <rule scope="public" id="states">
+        <one-of>
+            <item>
+                <tag>out='california'</tag>
+                <one-of>
+                    <item>
+                        <token>california</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='illinois'</tag>
+                <one-of>
+                    <item>
+                        <token>illinois</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='texas'</tag>
+                <one-of>
+                    <item>
+                        <token>texas</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='newYork'</tag>
+                <one-of>
+                    <item>
+                        <token>new york</token>
+                    </item>
+                </one-of>
+            </item>
+        </one-of>
+    </rule>
+</grammar>

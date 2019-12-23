@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" mode="dtmf" version="1.0" root="division">
+    <rule scope="public" id="division">
+        <one-of>
+            <item>
+                <tag>out='sales'</tag>
+                <one-of>
+                    <item>
+                        <token>2</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='customerService'</tag>
+                <one-of>
+                    <item>
+                        <token>1</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='techSupport'</tag>
+                <one-of>
+                    <item>
+                        <token>3</token>
+                    </item>
+                </one-of>
+            </item>
+        </one-of>
+    </rule>
+</grammar>
