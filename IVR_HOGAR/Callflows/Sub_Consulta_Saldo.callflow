@@ -83,18 +83,18 @@
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_n3OW4_-WEeiw26a3jUuVQw" name="TRX_getCustomerAccountBalanceAndCharge" category="Backend" uri="../src/ServiceXX/TRX_getCustomerAccountBalanceAndCharge.jsp">
       <exceptions>error.badfetch</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4sCMZEeqajdIxfbnXMw" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4sSMZEeqajdIxfbnXMw" name="Var_SALDO" value="Var_SALDO" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4siMZEeqajdIxfbnXMw" name="processID" value="AppState.processCode" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4syMZEeqajdIxfbnXMw" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4tCMZEeqajdIxfbnXMw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4tSMZEeqajdIxfbnXMw" name="PCS" value="(AppState.cliente_datos.Var_PCS) ? AppState.cliente_datos.Var_PCS : AppState.ANI;" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4tiMZEeqajdIxfbnXMw" name="Var_SALDO_VIGENCIA" value="Var_SALDO_VIGENCIA" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4tyMZEeqajdIxfbnXMw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4uCMZEeqajdIxfbnXMw" name="opcion" value="'saldo'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4uSMZEeqajdIxfbnXMw" name="SMS" value="Var_SMS" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4uiMZEeqajdIxfbnXMw" name="cliente_datos" value="cliente_datos" description="Enter Description" type="inout"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_C0-4uyMZEeqajdIxfbnXMw" name="conCobro" value="AppState.conCobro" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ0CfeEeqg2-aREOTdiw" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ0SfeEeqg2-aREOTdiw" name="Var_SALDO" value="Var_SALDO" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ0ifeEeqg2-aREOTdiw" name="processID" value="AppState.processCode" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ0yfeEeqg2-aREOTdiw" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ1CfeEeqg2-aREOTdiw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ1SfeEeqg2-aREOTdiw" name="PCS" value="AppState.Var_PCS" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ1ifeEeqg2-aREOTdiw" name="Var_SALDO_VIGENCIA" value="Var_SALDO_VIGENCIA" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ1yfeEeqg2-aREOTdiw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ2CfeEeqg2-aREOTdiw" name="opcion" value="'saldo'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ2SfeEeqg2-aREOTdiw" name="SMS" value="Var_SMS" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ2ifeEeqg2-aREOTdiw" name="cliente_datos" value="cliente_datos" description="Enter Description" type="inout"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_sDEQ2yfeEeqg2-aREOTdiw" name="conCobro" value="AppState.conCobro" description="Enter Description"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_n3OW6v-WEeiw26a3jUuVQw" name="Branching_trx_respuesta_OK" condition="" category="Branching">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_I4SGEDq1Eemsv8bgSUcVDg" name="OK" expression="AppState.trx_respuesta == 'OK'"/>
@@ -333,15 +333,15 @@
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_JTr2UDacEemVqJdZ5dCMrw" name="TRX_getUsageThresholdsCounter" category="Backend" uri="../src/ServiceXX/TRX_getUsageThresholdsCounterREST.jsp">
       <exceptions>error.badfetch</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_BtSQ0CMZEeqajdIxfbnXMw" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_BtSQ0SMZEeqajdIxfbnXMw" name="processID" value="AppState.processCode" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_BtSQ0iMZEeqajdIxfbnXMw" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_BtSQ0yMZEeqajdIxfbnXMw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_BtSQ1CMZEeqajdIxfbnXMw" name="PCS" value="(AppState.cliente_datos.Var_PCS) ? AppState.cliente_datos.Var_PCS : AppState.ANI;" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_BtSQ1SMZEeqajdIxfbnXMw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_BtSQ1iMZEeqajdIxfbnXMw" name="cobro" value="cobro" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_BtSQ1yMZEeqajdIxfbnXMw" name="productID" value="'18102'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_BtSQ2CMZEeqajdIxfbnXMw" name="cliente_datos" value="cliente_datos" description="Enter Description" type="inout"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_uEn44CfeEeqg2-aREOTdiw" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_uEn44SfeEeqg2-aREOTdiw" name="processID" value="AppState.processCode" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_uEn44ifeEeqg2-aREOTdiw" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_uEn44yfeEeqg2-aREOTdiw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_uEn45CfeEeqg2-aREOTdiw" name="PCS" value="AppState.Var_PCS" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_uEn45SfeEeqg2-aREOTdiw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_uEn45ifeEeqg2-aREOTdiw" name="cobro" value="cobro" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_uEn45yfeEeqg2-aREOTdiw" name="productID" value="'18102'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_uEn46CfeEeqg2-aREOTdiw" name="cliente_datos" value="cliente_datos" description="Enter Description" type="inout"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_daqLoDacEemVqJdZ5dCMrw" name="Branch_Counter" condition="" category="Branching">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_a1ZkUDkzEemB_u7UAHjRKw" name="PrimeraConsulta" expression="AppState.trx_respuesta == 'OK' &amp;&amp; AppState.cobro == 'NO'"/>
@@ -428,7 +428,6 @@
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_n3O98f-WEeiw26a3jUuVQw" fromBlock="_n3OW8P-WEeiw26a3jUuVQw" toBlock="_n3OW4_-WEeiw26a3jUuVQw"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_n3O98v-WEeiw26a3jUuVQw" fromBlock="_n3OW8v-WEeiw26a3jUuVQw" toBlock="_n3OW7v-WEeiw26a3jUuVQw"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_n3O98_-WEeiw26a3jUuVQw" fromBlock="_n3OW7v-WEeiw26a3jUuVQw" toBlock="_n3OW9v-WEeiw26a3jUuVQw"/>
-    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_n3O9-P-WEeiw26a3jUuVQw" fromBlock="_n3Nvwf-WEeiw26a3jUuVQw" toBlock="_n3NwAf-WEeiw26a3jUuVQw"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_n3O9-f-WEeiw26a3jUuVQw" fromBlock="_n3OW4_-WEeiw26a3jUuVQw" toBlock="_n3OW6v-WEeiw26a3jUuVQw"/>
     <links xmi:type="gvp:CallflowExceptionLink" xmi:id="_n3O9-v-WEeiw26a3jUuVQw" name="connection.disconnect.hangup" fromBlock="_n3Nvwf-WEeiw26a3jUuVQw" toBlock="_n3O95v-WEeiw26a3jUuVQw"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_n3O9-_-WEeiw26a3jUuVQw" fromBlock="_n3OXD_-WEeiw26a3jUuVQw" toBlock="_n3NvwP-WEeiw26a3jUuVQw"/>
@@ -498,6 +497,7 @@
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_AtXL8BXTEeqDp9ZYUI7qsQ" fromBlock="_yPYqsMQpEem_YIH4ZST5_Q" toBlock="_CZuokCh9EemHgOX0JbYH1Q"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_D_XvQBXTEeqDp9ZYUI7qsQ" fromBlock="_MC2BsMQqEem_YIH4ZST5_Q" toBlock="_n3O94v-WEeiw26a3jUuVQw"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_MORqYBXTEeqDp9ZYUI7qsQ" name="No_Repite" fromBlock="_3MD4tcQsEem_YIH4ZST5_Q" toBlock="_Pi4oMP-hEeiw26a3jUuVQw"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_vLrnkCfeEeqg2-aREOTdiw" fromBlock="_n3Nvwf-WEeiw26a3jUuVQw" toBlock="_n3NwAf-WEeiw26a3jUuVQw"/>
     <namespaces xmi:type="datatypes:Property" xmi:id="_n3O-C_-WEeiw26a3jUuVQw" name="gvp" value="http://www.genesyslab.com/2006/vxml21-extension"/>
     <systemProperties xmi:type="datatypes:Property" xmi:id="_n3O-DP-WEeiw26a3jUuVQw" name="RetainInputTypeVariableDefaultValue" value="false"/>
   </gvp:CallflowDiagram>
@@ -515,7 +515,7 @@
     <children xmi:type="notation:Shape" xmi:id="_n3Pk-P-WEeiw26a3jUuVQw" type="1016" element="_n3NwAf-WEeiw26a3jUuVQw" fontName="Segoe UI">
       <children xmi:type="notation:DecorationNode" xmi:id="_n3Pk-f-WEeiw26a3jUuVQw" type="4028"/>
       <children xmi:type="notation:DecorationNode" xmi:id="_n3Pk-v-WEeiw26a3jUuVQw" type="4029"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_n3Pk-_-WEeiw26a3jUuVQw" x="384" y="-661" width="172"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_n3Pk-_-WEeiw26a3jUuVQw" x="386" y="-646" width="172"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_n3Pk_P-WEeiw26a3jUuVQw" type="1001" element="_n3OW0f-WEeiw26a3jUuVQw" fontName="Segoe UI">
       <children xmi:type="notation:DecorationNode" xmi:id="_n3Pk_f-WEeiw26a3jUuVQw" type="4001"/>
@@ -873,15 +873,6 @@
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_n3SBMP-WEeiw26a3jUuVQw" points="[0, 0, -11, -18]$[11, 18, 0, 0]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_n3SBMf-WEeiw26a3jUuVQw" id="(0.5181818181818182,1.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_n3SBMv-WEeiw26a3jUuVQw" id="(0.4722222222222222,0.0)"/>
-    </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_n3SBTv-WEeiw26a3jUuVQw" type="3001" element="_n3O9-P-WEeiw26a3jUuVQw" source="_n3Pk9P-WEeiw26a3jUuVQw" target="_n3Pk-P-WEeiw26a3jUuVQw" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
-      <children xmi:type="notation:DecorationNode" xmi:id="_n3SBT_-WEeiw26a3jUuVQw" type="4074">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_n3SBUP-WEeiw26a3jUuVQw" x="5" y="5"/>
-      </children>
-      <styles xmi:type="notation:FontStyle" xmi:id="_n3SBUf-WEeiw26a3jUuVQw" fontName="Segoe UI"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_n3SBUv-WEeiw26a3jUuVQw" points="[0, 25, -248, -24]$[0, 24, -248, -25]$[248, 24, 0, -25]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_n3SBU_-WEeiw26a3jUuVQw" id="(0.5058139534883721,0.98)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_n3SBVP-WEeiw26a3jUuVQw" id="(0.4861111111111111,0.02)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_n3SBVf-WEeiw26a3jUuVQw" type="3001" element="_n3O9-f-WEeiw26a3jUuVQw" source="_n3PlDP-WEeiw26a3jUuVQw" target="_n3PlEP-WEeiw26a3jUuVQw" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
       <children xmi:type="notation:DecorationNode" xmi:id="_n3SBVv-WEeiw26a3jUuVQw" type="4074">
@@ -1507,6 +1498,15 @@
       <styles xmi:type="notation:FontStyle" xmi:id="_MOS4gRXTEeqDp9ZYUI7qsQ" fontName="Ubuntu"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MOS4ghXTEeqDp9ZYUI7qsQ" points="[0, 0, 367, -130]$[-281, 135, 86, 5]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MOV70BXTEeqDp9ZYUI7qsQ" id="(0.3372093023255814,1.0)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_vLs1sCfeEeqg2-aREOTdiw" type="3001" element="_vLrnkCfeEeqg2-aREOTdiw" source="_n3Pk9P-WEeiw26a3jUuVQw" target="_n3Pk-P-WEeiw26a3jUuVQw" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+      <children xmi:type="notation:DecorationNode" xmi:id="_vLs1syfeEeqg2-aREOTdiw" type="4074">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vLs1tCfeEeqg2-aREOTdiw" x="5" y="5"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_vLs1sSfeEeqg2-aREOTdiw" fontName="Ubuntu"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vLs1sifeEeqg2-aREOTdiw" points="[2, 0, 0, -64]$[-1, 52, -3, -12]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vLvR8CfeEeqg2-aREOTdiw" id="(0.48255813953488375,1.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vLvR8SfeEeqg2-aREOTdiw" id="(0.48255813953488375,0.24)"/>
     </edges>
   </notation:Diagram>
 </xmi:XMI>

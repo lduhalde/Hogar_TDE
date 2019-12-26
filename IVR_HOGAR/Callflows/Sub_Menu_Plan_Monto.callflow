@@ -161,6 +161,14 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_rEqnUOpaEeiFTMj7SluHuw" name="Flujo" value="'Sub_Menu_Numero_Plan_PtsZE'" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_rEqnUepaEeiFTMj7SluHuw" name="Mensaje" value="'INICIO SUBFLUJO: &lt;Sub_Menu_Numero_Plan_PuntosZE>'" description="Enter Description"/>
     </blocks>
+    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_B4W0MCgCEeqg2-aREOTdiw" name="Sub_Consulta_Plan" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Consulta_Plan.callflow">
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnicCgCEeqg2-aREOTdiw" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnicSgCEeqg2-aREOTdiw" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnicigCEeqg2-aREOTdiw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnicygCEeqg2-aREOTdiw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnidCgCEeqg2-aREOTdiw" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnidSgCEeqg2-aREOTdiw" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+    </blocks>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_02m3AAscEeefgozPnLPD-g" fromBlock="_yFeMJAscEeefgozPnLPD-g" toBlock="_zC0JsLC9Eea4K57rnf44gQ"/>
     <links xmi:type="gvp:CallflowExceptionLink" xmi:id="_S2fDgCQpEeetZvwIJCPNag" name="connection.disconnect.hangup" fromBlock="_Z6Z-QJhsEeGerrt71FTn3g" toBlock="_PDYlVCQpEeetZvwIJCPNag"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_sjyHkHktEeeRb7G8HD7cyg" fromBlock="_lVhKEHktEeeRb7G8HD7cyg" toBlock="_xBWRQMBgEeaJlpHI8PldBw"/>
@@ -187,7 +195,8 @@
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_trBwEBT5Eeq-P_JMPRlZrg" name="Option9" fromBlock="_tOYTxegTEei0FtDHlQBUxg" toBlock="_yFeMJAscEeefgozPnLPD-g"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_oLd6oBT6Eeq-P_JMPRlZrg" name="VOLVER" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_lVhKEHktEeeRb7G8HD7cyg"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_hU5DYBUFEeq-P_JMPRlZrg" name="MONTO_LPAGOS" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_lVhKEHktEeeRb7G8HD7cyg"/>
-    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_h4pQsBUFEeq-P_JMPRlZrg" name="PLAN" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_lVhKEHktEeeRb7G8HD7cyg"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_B4Z3gCgCEeqg2-aREOTdiw" name="PLAN" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_B4W0MCgCEeqg2-aREOTdiw"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_EAGj0CgCEeqg2-aREOTdiw" fromBlock="_B4W0MCgCEeqg2-aREOTdiw" toBlock="_lVhKEHktEeeRb7G8HD7cyg"/>
     <namespaces xmi:type="datatypes:Property" xmi:id="_3FJJMZhjEeGerrt71FTn3g" name="gvp" value="http://www.genesyslab.com/2006/vxml21-extension"/>
     <systemProperties xmi:type="datatypes:Property" xmi:id="_AgnmYPECEeWPUKGIA4zsog" name="RetainInputTypeVariableDefaultValue" value="false"/>
   </gvp:CallflowDiagram>
@@ -282,6 +291,11 @@
       <children xmi:type="notation:DecorationNode" xmi:id="_RYuNkupaEeiFTMj7SluHuw" type="4028"/>
       <children xmi:type="notation:DecorationNode" xmi:id="_RYuNk-paEeiFTMj7SluHuw" type="4029"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RYuNlOpaEeiFTMj7SluHuw" x="465" y="-136"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_B4XbQCgCEeqg2-aREOTdiw" type="1009" element="_B4W0MCgCEeqg2-aREOTdiw" fontName="Ubuntu">
+      <children xmi:type="notation:DecorationNode" xmi:id="_B4XbQigCEeqg2-aREOTdiw" type="4014"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_B4XbQygCEeqg2-aREOTdiw" type="4015"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_B4XbQSgCEeqg2-aREOTdiw" x="442" y="340"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_9dxf4ujoEd2eUOAcyP5XCQ"/>
     <edges xmi:type="notation:Connector" xmi:id="_02m3AQscEeefgozPnLPD-g" type="3001" element="_02m3AAscEeefgozPnLPD-g" source="_yFeMIAscEeefgozPnLPD-g" target="_zC0wwLC9Eea4K57rnf44gQ" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
@@ -516,14 +530,22 @@
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hU5qchUFEeq-P_JMPRlZrg" points="[0, 0, -84, -568]$[161, 563, 77, -5]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hU6RgBUFEeq-P_JMPRlZrg" id="(0.19607843137254902,1.0)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_h4p3wBUFEeq-P_JMPRlZrg" type="3001" element="_h4pQsBUFEeq-P_JMPRlZrg" source="_zC0wwLC9Eea4K57rnf44gQ" target="_lVgjAHktEeeRb7G8HD7cyg" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
-      <children xmi:type="notation:DecorationNode" xmi:id="_h4qe0BUFEeq-P_JMPRlZrg" type="4074">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_h4qe0RUFEeq-P_JMPRlZrg" x="5" y="5"/>
+    <edges xmi:type="notation:Connector" xmi:id="_B4Z3gSgCEeqg2-aREOTdiw" type="3001" element="_B4Z3gCgCEeqg2-aREOTdiw" source="_zC0wwLC9Eea4K57rnf44gQ" target="_B4XbQCgCEeqg2-aREOTdiw" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+      <children xmi:type="notation:DecorationNode" xmi:id="_B4aekCgCEeqg2-aREOTdiw" type="4074">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_B4aekSgCEeqg2-aREOTdiw" x="5" y="5"/>
       </children>
-      <styles xmi:type="notation:FontStyle" xmi:id="_h4p3wRUFEeq-P_JMPRlZrg" fontName="Ubuntu"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_h4p3whUFEeq-P_JMPRlZrg" points="[0, 0, -39, -550]$[37, 543, -2, -7]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_h4rs8BUFEeq-P_JMPRlZrg" id="(0.4019607843137255,1.0)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_h4rs8RUFEeq-P_JMPRlZrg" id="(0.477124183006536,0.14)"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_B4Z3gigCEeqg2-aREOTdiw" fontName="Ubuntu"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_B4Z3gygCEeqg2-aREOTdiw" points="[-81, -39, 417, 200]$[-498, -239, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_B4bFoCgCEeqg2-aREOTdiw" id="(0.39705882352941174,1.0)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_EAHK4CgCEeqg2-aREOTdiw" type="3001" element="_EAGj0CgCEeqg2-aREOTdiw" source="_B4XbQCgCEeqg2-aREOTdiw" target="_lVgjAHktEeeRb7G8HD7cyg" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+      <children xmi:type="notation:DecorationNode" xmi:id="_EAHK4ygCEeqg2-aREOTdiw" type="4074">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EAHK5CgCEeqg2-aREOTdiw" x="5" y="5"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_EAHK4SgCEeqg2-aREOTdiw" fontName="Ubuntu"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_EAHK4igCEeqg2-aREOTdiw" points="[0, 0, -41, -392]$[41, 392, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_EAHx8CgCEeqg2-aREOTdiw" id="(0.4818181818181818,1.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_EAHx8SgCEeqg2-aREOTdiw" id="(0.46405228758169936,0.0)"/>
     </edges>
   </notation:Diagram>
 </xmi:XMI>
