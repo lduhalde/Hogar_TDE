@@ -27,12 +27,12 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		String family = bundle.getString("family");
 		String technology = bundle.getString("technology");
 		String mercado = bundle.getString("mercado");
-		String MSISDN = bundle.getString("MSISDN");
+		String MSISDN = cliente_datos.getString("PCS_Seleccionado");
 		
 		fEPCS.Debug("["+jspName+"] family : "+family, "INFO");
 		fEPCS.Debug("["+jspName+"] technology : "+technology, "INFO");
 		fEPCS.Debug("["+jspName+"] mercado : "+mercado, "INFO");
-		
+		fEPCS.Debug("["+jspName+"] MSISDN : "+MSISDN, "INFO");
 		
 		opcionesMenu += "1;"+Path+"OP_Saldo.wav;"+AudioDefecto+";;"+audioDTMF+"1.wav;SI;SALDO|";
 		opcionesDTMF += "1|";

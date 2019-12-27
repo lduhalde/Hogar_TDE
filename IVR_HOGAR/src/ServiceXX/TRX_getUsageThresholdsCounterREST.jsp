@@ -13,7 +13,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     JSONObject parametros_marcas_navegacion = (state.has("parametros_marcas_navegacion") ) ? state.getJSONObject("parametros_marcas_navegacion") : new JSONObject();
     
     FunctionsEPCS fEPCS = new FunctionsEPCS(state.getString("ConfigFile"), state.getString("idLlamada"));
-    
+    fEPCS.Debug("["+jspName+"] INICIO", "INFO");
     try{
     	JSONObject cliente_datos = (state.has("cliente_datos") ) ? state.getJSONObject("cliente_datos") : new JSONObject();
     	String ani = additionalParams.get("PCS");
@@ -91,7 +91,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	result.put("cobro", cobro);
     	cliente_datos.put("cobro", cobro);
     	result.put("cliente_datos",cliente_datos);
-    	fEPCS.Debug("["+jspName+"] FIN cliente_datos: "+cliente_datos.toString(), "INFO");
+    	//fEPCS.Debug("["+jspName+"] FIN cliente_datos: "+cliente_datos.toString(), "INFO");
     	
     }catch(Exception ex){
     	fEPCS.Debug("["+jspName+"] Error : "+ex.getMessage());
