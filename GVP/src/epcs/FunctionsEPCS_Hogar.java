@@ -565,6 +565,218 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		}
 		return resp;
 	}
+	
+	//GetCustomerAccountBalance
+
+		public String GetCustomerAccountBalance(String movil, String externalId, String IDllamada, String processID, String SourceID){
+			String wsName = "GetCustomerAccountBalance";
+			String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
+			int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+			boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
+
+
+			String resp = "";
+			JSONObject request = new JSONObject();
+
+			JSONObject CustomerAccount = new JSONObject();
+			JSONObject BusinessInteraction = new JSONObject();
+
+			JSONObject Asset = new JSONObject();
+			JSONObject MSISDN = new JSONObject();
+
+			JSONObject Body = new JSONObject();
+
+			try {	 
+				JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
+
+				MSISDN.put("SN", movil);
+				Asset.put("MSISDN", MSISDN);
+
+				BusinessInteraction.put("interactionExternalID", externalId);
+
+				CustomerAccount.put("BusinessInteraction", BusinessInteraction);
+				CustomerAccount.put("Asset", Asset);
+
+				Body.put("CustomerAccount", CustomerAccount);
+
+				request.put("RequestHeader", header);
+				request.put("Body", Body);
+
+				Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
+				resp = ejecutarRest(url,request,maxTimeout, debug);				
+				Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+
+			}catch(Exception e) {
+				e.printStackTrace();
+				Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
+			}finally { 
+				request = null; 
+				CustomerAccount = null; 
+				Asset = null; 
+				MSISDN = null;
+				Body = null; 
+			}
+			return resp;
+		}
+		public String GetCustomerAccountBalanceAndCharge(String movil, String externalId, String IDllamada, String processID, String SourceID){
+			String wsName = "GetCustomerAccountBalanceAndCharge";
+			String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
+			int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+			boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
+
+
+			String resp = "";
+			JSONObject request = new JSONObject();
+
+			JSONObject CustomerAccount = new JSONObject();
+			JSONObject BusinessInteraction = new JSONObject();
+
+			JSONObject Asset = new JSONObject();
+			JSONObject MSISDN = new JSONObject();
+
+			JSONObject Body = new JSONObject();
+
+			try {	 
+				JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
+
+				MSISDN.put("SN", movil);
+				Asset.put("MSISDN", MSISDN);
+
+				BusinessInteraction.put("interactionExternalID", externalId);
+
+				CustomerAccount.put("BusinessInteraction", BusinessInteraction);
+				CustomerAccount.put("Asset", Asset);
+
+				Body.put("CustomerAccount", CustomerAccount);
+
+				request.put("RequestHeader", header);
+				request.put("Body", Body);
+
+				Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
+				resp = ejecutarRest(url,request,maxTimeout, debug);				
+				Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+
+			}catch(Exception e) {
+				e.printStackTrace();
+				Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
+			}finally { 
+				request = null; 
+				CustomerAccount = null; 
+				Asset = null; 
+				MSISDN = null;
+				Body = null; 
+			}
+			return resp;
+		}
+		public String GetUsageThresholdCounter(String movil, String ProductID, String IDllamada, String processID, String SourceID){
+			String wsName = "GetUsageThresholdCounter";
+			String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
+			int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+			boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
+
+
+			String resp = "";
+			JSONObject request = new JSONObject();
+
+			JSONObject CustomerAccount = new JSONObject();
+
+			JSONObject Asset = new JSONObject();
+			JSONObject MSISDN = new JSONObject();
+			JSONObject Product = new JSONObject();
+
+			JSONObject Body = new JSONObject();
+
+			try {	 
+				JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
+				
+				if(!ProductID.equals("")){
+					Product.put("ID", ProductID);
+					Body.put("Product", Product);
+				}
+
+				MSISDN.put("SN", movil);
+				Asset.put("MSISDN", MSISDN);
+				CustomerAccount.put("Asset", Asset);
+				Body.put("CustomerAccount", CustomerAccount);
+
+				request.put("RequestHeader", header);
+				request.put("Body", Body);
+
+				Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
+				resp = ejecutarRest(url,request,maxTimeout, debug);				
+				Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+
+			}catch(Exception e) {
+				e.printStackTrace();
+				Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
+			}finally { 
+				request = null; 
+				CustomerAccount = null; 
+				Asset = null; 
+				MSISDN = null;
+				Body = null; 
+			}
+			return resp;
+		}
+		// createNotification (SMS)
+
+		public String CreateNotification(String externalID, String senderAlias, String originSystem, String receiver, String subject, String textMessage, String SourceID, String processID, String IDllamada)
+		{
+			String wsName = "CreateNotification";
+			String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
+			int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+			boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
+
+			String resp = "";
+			JSONObject request = new JSONObject();
+		    JSONObject body = new JSONObject();
+		    JSONObject Notification = new JSONObject();
+			JSONArray ArrayParameter= new JSONArray();
+			JSONArray ArrayMessage= new JSONArray();
+			JSONObject Parameter = new JSONObject();
+		    JSONObject Message = new JSONObject();
+			
+		    try {
+		    	 
+					Message.put("deliveryMethod","CellPhone");
+					Message.put("senderAlias",senderAlias);
+					Message.put("receiver",receiver);
+					Message.put("subject",subject);
+					Message.put("textMessage",textMessage);
+			
+					Parameter.put("name", "requestId");
+					Parameter.put("value", IDllamada);
+					ArrayMessage.put(Message);
+					ArrayParameter.put(Parameter);
+
+					Notification.put("Message",ArrayMessage);            
+					Notification.put("originSystem", originSystem);
+		            Notification.put("externalID", externalID);
+					Notification.put("Parameter", ArrayParameter);            
+					
+				    body.put("Notification", Notification);
+
+		            JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
+				    request.put("RequestHeader", header);
+				    request.put("Body", body);
+
+				    Debug("[FunctionsEPCS_PostPago."+wsName+"] Request "+request, "DEBUG");
+				    resp = ejecutarRest(url,request,maxTimeout, debug);				
+				    Debug("[FunctionsEPCS_PostPago."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+
+		        }catch(Exception e) {
+				    e.printStackTrace();
+				    Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
+				}finally { 
+					request = null;           
+					body = null;              
+					Notification = null;      
+					Message = null;           
+					Parameter = null;         
+				
+				}
+				return resp;
+		    }
 	/*
 	 * GetActivities
 	 */
