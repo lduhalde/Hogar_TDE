@@ -243,18 +243,18 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_hEPOAf_AEeiBfLWSLFtedA" name="Mensaje" value="'LOGGSV: Volver menu principal (GOTOMENU) *** salida_mp = ' + AppState.salida_mp" description="Enter Description"/>
     </blocks>
     <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_ypR4dP_IEeiBfLWSLFtedA" name="PorfaLlamame" category="Subdialog" uri="workspace:///IVR_CC/Callflows/Sub_PorfaLlamame.callflow">
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRugP_JEeiBfLWSLFtedA" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRugf_JEeiBfLWSLFtedA" name="GOTOMENU" value="salida_mp" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRugv_JEeiBfLWSLFtedA" name="Var_PCS" value="AppState.ANI" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRug__JEeiBfLWSLFtedA" name="Var_SALDO" value="AppState.Var_SALDO" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRuhP_JEeiBfLWSLFtedA" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRuhf_JEeiBfLWSLFtedA" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRuhv_JEeiBfLWSLFtedA" name="maximoIntentos" value="3" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRuh__JEeiBfLWSLFtedA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRuiP_JEeiBfLWSLFtedA" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRuif_JEeiBfLWSLFtedA" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRuiv_JEeiBfLWSLFtedA" name="trx_datos_respuesta" value="trx_datos_respuesta" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_TwRui__JEeiBfLWSLFtedA" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEEC1lEeqxMKVNj60DgQ" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEES1lEeqxMKVNj60DgQ" name="GOTOMENU" value="salida_mp" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEEi1lEeqxMKVNj60DgQ" name="Var_PCS" value="AppState.Var_PCS" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEEy1lEeqxMKVNj60DgQ" name="Var_SALDO" value="AppState.Var_SALDO" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEFC1lEeqxMKVNj60DgQ" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEFS1lEeqxMKVNj60DgQ" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEFi1lEeqxMKVNj60DgQ" name="maximoIntentos" value="3" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEFy1lEeqxMKVNj60DgQ" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEGC1lEeqxMKVNj60DgQ" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEGS1lEeqxMKVNj60DgQ" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEGi1lEeqxMKVNj60DgQ" name="trx_datos_respuesta" value="trx_datos_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_77pEGy1lEeqxMKVNj60DgQ" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
       <fetchAudioMinimum xmi:type="datatypes:MultiSourceProperty" xmi:id="_ypR4gP_IEeiBfLWSLFtedA" value=""/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_XPg5gAIOEemuSoueeBVAzQ" name="Branching_Saldo_Vigencia_Cero" category="Branching">
