@@ -12,7 +12,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     String cobro="SI";
     JSONObject parametros_marcas_navegacion = (state.has("parametros_marcas_navegacion") ) ? state.getJSONObject("parametros_marcas_navegacion") : new JSONObject();
     
-    FunctionsEPCS fEPCS = new FunctionsEPCS(state.getString("ConfigFile"), state.getString("idLlamada"));
+    FunctionsEPCS_Hogar fEPCS = new FunctionsEPCS_Hogar(state.getString("ConfigFile"), state.getString("idLlamada"));
     fEPCS.Debug("["+jspName+"] INICIO", "INFO");
     try{
     	JSONObject cliente_datos = (state.has("cliente_datos") ) ? state.getJSONObject("cliente_datos") : new JSONObject();
@@ -37,7 +37,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	
     	String trx_respuesta = "NOK";
     	
-    	String sTrx_datos_respuesta=fEPCS.getUsageThresholdCounterREST(ani,productID,idLlamada,processCode,sourceID);
+    	String sTrx_datos_respuesta=fEPCS.GetUsageThresholdCounter(ani,productID,idLlamada,processCode,sourceID);
   
     	fEPCS.Debug("["+jspName+"] sTrx_datos_respuesta: "+sTrx_datos_respuesta, "INFO");
     	
