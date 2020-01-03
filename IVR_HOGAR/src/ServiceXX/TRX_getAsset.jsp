@@ -145,6 +145,9 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		        						if(ProductSpecCharacteristic.getJSONObject(psc).getString("name").equals("commercialName")){
 		        							Bundle.put("commercialName",ProductSpecCharacteristic.getJSONObject(psc).getString("value"));
 		        						}
+		        						if(ProductSpecCharacteristic.getJSONObject(psc).getString("name").equals("bundleId")){
+		        							Bundle.put("bundleId",ProductSpecCharacteristic.getJSONObject(psc).getString("value"));
+		        						}
 		        						if(ProductSpecCharacteristic.getJSONObject(psc).getString("name").equals("technology")){
 		        							Bundle.put("technology",ProductSpecCharacteristic.getJSONObject(psc).getString("value"));
 		        						}
