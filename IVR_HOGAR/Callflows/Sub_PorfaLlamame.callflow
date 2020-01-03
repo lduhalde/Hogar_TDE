@@ -8,75 +8,73 @@
       <returnValues>salida_mp</returnValues>
       <returnValues>trx_datos_respuesta</returnValues>
       <returnValues>trx_respuesta</returnValues>
-      <returnValues>GOTOMENU</returnValues>
     </blocks>
     <blocks xmi:type="gvp:EntryBlock" xmi:id="_Z6Z-QJhsEeGerrt71FTn3g" name="Inicio_PorfaLlamame" condition="" starting="true" category="Entry" scripts="">
       <exceptions>connection.disconnect.hangup</exceptions>
       <exceptions>error</exceptions>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj4C1lEeqxMKVNj60DgQ" name="ANI" value="getANI()" description="Identifier for the calling party" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj4S1lEeqxMKVNj60DgQ" name="APP_ASR_LANGUAGE" value="'es-US'" description="ASR Language" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj4i1lEeqxMKVNj60DgQ" name="APP_LANGUAGE" value="'es-CL'" description="Application Language" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj4y1lEeqxMKVNj60DgQ" name="APP_OPM" value="eval('('+session.connection.protocol.sip.requesturi['parameters']+')')" description="OPM Data Variable" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj5C1lEeqxMKVNj60DgQ" name="CallUUID" value="session.connection.uuid" description="Universal ID" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj5S1lEeqxMKVNj60DgQ" name="cliente_datos" value="undefined" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj5i1lEeqxMKVNj60DgQ" name="COMPOSER_WSSTUBBING" value="'0'" description="Flag to control WebServices Stubbing. '1' - ON" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj5y1lEeqxMKVNj60DgQ" name="ConfigFile" value="" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj6C1lEeqxMKVNj60DgQ" name="confirmar" value="'SI'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj6S1lEeqxMKVNj60DgQ" name="DNIS" value="getDNIS()" description="Identifier for the dialed number" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj6i1lEeqxMKVNj60DgQ" name="EnableFCR" value="true" description="Flag for enabling Full Call Recording" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj6y1lEeqxMKVNj60DgQ" name="EnableReports" value="false" description="Reporting Flag" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj7C1lEeqxMKVNj60DgQ" name="EnableSNMP" value="false" description="Flag for enabling SNMP Traps" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj7S1lEeqxMKVNj60DgQ" name="flujoIVR" value="'HOGAR_TDE_XFALLAMAME'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj7i1lEeqxMKVNj60DgQ" name="GRAMMARFILEDIR" value="'../Resources/Grammars'" description="Grammar File Directory" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj7y1lEeqxMKVNj60DgQ" name="GVPSessionID" value="session.genesys.userdata[&quot;GVP-Session-ID&quot;]" description="GVP Session ID" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj8C1lEeqxMKVNj60DgQ" name="id_consulta" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj8S1lEeqxMKVNj60DgQ" name="idLlamada" value="''" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj8i1lEeqxMKVNj60DgQ" name="intentos" value="'3'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj8y1lEeqxMKVNj60DgQ" name="LAST_EVENT_ELEMENT" value="'undefined'" description="Element name of the last event" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj9C1lEeqxMKVNj60DgQ" name="LAST_EVENT_LINE" value="'undefined'" description="Line number of the last event" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj9S1lEeqxMKVNj60DgQ" name="LAST_EVENT_MSG" value="'undefined'" description="Last event or error details" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj9i1lEeqxMKVNj60DgQ" name="LAST_EVENT_NAME" value="'undefined'" description="Last event or error name" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj9y1lEeqxMKVNj60DgQ" name="LAST_EVENT_URL" value="'undefined'" description="URL of the last event." type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj-C1lEeqxMKVNj60DgQ" name="maximoIntentos" value="'3'" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj-S1lEeqxMKVNj60DgQ" name="Menu_Token" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj-i1lEeqxMKVNj60DgQ" name="movilEntel" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj-y1lEeqxMKVNj60DgQ" name="MSISDN" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj_C1lEeqxMKVNj60DgQ" name="OCS_Record" value="getCallflowOCSRecord()" description="OCS Record" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj_S1lEeqxMKVNj60DgQ" name="OCS_RecordURI" value="getCallflowRecordURI()" description="OCS Record URI" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj_i1lEeqxMKVNj60DgQ" name="OCS_URI" value="getCallflowOCSURI()" description="OCS URI" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYj_y1lEeqxMKVNj60DgQ" name="OpcionesDTMF" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkAC1lEeqxMKVNj60DgQ" name="OpcionesMenu" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkAS1lEeqxMKVNj60DgQ" name="parametros_marcas_navegacion" value="{}" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkAi1lEeqxMKVNj60DgQ" name="PREV_APP_ASR_LANGUAGE" value="'undefined'" description="Temporary Value of Previous Application Language" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkAy1lEeqxMKVNj60DgQ" name="PREV_APP_LANGUAGE" value="'undefined'" description="Temporary Value of Previous Application Language" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkBC1lEeqxMKVNj60DgQ" name="processCode" value="'0004PORFALLAMA'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkBS1lEeqxMKVNj60DgQ" name="promptInput" value="undefined" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkBi1lEeqxMKVNj60DgQ" name="promptInput2" value="undefined" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkBy1lEeqxMKVNj60DgQ" name="promptMaxIntentos" value="undefined" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkCC1lEeqxMKVNj60DgQ" name="promptNI" value="undefined" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkCS1lEeqxMKVNj60DgQ" name="promptNM" value="undefined" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkCi1lEeqxMKVNj60DgQ" name="salida_mp" value="'MP'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkCy1lEeqxMKVNj60DgQ" name="SCRIPTSDIR" value="'../Scripts'" description="JavaScript Directory" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkDC1lEeqxMKVNj60DgQ" name="SMS" value="''" description="Contenido de SMS a enviar" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkDS1lEeqxMKVNj60DgQ" name="sourceID" value="undefined" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkDi1lEeqxMKVNj60DgQ" name="trx_datos_respuesta" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkDy1lEeqxMKVNj60DgQ" name="trx_respuesta" value="'NOK'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkEC1lEeqxMKVNj60DgQ" name="USE_LCASE_USERDATAKEY" value="0" description="Flag to control lowerCase lookup in UserData array. 1 - ON" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkES1lEeqxMKVNj60DgQ" name="validarMovil" value="undefined" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkEi1lEeqxMKVNj60DgQ" name="Var_AUDIO" value="'Silencio.vox'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkEy1lEeqxMKVNj60DgQ" name="Var_CONTADOR" value="'0'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkFC1lEeqxMKVNj60DgQ" name="Var_CustomerAccountID" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkFS1lEeqxMKVNj60DgQ" name="Var_MERCADO" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkFi1lEeqxMKVNj60DgQ" name="Var_PCS" value="''" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkFy1lEeqxMKVNj60DgQ" name="Var_PCS_DESTINO" value="'NA'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkGC1lEeqxMKVNj60DgQ" name="Var_PCS_DESTINO2" value="'NA2'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkGS1lEeqxMKVNj60DgQ" name="Var_SALDO" value="'0'" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkGi1lEeqxMKVNj60DgQ" name="vdn" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkGy1lEeqxMKVNj60DgQ" name="vdnServDestino" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkHC1lEeqxMKVNj60DgQ" name="vector" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkHS1lEeqxMKVNj60DgQ" name="VOXFILEDIR" value="'../Resources/Prompts'" description="Audio File Directory" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkHi1lEeqxMKVNj60DgQ" name="willaccept" value="'Enter Value'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_ptYkHy1lEeqxMKVNj60DgQ" name="GOTOMENU" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsAC4nEeqr7Poek_OiTw" name="ANI" value="getANI()" description="Identifier for the calling party" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsAS4nEeqr7Poek_OiTw" name="APP_ASR_LANGUAGE" value="'es-US'" description="ASR Language" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsAi4nEeqr7Poek_OiTw" name="APP_LANGUAGE" value="'es-CL'" description="Application Language" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsAy4nEeqr7Poek_OiTw" name="APP_OPM" value="eval('('+session.connection.protocol.sip.requesturi['parameters']+')')" description="OPM Data Variable" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsBC4nEeqr7Poek_OiTw" name="CallUUID" value="session.connection.uuid" description="Universal ID" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsBS4nEeqr7Poek_OiTw" name="cliente_datos" value="undefined" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsBi4nEeqr7Poek_OiTw" name="COMPOSER_WSSTUBBING" value="'0'" description="Flag to control WebServices Stubbing. '1' - ON" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsBy4nEeqr7Poek_OiTw" name="ConfigFile" value="" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsCC4nEeqr7Poek_OiTw" name="idLlamada" value="''" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsCS4nEeqr7Poek_OiTw" name="parametros_marcas_navegacion" value="{}" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsCi4nEeqr7Poek_OiTw" name="maximoIntentos" value="'3'" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsCy4nEeqr7Poek_OiTw" name="sourceID" value="undefined" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsDC4nEeqr7Poek_OiTw" name="Var_PCS" value="''" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsDS4nEeqr7Poek_OiTw" name="Var_SALDO" value="'0'" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsDi4nEeqr7Poek_OiTw" name="confirmar" value="'SI'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsDy4nEeqr7Poek_OiTw" name="DNIS" value="getDNIS()" description="Identifier for the dialed number" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsEC4nEeqr7Poek_OiTw" name="EnableFCR" value="true" description="Flag for enabling Full Call Recording" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsES4nEeqr7Poek_OiTw" name="EnableReports" value="false" description="Reporting Flag" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsEi4nEeqr7Poek_OiTw" name="EnableSNMP" value="false" description="Flag for enabling SNMP Traps" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsEy4nEeqr7Poek_OiTw" name="flujoIVR" value="'HOGAR_TDE_XFALLAMAME'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsFC4nEeqr7Poek_OiTw" name="GRAMMARFILEDIR" value="'../Resources/Grammars'" description="Grammar File Directory" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsFS4nEeqr7Poek_OiTw" name="GVPSessionID" value="session.genesys.userdata[&quot;GVP-Session-ID&quot;]" description="GVP Session ID" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsFi4nEeqr7Poek_OiTw" name="id_consulta" value="'PORFA_LLAMAME_HOGARTDE'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsFy4nEeqr7Poek_OiTw" name="intentos" value="'3'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsGC4nEeqr7Poek_OiTw" name="LAST_EVENT_ELEMENT" value="'undefined'" description="Element name of the last event" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsGS4nEeqr7Poek_OiTw" name="LAST_EVENT_LINE" value="'undefined'" description="Line number of the last event" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsGi4nEeqr7Poek_OiTw" name="LAST_EVENT_MSG" value="'undefined'" description="Last event or error details" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsGy4nEeqr7Poek_OiTw" name="LAST_EVENT_NAME" value="'undefined'" description="Last event or error name" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsHC4nEeqr7Poek_OiTw" name="LAST_EVENT_URL" value="'undefined'" description="URL of the last event." type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsHS4nEeqr7Poek_OiTw" name="Menu_Token" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsHi4nEeqr7Poek_OiTw" name="movilEntel" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsHy4nEeqr7Poek_OiTw" name="MSISDN" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsIC4nEeqr7Poek_OiTw" name="OCS_Record" value="getCallflowOCSRecord()" description="OCS Record" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsIS4nEeqr7Poek_OiTw" name="OCS_RecordURI" value="getCallflowRecordURI()" description="OCS Record URI" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsIi4nEeqr7Poek_OiTw" name="OCS_URI" value="getCallflowOCSURI()" description="OCS URI" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsIy4nEeqr7Poek_OiTw" name="OpcionesDTMF" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsJC4nEeqr7Poek_OiTw" name="OpcionesMenu" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsJS4nEeqr7Poek_OiTw" name="PREV_APP_ASR_LANGUAGE" value="'undefined'" description="Temporary Value of Previous Application Language" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsJi4nEeqr7Poek_OiTw" name="PREV_APP_LANGUAGE" value="'undefined'" description="Temporary Value of Previous Application Language" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsJy4nEeqr7Poek_OiTw" name="processCode" value="'0004PORFALLAMA'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsKC4nEeqr7Poek_OiTw" name="promptInput" value="undefined" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsKS4nEeqr7Poek_OiTw" name="promptInput2" value="undefined" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsKi4nEeqr7Poek_OiTw" name="promptMaxIntentos" value="undefined" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsKy4nEeqr7Poek_OiTw" name="promptNI" value="undefined" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsLC4nEeqr7Poek_OiTw" name="promptNM" value="undefined" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsLS4nEeqr7Poek_OiTw" name="salida_mp" value="'MP'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsLi4nEeqr7Poek_OiTw" name="SCRIPTSDIR" value="'../Scripts'" description="JavaScript Directory" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsLy4nEeqr7Poek_OiTw" name="SMS" value="''" description="Contenido de SMS a enviar" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsMC4nEeqr7Poek_OiTw" name="trx_datos_respuesta" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsMS4nEeqr7Poek_OiTw" name="trx_respuesta" value="'NOK'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsMi4nEeqr7Poek_OiTw" name="USE_LCASE_USERDATAKEY" value="0" description="Flag to control lowerCase lookup in UserData array. 1 - ON" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsMy4nEeqr7Poek_OiTw" name="validarMovil" value="undefined" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsNC4nEeqr7Poek_OiTw" name="Var_AUDIO" value="'Silencio.wav'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsNS4nEeqr7Poek_OiTw" name="Var_CONTADOR" value="'0'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsNi4nEeqr7Poek_OiTw" name="Var_CustomerAccountID" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsNy4nEeqr7Poek_OiTw" name="Var_MERCADO" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsOC4nEeqr7Poek_OiTw" name="Var_PCS_DESTINO" value="'NA'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsOS4nEeqr7Poek_OiTw" name="Var_PCS_DESTINO2" value="'NA2'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsOi4nEeqr7Poek_OiTw" name="vdn" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsOy4nEeqr7Poek_OiTw" name="vdnServDestino" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsPC4nEeqr7Poek_OiTw" name="vector" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsPS4nEeqr7Poek_OiTw" name="VOXFILEDIR" value="'../Resources/Prompts'" description="Audio File Directory" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_RSAsPi4nEeqr7Poek_OiTw" name="willaccept" value="'Enter Value'" description="Enter Description" type="User"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_vlb_0KzLEeaFYp-e27m8hw" name="Branch_SALDO" category="Branching">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_lgZjcBuuEeeT8NgKmh30rw" name="Menor" expression="Number(AppState.Var_SALDO)&lt;1" postAction=""/>
@@ -131,7 +129,7 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_cV3f1BupEeeT8NgKmh30rw" name="RC" value="'0'" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_cV3f1RupEeeT8NgKmh30rw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
-    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_bWgXxRutEeeT8NgKmh30rw" name="Transfer_Input_Movil" category="Subdialog" uri="workspace:///IVR_CC/Callflows/Sub_Input_Movil.callflow">
+    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_bWgXxRutEeeT8NgKmh30rw" name="Transfer_Input_Movil" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Input_Movil.callflow">
       <parameters xmi:type="datatypes:Parameter" xmi:id="_ZCkQsGEzEemEn_YYfPNFjA" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_ZCkQsWEzEemEn_YYfPNFjA" name="Var_PCS_INGRESADO" value="Var_PCS_DESTINO" description="Enter Description" type="output"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_ZCkQsmEzEemEn_YYfPNFjA" name="Var_PCS_INGRESADO2" value="Var_PCS_DESTINO2" description="Enter Description" type="output"/>
@@ -178,23 +176,23 @@
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_DAvMNHBvEeeYXZEZoiGYKg" name="TRX_createNotification_destino" category="Backend" uri="../src/ServiceXX/TRX_createNotification.jsp">
       <exceptions>error.badfetch</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_UoOLEINZEeeqSIgDv1oOnA" name="PCS" value="&quot;56&quot;+AppState.Var_PCS_DESTINO" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_UoOLEYNZEeeqSIgDv1oOnA" name="MENSAJE" value="AppState.ANI  + &quot; Por Favor Llamame!. Traspasa recarga a otro prepago Llamando al 301 Opc.1 opcion 'Recargas que Salvan'&quot;" description="Parametro para validación de cobro"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_UoOLEoNZEeeqSIgDv1oOnA" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_UoOLE4NZEeeqSIgDv1oOnA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_UoOLFINZEeeqSIgDv1oOnA" name="processCode" value="AppState.processCode" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_UoOLFYNZEeeqSIgDv1oOnA" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_UoOLFoNZEeeqSIgDv1oOnA" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_beIP0C4pEeqr7Poek_OiTw" name="PCS" value="&quot;56&quot;+AppState.Var_PCS_DESTINO" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_beIP0S4pEeqr7Poek_OiTw" name="MENSAJE" value="AppState.Var_PCS  + &quot; Por Favor Llamame!.&quot;" description="Parametro para validación de cobro"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_beIP0i4pEeqr7Poek_OiTw" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_beIP0y4pEeqr7Poek_OiTw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_beIP1C4pEeqr7Poek_OiTw" name="processCode" value="AppState.processCode" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_beIP1S4pEeqr7Poek_OiTw" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_beIP1i4pEeqr7Poek_OiTw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_Q8KlQHBvEeeYXZEZoiGYKg" name="TRX_createNotification_confirmacion" category="Backend" uri="../src/ServiceXX/TRX_createNotification.jsp">
       <exceptions>error.badfetch</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_XsU1QINZEeeqSIgDv1oOnA" name="PCS" value="&quot;56&quot;+AppState.ANI" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_XsU1QYNZEeeqSIgDv1oOnA" name="MENSAJE" value="&quot;Tu solicitud fue realizada exitosamente. Mantente siempre comunicado con 'Recargas que Salvan' Llama al 301 Opcion 1&quot;" description="Parametro para validación de cobro"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_XsU1QoNZEeeqSIgDv1oOnA" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_XsU1Q4NZEeeqSIgDv1oOnA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_XsU1RINZEeeqSIgDv1oOnA" name="processCode" value="AppState.processCode" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_XsU1RYNZEeeqSIgDv1oOnA" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_XsU1RoNZEeeqSIgDv1oOnA" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_eGOTcC4pEeqr7Poek_OiTw" name="PCS" value="AppState.Var_PCS" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_eGOTcS4pEeqr7Poek_OiTw" name="MENSAJE" value="&quot;Tu solicitud fue realizada exitosamente.&quot;" description="Parametro para validación de cobro"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_eGOTci4pEeqr7Poek_OiTw" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_eGOTcy4pEeqr7Poek_OiTw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_eGOTdC4pEeqr7Poek_OiTw" name="processCode" value="AppState.processCode" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_eGOTdS4pEeqr7Poek_OiTw" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_eGOTdi4pEeqr7Poek_OiTw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_UfkdQHt1EeeMSKtoMQkjYg" name="SetAppnameMARCAS" category="Backend" uri="../src/Tools/cambiarAppnameMarcas.jsp">
       <exceptions>error.badfetch</exceptions>
@@ -202,12 +200,12 @@
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_mzooVe5-Eei04LlUvT6ZUw" name="TRX_DB_Consultas_Diarias" category="Backend" uri="../src/ServiceXX/TRX_DB_Consultas_Diarias.jsp">
       <exceptions>None</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_eYenQPf9EeiwaY-aF4vG7g" name="PCS" value="AppState.Var_PCS" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_eYenQff9EeiwaY-aF4vG7g" name="id_consulta" value="'PORFA_LLAMAME_CCTDE'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_eYenQvf9EeiwaY-aF4vG7g" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_eYenQ_f9EeiwaY-aF4vG7g" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_eYenRPf9EeiwaY-aF4vG7g" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_eYenRff9EeiwaY-aF4vG7g" name="contador" value="Var_CONTADOR" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_cOUFsC4gEeqr7Poek_OiTw" name="PCS" value="AppState.Var_PCS" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_cOUFsS4gEeqr7Poek_OiTw" name="id_consulta" value="AppState.id_consulta" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_cOUFsi4gEeqr7Poek_OiTw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_cOUFsy4gEeqr7Poek_OiTw" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_cOUFtC4gEeqr7Poek_OiTw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_cOUFtS4gEeqr7Poek_OiTw" name="contador" value="Var_CONTADOR" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_iyEa4O5_Eei04LlUvT6ZUw" name="Branch_Max_3_SMS_Diarios" condition="" category="Branching">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_hwXwIPf9EeiwaY-aF4vG7g" name="3_SMS_MAX" expression="AppState.Var_CONTADOR&lt;='3'" postAction=""/>
@@ -217,10 +215,11 @@
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="__bPv5e6BEei04LlUvT6ZUw" name="TRX_DB_Actualiza_Consultas_Diaria" category="Backend" uri="../src/ServiceXX/TRX_DB_Actualiza_Consultas_Diarias.jsp">
       <exceptions>error.badfetch</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_AfsnYPMgEei2n7ovNTi4Dg" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_AfsnYfMgEei2n7ovNTi4Dg" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_AfsnYvMgEei2n7ovNTi4Dg" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_AfsnY_MgEei2n7ovNTi4Dg" name="id_consulta" value="AppState.id_consulta" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_F93BwC4oEeqr7Poek_OiTw" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_F93BwS4oEeqr7Poek_OiTw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_F93Bwi4oEeqr7Poek_OiTw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_F93Bwy4oEeqr7Poek_OiTw" name="id_consulta" value="AppState.id_consulta" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_F93BxC4oEeqr7Poek_OiTw" name="PCS" value="AppState.Var_PCS" description="Enter Description"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_NL1AsFVVEemLi5tJLI9Mdg" name="InicioMarcaMaxPorfaLlamame" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
