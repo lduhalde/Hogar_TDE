@@ -25,12 +25,15 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	fEPCS.Debug("["+jspName+"] Inicio", "INFO");
 		JSONArray bundles = cliente_productos.getJSONArray("Bundles");
 		String comuna = "";
+		String bundleId="";
     	for(int i =0;i<bundles.length();i++){
     		comuna = bundles.getJSONObject(i).getString("addressCommune");
+    		bundleId = bundles.getJSONObject(i).getString("bundleId");
     		fEPCS.Debug("["+jspName+"] Bundle: "+bundles.getJSONObject(i).getString("commercialName"), "INFO");
+    		fEPCS.Debug("["+jspName+"] Bundle ID: "+bundleId, "INFO");
     		fEPCS.Debug("["+jspName+"] Comuna: "+ comuna,"INFO");
     		fEPCS.Debug("["+jspName+"] Index: "+i, "INFO");
-    		opcionesMenu += (i+1)+";"+Path+"Pack"+(i+1)+".wav;"+rutaDefecto+comuna+".wav;;"+audioDTMF+(i+1)+".wav;SI;"+i+"|";
+    		opcionesMenu += (i+1)+";"+Path+"Packs/"+bundleId+".wav;"+rutaDefecto+comuna+".wav;;"+audioDTMF+(i+1)+".wav;SI;"+i+"|";
     		opcionesDTMF += (i+1)+"|";
     	}
 
