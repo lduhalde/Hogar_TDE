@@ -19,8 +19,6 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		String ani = additionalParams.get("PCS");
     	ani = (ani.length() < 11 ) ? "56"+ani : ani;
 		
-		
-		
 		String sMensaje = additionalParams.get("MENSAJE");
 		String externalID = additionalParams.get("externalID");
 				
