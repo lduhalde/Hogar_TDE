@@ -25,7 +25,9 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		
 		String rut = cliente_datos.getJSONObject("IndividualIdentification").getString("number");
 		String customerAccountID = cliente_datos.getString("CustomerAccountID");
-    	
+    	fEPCS.Debug("[TRX_getAppliedCustomerBillingCharge] rut: "+rut, "INFO");
+    	fEPCS.Debug("[TRX_getAppliedCustomerBillingCharge] customerAccountID: "+customerAccountID, "INFO");
+		
     	String processID = additionalParams.get("processID");
     	String sourceID = additionalParams.get("sourceID");
     	String idLlamada = additionalParams.get("idLlamada");
