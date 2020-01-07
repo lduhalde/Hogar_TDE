@@ -24,13 +24,14 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	cliente_datos = (state.has("cliente_datos") ) ? state.getJSONObject("cliente_datos") : new JSONObject();
     	JSONObject bundle = cliente_datos.getJSONObject("bundle_seleccionado");
 		JSONArray basics = bundle.getJSONArray("Basics");
+		String bundleId = bundle.getString("bundleId");
 		fEPCS.Debug("["+jspName+"] Basics: " +basics.toString(), "INFO");
 		fEPCS.Debug("["+jspName+"] Contador: " +cont, "INFO");
 		
 		String CONTINUAR = "NO";
 		if(cont==0){
 			fEPCS.Debug("["+jspName+"] Audio Inicial: " +path+basics.length()+".wav", "INFO");
-			result.put("Var_Audio_Inicial",path+basics.length()+".wav");
+			result.put("Var_Audio_Inicial",path+"Packs/"+bundleId+".wav");
 		}
 		if(basics.length()>cont){
 			CONTINUAR = "SI";
