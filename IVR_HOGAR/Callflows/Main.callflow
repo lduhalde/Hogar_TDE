@@ -318,28 +318,28 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_bLuK6RTzEeq-P_JMPRlZrg" name="vdnServDestino" value="vdnServDestino" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_9jLYsBTyEeq-P_JMPRlZrg" name="Ejecutivo" category="Branching">
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_Wx4XoBUFEeq-P_JMPRlZrg" name="EJECUTIVO" expression="AppState.salida_mp==&quot;EJECUTIVO&quot;" postAction="AppState.AudioTransferencia='IVR/Sub_Menu_Ejecutivo/Ejecutivo02.wav'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_Wx4XoRUFEeq-P_JMPRlZrg" name="TRANSFERENCIA" expression="AppState.salida_mp==&quot;TRANSFERENCIA&quot;" postAction="AppState.AudioTransferencia='IVR/General/Silencio.wav'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_Wx4XohUFEeq-P_JMPRlZrg" name="VOLVER" expression="AppState.salida_mp==&quot;VOLVER&quot; || AppState.salida_mp==&quot;GOTOMENU&quot;"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_DX0hcDOrEeqLTffcGD44IQ" name="EJECUTIVO" expression="AppState.salida_mp==&quot;EJECUTIVO&quot;" postAction="AppState.AudioTransferencia='IVR/Sub_Transferencia/Ejecutivo.wav'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_DX0hcTOrEeqLTffcGD44IQ" name="TRANSFERENCIA" expression="AppState.salida_mp==&quot;TRANSFERENCIA&quot;" postAction="AppState.AudioTransferencia='IVR/General/Silencio.wav'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_DX0hcjOrEeqLTffcGD44IQ" name="VOLVER" expression="AppState.salida_mp==&quot;VOLVER&quot; || AppState.salida_mp==&quot;GOTOMENU&quot;"/>
     </blocks>
     <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_B8T8JBTzEeq-P_JMPRlZrg" name="Sub_Transferencia" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Transferencia.callflow">
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8JRTzEeq-P_JMPRlZrg" name="APPNAME" value="AppState.salida_mp=='IVR_BLOQUEOS' ? 'BLOQUEOS_TDE' : AppState.parametros_marcas_navegacion.appName" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8JhTzEeq-P_JMPRlZrg" name="CODIOFERTA" value="AppState.cliente_datos.codi_oferta" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8JxTzEeq-P_JMPRlZrg" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8KBTzEeq-P_JMPRlZrg" name="IVR_ACCESOS" value="AppState.IVR_ACCESOS" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8KRTzEeq-P_JMPRlZrg" name="MERCADO" value="AppState.MERCADO" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8KhTzEeq-P_JMPRlZrg" name="MOVIL_INGRESADO" value="(AppState.Var_PCS) ? AppState.Var_PCS : AppState.ANI;" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8KxTzEeq-P_JMPRlZrg" name="SCORING" value="AppState.cliente_datos.nmro_scoring" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8LBTzEeq-P_JMPRlZrg" name="SEGMENTO" value="AppState.Var_Segmento" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8LRTzEeq-P_JMPRlZrg" name="SERVICIODESTINO" value="AppState.vdnServDestino" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8LhTzEeq-P_JMPRlZrg" name="UData4Ast" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8LxTzEeq-P_JMPRlZrg" name="UData_EPA" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8MBTzEeq-P_JMPRlZrg" name="VDN" value="AppState.vdn" description="VDN o Punto de Ruteo"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8MRTzEeq-P_JMPRlZrg" name="audio_transferencia" value="AppState.AudioTransferencia" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8MhTzEeq-P_JMPRlZrg" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8MxTzEeq-P_JMPRlZrg" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8NBTzEeq-P_JMPRlZrg" name="parametros_marcas_navegacion" value="AppState.parametros_marcas_navegacion" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_B8T8NRTzEeq-P_JMPRlZrg" name="tokentransferencia" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHYDOqEeqLTffcGD44IQ" name="APPNAME" value="AppState.salida_mp=='IVR_BLOQUEOS' ? 'BLOQUEOS_TDE' : AppState.parametros_marcas_navegacion.appName" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHYTOqEeqLTffcGD44IQ" name="CODIOFERTA" value="AppState.cliente_datos.codi_oferta" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHYjOqEeqLTffcGD44IQ" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHYzOqEeqLTffcGD44IQ" name="IVR_ACCESOS" value="AppState.IVR_ACCESOS" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHZDOqEeqLTffcGD44IQ" name="MERCADO" value="AppState.MERCADO" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHZTOqEeqLTffcGD44IQ" name="MOVIL_INGRESADO" value="(AppState.Var_PCS) ? AppState.Var_PCS : AppState.ANI;" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHZjOqEeqLTffcGD44IQ" name="SCORING" value="AppState.cliente_datos.nmro_scoring" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHZzOqEeqLTffcGD44IQ" name="SEGMENTO" value="AppState.Var_Segmento" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHaDOqEeqLTffcGD44IQ" name="SERVICIODESTINO" value="AppState.vdnServDestino" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHaTOqEeqLTffcGD44IQ" name="UData4Ast" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHajOqEeqLTffcGD44IQ" name="UData_EPA" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHazOqEeqLTffcGD44IQ" name="VDN" value="'TDE_TESTING'" description="VDN o Punto de Ruteo"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHbDOqEeqLTffcGD44IQ" name="audio_transferencia" value="AppState.AudioTransferencia" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHbTOqEeqLTffcGD44IQ" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHbjOqEeqLTffcGD44IQ" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHbzOqEeqLTffcGD44IQ" name="parametros_marcas_navegacion" value="AppState.parametros_marcas_navegacion" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_V-FHcDOqEeqLTffcGD44IQ" name="tokentransferencia" value="''" description="Enter Description"/>
     </blocks>
     <links xmi:type="gvp:CallflowExceptionLink" xmi:id="_-QCZQO6TEemIYNuZM9VwEw" name="connection.disconnect.hangup" fromBlock="_MTgJcO6TEemIYNuZM9VwEw" toBlock="_7nRANe6TEemIYNuZM9VwEw"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_WQHuIO6UEemIYNuZM9VwEw" fromBlock="_7nRANe6TEemIYNuZM9VwEw" toBlock="_UiSp4Nz8EeKItrUHz40pEQ"/>

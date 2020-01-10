@@ -276,7 +276,7 @@
     <children xmi:type="notation:Shape" xmi:id="_oXPWIOV_EeeJAZ_Xl0O_Gw" type="1029" element="_oXNg8OV_EeeJAZ_Xl0O_Gw" fontName="Segoe UI">
       <children xmi:type="notation:DecorationNode" xmi:id="_oXPWIeV_EeeJAZ_Xl0O_Gw" type="4054"/>
       <children xmi:type="notation:DecorationNode" xmi:id="_oXPWIuV_EeeJAZ_Xl0O_Gw" type="4055"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oXPWI-V_EeeJAZ_Xl0O_Gw" x="374" y="494" width="205"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oXPWI-V_EeeJAZ_Xl0O_Gw" x="360" y="510" width="205"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_vsB88OWAEeeJAZ_Xl0O_Gw" type="1011" element="_vsBV4OWAEeeJAZ_Xl0O_Gw" fontName="Ubuntu">
       <children xmi:type="notation:DecorationNode" xmi:id="_vsB88uWAEeeJAZ_Xl0O_Gw" type="4018"/>
