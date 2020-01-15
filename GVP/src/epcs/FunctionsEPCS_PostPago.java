@@ -3400,13 +3400,19 @@ public String ValidateCustomerCreditProfile(JSONObject body, String IDllamada, S
 }
 
 
-public String CreateFastSubscription(String SN, String PO_FAMILY_PLAN, String PO_ID_BOLSA, String Price, String Payment_Method, String CustomerOrder_area, String CustomerOrder_orderType, String CustomerOrder_subArea, String CustomerOrder_operationType, String CustomerOrder_biType, String CustomerOrder_contractCode, String CustomerOrderItem_action, String CustomerOrderItem_biType, String IDllamada, String processID, String SourceID){
+public String CreateFastSubscription(String SN, String PO_FAMILY_PLAN, String PO_ID_BOLSA, String Price, String Payment_Method, String individualIdentification_number, String individualIdentification_contractCode, String IDllamada, String processID, String SourceID){
 	/*
 	 * 2019-10-30
 	 * Autor: Gabriel Santis Villalón (Sistemas S.A.)
 	 * Desc: - Genera Request para WS CreateFastSubscription
 	 *       - Para Compra Bolsa contra Saldo y Puntos ZE 
 	 *       - Payment_Method define tipo de compra (BALANCE, POINTS)
+	 *       
+	 * 2020-01-09
+	 * Autor: Gabriel Santis Villalón (Sistemas S.A.)
+	 * Desc: - Genera Request para WS CreateFastSubscription según nuevo requerimiento
+	 *       - Se elimina código anterior
+	 *    
 	 * */	
 	
 	String wsName = "CreateFastSubscription";
@@ -3420,19 +3426,22 @@ public String CreateFastSubscription(String SN, String PO_FAMILY_PLAN, String PO
 
 	JSONObject body = new JSONObject();
 	
-	JSONObject CustomerOrderItem = new JSONObject();//->body
-	JSONObject ProductOffering = new JSONObject(); //->CustomerOrderItem
+	JSONObject amount = new JSONObject(); //->body
+	JSONObject asset = new JSONObject(); //->body
 	
-	JSONObject quantity = new JSONObject(); //->ProductOffering
-	JSONObject Product = new JSONObject();//->body
+	JSONObject contract = new JSONObject(); //->body
 	
-	JSONObject ProductSpecification = new JSONObject();//->Product	
-	JSONObject ProductSpecCharacteristic = new JSONObject();//->Product	
+	JSONObject individual = new JSONObject(); //->contract
+	JSONObject individualIdentification = new JSONObject(); //->individual
 	
-	JSONObject CustomerOrder = new JSONObject();//->body
-	JSONObject SalesChannel = new JSONObject(); //->CustomerOrder	
-	JSONObject Asset = new JSONObject(); //->CustomerOrder
-	JSONObject MSISDN = new JSONObject();//->Asset
+	JSONObject msisdn = new JSONObject(); //->contract
+	JSONObject sn = new JSONObject(); //->msisdn
+	
+	JSONObject paymentMethod = new JSONObject(); //->body
+	JSONObject product = new JSONObject(); //->body
+	JSONObject channel = new JSONObject(); //->body
+	JSONObject subChannel = new JSONObject(); //->body
+	JSONObject type = new JSONObject(); //->body
 	
 	try {	 
 				
@@ -3441,58 +3450,70 @@ public String CreateFastSubscription(String SN, String PO_FAMILY_PLAN, String PO
 		Random rng = new Random();
 		long timeStamp=System.currentTimeMillis()/1000;
 		long dig = rng.nextInt(900)+99;
-		String requestID = "0078"+timeStamp+dig;	
+		String requestID = "0078"+timeStamp+dig;
 
-		quantity.put("amount", "1");
+		amount.put("amount", Price);
+		amount.put("units",Payment_Method);
 		
-		ProductOffering.put("quantity", quantity);
-		ProductOffering.put("ID", PO_ID_BOLSA);
-							
-		ProductSpecCharacteristic.put("classification", "PAYMENT");
-		ProductSpecCharacteristic.put("name", "PAYMENT_METHOD");
-		ProductSpecCharacteristic.put("value", Payment_Method); //"BALANCE, POINTS";
+		asset.put("plan", PO_FAMILY_PLAN);
 		
-		ProductSpecification.put("ProductSpecCharacteristic", ProductSpecCharacteristic);
+		contract.put("id", individualIdentification_contractCode);
 		
-		Product.put("ProductSpecification", ProductSpecification);
+			individualIdentification.put("number", individualIdentification_number);
+			individualIdentification.put("type", "RUT");
+			
+			individual.put("individualIdentification", individualIdentification);
+			
+			msisdn.put("sn", SN);
+					
+		contract.put("individual", individual);
+		contract.put("msisdn", msisdn);
 		
-		Product.put("category", "Bolsa");
-		Product.put("family", "Bolsa");
-		Product.put("name", "Bolsa");
+		paymentMethod.put("paymentMethodType", Payment_Method);
 		
-		CustomerOrderItem.put("Product", Product);
+		product.put("id", PO_ID_BOLSA);
 		
-		CustomerOrderItem.put("ProductOffering", ProductOffering);
+		channel.put("id", "0078");
+		channel.put("name", "IVR");
 		
-		CustomerOrderItem.put("action", CustomerOrderItem_action);
-		CustomerOrderItem.put("biType", CustomerOrderItem_biType);
-		CustomerOrderItem.put("price", Price);				
+		subChannel.put("id", "1");
+		subChannel.put("name","IVR");
 		
-		CustomerOrder.put("area", CustomerOrder_area); 
-		CustomerOrder.put("biType", CustomerOrder_biType);
-		CustomerOrder.put("channel", "IVR");			
-		CustomerOrder.put("mode", "NON_INTERACTIVE");
-		CustomerOrder.put("orderType", CustomerOrder_orderType);	
-		CustomerOrder.put("requestID", requestID);
-		CustomerOrder.put("subArea", CustomerOrder_subArea);
-		CustomerOrder.put("operationType", CustomerOrder_operationType);
-				
-		SalesChannel.put("ID", "IVR");
-		SalesChannel.put("createBy", "IVR");
-		SalesChannel.put("orderCommercialChannel", "IVR");	
-		
-		MSISDN.put("SN", SN);
-		Asset.put("ID", PO_FAMILY_PLAN);
-		Asset.put("MSISDN", MSISDN);
-		Asset.put("contractCode", CustomerOrder_contractCode);
-		
-		CustomerOrder.put("Asset", Asset);							
-		CustomerOrder.put("SalesChannel", SalesChannel);
-								
-		body.put("CustomerOrderItem", CustomerOrderItem);
-		body.put("CustomerOrder", CustomerOrder);	
+		body.put("amount", amount);
+		body.put("asset", asset);
+		body.put("contract", contract);
+		body.put("paymentMethod", paymentMethod);
+		body.put("product", product);
+		body.put("channel", channel);
+//		body.put("subChannel", subChannel);
+		body.put("type", "BOLSA");	
 				
 		JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
+		
+		//****
+		//Para crear transaction_ID
+		String service_code = "EJEM100139";
+		String origen_sistema = "0078";
+		
+		String TRANSACTIONID = origen_sistema+service_code+timeStamp+SourceID;						
+		
+		if ( TRANSACTIONID.length() > 50 ) {
+			TRANSACTIONID = TRANSACTIONID.substring(0, 50);
+		}else if ( TRANSACTIONID.length() < 50 ) {
+			
+			int i;
+			while (TRANSACTIONID.length() < 50) {
+				TRANSACTIONID = TRANSACTIONID + "0";
+			}
+			
+		}
+		
+		header.put("TRANSACTION_ID", TRANSACTIONID); //campo en headerRequest
+		
+		header.put("consumerId", "IVR"); //campo en headerRequest
+		header.put("applicationCode", "IVR"); //No existe, se envia IVR
+		//****
+		
 		request.put("RequestHeader", header);
 		request.put("Body", body);
 
@@ -3509,16 +3530,18 @@ public String CreateFastSubscription(String SN, String PO_FAMILY_PLAN, String PO
 		
 		request = null;  
 		body = null;
-		CustomerOrderItem = null;
-		ProductOffering = null;
-		quantity = null;
-		Product = null;
-		ProductSpecification = null;
-		ProductSpecCharacteristic = null;
-		CustomerOrder = null;
-		SalesChannel = null;
-		Asset = null;
-		MSISDN = null;
+		amount = null;
+		asset = null;
+		contract = null;
+		individual = null;
+		individualIdentification = null;
+		msisdn = null;
+		sn = null;
+		paymentMethod = null;
+		product = null;
+		channel = null;
+		subChannel = null;
+		type = null;	
 		
 	}
 	return resp;
