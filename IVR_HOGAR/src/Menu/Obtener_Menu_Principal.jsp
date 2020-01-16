@@ -19,7 +19,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
         String opcionesDTMF = "";
         String Path="es-CL/IVR/Menus/";
         String AudioDefecto="IVR/General/Silencio.wav";
-        String audioDTMF="/IVR/Menus/marque";
+        String audioDTMF="/IVR/Menus/marca";
     	
     	fEPCS.Debug("["+jspName+"] Inicio", "INFO");
 		int pack = Integer.parseInt(additionalParams.get("packSeleccionado"));
