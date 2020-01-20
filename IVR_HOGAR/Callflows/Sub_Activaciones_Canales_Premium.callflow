@@ -75,7 +75,7 @@
       <exceptions>error.badfetch</exceptions>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_3eGhYTlQEeqAQY2LdpR-zA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
-    <blocks xmi:type="gvp:BackendBlock" xmi:id="_Qz2ouTlREeqAQY2LdpR-zA" name="TRX_GetMarketingCampaign_v2" category="Backend" uri="../src/ServiceXX/TRX_getMarketingCampaign_v2.jsp">
+    <blocks xmi:type="gvp:BackendBlock" xmi:id="_Qz2ouTlREeqAQY2LdpR-zA" name="TRX_GetMarketingCampaign_v2" category="Backend" enableStatus="Disabled" uri="../src/ServiceXX/TRX_getMarketingCampaign_v2.jsp">
       <exceptions>error.badfetch</exceptions>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_Qz2oujlREeqAQY2LdpR-zA" name="msisdn" value="'56'+AppState.ANI" description="movil de cliente"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_Qz2ouzlREeqAQY2LdpR-zA" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
@@ -92,7 +92,7 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_Qz2oxjlREeqAQY2LdpR-zA" name="campana_id" value="Var_campana_id" description="ID campaña ofrecida" type="output"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_Qz2oxzlREeqAQY2LdpR-zA" name="campana_tipooferta" value="Var_campana_tipooferta" description="Tipo oferta campaña ofrecida" type="output"/>
     </blocks>
-    <blocks xmi:type="gvp:BranchingBlock" xmi:id="_Qz2oyDlREeqAQY2LdpR-zA" name="Branch_Promocion" category="Branching">
+    <blocks xmi:type="gvp:BranchingBlock" xmi:id="_Qz2oyDlREeqAQY2LdpR-zA" name="Branch_Promocion" category="Branching" enableStatus="Disabled">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_gnGfADlREeqAQY2LdpR-zA" name="SI" expression="AppState.trx_respuesta == &quot;OK&quot;"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_iTd6MDlREeqAQY2LdpR-zA" name="Backend_ValMaxCanales" category="Backend" uri="../src/ServiceXX/TRX_getMarketingCampaign_v2.jsp">
@@ -239,6 +239,26 @@
     <blocks xmi:type="gvp:AssignBlock" xmi:id="_9OUIVDlXEeqAQY2LdpR-zA" name="Volver_Menu_Anterior" category="Assign">
       <assignData xmi:type="datatypes:KeyValuePairItem" xmi:id="_9OUIVTlXEeqAQY2LdpR-zA" Key="salida_mp" Value="'MANTERIOR'"/>
     </blocks>
+    <blocks xmi:type="gvp:BranchingBlock" xmi:id="_X3du0DuVEeq1BuDTOIYsuw" name="Branch_RUT_OK" category="Branching">
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_ja3gkDuVEeq1BuDTOIYsuw" name="RUT_OK" expression="AppState.salida_mp=='OK'"/>
+    </blocks>
+    <blocks xmi:type="gvp:BackendBlock" xmi:id="_FQ3VMDuXEeq1BuDTOIYsuw" name="Backend_WS_Pack_TV" category="Backend" uri="../src/ServiceXX/TRX_getMarketingCampaign_v2.jsp">
+      <exceptions>error.badfetch</exceptions>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VMTuXEeq1BuDTOIYsuw" name="msisdn" value="'56'+AppState.ANI" description="movil de cliente"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VMjuXEeq1BuDTOIYsuw" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VMzuXEeq1BuDTOIYsuw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VNDuXEeq1BuDTOIYsuw" name="processCode" value="AppState.processCode" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VNTuXEeq1BuDTOIYsuw" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VNjuXEeq1BuDTOIYsuw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VNzuXEeq1BuDTOIYsuw" name="documentNumber" value="AppState.cliente_datos.IndividualIdentification.number" description="Rut cliente"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VODuXEeq1BuDTOIYsuw" name="source" value="Var_SourceCampana" description="Source de la Campaña.. SIEBEL/PEGA" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VOTuXEeq1BuDTOIYsuw" name="QOfertas" value="Var_QOfertas" description="Cantidad de ofertas disponibles" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VOjuXEeq1BuDTOIYsuw" name="PO_OFERTA_PLANES" value="Var_PO_OFERTA_PLANES" description="Lista POs de ofertas disponibles" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VOzuXEeq1BuDTOIYsuw" name="OFFER_ID" value="Var_OFFER_ID" description="Lista con ID de productos ofrecidos" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VPDuXEeq1BuDTOIYsuw" name="campana_source" value="Var_campana_source" description="Fuente de la campaña (SIEBEL, PEGA)" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VPTuXEeq1BuDTOIYsuw" name="campana_id" value="Var_campana_id" description="ID campaña ofrecida" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_FQ3VPjuXEeq1BuDTOIYsuw" name="campana_tipooferta" value="Var_campana_tipooferta" description="Tipo oferta campaña ofrecida" type="output"/>
+    </blocks>
     <links xmi:type="gvp:CallflowExceptionLink" xmi:id="_S2fDgCQpEeetZvwIJCPNag" name="connection.disconnect.hangup" fromBlock="_Z6Z-QJhsEeGerrt71FTn3g" toBlock="_PDYlVCQpEeetZvwIJCPNag"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_aSolkJpuEeitetvnwt2rWA" fromBlock="_PDYlVCQpEeetZvwIJCPNag" toBlock="_-THHwF9dEd6I4IvG6U_ZgQ"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_56edMDlQEeqAQY2LdpR-zA" fromBlock="_Z6Z-QJhsEeGerrt71FTn3g" toBlock="_3eGhYDlQEeqAQY2LdpR-zA"/>
@@ -271,6 +291,12 @@
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_THPuADlZEeqAQY2LdpR-zA" fromBlock="_ebzISzlVEeqAQY2LdpR-zA" toBlock="_ebzISTlVEeqAQY2LdpR-zA"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_TUITcDlZEeqAQY2LdpR-zA" fromBlock="_ebzISTlVEeqAQY2LdpR-zA" toBlock="_ebzvUDlVEeqAQY2LdpR-zA"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_TjsZcDlZEeqAQY2LdpR-zA" fromBlock="_ebzvUDlVEeqAQY2LdpR-zA" toBlock="_ebzvVjlVEeqAQY2LdpR-zA"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_aFN_0DuVEeq1BuDTOIYsuw" fromBlock="_-uw2IDlREeqAQY2LdpR-zA" toBlock="_X3du0DuVEeq1BuDTOIYsuw"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_nNbzQDuVEeq1BuDTOIYsuw" name="default" fromBlock="_X3du0DuVEeq1BuDTOIYsuw" toBlock="_ebzvYTlVEeqAQY2LdpR-zA"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_GrsUcDuXEeq1BuDTOIYsuw" name="RUT_OK" fromBlock="_X3du0DuVEeq1BuDTOIYsuw" toBlock="_FQ3VMDuXEeq1BuDTOIYsuw"/>
+    <links xmi:type="gvp:CallflowExceptionLink" xmi:id="_Jel54DuXEeq1BuDTOIYsuw" name="error.badfetch" fromBlock="_FQ3VMDuXEeq1BuDTOIYsuw" toBlock="_ebzISzlVEeqAQY2LdpR-zA"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_p52rUDuXEeq1BuDTOIYsuw" fromBlock="_FQ3VMDuXEeq1BuDTOIYsuw" toBlock="_QS6XfjlUEeqAQY2LdpR-zA"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_suXaUDuXEeq1BuDTOIYsuw" fromBlock="_QS6XgjlUEeqAQY2LdpR-zA" toBlock="_-THHwF9dEd6I4IvG6U_ZgQ"/>
     <namespaces xmi:type="datatypes:Property" xmi:id="_3FJJMZhjEeGerrt71FTn3g" name="gvp" value="http://www.genesyslab.com/2006/vxml21-extension"/>
     <systemProperties xmi:type="datatypes:Property" xmi:id="_AgnmYPECEeWPUKGIA4zsog" name="RetainInputTypeVariableDefaultValue" value="false"/>
   </gvp:CallflowDiagram>
@@ -291,7 +317,7 @@
       <children xmi:type="notation:DecorationNode" xmi:id="_PDYlUiQpEeetZvwIJCPNag" type="4029"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PDYlUyQpEeetZvwIJCPNag" x="-136" width="165"/>
     </children>
-    <children xmi:type="notation:Shape" xmi:id="_n3SzsC1fEeq-wK8Qfhn5MA" type="Note" fontName="Segoe UI" description="- Des/Activaciones Canales Premium&#xD;&#xA;- Gabriel Santis Villalon&#xD;&#xA;- Permite Activar y desactivar canales premiun&#xD;&#xA;&#xD;&#xA;2019-12-27&#xD;&#xA;- Esqueleto flujo&#xD;&#xA;&#xD;&#xA;2020-01-17&#xD;&#xA;- Integración con menu &quot;Activaciones&quot;&#xD;&#xA;- Integración de WAV&#xD;&#xA;- Revisión esqueleto flujo&#xD;&#xA;" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+    <children xmi:type="notation:Shape" xmi:id="_n3SzsC1fEeq-wK8Qfhn5MA" type="Note" fontName="Segoe UI" description="- Des/Activaciones Canales Premium&#xD;&#xA;- Gabriel Santis Villalon&#xD;&#xA;- Permite Activar y desactivar canales premiun&#xD;&#xA;&#xD;&#xA;2019-12-27&#xD;&#xA;- Esqueleto flujo&#xD;&#xA;&#xD;&#xA;2020-01-17&#xD;&#xA;- Integración con menu &quot;Activaciones&quot;&#xD;&#xA;- Integración de WAV&#xD;&#xA;- Revisión esqueleto flujo&#xD;&#xA;&#xD;&#xA;2020-01-20&#xD;&#xA;- Se espera forma de filtro para crear Packs de Canales o similar&#xD;&#xA;" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
       <children xmi:type="notation:BasicDecorationNode" xmi:id="_n3V3AC1fEeq-wK8Qfhn5MA" type="DiagramName">
         <element xsi:nil="true"/>
       </children>
@@ -435,6 +461,28 @@
       <children xmi:type="notation:DecorationNode" xmi:id="_9OUIUjlXEeqAQY2LdpR-zA" type="4019"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9OUIUzlXEeqAQY2LdpR-zA" x="290" y="2108" width="187"/>
     </children>
+    <children xmi:type="notation:Shape" xmi:id="_X_MHcDuVEeq1BuDTOIYsuw" type="1012" element="_X3du0DuVEeq1BuDTOIYsuw" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_X_MHcTuVEeq1BuDTOIYsuw" type="4020"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_X_MHcjuVEeq1BuDTOIYsuw" type="4021"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X_MHczuVEeq1BuDTOIYsuw" x="918" y="374" width="205"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_FQ6_kDuXEeq1BuDTOIYsuw" type="1016" element="_FQ3VMDuXEeq1BuDTOIYsuw" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_FQ6_kTuXEeq1BuDTOIYsuw" type="4028"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_FQ6_kjuXEeq1BuDTOIYsuw" type="4029"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FQ6_kzuXEeq1BuDTOIYsuw" x="836" y="476" width="223"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_ZzlLUDuXEeq1BuDTOIYsuw" type="Note" fontName="Segoe UI" description="No existe forma de crear Pack&#xD;&#xA;de Canales. Esperar por solución&#xD;&#xA;&#xD;&#xA;Luego crear menu dinamico con canales&#xD;&#xA;&#xD;&#xA;Evaluar cantidad de canales a ofrecer &#xD;&#xA;para que IVR no sea extenso para el cliente" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_ZzlyYDuXEeq1BuDTOIYsuw" type="DiagramName">
+        <element xsi:nil="true"/>
+      </children>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_ZzlyYTuXEeq1BuDTOIYsuw" type="Description">
+        <element xsi:nil="true"/>
+      </children>
+      <styles xmi:type="notation:TextStyle" xmi:id="_ZzlLUTuXEeq1BuDTOIYsuw"/>
+      <styles xmi:type="notation:LineTypeStyle" xmi:id="_ZzlLUjuXEeq1BuDTOIYsuw"/>
+      <element xsi:nil="true"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZzlLUzuXEeq1BuDTOIYsuw" x="1088" y="473"/>
+    </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_9dxf4ujoEd2eUOAcyP5XCQ"/>
     <edges xmi:type="notation:Edge" xmi:id="_S2fqkCQpEeetZvwIJCPNag" type="3002" element="_S2fDgCQpEeetZvwIJCPNag" source="_Z6Z-VphsEeGerrt71FTn3g" target="_PDYlUCQpEeetZvwIJCPNag">
       <children xmi:type="notation:DecorationNode" xmi:id="_S2fqlCQpEeetZvwIJCPNag" type="4075">
@@ -547,10 +595,10 @@
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_SWGXMDlUEeqAQY2LdpR-zA" type="3001" element="_SWFwIDlUEeqAQY2LdpR-zA" source="_BBAJEDlTEeqAQY2LdpR-zA" target="_QS6XdDlUEeqAQY2LdpR-zA" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
       <children xmi:type="notation:DecorationNode" xmi:id="_SWGXMzlUEeqAQY2LdpR-zA" type="4074">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_SWGXNDlUEeqAQY2LdpR-zA" x="-19" y="-35"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_SWGXNDlUEeqAQY2LdpR-zA" x="20" y="7"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_SWGXMTlUEeqAQY2LdpR-zA" fontName="Segoe UI"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SWGXMjlUEeqAQY2LdpR-zA" points="[34, 25, -116, -77]$[34, 55, -116, -47]$[150, 55, 0, -47]$[150, 77, 0, -25]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SWGXMjlUEeqAQY2LdpR-zA" points="[34, 25, -116, -77]$[34, 43, -116, -59]$[150, 43, 0, -59]$[150, 77, 0, -25]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SWG-QDlUEeqAQY2LdpR-zA" id="(0.6390243902439025,0.98)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SWG-QTlUEeqAQY2LdpR-zA" id="(0.5212121212121212,0.22)"/>
     </edges>
@@ -573,10 +621,10 @@
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_Q5TMkTlVEeqAQY2LdpR-zA" type="3001" element="_Q5TMkDlVEeqAQY2LdpR-zA" source="_BBAJEDlTEeqAQY2LdpR-zA" target="_P-tMkDlVEeqAQY2LdpR-zA" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
       <children xmi:type="notation:DecorationNode" xmi:id="_Q5TzoDlVEeqAQY2LdpR-zA" type="4074">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_Q5TzoTlVEeqAQY2LdpR-zA" x="-16" y="25"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Q5TzoTlVEeqAQY2LdpR-zA" x="14" y="-7"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_Q5TMkjlVEeqAQY2LdpR-zA" fontName="Segoe UI"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Q5TMkzlVEeqAQY2LdpR-zA" points="[-34, 25, 95, -77]$[-34, 51, 95, -51]$[-129, 51, 0, -51]$[-129, 77, 0, -25]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Q5TMkzlVEeqAQY2LdpR-zA" points="[-34, 25, 95, -77]$[-34, 43, 95, -59]$[-129, 43, 0, -59]$[-129, 77, 0, -25]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Q5VBwDlVEeqAQY2LdpR-zA" id="(0.32195121951219513,0.98)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Q5VBwTlVEeqAQY2LdpR-zA" id="(0.5201793721973094,0.0)"/>
     </edges>
@@ -723,6 +771,65 @@
       <styles xmi:type="notation:FontStyle" xmi:id="_TjtAgTlZEeqAQY2LdpR-zA" fontName="Segoe UI"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_TjtAgjlZEeqAQY2LdpR-zA" points="[4, 6, 4, -43]$[4, 24, 4, -25]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_TjtnkDlZEeqAQY2LdpR-zA" id="(0.49635036496350365,0.88)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_aFYX4DuVEeq1BuDTOIYsuw" type="3001" element="_aFN_0DuVEeq1BuDTOIYsuw" source="_-uwPETlREeqAQY2LdpR-zA" target="_X_MHcDuVEeq1BuDTOIYsuw" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+      <children xmi:type="notation:DecorationNode" xmi:id="_aFklIDuVEeq1BuDTOIYsuw" type="4074">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_aFlMMDuVEeq1BuDTOIYsuw" x="5" y="5"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_aFYX4TuVEeq1BuDTOIYsuw" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_aFYX4juVEeq1BuDTOIYsuw" points="[0, 25, -143, -77]$[0, 43, -143, -59]$[143, 43, 0, -59]$[143, 77, 0, -25]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_aFnBYDuVEeq1BuDTOIYsuw" id="(0.45255474452554745,0.98)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_aFnBYTuVEeq1BuDTOIYsuw" id="(0.5707317073170731,0.1)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_nNcaUDuVEeq1BuDTOIYsuw" type="3001" element="_nNbzQDuVEeq1BuDTOIYsuw" source="_X_MHcDuVEeq1BuDTOIYsuw" target="_ebzIQTlVEeqAQY2LdpR-zA" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+      <children xmi:type="notation:DecorationNode" xmi:id="_nNcaUzuVEeq1BuDTOIYsuw" type="4074">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_nNcaVDuVEeq1BuDTOIYsuw" x="-281" y="12"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_nNcaUTuVEeq1BuDTOIYsuw" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nNcaUjuVEeq1BuDTOIYsuw" points="[34, 25, 972, -315]$[34, 43, 972, -297]$[-1258, 43, -320, -297]$[-1258, 203, -320, -137]$[-938, 203, 0, -137]$[-938, 315, 0, -25]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nNdBYDuVEeq1BuDTOIYsuw" id="(0.6682926829268293,0.92)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_GsaGIDuXEeq1BuDTOIYsuw" type="3001" element="_GrsUcDuXEeq1BuDTOIYsuw" source="_X_MHcDuVEeq1BuDTOIYsuw" target="_FQ6_kDuXEeq1BuDTOIYsuw" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+      <children xmi:type="notation:DecorationNode" xmi:id="_GsaGIzuXEeq1BuDTOIYsuw" type="4074">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_GsaGJDuXEeq1BuDTOIYsuw" x="-8" y="47"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_GsaGITuXEeq1BuDTOIYsuw" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GsaGIjuXEeq1BuDTOIYsuw" points="[-34, 25, 59, -77]$[-34, 43, 59, -59]$[-93, 43, 0, -59]$[-93, 77, 0, -25]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Gsha4DuXEeq1BuDTOIYsuw" id="(0.33170731707317075,1.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GsiB8DuXEeq1BuDTOIYsuw" id="(0.4304932735426009,0.16)"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_Jemg8DuXEeq1BuDTOIYsuw" type="3002" element="_Jel54DuXEeq1BuDTOIYsuw" source="_FQ6_kDuXEeq1BuDTOIYsuw" target="_ebyhNTlVEeqAQY2LdpR-zA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Jemg9DuXEeq1BuDTOIYsuw" type="4075">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Jemg9TuXEeq1BuDTOIYsuw" x="-113" y="-89"/>
+      </children>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_Jemg8TuXEeq1BuDTOIYsuw" roundedBendpointsRadius="10" routing="Rectilinear"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Jemg8juXEeq1BuDTOIYsuw" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Jemg8zuXEeq1BuDTOIYsuw" points="[-111, 0, 877, -238]$[-145, 0, 843, -238]$[-145, -59, 843, -297]$[-988, -59, 0, -297]$[-988, 213, 0, -25]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JenvEDuXEeq1BuDTOIYsuw" id="(0.008968609865470852,0.54)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JenvETuXEeq1BuDTOIYsuw" id="(0.21897810218978103,0.32)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_Z0FhoDuXEeq1BuDTOIYsuw" type="NoteAttachment" source="_ZzlLUDuXEeq1BuDTOIYsuw" target="_FQ6_kDuXEeq1BuDTOIYsuw" routing="Rectilinear" lineWidth="1">
+      <styles xmi:type="notation:ArrowStyle" xmi:id="_Z0FhoTuXEeq1BuDTOIYsuw"/>
+      <styles xmi:type="notation:LineTypeStyle" xmi:id="_Z0FhojuXEeq1BuDTOIYsuw"/>
+      <element xsi:nil="true"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Z0FhozuXEeq1BuDTOIYsuw" points="[0, 0, -947, -501]$[900, 476, -47, -25]"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_p53SYDuXEeq1BuDTOIYsuw" type="3001" element="_p52rUDuXEeq1BuDTOIYsuw" source="_FQ6_kDuXEeq1BuDTOIYsuw" target="_QS6XdDlUEeqAQY2LdpR-zA" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+      <children xmi:type="notation:DecorationNode" xmi:id="_p53SYzuXEeq1BuDTOIYsuw" type="4074">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_p53SZDuXEeq1BuDTOIYsuw" x="5" y="5"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_p53SYTuXEeq1BuDTOIYsuw" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_p53SYjuXEeq1BuDTOIYsuw" points="[0, 25, 294, 25]$[0, 77, 294, 77]$[-172, 77, 122, 77]$[-172, -59, 122, -59]$[-294, -59, 0, -59]$[-294, -25, 0, -25]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_p54ggDuXEeq1BuDTOIYsuw" id="(0.48878923766816146,0.96)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_p54ggTuXEeq1BuDTOIYsuw" id="(0.5151515151515151,0.0)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_suYBYDuXEeq1BuDTOIYsuw" type="3001" element="_suXaUDuXEeq1BuDTOIYsuw" source="_QS6XeDlUEeqAQY2LdpR-zA" target="_-THHwV9dEd6I4IvG6U_ZgQ" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+      <children xmi:type="notation:DecorationNode" xmi:id="_suYBYzuXEeq1BuDTOIYsuw" type="4074">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_suYBZDuXEeq1BuDTOIYsuw" x="5" y="5"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_suYBYTuXEeq1BuDTOIYsuw" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_suYBYjuXEeq1BuDTOIYsuw" points="[0, 25, 128, -1675]$[0, 349, 128, -1351]$[-128, 349, 0, -1351]$[-128, 1675, 0, -25]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_suZPgDuXEeq1BuDTOIYsuw" id="(0.48484848484848486,0.98)"/>
     </edges>
   </notation:Diagram>
 </xmi:XMI>
