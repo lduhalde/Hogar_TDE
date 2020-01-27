@@ -9,7 +9,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     JSONObject result = new JSONObject();
     JSONObject cliente_datos = new JSONObject();
     JSONObject cliente_productos = new JSONObject();
-    String jspName="Obtener_Menu_Principal";
+    String jspName="Obtener_Menu_Comercial";
     FunctionsEPCS fEPCS = new FunctionsEPCS(state.getString("ConfigFile"), state.getString("idLlamada"));
        
     try{    	 
