@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:datatypes="http://studio.genesyslab.com/common/datatypes/" xmlns:datatypes_1="http://studio.genesyslab.com/gvp/datatypes/" xmlns:gvp="http://studio.genesyslab.com/gvp/" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xsi:schemaLocation="http://studio.genesyslab.com/common/datatypes/ http://studio.genesyslab.com/common/#//datatypes http://studio.genesyslab.com/gvp/datatypes/ http://studio.genesyslab.com/gvp/#//datatypes">
-  <gvp:CallflowDiagram xmi:id="_9dxf4OjoEd2eUOAcyP5XCQ" name="Sub_Menu_Principal" designedUsing="Composer 8.1.400.36" callflowType="Subcallflow">
+  <gvp:CallflowDiagram xmi:id="_9dxf4OjoEd2eUOAcyP5XCQ" name="Sub_Menu_Comercial" designedUsing="Composer 8.1.400.36" callflowType="Subcallflow">
     <history>8.1.3</history>
     <history>8.1.300.01</history>
-    <blocks xmi:type="gvp:ExitBlock" xmi:id="_-THHwF9dEd6I4IvG6U_ZgQ" name="Exit_MenuPrincipal" condition="" terminating="true" category="Exit" returnMode="true">
+    <blocks xmi:type="gvp:ExitBlock" xmi:id="_-THHwF9dEd6I4IvG6U_ZgQ" name="Exit_MenuComercial" condition="" terminating="true" category="Exit" returnMode="true">
       <returnValues>salida_mp</returnValues>
       <returnValues>vdn</returnValues>
       <returnValues>vdnServDestino</returnValues>
       <returnValues>parametros_marcas_navegacion</returnValues>
     </blocks>
-    <blocks xmi:type="gvp:EntryBlock" xmi:id="_Z6Z-QJhsEeGerrt71FTn3g" name="Start_MenuPrincipal" condition="" starting="true" category="Entry">
+    <blocks xmi:type="gvp:EntryBlock" xmi:id="_Z6Z-QJhsEeGerrt71FTn3g" name="Start_MenuComercial" condition="" starting="true" category="Entry">
       <exceptions>connection.disconnect.hangup</exceptions>
       <variables xmi:type="datatypes:Variable" xmi:id="_XfkpQBTzEeq-P_JMPRlZrg" name="ANI" value="getANI()" description="Identifier for the calling party" type="System"/>
       <variables xmi:type="datatypes:Variable" xmi:id="_XfkpQRTzEeq-P_JMPRlZrg" name="APP_ASR_LANGUAGE" value="'es-CL'" description="ASR Language" type="System"/>
@@ -87,7 +87,7 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_4aNd95_kEeiEmN8umv-nEA" name="RC" value="'0'" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_4aNd-J_kEeiEmN8umv-nEA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
-    <blocks xmi:type="gvp:BackendBlock" xmi:id="_R4NNkBTyEeq-P_JMPRlZrg" name="Obtener_Menu_Principal" category="Backend" uri="../src/Menu/Obtener_Menu_Principal.jsp">
+    <blocks xmi:type="gvp:BackendBlock" xmi:id="_R4NNkBTyEeq-P_JMPRlZrg" name="Obtener_Menu_Comercial" category="Backend" uri="../src/Menu/Obtener_Menu_Comercial.jsp">
       <exceptions>error.badfetch</exceptions>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_vvUKwBTzEeq-P_JMPRlZrg" name="OpcionesMenu" value="OpcionesMenu" description="Enter Description" type="output"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_vvUKwRTzEeq-P_JMPRlZrg" name="OpcionesDTMF" value="OpcionesDTMF" description="Enter Description" type="output"/>
@@ -96,11 +96,11 @@
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_R4N0oBTyEeq-P_JMPRlZrg" name="Inicio_Marca_MPPAL" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0oRTyEeq-P_JMPRlZrg" name="INICIO" value="'SI'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0ohTyEeq-P_JMPRlZrg" name="TRAZA" value="'MENU_PRINCIPAL'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0oxTyEeq-P_JMPRlZrg" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_kvuXQEESEeqAbdVH3o8SjA" name="INICIO" value="'SI'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_kvuXQUESEeqAbdVH3o8SjA" name="TRAZA" value="'MENU_COMERCIAL'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_kvuXQkESEeqAbdVH3o8SjA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
-    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_R4N0pBTyEeq-P_JMPRlZrg" name="Emitir_MPPAL" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Menu_Dinamico.callflow">
+    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_R4N0pBTyEeq-P_JMPRlZrg" name="Emitir_Menu_Comercial" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Menu_Dinamico.callflow">
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0pRTyEeq-P_JMPRlZrg" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0phTyEeq-P_JMPRlZrg" name="OpcionesDTMF" value="AppState.OpcionesDTMF" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0pxTyEeq-P_JMPRlZrg" name="OpcionesMenu" value="AppState.OpcionesMenu" description="Tarjetas en Formato TIPO1:NUMERO1|TIPO2:NUMERO2"/>
@@ -121,7 +121,7 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0thTyEeq-P_JMPRlZrg" name="var_timeout" value="5" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0txTyEeq-P_JMPRlZrg" name="willaccept" value="willaccept" description="Enter Description" type="output"/>
     </blocks>
-    <blocks xmi:type="gvp:BackendBlock" xmi:id="_R4N0uBTyEeq-P_JMPRlZrg" name="FinMarcaMPPAL" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
+    <blocks xmi:type="gvp:BackendBlock" xmi:id="_R4N0uBTyEeq-P_JMPRlZrg" name="FinMarcaMenuComercial" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0uRTyEeq-P_JMPRlZrg" name="INICIO" value="'NO'" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0uhTyEeq-P_JMPRlZrg" name="DATA" value="'OpcionEscogida'" description="Enter Description"/>
@@ -129,7 +129,7 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0vBTyEeq-P_JMPRlZrg" name="RC" value="(AppState.Menu_Token=='NONE')?'99':'0';" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0vRTyEeq-P_JMPRlZrg" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
-    <blocks xmi:type="gvp:BranchingBlock" xmi:id="_R4N0vhTyEeq-P_JMPRlZrg" name="Branch_Menu_Principal" category="Branching">
+    <blocks xmi:type="gvp:BranchingBlock" xmi:id="_R4N0vhTyEeq-P_JMPRlZrg" name="Branch_Menu_Comercial" category="Branching">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_eH4gEDOqEeqLTffcGD44IQ" name="SALDO_NUMERO" expression="AppState.Menu_Token=='SALDO_NUMERO'"/>
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_eH4gETOqEeqLTffcGD44IQ" name="PLAN_MONTO_LPAGOS" expression="AppState.Menu_Token=='PLAN_MONTO_LPAGOS'"/>
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_eH4gEjOqEeqLTffcGD44IQ" name="ACTIVACIONES" expression="AppState.Menu_Token=='ACTIVACIONES'"/>
