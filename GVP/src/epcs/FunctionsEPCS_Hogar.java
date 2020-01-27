@@ -1603,4 +1603,32 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		}
 		return resp;
 	}
+	
+	public String SetSignalRefresh(JSONObject body, String IDllamada, String processID, String SourceID){
+		String wsName="SetSignalRefresh";
+		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.86:7011/ES/JSON/"+wsName+"/v1");
+		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
+
+		String resp = "";
+		JSONObject request = new JSONObject();		
+		try {	 
+
+			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
+			request.put("RequestHeader", header);
+			request.put("Body", body);
+
+			Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
+			resp = ejecutarRest(url,request,maxTimeout, debug);				
+			Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
+		}finally { 
+			request = null;  
+			body = null;
+		}
+		return resp;
+	}
 }
