@@ -56,12 +56,20 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
         		cont++;
     		}
     		if(family.indexOf("Television")>-1){
-    			opcionesMenu += cont+";"+Path+"OP_Problemas_TV.wav;"+AudioDefecto+";;"+audioDTMF+cont+".wav;SI;PRBLM_TV|";
+    			if(technology.equals("Inalambrico")){
+    				opcionesMenu += cont+";"+Path+"OP_Problemas_TV.wav;"+AudioDefecto+";;"+audioDTMF+cont+".wav;SI;PRBLM_TV|";
+    			}else{
+    				opcionesMenu += cont+";"+Path+"OP_Problemas_TV.wav;"+AudioDefecto+";;"+audioDTMF+cont+".wav;SI;PRBLM_TV_FIBRA|";
+    			}
         		opcionesDTMF += cont+"|";
         		cont++;
     		}
     		if(family.indexOf("Internet")>-1){
-    			opcionesMenu += cont+";"+Path+"OP_Problemas_Nav.wav;"+AudioDefecto+";;"+audioDTMF+cont+".wav;SI;PRBLM_NAVEGACION|";
+    			if(technology.equals("Inalambrico")){//BAFI
+    				opcionesMenu += cont+";"+Path+"OP_Problemas_Nav.wav;"+AudioDefecto+";;"+audioDTMF+cont+".wav;SI;PRBLM_NAVEGACION|";
+    			}else{
+    				opcionesMenu += cont+";"+Path+"OP_Problemas_Nav.wav;"+AudioDefecto+";;"+audioDTMF+cont+".wav;SI;PRBLM_NAVEGACION_FIBRA|";
+    			}
         		opcionesDTMF += cont+"|";
         		cont++;
     		}

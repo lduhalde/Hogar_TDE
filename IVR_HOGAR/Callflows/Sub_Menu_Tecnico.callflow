@@ -130,12 +130,14 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0vRTyEeq-P_JMPRlZrg" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_R4N0vhTyEeq-P_JMPRlZrg" name="Branch_Menu_Tecnico" category="Branching">
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_e7i8sEETEeqAbdVH3o8SjA" name="AGENDAMIENTO" expression="AppState.Menu_Token=='AGENDAMIENTO'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_e7i8sUETEeqAbdVH3o8SjA" name="PRBLM_LLAMADAS" expression="AppState.Menu_Token=='PRBLM_LLAMADAS'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_e7i8skETEeqAbdVH3o8SjA" name="PRBLM_TV" expression="AppState.Menu_Token=='PRBLM_TV'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_e7i8s0ETEeqAbdVH3o8SjA" name="PRBLM_NAVEGACION" expression="AppState.Menu_Token=='PRBLM_NAVEGACION'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_e7i8tEETEeqAbdVH3o8SjA" name="EJECUTIVO" expression="AppState.Menu_Token=='EJECUTIVO'" postAction="AppState.salida_mp='EJECUTIVO'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_e7i8tUETEeqAbdVH3o8SjA" name="VOLVER" expression="AppState.Menu_Token=='VOLVER'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAkEHAEeqmsrHy8XT3nw" name="AGENDAMIENTO" expression="AppState.Menu_Token=='AGENDAMIENTO'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAkUHAEeqmsrHy8XT3nw" name="PRBLM_LLAMADAS" expression="AppState.Menu_Token=='PRBLM_LLAMADAS'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAkkHAEeqmsrHy8XT3nw" name="PRBLM_TV" expression="AppState.Menu_Token=='PRBLM_TV'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAk0HAEeqmsrHy8XT3nw" name="PRBLM_TV_FIBRA" expression="AppState.Menu_Token=='PRBLM_TV_FIBRA'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAlEHAEeqmsrHy8XT3nw" name="PRBLM_NAVEGACION" expression="AppState.Menu_Token=='PRBLM_NAVEGACION'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAlUHAEeqmsrHy8XT3nw" name="PRBLM_NAVEGACION_FIBRA" expression="AppState.Menu_Token=='PRBLM_NAVEGACION'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAlkHAEeqmsrHy8XT3nw" name="EJECUTIVO" expression="AppState.Menu_Token=='EJECUTIVO'" postAction="AppState.salida_mp='EJECUTIVO'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAl0HAEeqmsrHy8XT3nw" name="VOLVER" expression="AppState.Menu_Token=='VOLVER'"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_4eHG5RTzEeq-P_JMPRlZrg" name="SetAppnameMARCAS" category="Backend" uri="../src/Tools/cambiarAppnameMarcas.jsp">
       <exceptions>error.badfetch</exceptions>
@@ -167,6 +169,8 @@
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_hXeMkEETEeqAbdVH3o8SjA" name="AGENDAMIENTO" fromBlock="_R4N0vhTyEeq-P_JMPRlZrg" toBlock="_4eHG5RTzEeq-P_JMPRlZrg"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_h_ICcEETEeqAbdVH3o8SjA" name="PRBLM_LLAMADAS" fromBlock="_R4N0vhTyEeq-P_JMPRlZrg" toBlock="_4eHG5RTzEeq-P_JMPRlZrg"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_itx4MEETEeqAbdVH3o8SjA" name="PRBLM_TV" fromBlock="_R4N0vhTyEeq-P_JMPRlZrg" toBlock="_4eHG5RTzEeq-P_JMPRlZrg"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_74NXsEHAEeqmsrHy8XT3nw" name="PRBLM_TV_FIBRA" fromBlock="_R4N0vhTyEeq-P_JMPRlZrg" toBlock="_4eHG5RTzEeq-P_JMPRlZrg"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_9X628EHAEeqmsrHy8XT3nw" name="PRBLM_NAVEGACION_FIBRA" fromBlock="_R4N0vhTyEeq-P_JMPRlZrg" toBlock="_4eHG5RTzEeq-P_JMPRlZrg"/>
     <namespaces xmi:type="datatypes:Property" xmi:id="_3FJJMZhjEeGerrt71FTn3g" name="gvp" value="http://www.genesyslab.com/2006/vxml21-extension"/>
     <systemProperties xmi:type="datatypes:Property" xmi:id="_AgnmYPECEeWPUKGIA4zsog" name="RetainInputTypeVariableDefaultValue" value="false"/>
   </gvp:CallflowDiagram>
@@ -444,6 +448,22 @@
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ityfQkETEeqAbdVH3o8SjA" points="[0, 0, 91, -499]$[-86, 494, 5, -5]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_it0UcEETEeqAbdVH3o8SjA" id="(0.375886524822695,1.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_it0UcUETEeqAbdVH3o8SjA" id="(0.6388888888888888,0.1)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_74UFYEHAEeqmsrHy8XT3nw" type="3001" element="_74NXsEHAEeqmsrHy8XT3nw" source="_R4L_cBTyEeq-P_JMPRlZrg" target="_4eHG4RTzEeq-P_JMPRlZrg" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+      <children xmi:type="notation:DecorationNode" xmi:id="_74UscEHAEeqmsrHy8XT3nw" type="4074">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_74UscUHAEeqmsrHy8XT3nw" x="5" y="5"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_74UFYUHAEeqmsrHy8XT3nw" fontName="Ubuntu"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_74UFYkHAEeqmsrHy8XT3nw" points="[0, 0, 112, -519]$[-120, 544, -8, 25]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_74XvwEHAEeqmsrHy8XT3nw" id="(0.3829787234042553,1.0)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_9X8sIEHAEeqmsrHy8XT3nw" type="3001" element="_9X628EHAEeqmsrHy8XT3nw" source="_R4L_cBTyEeq-P_JMPRlZrg" target="_4eHG4RTzEeq-P_JMPRlZrg" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+      <children xmi:type="notation:DecorationNode" xmi:id="_9X9TMEHAEeqmsrHy8XT3nw" type="4074">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_9X96QEHAEeqmsrHy8XT3nw" x="5" y="5"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_9X8sIUHAEeqmsrHy8XT3nw" fontName="Ubuntu"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_9X8sIkHAEeqmsrHy8XT3nw" points="[0, 0, 143, -519]$[-138, 544, 5, 25]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9YBkoEHAEeqmsrHy8XT3nw" id="(0.6028368794326241,1.0)"/>
     </edges>
   </notation:Diagram>
 </xmi:XMI>
