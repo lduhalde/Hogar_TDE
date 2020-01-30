@@ -1219,20 +1219,25 @@ public class FunctionsEPCS_PostPago extends FunctionsGVP
 		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
 		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
 
-
 		String resp = ""; 
 		JSONObject request = new JSONObject();  
 		JSONObject body = new JSONObject(); 
 		JSONObject ServiceRequest = new JSONObject();
-
-		try {
-			ServiceRequest.put("IndividualIdentification", IndividualIdentification); 
-			if(area != null && !area.equals("")) {
+		
+		try {	
+			if(area == "R") {
+				ServiceRequest.put("externalID", IndividualIdentification.getString("externalID"));
+				Debug("[FunctionsEPCS."+wsName+"] externalID: "+IndividualIdentification.getString("externalID"), "DEBUG");
+			}else{	
+				ServiceRequest.put("IndividualIdentification", IndividualIdentification); 
+				if(area != null && !area.equals("")) {
 				ServiceRequest.put("area", area); 
-			}
-			if(subarea != null && !subarea.equals("")) {
+				}
+				if(subarea != null && !subarea.equals("")) {
 				ServiceRequest.put("subArea", subarea); 
+				}		
 			}
+			
 			body.put("ServiceRequest", ServiceRequest);
 			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
 			request.put("RequestHeader", header);
@@ -1241,7 +1246,7 @@ public class FunctionsEPCS_PostPago extends FunctionsGVP
 			Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
 			resp = ejecutarRest(url,request,maxTimeout,debug);				
 			Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
-
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 			Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
