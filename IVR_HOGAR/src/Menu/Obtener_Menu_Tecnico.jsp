@@ -45,12 +45,14 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		int cont =1;
 		
 		if(family.indexOf("Telephony")>-1 || family.indexOf("Internet")>-1 || family.indexOf("Television")>-1){
-			if(family.indexOf("Television") || family.indexOf("Internet")){
+			fEPCS.Debug("["+jspName+"] family : "+family, "INFO");
+			if(family.indexOf("Television") >-1 || family.indexOf("Internet")>-1){
 				opcionesMenu += cont+";"+Path+"OP_Agendamiento.wav;"+AudioDefecto+";;"+audioDTMF+cont+".wav;SI;AGENDAMIENTO|";
 	    		opcionesDTMF += cont+"|";
 	    		cont++;
 			}    		
     		if(family.indexOf("Telephony")>-1){
+    			fEPCS.Debug("["+jspName+"] family : "+family, "INFO");
     			opcionesMenu += cont+";"+Path+"OP_Problemas_Llamadas.wav;"+AudioDefecto+";;"+audioDTMF+cont+".wav;SI;PRBLM_LLAMADAS|";
         		opcionesDTMF += cont+"|";
         		cont++;

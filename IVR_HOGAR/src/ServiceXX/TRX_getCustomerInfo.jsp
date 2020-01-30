@@ -111,11 +111,13 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 											String msisdn = asset.getJSONObject("MSISDN").getString("SN");
 											fEPCS.Debug("["+jspName+"] MERCADO: "+mercado, "INFO");
 											fEPCS.Debug("["+jspName+"] MSISDN: "+msisdn, "INFO");
-											JSONObject objMercado = new JSONObject();
-											objMercado.put("mercado",mercado);
-											objMercado.put("msisdn",msisdn);
-											mercados.put(objMercado);
-											objMercado = null;
+											if(!mercado.equals("PP") && !mercado.equals("CC") && !mercado.equals("SS")){//Se omiten los MSISDN Mobile
+												JSONObject objMercado = new JSONObject();
+												objMercado.put("mercado",mercado);
+												objMercado.put("msisdn",msisdn);
+												mercados.put(objMercado);
+												objMercado = null;
+											}
 										}
 									}
 								}

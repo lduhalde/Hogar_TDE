@@ -133,31 +133,18 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 				    
 				}
 				
-				/*
+				
 				JSONObject Invoice = new JSONObject();
-				String clienteBilling = !cliente_datos.isNull("billingID") ? cliente_datos.getString("billingID") : "";
-				String clienteinvoiceProfileId = !cliente_datos.isNull("BillingProfileId") ? cliente_datos.getString("BillingProfileId") : "";	
-				JSONObject BillingAccountAux = new JSONObject();
 				if(!respJSON.getJSONObject("Body").getJSONObject("CustomerAccount").isNull("BillingAccount")){
 					JSONArray ArrayBillingAccount = respJSON.getJSONObject("Body").getJSONObject("CustomerAccount").getJSONArray("BillingAccount");
 					JSONObject BillingAccountProfile = new JSONObject();
 					if(ArrayBillingAccount.length()>0){
 						for(int i=0; i<ArrayBillingAccount.length(); i++){
 							BillingAccount = ArrayBillingAccount.getJSONObject(i);	
-							if(!clienteBilling.equals("")){ // si no se encuentra el id en el getAsset
-								if(BillingAccount.getString("billingId").equals(clienteBilling)){
-									BillingAccountAux = BillingAccount;
-									break;
-								}
-							}else{
-								if(BillingAccount.getString("productLine").equalsIgnoreCase("PostPago") && (BillingAccount.getString("accountStatus").equalsIgnoreCase("Activo") || BillingAccount.getString("accountStatus").equalsIgnoreCase("Prospecto"))){
-									BillingAccountAux = BillingAccount;
-									break;
-								}
+							if(BillingAccount.getString("productLine").equalsIgnoreCase("PostPago") && BillingAccount.getString("accountStatus").equalsIgnoreCase("Activo")){
+								break;
 							}
 						}
-						BillingAccount = BillingAccountAux; 
-						
 					}  
 					
 						if(!BillingAccount.isNull("CustomerBillingCycle")){
@@ -165,16 +152,9 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 							if(Invoices!= null){
 								if(Invoices.length()>0) {
 									for(int x =0; x<Invoices.length(); x++) {
-										if(!clienteinvoiceProfileId.equals("")){
-											if(Invoices.getJSONObject(x).optString("invoiceProfileId").equals(clienteinvoiceProfileId)) {
-												Invoice = Invoices.getJSONObject(x);
-												break;
-											}
-										}else{
-											if(Invoices.getJSONObject(x).optString("paymentType").equals("Postpago Hogar")) {
-												Invoice = Invoices.getJSONObject(x);
-												break;
-											}
+										if(Invoices.getJSONObject(x).optString("paymentType").equals("Postpago Hogar") && Invoices.getJSONObject(x).optString("billStatus").equalsIgnoreCase("Activo") ) {
+											Invoice = Invoices.getJSONObject(x);
+											break;
 										}
 									}
 								}else {
@@ -257,7 +237,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 					} 
 				}
 				cliente_datos.put("BillingAccountPO", BillingAccountPO);
-				cliente_datos.put("VIPExecutiveDocument", VIPExecutiveDocument);*/
+				cliente_datos.put("VIPExecutiveDocument", VIPExecutiveDocument);
 			}else{ ///Error Controlado 
 				
 				if(status.equalsIgnoreCase("WARNING") && (codeCanonical.equals("A0")|| codeCanonical.equals("W13"))){
@@ -315,4 +295,3 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 <%@page import="org.json.JSONException"%>
 <%@page import="java.util.Map"%>
 <%@include file="../../include/backend.jspf" %>
-

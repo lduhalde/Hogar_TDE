@@ -151,6 +151,9 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		        						if(ProductSpecCharacteristic.getJSONObject(psc).getString("name").equals("technology")){
 		        							Bundle.put("technology",ProductSpecCharacteristic.getJSONObject(psc).getString("value"));
 		        						}
+		        						if(ProductSpecCharacteristic.getJSONObject(psc).getString("name").equals("serviceIdExt")){
+		        							Bundle.put("serviceIdExt",ProductSpecCharacteristic.getJSONObject(psc).getString("value"));
+		        						}
 		        						if(ProductSpecCharacteristic.getJSONObject(psc).getString("name").equals("addressId")){
 		        							String addressId=ProductSpecCharacteristic.getJSONObject(psc).getString("value");
 		        							for(int a=0; a<addressArray.length();a++){
@@ -191,6 +194,9 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		        							Basic.put("family",ProductSpecCharacteristic.getJSONObject(psc).getString("value"));
 		        							//fEPCS.Debug("["+jspName+"] Family: "+ProductSpecCharacteristic.getJSONObject(psc).getString("value"), "INFO");
 		        						}
+		        						if(ProductSpecCharacteristic.getJSONObject(psc).getString("name").equals("serviceIdExt")){
+		        							Basic.put("serviceIdExt",ProductSpecCharacteristic.getJSONObject(psc).getString("value"));
+		        						}
 		        					}
 		        					JSONArray ProductRelationships = PS.getJSONArray("productRelationships");
 		        					String parentOf = "";
@@ -201,7 +207,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		        					}
 		        					Basic.put("ParentOf",parentOf);
 		        					basics.put(Basic);
-		        					fEPCS.Debug("["+jspName+"] Basic: "+Basic.toString(), "INFO");
+		        					//fEPCS.Debug("["+jspName+"] Basic: "+Basic.toString(), "INFO");
 		        					Basic = null;
 		        				}
 		        				else if(PO.getString("specificationSubtype").equals("Plan")){
@@ -288,9 +294,14 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 								arrayBasic.put(basic);
 							}
 						}
-						bundle.put("family",family);
-						bundle.put("Basics",arrayBasic);
-						arrayBundle.put(bundle);
+						
+						fEPCS.Debug("["+jspName+"] family: "+family, "INFO");
+						if(family.indexOf("Mobile") == -1 && !family.equals("")){
+							bundle.put("family",family);
+							bundle.put("Basics",arrayBasic);
+							arrayBundle.put(bundle);
+						}
+						
 						//fEPCS.Debug("["+jspName+"] ------------------------------------------------------------------------", "INFO");
 					}
 					fEPCS.Debug("["+jspName+"] {\"arrayBundle\": "+arrayBundle.toString()+"}", "INFO");
