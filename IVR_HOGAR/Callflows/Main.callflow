@@ -287,11 +287,11 @@
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_0hd8UA97EeqwUPl5Gh33eA" name="FinMarca_PACKS" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_0hd8UQ97EeqwUPl5Gh33eA" name="INICIO" value="'NO'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_0hd8Ug97EeqwUPl5Gh33eA" name="DATA" value="'OpcionEscogida'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_0hd8Uw97EeqwUPl5Gh33eA" name="MSG" value="AppState.Menu_Token" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_0hd8VA97EeqwUPl5Gh33eA" name="RC" value="(AppState.Menu_Token=='NONE')?'99':'0';" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_0hd8VQ97EeqwUPl5Gh33eA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_theJcENyEeqOZMPJVdI8fg" name="INICIO" value="'NO'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_theJcUNyEeqOZMPJVdI8fg" name="DATA" value="'OpcionEscogida'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_theJckNyEeqOZMPJVdI8fg" name="MSG" value="AppState.indexPack" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_theJc0NyEeqOZMPJVdI8fg" name="RC" value="(AppState.indexPack=='NONE')?'99':'0';" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_theJdENyEeqOZMPJVdI8fg" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_dF-mcBHlEeqE6KDYqLFR1A" name="TRX_getCustomerInfoRUT" category="Backend" uri="../src/ServiceXX/TRX_getCustomerInfo.jsp">
       <exceptions>error.badfetch</exceptions>
@@ -441,7 +441,7 @@
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_QC5hcO6VEemIYNuZM9VwEw" fromBlock="_MsFWpO6VEemIYNuZM9VwEw" toBlock="_O5JEFe6VEemIYNuZM9VwEw"/>
     <links xmi:type="gvp:CallflowExceptionLink" xmi:id="_QQKhYO6VEemIYNuZM9VwEw" name="error" fromBlock="_MsFWpO6VEemIYNuZM9VwEw" toBlock="_O5JEFe6VEemIYNuZM9VwEw"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_GFEBQPG0EemeldLxW1KUQA" fromBlock="_O5JEFe6VEemIYNuZM9VwEw" toBlock="_GE5pMPG0EemeldLxW1KUQA"/>
-    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_-jIrcPG0EemeldLxW1KUQA" name="107" fromBlock="_GE5pMPG0EemeldLxW1KUQA" toBlock="_8hQTQPG0EemeldLxW1KUQA"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_-jIrcPG0EemeldLxW1KUQA" name="107" fromBlock="_GE5pMPG0EemeldLxW1KUQA" toBlock="_dF-mcBHlEeqE6KDYqLFR1A"/>
     <links xmi:type="gvp:CallflowExceptionLink" xmi:id="_FdZu4PG1EemeldLxW1KUQA" name="error.badfetch" fromBlock="_8hQTQPG0EemeldLxW1KUQA" toBlock="_B1ZtfvG1EemeldLxW1KUQA"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_FqV-sPG1EemeldLxW1KUQA" fromBlock="_B1ZtfvG1EemeldLxW1KUQA" toBlock="_B1ZtfPG1EemeldLxW1KUQA"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_GdZMQPG1EemeldLxW1KUQA" fromBlock="_B1ZtfPG1EemeldLxW1KUQA" toBlock="_B1ZtgvG1EemeldLxW1KUQA"/>
@@ -951,14 +951,13 @@
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GFFPYvG0EemeldLxW1KUQA" points="[0, 0, 322, -426]$[-322, 426, 0, 0]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GFJg0PG0EemeldLxW1KUQA" id="(0.49122807017543857,1.0)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_-jJSgPG0EemeldLxW1KUQA" type="3001" element="_-jIrcPG0EemeldLxW1KUQA" source="_GE-hsPG0EemeldLxW1KUQA" target="_8hPFIfG0EemeldLxW1KUQA" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+    <edges xmi:type="notation:Connector" xmi:id="_-jJSgPG0EemeldLxW1KUQA" type="3001" element="_-jIrcPG0EemeldLxW1KUQA" source="_GE-hsPG0EemeldLxW1KUQA" target="_dGF7MBHlEeqE6KDYqLFR1A" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
       <children xmi:type="notation:DecorationNode" xmi:id="_-jJSg_G0EemeldLxW1KUQA" type="4074">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_-jJ5kPG0EemeldLxW1KUQA" x="5" y="5"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_-jJSgfG0EemeldLxW1KUQA" fontName="Ubuntu"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-jJSgvG0EemeldLxW1KUQA" points="[0, 0, 13, -130]$[-11, 120, 2, -10]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-jLHsPG0EemeldLxW1KUQA" id="(0.34545454545454546,1.0)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-jLHsfG0EemeldLxW1KUQA" id="(0.5363636363636364,0.2)"/>
     </edges>
     <edges xmi:type="notation:Edge" xmi:id="_FdaV8PG1EemeldLxW1KUQA" type="3002" element="_FdZu4PG1EemeldLxW1KUQA" source="_8hPFIfG0EemeldLxW1KUQA" target="_B1ZtdPG1EemeldLxW1KUQA">
       <children xmi:type="notation:DecorationNode" xmi:id="_Fda9APG1EemeldLxW1KUQA" type="4075">

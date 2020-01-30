@@ -27,20 +27,25 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		
 		JSONObject bundle = cliente_productos.getJSONArray("Bundles").getJSONObject(pack);
 		cliente_datos.put("bundle_seleccionado",bundle);
-		fEPCS.Debug("["+jspName+"] Bundle: "+bundle.getString("commercialName"), "INFO");
+		fEPCS.Debug("["+jspName+"] Bundle: "+bundle.toString(), "INFO");
 		
 		
 		String family = bundle.getString("family");
-		String technology = bundle.getString("technology");
-		String mercado = bundle.getString("mercado");
-		String MSISDN = bundle.getString("MSISDN");
-		
 		fEPCS.Debug("["+jspName+"] family : "+family, "INFO");
-		fEPCS.Debug("["+jspName+"] technology : "+technology, "INFO");
-		fEPCS.Debug("["+jspName+"] mercado : "+mercado, "INFO");
-		fEPCS.Debug("["+jspName+"] MSISDN : "+MSISDN, "INFO");
 		
-		cliente_datos.put("PCS_Seleccionado",MSISDN);
+		String technology = bundle.getString("technology");
+		fEPCS.Debug("["+jspName+"] technology : "+technology, "INFO");
+		
+		String mercado="";
+		if(!bundle.isNull("mercado")){
+			mercado = bundle.getString("mercado");
+			fEPCS.Debug("["+jspName+"] mercado : "+mercado, "INFO");
+		}
+		if(!bundle.isNull("MSISDN")){
+			String MSISDN = bundle.getString("MSISDN");
+			fEPCS.Debug("["+jspName+"] MSISDN : "+MSISDN, "INFO");	
+			cliente_datos.put("PCS_Seleccionado",MSISDN);
+		}
 		
 		int cont =1;
 		

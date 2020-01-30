@@ -110,6 +110,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 					JSONArray planes = new JSONArray();
 					JSONArray freeUnits = new JSONArray();
 					JSONArray others = new JSONArray();
+					JSONArray equipments = new JSONArray();
 					JSONArray mercados = cliente_datos.getJSONArray("mercados");
 					if(!respJSON.getJSONObject("Body").isNull("Product")){
 						JSONArray Products = respJSON.getJSONObject("Body").getJSONArray("Product");
@@ -243,6 +244,24 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		        					freeUnits.put(FreeUnits);
 		        					//fEPCS.Debug("["+jspName+"] Free Units: "+FreeUnits.toString(), "INFO");
 		        					FreeUnits = null;
+		        				}else if(PO.getString("specificationSubtype").equals("Equipment")){
+		        					fEPCS.Debug("["+jspName+"] PO FULL: "+PO.toString(), "INFO");
+				        			fEPCS.Debug("["+jspName+"] PO: "+PO.getString("ID"), "INFO");
+				        			fEPCS.Debug("["+jspName+"] specificationSubtype: "+PO.getString("specificationSubtype"), "INFO");
+		        					JSONObject Equipment = new JSONObject();
+		        					Equipment.put("ID",Product.getString("id"));
+		        					Equipment.put("PO",PO.getString("ID"));
+		        					
+		        					JSONObject PS = Product.getJSONObject("ProductSpecification");
+		        					JSONArray ProductSpecCharacteristic = PS.getJSONArray("ProductSpecCharacteristic");
+		        					for(int psc =0; psc<ProductSpecCharacteristic.length();psc++){
+		        						if(ProductSpecCharacteristic.getJSONObject(psc).getString("name").equals("corelativo")){
+		        							Equipment.put("correlativo",ProductSpecCharacteristic.getJSONObject(psc).getString("value"));
+		        						}
+		        					}
+		        					equipments.put(Equipment);
+		        					fEPCS.Debug("["+jspName+"] Equipment: "+Equipment.toString(), "INFO");
+		        					Equipment = null;
 		        				}else{
 		        					//fEPCS.Debug("["+jspName+"] PO: "+PO.getString("ID"), "INFO");
 				        			//fEPCS.Debug("["+jspName+"] specificationSubtype: "+PO.getString("specificationSubtype"), "INFO");
@@ -272,26 +291,39 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 							//fEPCS.Debug("["+jspName+"] basic: "+basic.toString(), "INFO");
 							if(bundleParentOf.indexOf(idBasic)>-1){ //Recorre los Planes
 								String basicParentOf = basic.getString("ParentOf");
-								family+=basic.getString("family")+"|";
-								for(int k=0;k<planes.length();k++){
-									JSONObject plan = planes.getJSONObject(k);
-									String idPlan = plan.getString("ID");
-									if(basicParentOf.indexOf(idPlan)>-1){
-										String planParentOf = plan.getString("ParentOf");
-										for(int l=0;l<freeUnits.length();l++){//Recorre los Free Units
-											JSONObject freeunits = freeUnits.getJSONObject(l);
-											String idFreeUnits = freeunits.getString("ID");
-											if(planParentOf.indexOf(idFreeUnits)>-1){
-												plan.put("FreeUnits",freeunits);
-												//fEPCS.Debug("["+jspName+"] plan: "+plan.toString(), "INFO");
-												break;
+								if(!basic.getString("family").equals("Access")){
+									family+=basic.getString("family")+"|";
+									for(int k=0;k<planes.length();k++){
+										JSONObject plan = planes.getJSONObject(k);
+										String idPlan = plan.getString("ID");
+										if(basicParentOf.indexOf(idPlan)>-1){
+											String planParentOf = plan.getString("ParentOf");
+											for(int l=0;l<freeUnits.length();l++){//Recorre los Free Units
+												JSONObject freeunits = freeUnits.getJSONObject(l);
+												String idFreeUnits = freeunits.getString("ID");
+												if(planParentOf.indexOf(idFreeUnits)>-1){
+													plan.put("FreeUnits",freeunits);
+													//fEPCS.Debug("["+jspName+"] plan: "+plan.toString(), "INFO");
+													break;
+												}
 											}
+											
+											/*for(int l=0;l<equipments.length();l++){//Recorre los Equipments
+												JSONObject equipment = equipments.getJSONObject(l);
+												String idequipment = equipment.getString("ID");
+												if(planParentOf.indexOf(idequipment)>-1){
+													plan.put("Equipment",equipment);
+													
+													break;
+												}
+											}*/
+											
+											basic.put("Plan",plan);
+											break;
 										}
-										basic.put("Plan",plan);
-										break;
 									}
+									arrayBasic.put(basic);
 								}
-								arrayBasic.put(basic);
 							}
 						}
 						

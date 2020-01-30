@@ -30,13 +30,20 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		
 		String CONTINUAR = "NO";
 		if(cont==0){
-			fEPCS.Debug("["+jspName+"] Audio Inicial: " +path+basics.length()+".wav", "INFO");
+			fEPCS.Debug("["+jspName+"] Audio Inicial: " +bundleId+".wav", "INFO");
 			result.put("Var_Audio_Inicial",path+"Packs/"+bundleId+".wav");
 		}
 		if(basics.length()>cont){
 			CONTINUAR = "SI";
-    		fEPCS.Debug("["+jspName+"] PO: "+ basics.getJSONObject(cont).getJSONObject("Plan").getJSONObject("FreeUnits").getString("PO"), "INFO");
-    		result.put("Var_Audio_Plan", path+basics.getJSONObject(cont).getJSONObject("Plan").getJSONObject("FreeUnits").getString("PO")+".wav");
+			fEPCS.Debug("["+jspName+"] BASIC: "+ basics.getJSONObject(cont).toString(), "INFO");
+			if(basics.getJSONObject(cont).has("Plan")){
+    			fEPCS.Debug("["+jspName+"] PO: "+ basics.getJSONObject(cont).getJSONObject("Plan").getJSONObject("FreeUnits").getString("PO"), "INFO");
+    			result.put("Var_Audio_Plan", path+basics.getJSONObject(cont).getJSONObject("Plan").getJSONObject("FreeUnits").getString("PO")+".wav");
+			}else{
+				cont++;
+				fEPCS.Debug("["+jspName+"] PO: "+ basics.getJSONObject(cont).getJSONObject("Plan").getJSONObject("FreeUnits").getString("PO"), "INFO");
+    			result.put("Var_Audio_Plan", path+basics.getJSONObject(cont).getJSONObject("Plan").getJSONObject("FreeUnits").getString("PO")+".wav");
+			}
     		//result.put("Var_AUDIO", path+Bolsas.get(cont)+".wav");
     		result.put("contador", cont+1);
 		}else{

@@ -120,6 +120,11 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		
 		if(!out.isNull("RUT")){
 			cliente_datos.put("RUT",out.getString("RUT"));
+			JSONObject IndividualIdentification = new JSONObject();
+			IndividualIdentification.put("number",out.getString("RUT"));
+			IndividualIdentification.put("type","RUT");
+			cliente_datos.put("IndividualIdentification",IndividualIdentification);
+			IndividualIdentification=null;
 		}
 		
 		if(!out.isNull("Var_Tipo_Call")){
