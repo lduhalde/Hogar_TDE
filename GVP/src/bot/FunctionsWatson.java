@@ -58,13 +58,13 @@ public class FunctionsWatson extends FunctionsGVP{
     		
 //    		{\"input\": {\"text\": \"Hello\"}}" "https://gateway.watsonplatform.net/conversation/api/v1/workspaces/9978a49e-ea89-4493-b33d-82298d3db20d/message?version=2017-05-26"
     		
-    		String username = this.Params.GetValue("WATSON_USERNAME", "");
-    		String password = this.Params.GetValue("WATSON_PASSWORD", "");
-    		String workspaceId = this.Params.GetValue("WATSON_WORKSPACE", "");
-			String url = this.Params.GetValue("WATSON_URL", "")+ workspaceId +"/message?version=2017-05-26";
+    		String autorizacion= this.Params.GetValue("WATSON_AUTH", "");
+    		//String password = this.Params.GetValue("WATSON_PASSWORD", "");
+    		//String workspaceId = this.Params.GetValue("WATSON_WORKSPACE", "");
+			String url = this.Params.GetValue("WATSON_URL", "");
 			
 			
-			String authString = username + ":" + password;
+			String authString = autorizacion;
 	        String authStringEnc = new BASE64Encoder().encode(authString.getBytes());
 	        
 	        String retorno = "";
@@ -101,6 +101,7 @@ public class FunctionsWatson extends FunctionsGVP{
     	
     	return json;
     }
+	
 	
 	/*
 	public void sendMessage(String message){
