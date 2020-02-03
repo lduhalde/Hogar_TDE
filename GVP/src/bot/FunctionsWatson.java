@@ -65,7 +65,7 @@ public class FunctionsWatson extends FunctionsGVP{
 			
 			
 			String authString = autorizacion;
-	        String authStringEnc = new BASE64Encoder().encode(authString.getBytes());
+	        //String authStringEnc = new BASE64Encoder().encode(authString.getBytes());
 	        
 	        String retorno = "";
 	        
@@ -79,7 +79,7 @@ public class FunctionsWatson extends FunctionsGVP{
 			
 			
 			ClientResponse response = webResource.type("application/json")
-											.header("Authorization", "Basic " + authStringEnc)
+											.header("Authorization", "Basic " + authString)
 											.post(ClientResponse.class, request.toString());
 			
 			
