@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="src/" kind="src" path=""/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jersey/jersey-bundle-1.12.jar"/>
+	<classpathentry kind="lib" path="lib/jersey/jersey-client.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.ws.cxf.core.CXF_CLASSPATH_CONTAINER/Apache CXF/2.7.8">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib_DB"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib_GVP"/>
+	<classpathentry kind="lib" path="lib/GVP_Base.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
