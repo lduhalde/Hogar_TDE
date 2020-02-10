@@ -293,6 +293,14 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 								String basicParentOf = basic.getString("ParentOf");
 								if(!basic.getString("family").equals("Access")){
 									family+=basic.getString("family")+"|";
+									for(int l=0;l<equipments.length();l++){//Recorre los Equipments
+										JSONObject equipment = equipments.getJSONObject(l);
+										String idequipment = equipment.getString("ID");
+										if(basicParentOf.indexOf(idequipment)>-1){
+											basic.put("Equipment",equipment);
+											break;
+										}
+									}
 									for(int k=0;k<planes.length();k++){
 										JSONObject plan = planes.getJSONObject(k);
 										String idPlan = plan.getString("ID");
@@ -308,15 +316,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 												}
 											}
 											
-											/*for(int l=0;l<equipments.length();l++){//Recorre los Equipments
-												JSONObject equipment = equipments.getJSONObject(l);
-												String idequipment = equipment.getString("ID");
-												if(planParentOf.indexOf(idequipment)>-1){
-													plan.put("Equipment",equipment);
-													
-													break;
-												}
-											}*/
+											
 											
 											basic.put("Plan",plan);
 											break;

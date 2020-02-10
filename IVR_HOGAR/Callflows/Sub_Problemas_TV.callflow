@@ -9,53 +9,53 @@
     </blocks>
     <blocks xmi:type="gvp:EntryBlock" xmi:id="_Z6Z-QJhsEeGerrt71FTn3g" name="Start_Problemas_TV" condition="" starting="true" category="Entry">
       <exceptions>connection.disconnect.hangup</exceptions>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapogEHaEeqmsrHy8XT3nw" name="ANI" value="getANI()" description="Identifier for the calling party" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapogUHaEeqmsrHy8XT3nw" name="APP_ASR_LANGUAGE" value="'es-US'" description="ASR Language" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapogkHaEeqmsrHy8XT3nw" name="APP_LANGUAGE" value="'es-CL'" description="Application Language" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_Lapog0HaEeqmsrHy8XT3nw" name="COMPOSER_WSSTUBBING" value="'0'" description="Flag to control WebServices Stubbing. '1' - ON" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapohEHaEeqmsrHy8XT3nw" name="CallUUID" value="session.connection.uuid" description="Universal ID" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapohUHaEeqmsrHy8XT3nw" name="DNIS" value="getDNIS()" description="Identifier for the dialed number" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapohkHaEeqmsrHy8XT3nw" name="EnableFCR" value="true" description="Flag for enabling Full Call Recording" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_Lapoh0HaEeqmsrHy8XT3nw" name="EnableReports" value="false" description="Reporting Flag" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapoiEHaEeqmsrHy8XT3nw" name="EnableSNMP" value="false" description="Flag for enabling SNMP Traps" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapoiUHaEeqmsrHy8XT3nw" name="GRAMMARFILEDIR" value="'../Resources/Grammars'" description="Grammar File Directory" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapoikHaEeqmsrHy8XT3nw" name="GVPSessionID" value="session.genesys.userdata[&quot;GVP-Session-ID&quot;]" description="GVP Session ID" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_Lapoi0HaEeqmsrHy8XT3nw" name="LAST_EVENT_ELEMENT" value="'undefined'" description="Element name of the last event" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapojEHaEeqmsrHy8XT3nw" name="LAST_EVENT_LINE" value="'undefined'" description="Line number of the last event" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapojUHaEeqmsrHy8XT3nw" name="LAST_EVENT_MSG" value="'undefined'" description="Last event or error details" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapojkHaEeqmsrHy8XT3nw" name="LAST_EVENT_NAME" value="'undefined'" description="Last event or error name" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_Lapoj0HaEeqmsrHy8XT3nw" name="LAST_EVENT_URL" value="'undefined'" description="URL of the last event." type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapokEHaEeqmsrHy8XT3nw" name="PREV_APP_ASR_LANGUAGE" value="'undefined'" description="Temporary Value of Previous Application Language" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapokUHaEeqmsrHy8XT3nw" name="PREV_APP_LANGUAGE" value="'undefined'" description="Temporary Value of Previous Application Language" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapokkHaEeqmsrHy8XT3nw" name="SCRIPTSDIR" value="'../Scripts'" description="JavaScript Directory" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_Lapok0HaEeqmsrHy8XT3nw" name="USE_LCASE_USERDATAKEY" value="0" description="Flag to control lowerCase lookup in UserData array. 1 - ON" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapolEHaEeqmsrHy8XT3nw" name="VOXFILEDIR" value="'../Resources/Prompts'" description="Audio File Directory" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapolUHaEeqmsrHy8XT3nw" name="ConfigFile" value="''" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapolkHaEeqmsrHy8XT3nw" name="APP_OPM" value="eval('('+session.connection.protocol.sip.requesturi['parameters']+')')" description="OPM Data Variable" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_Lapol0HaEeqmsrHy8XT3nw" name="OCS_RecordURI" value="getCallflowRecordURI()" description="OCS Record URI" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapomEHaEeqmsrHy8XT3nw" name="OCS_URI" value="getCallflowOCSURI()" description="OCS URI" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapomUHaEeqmsrHy8XT3nw" name="OCS_Record" value="getCallflowOCSRecord()" description="OCS Record" type="System"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapomkHaEeqmsrHy8XT3nw" name="idLlamada" value="''" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_Lapom0HaEeqmsrHy8XT3nw" name="willaccept" value="'Enter Value'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LaponEHaEeqmsrHy8XT3nw" name="trx_respuesta" value="'NOK'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LaponUHaEeqmsrHy8XT3nw" name="trx_datos_respuesta" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LaponkHaEeqmsrHy8XT3nw" name="salida_mp" value="'MP'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_Lapon0HaEeqmsrHy8XT3nw" name="vector" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapooEHaEeqmsrHy8XT3nw" name="vdn" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapooUHaEeqmsrHy8XT3nw" name="Menu_Token" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapookHaEeqmsrHy8XT3nw" name="OpcionesMenu" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_Lapoo0HaEeqmsrHy8XT3nw" name="OpcionesDTMF" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapopEHaEeqmsrHy8XT3nw" name="Var_Audio_Plan" value="'Silencio.wav'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapopUHaEeqmsrHy8XT3nw" name="parametros_marcas_navegacion" value="{}" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapopkHaEeqmsrHy8XT3nw" name="processCode" value="'PRBLM_TV'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_Lapop0HaEeqmsrHy8XT3nw" name="sourceID" value="undefined" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapoqEHaEeqmsrHy8XT3nw" name="flujoIVR" value="'HOGAR_TDE_PRBLM_TV'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapoqUHaEeqmsrHy8XT3nw" name="cliente_datos" value="{}" description="Enter Description" type="Input"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LapoqkHaEeqmsrHy8XT3nw" name="contador" value="0" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_Lapoq0HaEeqmsrHy8XT3nw" name="CONTINUAR" value="''" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LaporEHaEeqmsrHy8XT3nw" name="contadorRepetir" value="0" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LaporUHaEeqmsrHy8XT3nw" name="Var_Audio_Inicial" value="'Silencio.wav'" description="Enter Description" type="User"/>
-      <variables xmi:type="datatypes:Variable" xmi:id="_LaporkHaEeqmsrHy8XT3nw" name="id_consulta" value="'PROBLEMAS_TV'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tMEaIEeq4PdbrSDm-yQ" name="ANI" value="getANI()" description="Identifier for the calling party" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tMUaIEeq4PdbrSDm-yQ" name="APP_ASR_LANGUAGE" value="'es-US'" description="ASR Language" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tMkaIEeq4PdbrSDm-yQ" name="APP_LANGUAGE" value="'es-CL'" description="Application Language" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tM0aIEeq4PdbrSDm-yQ" name="COMPOSER_WSSTUBBING" value="'0'" description="Flag to control WebServices Stubbing. '1' - ON" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tNEaIEeq4PdbrSDm-yQ" name="CallUUID" value="session.connection.uuid" description="Universal ID" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tNUaIEeq4PdbrSDm-yQ" name="DNIS" value="getDNIS()" description="Identifier for the dialed number" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tNkaIEeq4PdbrSDm-yQ" name="EnableFCR" value="true" description="Flag for enabling Full Call Recording" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tN0aIEeq4PdbrSDm-yQ" name="EnableReports" value="false" description="Reporting Flag" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tOEaIEeq4PdbrSDm-yQ" name="EnableSNMP" value="false" description="Flag for enabling SNMP Traps" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tOUaIEeq4PdbrSDm-yQ" name="GRAMMARFILEDIR" value="'../Resources/Grammars'" description="Grammar File Directory" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tOkaIEeq4PdbrSDm-yQ" name="GVPSessionID" value="session.genesys.userdata[&quot;GVP-Session-ID&quot;]" description="GVP Session ID" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tO0aIEeq4PdbrSDm-yQ" name="LAST_EVENT_ELEMENT" value="'undefined'" description="Element name of the last event" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tPEaIEeq4PdbrSDm-yQ" name="LAST_EVENT_LINE" value="'undefined'" description="Line number of the last event" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tPUaIEeq4PdbrSDm-yQ" name="LAST_EVENT_MSG" value="'undefined'" description="Last event or error details" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tPkaIEeq4PdbrSDm-yQ" name="LAST_EVENT_NAME" value="'undefined'" description="Last event or error name" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tP0aIEeq4PdbrSDm-yQ" name="LAST_EVENT_URL" value="'undefined'" description="URL of the last event." type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tQEaIEeq4PdbrSDm-yQ" name="PREV_APP_ASR_LANGUAGE" value="'undefined'" description="Temporary Value of Previous Application Language" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tQUaIEeq4PdbrSDm-yQ" name="PREV_APP_LANGUAGE" value="'undefined'" description="Temporary Value of Previous Application Language" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tQkaIEeq4PdbrSDm-yQ" name="SCRIPTSDIR" value="'../Scripts'" description="JavaScript Directory" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tQ0aIEeq4PdbrSDm-yQ" name="USE_LCASE_USERDATAKEY" value="0" description="Flag to control lowerCase lookup in UserData array. 1 - ON" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tREaIEeq4PdbrSDm-yQ" name="VOXFILEDIR" value="'../Resources/Prompts'" description="Audio File Directory" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tRUaIEeq4PdbrSDm-yQ" name="ConfigFile" value="''" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tRkaIEeq4PdbrSDm-yQ" name="APP_OPM" value="eval('('+session.connection.protocol.sip.requesturi['parameters']+')')" description="OPM Data Variable" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tR0aIEeq4PdbrSDm-yQ" name="OCS_RecordURI" value="getCallflowRecordURI()" description="OCS Record URI" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tSEaIEeq4PdbrSDm-yQ" name="OCS_URI" value="getCallflowOCSURI()" description="OCS URI" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tSUaIEeq4PdbrSDm-yQ" name="OCS_Record" value="getCallflowOCSRecord()" description="OCS Record" type="System"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tSkaIEeq4PdbrSDm-yQ" name="idLlamada" value="''" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tS0aIEeq4PdbrSDm-yQ" name="willaccept" value="'Enter Value'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tTEaIEeq4PdbrSDm-yQ" name="trx_respuesta" value="'NOK'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tTUaIEeq4PdbrSDm-yQ" name="trx_datos_respuesta" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tTkaIEeq4PdbrSDm-yQ" name="salida_mp" value="'MP'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tT0aIEeq4PdbrSDm-yQ" name="vector" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tUEaIEeq4PdbrSDm-yQ" name="vdn" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tUUaIEeq4PdbrSDm-yQ" name="Menu_Token" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tUkaIEeq4PdbrSDm-yQ" name="OpcionesMenu" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tU0aIEeq4PdbrSDm-yQ" name="OpcionesDTMF" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tVEaIEeq4PdbrSDm-yQ" name="Var_Audio_Plan" value="'Silencio.wav'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tVUaIEeq4PdbrSDm-yQ" name="parametros_marcas_navegacion" value="{}" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tVkaIEeq4PdbrSDm-yQ" name="processCode" value="'PRBLM_TV'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tV0aIEeq4PdbrSDm-yQ" name="sourceID" value="undefined" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tWEaIEeq4PdbrSDm-yQ" name="flujoIVR" value="'HOGAR_TDE_PRBLM_TV'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tWUaIEeq4PdbrSDm-yQ" name="cliente_datos" value="{}" description="Enter Description" type="Input"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tWkaIEeq4PdbrSDm-yQ" name="contador" value="0" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tW0aIEeq4PdbrSDm-yQ" name="CONTINUAR" value="''" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tXEaIEeq4PdbrSDm-yQ" name="contadorRepetir" value="0" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tXUaIEeq4PdbrSDm-yQ" name="Var_Audio_Inicial" value="'Silencio.wav'" description="Enter Description" type="User"/>
+      <variables xmi:type="datatypes:Variable" xmi:id="_fe1tXkaIEeq4PdbrSDm-yQ" name="id_consulta" value="'PROBLEMAS_TV_TDE'" description="Enter Description" type="User"/>
       <globalProperties xmi:type="datatypes:Property" xmi:id="_bUCeMPEFEeWPUKGIA4zsog" name="fetchaudio" value="'Silencio.wav'"/>
     </blocks>
     <blocks xmi:type="gvp:AssignBlock" xmi:id="_SlRb0Pj0EeaJNZp-c_YjzQ" name="Volver_Anterior" category="Assign">
