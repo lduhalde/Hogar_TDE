@@ -4,8 +4,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.Socket;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.GregorianCalendar;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Random;
 
 import javax.ws.rs.core.MediaType;
@@ -1631,4 +1638,77 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		}
 		return resp;
 	}
+	
+	
+	public String Get_TokenAPI(String URLToken, String ClientID, String ClientSecret, String GrantType) throws JSONException, IOException{
+
+		/*
+		 * Desc:  Recupera y retorna JSON de respuesta con información de TOKEN
+		 *        para consumir WS desde API. Si falla, revisar que certficados 
+		 *        esten instalados en la keystore de java
+		 * Autor: Gabriel Santis V.
+		 * Fecha: 2020-02-11		 
+		 *        
+		 * */
+		
+		String resp_JsonToken = "";
+		String wsName="Get_TokenAPI";
+		
+		try {
+			
+			URL url_gettoken = new URL(URLToken);
+	        Map<String,Object> params = new LinkedHashMap<>();
+	        
+	        params.put("client_id", ClientID);
+	        params.put("client_secret", ClientSecret);
+	        params.put("grant_type", GrantType);        
+	
+	        StringBuilder postData = new StringBuilder();
+	        
+	        for (Map.Entry<String,Object> param : params.entrySet()) {
+	        	
+	            if (postData.length() != 0) postData.append('&');
+	            postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+	            postData.append('=');
+	            postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+	            
+	        }
+	        
+	        byte[] postDataBytes = postData.toString().getBytes("UTF-8");
+	
+	        HttpURLConnection conn = (HttpURLConnection)url_gettoken.openConnection();
+	        
+	        conn.setRequestMethod("POST");
+	        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+	        conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+	        conn.setDoOutput(true);
+	        conn.getOutputStream().write(postDataBytes);
+	
+	        Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+	       
+	        StringBuilder sb = new StringBuilder();
+	        for (int c; (c = in.read()) >= 0;)
+	            sb.append((char)c);
+	        resp_JsonToken = sb.toString();
+			      
+      
+        } catch (MalformedURLException e) {
+            Debug("[FunctionsEPCS."+wsName+"] URL no es valida: " + e.getMessage(), "DEBUG");
+            
+        } catch (IOException e) {
+            Debug("[FunctionsEPCS."+wsName+"] Error de I/O: " + e.getMessage(), "DEBUG");
+            
+        } catch (Exception e2) {
+            e2.printStackTrace();
+            Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e2.getMessage(), "DEBUG");
+			
+        }
+		
+		return resp_JsonToken;
+		
+	}	
+	
+	
+	
+	
 }
