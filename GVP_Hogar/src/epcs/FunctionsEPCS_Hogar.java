@@ -484,7 +484,7 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		}
 		return resp;
 	}
-	public String GetServiceRequest(JSONObject IndividualIdentification,String area,String subarea,String IDllamada, String processID, String SourceID){
+	public String GetServiceRequest(JSONObject body,String IDllamada, String processID, String SourceID){
 		String wsName="GetServiceRequest";
 		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
 		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
@@ -493,18 +493,9 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 
 		String resp = ""; 
 		JSONObject request = new JSONObject();  
-		JSONObject body = new JSONObject(); 
-		JSONObject ServiceRequest = new JSONObject();
 
 		try {
-			ServiceRequest.put("IndividualIdentification", IndividualIdentification); 
-			if(area != null && !area.equals("")) {
-				ServiceRequest.put("area", area); 
-			}
-			if(subarea != null && !subarea.equals("")) {
-				ServiceRequest.put("subArea", subarea); 
-			}
-			body.put("ServiceRequest", ServiceRequest);
+
 			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
 			request.put("RequestHeader", header);
 			request.put("Body", body);
@@ -519,7 +510,6 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		}finally { 
 			request = null;    
 			body = null;
-			ServiceRequest= null;
 
 		}
 		return resp;
