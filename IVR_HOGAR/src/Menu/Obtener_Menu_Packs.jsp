@@ -37,6 +37,9 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     		fEPCS.Debug("["+jspName+"] Index: "+i, "INFO");
     		opcionesMenu += (i+1)+";"+Path+"Packs/"+bundleId+".wav;"+rutaDefecto+"Comunas/"+comuna+".wav;;"+audioDTMF+(i+1)+".wav;SI;"+i+"|";
     		opcionesDTMF += (i+1)+"|";
+    		if((i+1)==9){
+    			break;
+    		}
     	}
 
     	fEPCS.Debug("["+jspName+"] OPCS : "+opcionesMenu, "INFO");
