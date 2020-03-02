@@ -50,7 +50,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		int cont =1;
 		
 		if(family.indexOf("Telephony")>-1 || family.indexOf("Internet")>-1 || family.indexOf("Television")>-1){
-			if((family.indexOf("Telephony")>-1 && mercado.equals("HP")) || (family.indexOf("Internet")>-1 && technology.equals("Inalambrico") && mercado.equals("HP"))){
+			if((family.indexOf("Telephony")>-1 && (mercado.equals("HP") || mercado.equals("HI"))) || (family.indexOf("Internet")>-1 && technology.equals("Inalambrico") && mercado.equals("HP"))){
 				opcionesMenu += cont+";"+Path+"OP_Saldo_Numero.wav;"+AudioDefecto+";;"+audioDTMF+cont+".wav;SI;SALDO_NUMERO|";
 	    		opcionesDTMF += cont+"|";
 	    		cont++;
