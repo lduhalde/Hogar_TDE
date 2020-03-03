@@ -43,8 +43,8 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	fEPCS.Debug("["+nameJSP+"] PLAN: "+plan, "INFO"); 
     	
     	DataEnvioSckt.put("servicio",fEPCS.getParametro(trx + "_DB"));
-		DataEnvioSckt.put("query",fEPCS.getParametro(trx + "_SP"));
-		DataEnvioSckt.put("parameters",uniqueid+"|"+mercado+"|"+segmento+"|"+Rut+"|"+plan+"|"+appname);
+		DataEnvioSckt.put("query",fEPCS.getParametro(trx + "_SP")); 
+		DataEnvioSckt.put("parameters",uniqueid+"|"+idLlamada+"|"+appname+"|"+mercado+"|"+segmento+"|"+Rut+"|"+plan);
 		DataEnvioSckt.put("select","1");
 		DataEnvioSckt.put("requestID",state.getString("idLlamada"));
 			
