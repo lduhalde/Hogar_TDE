@@ -92,9 +92,11 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 					VIPExecutiveDocument = respJSON.getJSONObject("Body").getJSONObject("CustomerAccount").getJSONArray("Contact").getJSONObject(0).optString("VIPExecutiveDocument"); 
 				}
 				
+				/*
+				//No se recupera segmento, ya que no es de utilidad para Hogar
 				if(!respJSON.getJSONObject("Body").getJSONObject("CustomerAccount").getJSONObject("MarketSegment").isNull("class")){
 					 segmento = respJSON.getJSONObject("Body").getJSONObject("CustomerAccount").getJSONObject("MarketSegment").getString("class"); 
-				}
+				}*/
 				if(!respJSON.getJSONObject("Body").getJSONObject("CustomerAccount").isNull("accountType")){
 					String accountType = respJSON.getJSONObject("Body").getJSONObject("CustomerAccount").getString("accountType");
 					cliente_datos.put("accountType", accountType);
