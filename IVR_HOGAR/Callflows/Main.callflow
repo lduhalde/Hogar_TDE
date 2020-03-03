@@ -379,7 +379,7 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_J5xK0VyYEequi9oTKrfaSw" name="var_timeout" value="5" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_J5xK0lyYEequi9oTKrfaSw" name="willaccept" value="willaccept" description="Enter Description" type="output"/>
     </blocks>
-    <blocks xmi:type="gvp:BackendBlock" xmi:id="_hfZ0wFyXEequi9oTKrfaSw" name="Asigna_Datos_Pack" category="Backend" uri="../src/Tools/ActualizaCDR.jsp">
+    <blocks xmi:type="gvp:BackendBlock" xmi:id="_hfZ0wFyXEequi9oTKrfaSw" name="Asigna_Datos_Pack" category="Backend" uri="../src/Tools/Asigna_Datos_Pack.jsp">
       <parameters xmi:type="datatypes:Parameter" xmi:id="_BPIWAF2BEeqHqa-J0ckgaw" name="packSeleccionado" value="AppState.indexPack" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_BPIWAV2BEeqHqa-J0ckgaw" name="cliente_datos" value="cliente_datos" description="Enter Description" type="output"/>
     </blocks>

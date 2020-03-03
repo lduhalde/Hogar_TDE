@@ -28,6 +28,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	cliente_productos = (state.has("cliente_productos") ) ? state.getJSONObject("cliente_productos") : new JSONObject();
     	JSONArray bundles = cliente_productos.getJSONArray("Bundles");
         String uniqueid = state.optString("AsteriskID");
+        String idLlamada = state.optString("idLlamada");
     	String mercado = cliente_datos.optString("mercado");
     	String segmento = cliente_datos.optString("segmento");
     	String Rut = cliente_datos.getString("RUT");

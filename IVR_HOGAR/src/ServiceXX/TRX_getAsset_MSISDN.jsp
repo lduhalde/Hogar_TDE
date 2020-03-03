@@ -9,8 +9,6 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     JSONObject result = new JSONObject();
     JSONObject respJSON = new JSONObject();
     JSONObject cliente_datos = new JSONObject();
-    JSONObject cliente_productos = new JSONObject();
-    JSONArray arrayBundle = new JSONArray();
     String jspName="TRX_getAsset_MSISDN";
     
     JSONObject parametros_marcas_navegacion = (state.has("parametros_marcas_navegacion") ) ? state.getJSONObject("parametros_marcas_navegacion") : new JSONObject();
@@ -18,7 +16,6 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     
     try{
     	cliente_datos = (state.has("cliente_datos") ) ? state.getJSONObject("cliente_datos") : new JSONObject();
-    	cliente_productos = (state.has("cliente_productos") ) ? state.getJSONObject("cliente_productos") : new JSONObject();
 		
     	fEPCS.Debug("["+jspName+"] INICIO", "INFO");
     	
@@ -45,12 +42,6 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		String status = ""; 
 		
 		if(cliente_datos.has("PCS_Seleccionado")){
-			JSONObject bundle = cliente_datos.getJSONObject("bundle_seleccionado");
-			String technology = bundle_seleccionado.getString("technology");
-			String CFS = fEPCS.Params.GetValue("CFSS_"technology.toUpperCase(),"CFSS_HG_BARRING_POS_PRE_TFI");
-			String rfsLDI = fEPCS.Params.GetValue("RFS_LDI_"technology.toUpperCase(),"RFSS_HG_CL_BAR_VOZ_INTE");
-			String rfsCEL = fEPCS.Params.GetValue("RFS_CEL_"technology.toUpperCase(),"RFSS_HG_CL_BAR_NUMBER_MOBILE");
-			
 			JSONObject Body = new JSONObject();
 			JSONObject Product = new JSONObject();
 			JSONObject Filter = new JSONObject();
@@ -81,6 +72,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 	    	
 	    	respJSON = new JSONObject(sTrx_datos_respuesta);
 	    	
+	    	
 	    	if(!respJSON.isNull("faultstring")) {
 	    		description = respJSON.getString("faultstring");
 	    		fEPCS.Debug("["+jspName+"] Fault description: "+description, "INFO"); 
@@ -105,29 +97,39 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 				if(status.equalsIgnoreCase("OK")){ 
 					trx_respuesta = "OK"; 
 					parametros_marcas_navegacion.put("RC","0");
-
-					if(!respJSON.getJSONObject("Body").isNull("Product")){
+					JSONObject bundle = cliente_datos.getJSONObject("bundle_seleccionado");
+					String technology = bundle.getString("technology");
+					String CFS = fEPCS.Params.GetValue("CFSS_"+technology.toUpperCase(),"CFSS_HG_BARRING_POS_PRE_TFI,CFSS_HG_BARRING_POS_TFI");
+					String rfsLDI = fEPCS.Params.GetValue("RFS_LDI_"+technology.toUpperCase(),"BAR_VOICE_INTERNATIONAL");
+					String rfsCEL = fEPCS.Params.GetValue("RFS_CEL_"+technology.toUpperCase(),"BAR_NUMBER_MOVIL");
+					fEPCS.Debug("["+jspName+"] technology: "+technology, "INFO");
+					fEPCS.Debug("["+jspName+"] CFSS: "+CFS, "INFO");
+					fEPCS.Debug("["+jspName+"] rfsLDI: "+rfsLDI, "INFO");
+					fEPCS.Debug("["+jspName+"] rfsCEL: "+rfsCEL, "INFO");
+					
+					if(!respJSON.isNull("Body") && !respJSON.getJSONObject("Body").isNull("Product")){
 						JSONArray Products = respJSON.getJSONObject("Body").getJSONArray("Product");
-		        		//JSONObject Product = (JSONObject) Products.get(0);
 		        		for(int j=0;j<Products.length();j++){
-		        			String productStatus = Products.get(j).getString("productStatus");
-		        			JSONObject PO = Product.getJSONObject("ProductOffering");
-		        			
+		        			String productStatus = Products.getJSONObject(j).getString("productStatus");
+		        			JSONObject PO = Products.getJSONObject(j).getJSONObject("ProductOffering");
 		        			if(productStatus.equalsIgnoreCase("ACTIVE")){
 		        				if(PO.getString("specificationSubtype").equals("VBundle")){
-		        					JSONArray ProductRelationships = Product.getJSONObject("ProductSpecification").getJSONArray("productRelationships");
+		        					JSONArray ProductRelationships = Products.getJSONObject(j).getJSONObject("ProductSpecification").getJSONArray("productRelationships");
 		        					for(int pr=0;pr<ProductRelationships.length();pr++){
 		        						JSONArray Services = ProductRelationships.getJSONObject(pr).getJSONArray("Service");
 		        						for(int s=0;s<Services.length();s++){
 		        							if(CFS.indexOf(Services.getJSONObject(s).getString("serviceSpecification"))>-1){
+		        								fEPCS.Debug("["+jspName+"] BARRING ENCONTRADO", "INFO");
 		        								JSONArray serviceCharacteristics = Services.getJSONObject(s).getJSONArray("serviceCharacteristics");
 		        								String bloq_ldi = "true";
 		        								String bloq_cel = "true";
 		        								for(int sc=0; sc<serviceCharacteristics.length();sc++){
 		        									if(serviceCharacteristics.getJSONObject(sc).getString("name").equals(rfsLDI)){
+		        										fEPCS.Debug("["+jspName+"] serviceCharacteristics LDI ENCONTRADA", "INFO");
 		        										bloq_ldi = serviceCharacteristics.getJSONObject(sc).getString("value");
 		        									}
 													if(serviceCharacteristics.getJSONObject(sc).getString("name").equals(rfsCEL)){
+														fEPCS.Debug("["+jspName+"] serviceCharacteristics CELULAR ENCONTRADA", "INFO");
 														bloq_cel = serviceCharacteristics.getJSONObject(sc).getString("value");
 		        									}
 		        								}
@@ -148,7 +150,10 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     						}
 		        		}
 		        		Products=null;
+					}else{
+						fEPCS.Debug("["+jspName+"] RESPONSE INCOMPLETO", "INFO");
 					}
+					cliente_datos.put("bundle_seleccionado",bundle);
 				}else{ ///Error Controlado
 					String codigo = respJSON.getJSONObject("ResponseHeader").getJSONObject("Result").getJSONObject("SourceError").getString("code");
 					result.put("CODE", codigo);
@@ -157,7 +162,6 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 				}
 			} 
 	    	result.put("trx_respuesta", trx_respuesta);
-	    	cliente_datos.put("bundle_seleccionado",bundle);
 			result.put("cliente_datos", cliente_datos);
 			
 			
@@ -169,9 +173,6 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	fEPCS.Debug("["+jspName+"] Error : "+ex.getMessage());
     	ex.printStackTrace();
     }finally{
-    	cliente_productos.put("Bundles",arrayBundle);
-    	result.put("cliente_productos", cliente_productos);
-    	
     	state.put("parametros_marcas_navegacion",parametros_marcas_navegacion);
     	parametros_marcas_navegacion=fEPCS.stopNavegacion(state);
     	fEPCS.Debug("["+jspName+"] FIN parametros_marcas_navegacion: "+parametros_marcas_navegacion.toString(), "INFO");
@@ -182,7 +183,6 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	parametros_marcas_navegacion = null;
     	respJSON = null;
     	cliente_datos = null;
-    	arrayBundle = null;
     }
     
     
