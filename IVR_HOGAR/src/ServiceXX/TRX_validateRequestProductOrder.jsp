@@ -36,7 +36,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	parametros_marcas_navegacion=fEPCS.startNavegacion(state,"TRX_REQUESTPRODUCTORDER");
     	parametros_marcas_navegacion.put("DATA","VALIDATE");
     	parametros_marcas_navegacion.put("RC","99");
-    	String trx_respuesta = "NOK"; 
+    	String trx_respuesta = "OK"; //Valor por defecto NOK 
     	String codigo = "";
        	String status = "";
        	String description = "";

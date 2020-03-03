@@ -159,12 +159,12 @@
 			<if cond="AppState.Menu_Token=='CELULAR'">
 				
 				<!-- This is the OutLink -->
-				<goto next="#SetAppnameMARCAS" />
+				<goto next="#Sub_Activacion_Llamada_Celular" />
 			</if>
 			<if cond="AppState.Menu_Token=='LDI'">
 				
 				<!-- This is the OutLink -->
-				<goto next="#SetAppnameMARCAS" />
+				<goto next="#Sub_Activaciones_LDI" />
 			</if>
 			<if cond="AppState.Menu_Token=='CANALES'">
 				
@@ -413,6 +413,66 @@
   					<assign name="AppState.willaccept" expr="Emitir_MenuSubdialog.willaccept" /> 
   				</if>
 				<goto next="#Fin_Marca_Menu" />
+			</filled>
+		</subdialog>
+		
+	</form>
+
+	<!-- This is the Subdialog block -->
+	<form id="Sub_Activacion_Llamada_Celular">
+
+		<subdialog name="Sub_Activacion_Llamada_CelularSubdialog" fetchhint="prefetch"  src="../src-gen/Sub_Activaciones_Llamada_Celular.vxml">
+    		<param name="varActionParentId" expr="'Sub_Menu_Activaciones'"/>
+			<param name="ConfigFile" expr="AppState.ConfigFile" />
+			<param name="cliente_datos" expr="AppState.cliente_datos" />
+			<param name="cliente_productos" expr="AppState.cliente_productos" />
+			<param name="idLlamada" expr="AppState.idLlamada" />
+			<param name="sourceID" expr="AppState.sourceID" />
+			<param name="parametros_marcas_navegacion" expr="AppState.parametros_marcas_navegacion" />
+			<filled>
+				<if cond="Sub_Activacion_Llamada_CelularSubdialog.parametros_marcas_navegacion != 'undefined'">
+  					<assign name="AppState.parametros_marcas_navegacion" expr="Sub_Activacion_Llamada_CelularSubdialog.parametros_marcas_navegacion" /> 
+  				</if>
+				<if cond="Sub_Activacion_Llamada_CelularSubdialog.salida_mp != 'undefined'">
+  					<assign name="AppState.salida_mp" expr="Sub_Activacion_Llamada_CelularSubdialog.salida_mp" /> 
+  				</if>
+				<if cond="Sub_Activacion_Llamada_CelularSubdialog.vdn != 'undefined'">
+  					<assign name="AppState.vdn" expr="Sub_Activacion_Llamada_CelularSubdialog.vdn" /> 
+  				</if>
+				<if cond="Sub_Activacion_Llamada_CelularSubdialog.vdnServDestino != 'undefined'">
+  					<assign name="AppState.vdnServDestino" expr="Sub_Activacion_Llamada_CelularSubdialog.vdnServDestino" /> 
+  				</if>
+				<goto next="#SetAppnameMARCAS" />
+			</filled>
+		</subdialog>
+		
+	</form>
+
+	<!-- This is the Subdialog block -->
+	<form id="Sub_Activaciones_LDI">
+
+		<subdialog name="Sub_Activaciones_LDISubdialog" fetchhint="prefetch"  src="../src-gen/Sub_Activaciones_LDI.vxml">
+    		<param name="varActionParentId" expr="'Sub_Menu_Activaciones'"/>
+			<param name="ConfigFile" expr="AppState.ConfigFile" />
+			<param name="cliente_datos" expr="AppState.cliente_datos" />
+			<param name="cliente_productos" expr="AppState.cliente_productos" />
+			<param name="idLlamada" expr="AppState.idLlamada" />
+			<param name="sourceID" expr="AppState.sourceID" />
+			<param name="parametros_marcas_navegacion" expr="AppState.parametros_marcas_navegacion" />
+			<filled>
+				<if cond="Sub_Activaciones_LDISubdialog.parametros_marcas_navegacion != 'undefined'">
+  					<assign name="AppState.parametros_marcas_navegacion" expr="Sub_Activaciones_LDISubdialog.parametros_marcas_navegacion" /> 
+  				</if>
+				<if cond="Sub_Activaciones_LDISubdialog.salida_mp != 'undefined'">
+  					<assign name="AppState.salida_mp" expr="Sub_Activaciones_LDISubdialog.salida_mp" /> 
+  				</if>
+				<if cond="Sub_Activaciones_LDISubdialog.vdn != 'undefined'">
+  					<assign name="AppState.vdn" expr="Sub_Activaciones_LDISubdialog.vdn" /> 
+  				</if>
+				<if cond="Sub_Activaciones_LDISubdialog.vdnServDestino != 'undefined'">
+  					<assign name="AppState.vdnServDestino" expr="Sub_Activaciones_LDISubdialog.vdnServDestino" /> 
+  				</if>
+				<goto next="#SetAppnameMARCAS" />
 			</filled>
 		</subdialog>
 		

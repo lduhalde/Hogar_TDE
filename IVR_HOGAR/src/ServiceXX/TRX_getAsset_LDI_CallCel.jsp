@@ -15,8 +15,9 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 	
     JSONObject result = new JSONObject();
     JSONObject respJSON = new JSONObject();	    
+    JSONObject cliente_datos = new JSONObject();
 
-//     JSONObject parametros_marcas_navegacion = new JSONObject();
+    cliente_datos = (state.has("cliente_datos") ) ? state.getJSONObject("cliente_datos") : new JSONObject();
  	JSONObject parametros_marcas_navegacion = (state.has("parametros_marcas_navegacion") ) ? state.getJSONObject("parametros_marcas_navegacion") : new JSONObject();    	
 
     String jspName="TRX_getAsset_LDI_CallCel";  
@@ -29,22 +30,35 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     String serviceSpecification = "";
     String serviceId = "";
     String serviceEnabled = "";
-    String rfsSpecification = "";
+    String rfsSpecification = ""; 
+    String key_serviceCharacteristics = "";
     
-    JSONObject parametros_marcas_navegacion = (state.has("parametros_marcas_navegacion") ) ? state.getJSONObject("parametros_marcas_navegacion") : new JSONObject();
     FunctionsEPCS_Hogar fEPCS = new FunctionsEPCS_Hogar(state.getString("ConfigFile"), state.getString("idLlamada"));
     
     try{
+    	
+    	JSONObject Body = new JSONObject();
+		JSONObject Product = new JSONObject();
+		JSONObject ProductAccount = new JSONObject();
+		JSONObject MSISDN = new JSONObject();
+		
+		JSONObject Service = new JSONObject();
+		JSONObject ResourceFacingService = new JSONObject();
+		
+		JSONObject serviceCharacteristic = new JSONObject();
+		
     	cliente_datos = (state.has("cliente_datos") ) ? state.getJSONObject("cliente_datos") : new JSONObject();
-    	cliente_productos = (state.has("cliente_productos") ) ? state.getJSONObject("cliente_productos") : new JSONObject();
     	
     	fEPCS.Debug("["+jspName+"] INICIO", "INFO");
-
+    	
+    	String SN = additionalParams.get("SN");
+    	String Activacion = additionalParams.get("Activacion");
     	String processCode = additionalParams.get("processCode");
     	String sourceID = additionalParams.get("sourceID");
     	String idLlamada = additionalParams.get("idLlamada");
-    	String filterBlockNumber = additionalParams.get("filterBlockNumber");
-    	String filterName = additionalParams.get("filterName");
+    	
+    	fEPCS.Debug("["+jspName+"] SN: "+SN, "INFO");
+    	fEPCS.Debug("["+jspName+"] Activacion: "+Activacion, "INFO");
     	fEPCS.Debug("["+jspName+"] processCode: "+processCode, "INFO");
     	fEPCS.Debug("["+jspName+"] sourceID: "+sourceID, "INFO");
     	fEPCS.Debug("["+jspName+"] idLlamada: "+idLlamada, "INFO");
@@ -52,19 +66,39 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	fEPCS.Debug("["+jspName+"] parametros_marcas_navegacion: "+parametros_marcas_navegacion, "INFO");
     	fEPCS.Debug("["+jspName+"] cliente_datos: "+cliente_datos, "INFO");
     	
-    	parametros_marcas_navegacion=fEPCS.startNavegacion(state,"TRX_ASSET");
+    	parametros_marcas_navegacion=fEPCS.startNavegacion(state,"TRX_ASSET_ACT");
     	parametros_marcas_navegacion.put("DATA","GET");
     	parametros_marcas_navegacion.put("RC","99");
     	
     	String description = "";
 		String status = ""; 	
 		
-    	Product = null;
-    	Service = null;
-    	ResourceFacingService = null;
-    	serviceCharacteristic = null;
+    	MSISDN.put("SN", SN);
+    	ProductAccount.put("MSISDN", MSISDN);
+    	Product.put("ProductAccount", ProductAccount);	    	
+    	Body.put("Product", Product);	
+    	
+		switch (Activacion) {
+		case "LDI":
+			key_serviceCharacteristics = "BAR_VOICE_INTERNATIONAL";
+			break;
+		case "LLAMCEL":
+			key_serviceCharacteristics = "BAR_NUMBER_MOVIL";
+			break;				
+
+		default:
+			key_serviceCharacteristics = "NOK";
+			break;
+		}
 		
-		String sTrx_datos_respuesta=fEPCS.GetAsset(Body, idLlamada, processCode, sourceID);    	
+		fEPCS.Debug("["+jspName+"] GSV LOG ### SN consultado: "+SN, "INFO");
+		fEPCS.Debug("["+jspName+"] GSV LOG ### Activando: "+Activacion, "INFO");
+		fEPCS.Debug("["+jspName+"] GSV LOG ### key_serviceCharacteristics: "+key_serviceCharacteristics, "INFO"); 
+    	
+		String sTrx_datos_respuesta=fEPCS.GetAsset(Body, idLlamada, processCode, sourceID);   
+		
+		respJSON = new JSONObject(sTrx_datos_respuesta);
+		
     	if(!respJSON.isNull("faultstring")) {
     		
     		description = respJSON.getString("faultstring");
@@ -130,7 +164,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 					rfsSpecification = ResourceFacingService.getString("rfsSpecification");
 					
 //					fEPCS.Debug("["+jspName+"] GSV LOG ### .....ResourceFacingService("+ rf +").rfsSpecification: " + rfsSpecification, "INFO");
-
+ 
 					if ( ResourceFacingService.getString("rfsSpecification").equalsIgnoreCase("RFSS_HG_CL_BAR_VOZ_INTE") ) {	
 						
 						serviceEnabled = Service.getString("enabled");
@@ -192,26 +226,21 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	result.put("serviceId", serviceId);
     	result.put("serviceEnabled", serviceEnabled);
     	result.put("rfsSpecification", rfsSpecification);	
+    	result.put("key_serviceCharacteristics", key_serviceCharacteristics);
     	
     	result.put("parametros_marcas_navegacion", parametros_marcas_navegacion);
     	fEPCS.Debug("["+jspName+"] GSV LOG ### FIN result: "+result.toString(), "INFO");
-    	   	
-    	result.put("cliente_productos", cliente_productos);
     	
     	state.put("parametros_marcas_navegacion",parametros_marcas_navegacion);
     	parametros_marcas_navegacion=fEPCS.stopNavegacion(state);
     	fEPCS.Debug("["+jspName+"] FIN parametros_marcas_navegacion: "+parametros_marcas_navegacion.toString(), "INFO");
-    	
-    	result.put("parametros_marcas_navegacion", parametros_marcas_navegacion);
-    	fEPCS.Debug("["+jspName+"] FIN result: "+result.toString(), "INFO");
     	
     	parametros_marcas_navegacion = null;
     	respJSON = null;
     	cliente_datos = null;    	
 
     }	
-    
-    
+        
     return result;
     
 };
