@@ -391,7 +391,7 @@
       <exceptions>error.badfetch</exceptions>
       <exceptions>error.com.genesyslab.composer.servererror</exceptions>
     </blocks>
-    <blocks xmi:type="gvp:BackendBlock" xmi:id="_a2xFQF2GEeqHqa-J0ckgaw" name="TRX_getAsset_MSISDN" category="Backend" uri="../src/ServiceXX/TRX_getAsset.jsp">
+    <blocks xmi:type="gvp:BackendBlock" xmi:id="_a2xFQF2GEeqHqa-J0ckgaw" name="TRX_getAsset_MSISDN" category="Backend" uri="../src/ServiceXX/TRX_getAsset_MSISDN.jsp">
       <exceptions>error.badfetch</exceptions>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_olISsF2GEeqHqa-J0ckgaw" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_olISsV2GEeqHqa-J0ckgaw" name="PCS" value="(AppState.cliente_datos.PCS_Seleccionado) ? AppState.cliente_datos.PCS_Seleccionado : AppState.ANI;" description="Enter Description"/>
