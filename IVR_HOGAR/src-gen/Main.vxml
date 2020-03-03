@@ -100,6 +100,7 @@
 		AppState.Menu_Token = '';
 		AppState.OpcionesMenu = '';
 		AppState.OpcionesDTMF = '';
+		AppState.indexPack = '0';
 	</script>
 
 	<!-- Global Scripts -->
@@ -444,44 +445,10 @@
 				</script>
 				
 				<!-- This is the OutLink -->
-				<goto next="#TRX_getCustomerInfo" />
+				<goto next="#Inicio_Marca_BVDA" />
 			</if>
 			<goto next="#TRX_getCustomerInfoRUT" />
 		</block>
-	</form>
-
-	<!-- This is the Backend logic block -->
-	<form id="TRX_getCustomerInfo">
-
-		<var name="AppStateString" expr="JSON.stringify(AppState)" />
-    	<var name="processID" expr="AppState.processID" />
-    	<var name="sourceID" expr="AppState.sourceID" />
-    	<var name="idLlamada" expr="AppState.idLlamada" />
-    	<var name="ID" expr="'PCS'" />
-    	<var name="parametros_marcas_navegacion" expr="AppState.parametros_marcas_navegacion" />	
-		<block>
-			<data name="TRX_getCustomerInfoData" src="../src/ServiceXX/TRX_getCustomerInfo.jsp" method="post"  enctype="multipart/form-data"
-				namelist="AppStateString processID sourceID idLlamada parametros_marcas_navegacion ID" />
-        	<if cond="typeof TRX_getCustomerInfoData.errorMsg == 'undefined'">
-        		<assign name="AppState.TRX_getCustomerInfoResult" expr="TRX_getCustomerInfoData" />
-            	<if cond="typeof AppState.TRX_getCustomerInfoResult.trx_respuesta != 'undefined'">
-            		<assign name="AppState.trx_respuesta" expr="AppState.TRX_getCustomerInfoResult.trx_respuesta" />
-            	</if>
-            	<if cond="typeof AppState.TRX_getCustomerInfoResult.cliente_datos != 'undefined'">
-            		<assign name="AppState.cliente_datos" expr="AppState.TRX_getCustomerInfoResult.cliente_datos" />
-            	</if>
-            	<if cond="typeof AppState.TRX_getCustomerInfoResult.parametros_marcas_navegacion != 'undefined'">
-            		<assign name="AppState.parametros_marcas_navegacion" expr="AppState.TRX_getCustomerInfoResult.parametros_marcas_navegacion" />
-            	</if>
-				<goto next="#Branch_CustomerInfo" />
-        	<else/>
-        		<throw event="error.com.genesyslab.composer.servererror" messageexpr="TRX_getCustomerInfoData.errorMsg" />
-        	</if>
-		</block>
-		
-		<catch event="error.badfetch">
-			<goto next="#Inicio_Marca_SND_01" />
-    	</catch>
 	</form>
 
 	<!-- This is the Prompt block -->
@@ -541,26 +508,6 @@
 		</block>
 	</form>
 
-	<!-- This is the Branching block -->
-	<form id="Branch_CustomerInfo">
-		<block>
-			<if cond="AppState.trx_respuesta=='OK'">
-				
-				<!-- Post Action -->
-				<script>try{
-				AppState.var_marca='CUSTOMERINFO'
-				}
-				catch(err){}
-				
-				</script>
-				
-				<!-- This is the OutLink -->
-				<goto next="#TRX_getCustomerInfoRUT" />
-			</if>
-			<goto next="#Inicio_Marca_SND_01" />
-		</block>
-	</form>
-
 	<!-- This is the Prompt block -->
 	<form id="Bienvenida">
         
@@ -611,7 +558,7 @@
             	<if cond="typeof AppState.Fin_Marca_BVDAResult.parametros_marcas_navegacion != 'undefined'">
             		<assign name="AppState.parametros_marcas_navegacion" expr="AppState.Fin_Marca_BVDAResult.parametros_marcas_navegacion" />
             	</if>
-				<goto next="#TRX_getCustomerAccount" />
+				<goto next="#TRX_getCustomerInfoRUT" />
         	<else/>
         		<throw event="error.com.genesyslab.composer.servererror" messageexpr="Fin_Marca_BVDAData.errorMsg" />
         	</if>
@@ -667,14 +614,14 @@
 				
 				<!-- Post Action -->
 				<script>try{
-				AppState.Menu_Token='0'
+				AppState.indexPack='0'
 				}
 				catch(err){}
 				
 				</script>
 				
 				<!-- This is the OutLink -->
-				<goto next="#MenuPrincipal" />
+				<goto next="#Inicio_Marca_MPPAL" />
 			</if>
 			<goto next="#Inicio_Marca_SND_01" />
 		</block>
@@ -769,7 +716,7 @@
             	<if cond="typeof AppState.Obtener_Opciones_MenuResult.OpcionesDTMF != 'undefined'">
             		<assign name="AppState.OpcionesDTMF" expr="AppState.Obtener_Opciones_MenuResult.OpcionesDTMF" />
             	</if>
-				<goto next="#Emitir_Menu" />
+				<goto next="#InicioMenu" />
         	<else/>
         		<throw event="error.com.genesyslab.composer.servererror" messageexpr="Obtener_Opciones_MenuData.errorMsg" />
         	</if>
@@ -780,49 +727,14 @@
     	</catch>
 	</form>
 
-	<!-- This is the Subdialog block -->
-	<form id="Emitir_Menu">
-
-		<subdialog name="Emitir_MenuSubdialog" fetchhint="prefetch"  src="../src-gen/Sub_Menu_Dinamico.vxml">
-    		<param name="varActionParentId" expr="''"/>
-			<param name="ConfigFile" expr="AppState.ConfigFile" />
-			<param name="OpcionesDTMF" expr="AppState.OpcionesDTMF" />
-			<param name="OpcionesMenu" expr="AppState.OpcionesMenu" />
-			<param name="audioMaxIntentos" expr="'IVR/General/MaximoIntentos.wav'" />
-			<param name="audioNoInput" expr="" />
-			<param name="audioNoMatch" expr="" />
-			<param name="audio_adicional" expr="''" />
-			<param name="audio_finalizado" expr="''" />
-			<param name="audio_para" expr="'es-CL/IVR/General/Silencio.wav'" />
-			<param name="corteMaxIntentos" expr="'SI'" />
-			<param name="idLlamada" expr="AppState.idLlamada" />
-			<param name="intentos" expr="2" />
-			<param name="parametros_marcas_navegacion" expr="" />
-			<param name="traza_error" expr="''" />
-			<param name="traza_hangup" expr="''" />
-			<param name="usa_asterisco" expr="'NO'" />
-			<param name="var_timeout" expr="5" />
-			<filled>
-				<if cond="Emitir_MenuSubdialog.Token != 'undefined'">
-  					<assign name="AppState.Menu_Token" expr="Emitir_MenuSubdialog.Token" /> 
-  				</if>
-				<if cond="Emitir_MenuSubdialog.willaccept != 'undefined'">
-  					<assign name="AppState.willaccept" expr="Emitir_MenuSubdialog.willaccept" /> 
-  				</if>
-				<goto next="#FinMarca_PACKS" />
-			</filled>
-		</subdialog>
-		
-	</form>
-
 	<!-- This is the Backend logic block -->
 	<form id="FinMarca_PACKS">
 
 		<var name="AppStateString" expr="JSON.stringify(AppState)" />
     	<var name="INICIO" expr="'NO'" />
     	<var name="DATA" expr="'OpcionEscogida'" />
-    	<var name="MSG" expr="AppState.Menu_Token" />
-    	<var name="RC" expr="(AppState.Menu_Token=='NONE')?'99':'0';" />	
+    	<var name="MSG" expr="AppState.indexPack" />
+    	<var name="RC" expr="(AppState.indexPack=='NONE')?'99':'0';" />	
 		<block>
 			<data name="FinMarca_PACKSData" src="../src/Tools/Crear_Traza.jsp" method="post"  enctype="multipart/form-data"
 				namelist="AppStateString INICIO DATA MSG RC" />
@@ -831,7 +743,7 @@
             	<if cond="typeof AppState.FinMarca_PACKSResult.parametros_marcas_navegacion != 'undefined'">
             		<assign name="AppState.parametros_marcas_navegacion" expr="AppState.FinMarca_PACKSResult.parametros_marcas_navegacion" />
             	</if>
-				<goto next="#MenuPrincipal" />
+				<goto next="#ActualizaCDR" />
         	<else/>
         		<throw event="error.com.genesyslab.composer.servererror" messageexpr="FinMarca_PACKSData.errorMsg" />
         	</if>
@@ -875,47 +787,47 @@
 	<!-- This is the Branching block -->
 	<form id="Branch_CustomerInfoRUT">
 		<block>
-			<if cond="AppState.trx_respuesta=='OK'">
+			<if cond="AppState.trx_respuesta=='OK' || AppState.trx_respuesta=='OK-NO_HOGAR'">
 				
 				<!-- Post Action -->
 				<script>try{
-				AppState.var_marca='CUSTOMERACCOUNT'
+				AppState.var_marca='SERVICEREQUEST'
 				}
 				catch(err){}
 				
 				</script>
 				
 				<!-- This is the OutLink -->
-				<goto next="#Inicio_Marca_BVDA" />
+				<goto next="#TRX_getServiceRequest" />
 			</if>
 			<goto next="#Inicio_Marca_SND_01" />
 		</block>
 	</form>
 
 	<!-- This is the Subdialog block -->
-	<form id="MenuPrincipal">
+	<form id="MenuComercial">
 
-		<subdialog name="MenuPrincipalSubdialog" fetchhint="prefetch"  src="../src-gen/Sub_Menu_Principal.vxml">
+		<subdialog name="MenuComercialSubdialog" fetchhint="prefetch"  src="../src-gen/Sub_Menu_Comercial.vxml">
     		<param name="varActionParentId" expr="''"/>
 			<param name="ConfigFile" expr="AppState.ConfigFile" />
 			<param name="cliente_datos" expr="AppState.cliente_datos" />
 			<param name="cliente_productos" expr="AppState.cliente_productos" />
 			<param name="idLlamada" expr="AppState.idLlamada" />
-			<param name="indexPack" expr="AppState.Menu_Token" />
+			<param name="indexPack" expr="AppState.indexPack" />
 			<param name="sourceID" expr="AppState.sourceID" />
 			<param name="parametros_marcas_navegacion" expr="AppState.parametros_marcas_navegacion" />
 			<filled>
-				<if cond="MenuPrincipalSubdialog.parametros_marcas_navegacion != 'undefined'">
-  					<assign name="AppState.parametros_marcas_navegacion" expr="MenuPrincipalSubdialog.parametros_marcas_navegacion" /> 
+				<if cond="MenuComercialSubdialog.parametros_marcas_navegacion != 'undefined'">
+  					<assign name="AppState.parametros_marcas_navegacion" expr="MenuComercialSubdialog.parametros_marcas_navegacion" /> 
   				</if>
-				<if cond="MenuPrincipalSubdialog.salida_mp != 'undefined'">
-  					<assign name="AppState.salida_mp" expr="MenuPrincipalSubdialog.salida_mp" /> 
+				<if cond="MenuComercialSubdialog.salida_mp != 'undefined'">
+  					<assign name="AppState.salida_mp" expr="MenuComercialSubdialog.salida_mp" /> 
   				</if>
-				<if cond="MenuPrincipalSubdialog.vdn != 'undefined'">
-  					<assign name="AppState.vdn" expr="MenuPrincipalSubdialog.vdn" /> 
+				<if cond="MenuComercialSubdialog.vdn != 'undefined'">
+  					<assign name="AppState.vdn" expr="MenuComercialSubdialog.vdn" /> 
   				</if>
-				<if cond="MenuPrincipalSubdialog.vdnServDestino != 'undefined'">
-  					<assign name="AppState.vdnServDestino" expr="MenuPrincipalSubdialog.vdnServDestino" /> 
+				<if cond="MenuComercialSubdialog.vdnServDestino != 'undefined'">
+  					<assign name="AppState.vdnServDestino" expr="MenuComercialSubdialog.vdnServDestino" /> 
   				</if>
 				<goto next="#Ejecutivo" />
 			</filled>
@@ -930,7 +842,7 @@
 				
 				<!-- Post Action -->
 				<script>try{
-				AppState.AudioTransferencia='IVR/Sub_Menu_Ejecutivo/Ejecutivo02.wav'
+				AppState.AudioTransferencia='IVR/Sub_Transferencia/Ejecutivo.wav'
 				}
 				catch(err){}
 				
@@ -955,7 +867,7 @@
 			<if cond="AppState.salida_mp==&quot;VOLVER&quot; || AppState.salida_mp==&quot;GOTOMENU&quot;">
 				
 				<!-- This is the OutLink -->
-				<goto next="#Branch_Asset" />
+				<goto next="#Inicio_Marca_MPPAL" />
 			</if>
 			<goto next="#FIN" />
 		</block>
@@ -990,74 +902,413 @@
 		
 	</form>
 
-	<!-- This is the TRX_getContract block in Disabled mode -->
-	<form id="TRX_getContract">
+	<!-- This is the Prompt block -->
+	<form id="InicioMenu">
+        
+    	<block name="InicioMenuP0">
+  			<prompt bargein="false"  gvp:langexpr="AppState.APP_LANGUAGE">
+				<audio expr="AppState.VOXFILEDIR + '/' + AppState.APP_LANGUAGE + '/' + 'IVR/Menus/ParaConsultarPorTuProducto.wav'"></audio>
+    		</prompt>
+		</block>
     	<block>
-    		<goto next="#Branch_Contract" />
+    		<goto next="#Emitir_Menu_Packs" />
     	</block>
 	</form>
 
-	<!-- This is the Assign_marcaSND block in Disabled mode -->
-	<form id="Assign_marcaSND">
+	<!-- This is the Backend logic block -->
+	<form id="Inicio_Marca_MPPAL">
+
+		<var name="AppStateString" expr="JSON.stringify(AppState)" />
+    	<var name="INICIO" expr="'SI'" />
+    	<var name="TRAZA" expr="'MENU_PPAL'" />	
+		<block>
+			<data name="Inicio_Marca_MPPALData" src="../src/Tools/Crear_Traza.jsp" method="post"  enctype="multipart/form-data"
+				namelist="AppStateString INICIO TRAZA" />
+        	<if cond="typeof Inicio_Marca_MPPALData.errorMsg == 'undefined'">
+        		<assign name="AppState.Inicio_Marca_MPPALResult" expr="Inicio_Marca_MPPALData" />
+            	<if cond="typeof AppState.Inicio_Marca_MPPALResult.parametros_marcas_navegacion != 'undefined'">
+            		<assign name="AppState.parametros_marcas_navegacion" expr="AppState.Inicio_Marca_MPPALResult.parametros_marcas_navegacion" />
+            	</if>
+				<goto next="#Menu_PPAL" />
+        	<else/>
+        		<throw event="error.com.genesyslab.composer.servererror" messageexpr="Inicio_Marca_MPPALData.errorMsg" />
+        	</if>
+		</block>
+	</form>
+
+	<!-- This is the Menu block -->
+	<form id="Menu_PPAL">
+                
+        <script srcexpr="AppState.VOXFILEDIR + '/PromptSwitch.js'" />
+        <script srcexpr="AppState.VOXFILEDIR + '/' + 'es-CL' + '/' + 'es-CL' + '.js'" />
+        <block>
+	        <script>
+	            AppState.PREV_APP_LANGUAGE = AppState.APP_LANGUAGE;
+	            AppState.PREV_APP_ASR_LANGUAGE = AppState.APP_ASR_LANGUAGE;
+	            AppState.APP_LANGUAGE = 'es-CL';
+	            AppState.APP_ASR_LANGUAGE = 'es-CL';
+	        </script>
+        </block>
+        
+		<property name="termchar" value="D"/>
+		<property name="inputmodes" value="dtmf" />
+		<property name="bargein" value="true" />
+		<block name="Menu_PPALP0">
+  			<prompt gvp:langexpr="AppState.APP_LANGUAGE">
+				<audio expr="AppState.VOXFILEDIR + '/' + AppState.APP_LANGUAGE + '/' + 'IVR/Menus/Menu_Ppal.wav'"></audio>
+    		</prompt>
+		</block>
+		
+		<var name="retryCount" expr="1"/>
+		<field name="Menu_PPALOption">
+			<property name="timeout" value="5s"/>
+			<option dtmf="1" value="1" />
+			<option dtmf="2" value="2" />
+  		</field>
+		<filled mode="all" namelist="Menu_PPALOption">
+			<assign name="AppState.Menu_Token" expr="Menu_PPALOption" />
+			<if cond="Menu_PPALOption == '1'">
+	        <script>resetLanguage()</script>
+            
+				<goto next="#FinMarcaComercial" />
+			</if>
+			<if cond="Menu_PPALOption == '2'">
+	        <script>resetLanguage()</script>
+            
+				<goto next="#FinMarcaTecnico" />
+			</if>
+		</filled>
+			
+		<catch event="noinput" cond="retryCount == 1">
+		<assign name="retryCount" expr="retryCount + 1"/>
+		<prompt bargein="true" gvp:langexpr="AppState.APP_LANGUAGE">
+				<audio expr="AppState.VOXFILEDIR + '/' + AppState.APP_LANGUAGE + '/' + 'IVR/General/NoMatch.wav'"></audio>
+  		</prompt>
+  		<clear namelist="Menu_PPALP0"/>
+  		</catch>
+			
+		<catch event="nomatch" cond="retryCount == 1">
+		<assign name="retryCount" expr="retryCount + 1"/>
+		<prompt bargein="true" gvp:langexpr="AppState.APP_LANGUAGE">
+				<audio expr="AppState.VOXFILEDIR + '/' + AppState.APP_LANGUAGE + '/' + 'IVR/General/NoMatch.wav'"></audio>
+  		</prompt>
+  		<clear namelist="Menu_PPALP0"/>
+  		</catch>
+			
+		<catch event="noinput" cond="retryCount == 2">
+		<assign name="retryCount" expr="retryCount + 1"/>
+		<prompt bargein="true" gvp:langexpr="AppState.APP_LANGUAGE">
+				<audio expr="AppState.VOXFILEDIR + '/' + AppState.APP_LANGUAGE + '/' + 'IVR/General/NoMatch.wav'"></audio>
+  		</prompt>
+  		<clear namelist="Menu_PPALP0"/>
+  		</catch>
+			
+		<catch event="nomatch" cond="retryCount == 2">
+		<assign name="retryCount" expr="retryCount + 1"/>
+		<prompt bargein="true" gvp:langexpr="AppState.APP_LANGUAGE">
+				<audio expr="AppState.VOXFILEDIR + '/' + AppState.APP_LANGUAGE + '/' + 'IVR/General/NoMatch.wav'"></audio>
+  		</prompt>
+  		<clear namelist="Menu_PPALP0"/>
+  		</catch>
+		<catch event="noinput"  cond="retryCount==3">
+	        <script>resetLanguage()</script>
+	  		<throw event="com.genesyslab.composer.toomanynoinputs" message="exceeded the number of noinput retries" />
+	  	</catch>
+		<catch event="nomatch"  cond="retryCount==3">
+	        <script>resetLanguage()</script>
+	  		<throw event="com.genesyslab.composer.toomanynomatches" message="exceeded the number of nomatch retries" />
+	  	</catch>
+		<catch event="com.genesyslab.composer.toomanynoinputs">
+	        <script>resetLanguage()</script>
+			<goto next="#FinMarcaNINM" />
+    	</catch>
+		<catch event="com.genesyslab.composer.toomanynomatches">
+	        <script>resetLanguage()</script>
+			<goto next="#FinMarcaNINM" />
+    	</catch>
+	</form>
+
+	<!-- This is the Subdialog block -->
+	<form id="MenuTecnico">
+
+		<subdialog name="MenuTecnicoSubdialog" fetchhint="prefetch"  src="../src-gen/Sub_Menu_Tecnico.vxml">
+    		<param name="varActionParentId" expr="''"/>
+			<param name="ConfigFile" expr="AppState.ConfigFile" />
+			<param name="cliente_datos" expr="AppState.cliente_datos" />
+			<param name="cliente_productos" expr="AppState.cliente_productos" />
+			<param name="idLlamada" expr="AppState.idLlamada" />
+			<param name="indexPack" expr="AppState.indexPack" />
+			<param name="sourceID" expr="AppState.sourceID" />
+			<param name="parametros_marcas_navegacion" expr="AppState.parametros_marcas_navegacion" />
+			<filled>
+				<if cond="MenuTecnicoSubdialog.parametros_marcas_navegacion != 'undefined'">
+  					<assign name="AppState.parametros_marcas_navegacion" expr="MenuTecnicoSubdialog.parametros_marcas_navegacion" /> 
+  				</if>
+				<if cond="MenuTecnicoSubdialog.salida_mp != 'undefined'">
+  					<assign name="AppState.salida_mp" expr="MenuTecnicoSubdialog.salida_mp" /> 
+  				</if>
+				<if cond="MenuTecnicoSubdialog.vdn != 'undefined'">
+  					<assign name="AppState.vdn" expr="MenuTecnicoSubdialog.vdn" /> 
+  				</if>
+				<if cond="MenuTecnicoSubdialog.vdnServDestino != 'undefined'">
+  					<assign name="AppState.vdnServDestino" expr="MenuTecnicoSubdialog.vdnServDestino" /> 
+  				</if>
+				<goto next="#Ejecutivo" />
+			</filled>
+		</subdialog>
+		
+	</form>
+
+	<!-- This is the Prompt block -->
+	<form id="Prompt_Maximo_Intentos">
+        
+    	<block name="Prompt_Maximo_IntentosP0">
+  			<prompt bargein="true"  gvp:langexpr="AppState.APP_LANGUAGE">
+				<audio expr="AppState.VOXFILEDIR + '/' + AppState.APP_LANGUAGE + '/' + 'IVR/General/MaximoIntentos.wav'"></audio>
+    		</prompt>
+		</block>
     	<block>
-    		<goto next="#TRX_getContract" />
+    		<goto next="#FinMarcaMaxIntentos" />
     	</block>
 	</form>
 
-	<!-- This is the getCodCobranza block in Disabled mode -->
-	<form id="getCodCobranza">
-    	<block>
-    		<goto next="#Assign_marcaSND" />
-    	</block>
+	<!-- This is the Backend logic block -->
+	<form id="FinMarcaNINM">
+
+		<var name="AppStateString" expr="JSON.stringify(AppState)" />
+    	<var name="INICIO" expr="'NO'" />
+    	<var name="DATA" expr="'OpcionEscogida'" />
+    	<var name="MSG" expr="'NONE'" />
+    	<var name="RC" expr="'99'" />	
+		<block>
+			<data name="FinMarcaNINMData" src="../src/Tools/Crear_Traza.jsp" method="post"  enctype="multipart/form-data"
+				namelist="AppStateString INICIO DATA MSG RC" />
+        	<if cond="typeof FinMarcaNINMData.errorMsg == 'undefined'">
+        		<assign name="AppState.FinMarcaNINMResult" expr="FinMarcaNINMData" />
+            	<if cond="typeof AppState.FinMarcaNINMResult.parametros_marcas_navegacion != 'undefined'">
+            		<assign name="AppState.parametros_marcas_navegacion" expr="AppState.FinMarcaNINMResult.parametros_marcas_navegacion" />
+            	</if>
+				<goto next="#InicioMarcaMaxIntentos" />
+        	<else/>
+        		<throw event="error.com.genesyslab.composer.servererror" messageexpr="FinMarcaNINMData.errorMsg" />
+        	</if>
+		</block>
 	</form>
 
-	<!-- This is the Branch_Contract block in Disabled mode -->
-	<form id="Branch_Contract">
-    	<block>	
-    		<goto next="#Inicio_Marca_SND_01" />
-    	</block>
+	<!-- This is the Backend logic block -->
+	<form id="InicioMarcaMaxIntentos">
+
+		<var name="AppStateString" expr="JSON.stringify(AppState)" />
+    	<var name="INICIO" expr="'SI'" />
+    	<var name="TRAZA" expr="'PROMPT_MAXINTENTOS'" />	
+		<block>
+			<data name="InicioMarcaMaxIntentosData" src="../src/Tools/Crear_Traza.jsp" method="post"  enctype="multipart/form-data"
+				namelist="AppStateString INICIO TRAZA" />
+        	<if cond="typeof InicioMarcaMaxIntentosData.errorMsg == 'undefined'">
+        		<assign name="AppState.InicioMarcaMaxIntentosResult" expr="InicioMarcaMaxIntentosData" />
+            	<if cond="typeof AppState.InicioMarcaMaxIntentosResult.parametros_marcas_navegacion != 'undefined'">
+            		<assign name="AppState.parametros_marcas_navegacion" expr="AppState.InicioMarcaMaxIntentosResult.parametros_marcas_navegacion" />
+            	</if>
+				<goto next="#Prompt_Maximo_Intentos" />
+        	<else/>
+        		<throw event="error.com.genesyslab.composer.servererror" messageexpr="InicioMarcaMaxIntentosData.errorMsg" />
+        	</if>
+		</block>
 	</form>
 
-	<!-- This is the SetRP_BLQ block in Disabled mode -->
-	<form id="SetRP_BLQ">
-    	<block>
-    		<goto next="#Asigna_RP" />
-    	</block>
+	<!-- This is the Backend logic block -->
+	<form id="FinMarcaMaxIntentos">
+
+		<var name="AppStateString" expr="JSON.stringify(AppState)" />
+    	<var name="INICIO" expr="'NO'" />
+    	<var name="DATA" expr="' '" />
+    	<var name="MSG" expr="' '" />
+    	<var name="RC" expr="'0'" />	
+		<block>
+			<data name="FinMarcaMaxIntentosData" src="../src/Tools/Crear_Traza.jsp" method="post"  enctype="multipart/form-data"
+				namelist="AppStateString INICIO DATA MSG RC" />
+        	<if cond="typeof FinMarcaMaxIntentosData.errorMsg == 'undefined'">
+        		<assign name="AppState.FinMarcaMaxIntentosResult" expr="FinMarcaMaxIntentosData" />
+            	<if cond="typeof AppState.FinMarcaMaxIntentosResult.parametros_marcas_navegacion != 'undefined'">
+            		<assign name="AppState.parametros_marcas_navegacion" expr="AppState.FinMarcaMaxIntentosResult.parametros_marcas_navegacion" />
+            	</if>
+				<goto next="#FIN" />
+        	<else/>
+        		<throw event="error.com.genesyslab.composer.servererror" messageexpr="FinMarcaMaxIntentosData.errorMsg" />
+        	</if>
+		</block>
 	</form>
 
-	<!-- This is the Asigna_RP block in Disabled mode -->
-	<form id="Asigna_RP">
-    	<block>
-    		<goto next="#PutUDATA" />
-    	</block>
+	<!-- This is the Backend logic block -->
+	<form id="FinMarcaComercial">
+
+		<var name="AppStateString" expr="JSON.stringify(AppState)" />
+    	<var name="INICIO" expr="'NO'" />
+    	<var name="DATA" expr="'OpcionEscogida'" />
+    	<var name="MSG" expr="'COMERCIAL'" />
+    	<var name="RC" expr="'0'" />	
+		<block>
+			<data name="FinMarcaComercialData" src="../src/Tools/Crear_Traza.jsp" method="post"  enctype="multipart/form-data"
+				namelist="AppStateString INICIO DATA MSG RC" />
+        	<if cond="typeof FinMarcaComercialData.errorMsg == 'undefined'">
+        		<assign name="AppState.FinMarcaComercialResult" expr="FinMarcaComercialData" />
+            	<if cond="typeof AppState.FinMarcaComercialResult.parametros_marcas_navegacion != 'undefined'">
+            		<assign name="AppState.parametros_marcas_navegacion" expr="AppState.FinMarcaComercialResult.parametros_marcas_navegacion" />
+            	</if>
+				<goto next="#MenuComercial" />
+        	<else/>
+        		<throw event="error.com.genesyslab.composer.servererror" messageexpr="FinMarcaComercialData.errorMsg" />
+        	</if>
+		</block>
 	</form>
 
-	<!-- This is the SetRP_Cobranza block in Disabled mode -->
-	<form id="SetRP_Cobranza">
-    	<block>
-    		<goto next="#Asigna_RP" />
-    	</block>
+	<!-- This is the Backend logic block -->
+	<form id="FinMarcaTecnico">
+
+		<var name="AppStateString" expr="JSON.stringify(AppState)" />
+    	<var name="INICIO" expr="'NO'" />
+    	<var name="DATA" expr="'OpcionEscogida'" />
+    	<var name="MSG" expr="'TECNICO'" />
+    	<var name="RC" expr="'0'" />	
+		<block>
+			<data name="FinMarcaTecnicoData" src="../src/Tools/Crear_Traza.jsp" method="post"  enctype="multipart/form-data"
+				namelist="AppStateString INICIO DATA MSG RC" />
+        	<if cond="typeof FinMarcaTecnicoData.errorMsg == 'undefined'">
+        		<assign name="AppState.FinMarcaTecnicoResult" expr="FinMarcaTecnicoData" />
+            	<if cond="typeof AppState.FinMarcaTecnicoResult.parametros_marcas_navegacion != 'undefined'">
+            		<assign name="AppState.parametros_marcas_navegacion" expr="AppState.FinMarcaTecnicoResult.parametros_marcas_navegacion" />
+            	</if>
+				<goto next="#MenuTecnico" />
+        	<else/>
+        		<throw event="error.com.genesyslab.composer.servererror" messageexpr="FinMarcaTecnicoData.errorMsg" />
+        	</if>
+		</block>
 	</form>
 
-	<!-- This is the RouteRequest1 block in Disabled mode -->
-	<form id="RouteRequest1">
-    	<block>
-    		<exit />
-    	</block>
+	<!-- This is the Backend logic block -->
+	<form id="TRX_getServiceRequest">
+
+		<var name="AppStateString" expr="JSON.stringify(AppState)" />
+    	<var name="sourceID" expr="AppState.sourceID" />
+    	<var name="processCode" expr="AppState.processID" />
+    	<var name="idLlamada" expr="AppState.idLlamada" />	
+		<block>
+			<data name="TRX_getServiceRequestData" src="../src/ServiceXX/TRX_getServiceRequest.jsp" method="post"  enctype="multipart/form-data"
+				namelist="AppStateString sourceID processCode idLlamada" />
+        	<if cond="typeof TRX_getServiceRequestData.errorMsg == 'undefined'">
+        		<assign name="AppState.TRX_getServiceRequestResult" expr="TRX_getServiceRequestData" />
+            	<if cond="typeof AppState.TRX_getServiceRequestResult.trx_respuesta != 'undefined'">
+            		<assign name="AppState.trx_respuesta" expr="AppState.TRX_getServiceRequestResult.trx_respuesta" />
+            	</if>
+            	<if cond="typeof AppState.TRX_getServiceRequestResult.parametros_marcas_navegacion != 'undefined'">
+            		<assign name="AppState.parametros_marcas_navegacion" expr="AppState.TRX_getServiceRequestResult.parametros_marcas_navegacion" />
+            	</if>
+				<goto next="#Branch_ServiceRequest" />
+        	<else/>
+        		<throw event="error.com.genesyslab.composer.servererror" messageexpr="TRX_getServiceRequestData.errorMsg" />
+        	</if>
+		</block>
 	</form>
 
-	<!-- This is the InteractionData1 block in Disabled mode -->
-	<form id="InteractionData1">
-    	<block>
-    		<goto next="#RouteRequest1" />
-    	</block>
+	<!-- This is the Branching block -->
+	<form id="Branch_ServiceRequest">
+		<block>
+			<if cond="AppState.trx_respuesta='OK-AGENDA'">
+				
+				<!-- This is the OutLink -->
+				<goto next="#TRX_getCustomerAccount" />
+			</if>
+			<if cond="AppState.trx_respuesta='OK-AGENDA'">
+				
+				<!-- Post Action -->
+				<script>try{
+				AppState.var_marca='CUSTOMERACCOUNT'
+				}
+				catch(err){}
+				
+				</script>
+				
+				<!-- This is the OutLink -->
+				<goto next="#TRX_getCustomerAccount" />
+			</if>
+			<goto next="#TRX_getCustomerAccount" />
+		</block>
 	</form>
 
-	<!-- This is the PutUDATA block in Disabled mode -->
-	<form id="PutUDATA">
-    	<block>
-    		<goto next="#InteractionData1" />
-    	</block>
+	<!-- This is the Subdialog block -->
+	<form id="Emitir_Menu_Packs">
+
+		<subdialog name="Emitir_Menu_PacksSubdialog" fetchhint="prefetch"  src="../src-gen/Sub_Menu_Dinamico.vxml">
+    		<param name="varActionParentId" expr="''"/>
+			<param name="ConfigFile" expr="AppState.ConfigFile" />
+			<param name="OpcionesDTMF" expr="AppState.OpcionesDTMF" />
+			<param name="OpcionesMenu" expr="AppState.OpcionesMenu" />
+			<param name="audioMaxIntentos" expr="'IVR/General/MaximoIntentos.wav'" />
+			<param name="audioNoInput" expr="'IVR/General/NoMatch.wav'" />
+			<param name="audioNoMatch" expr="'IVR/General/NoMatch.wav'" />
+			<param name="audio_adicional" expr="''" />
+			<param name="audio_finalizado" expr="''" />
+			<param name="audio_para" expr="'es-CL/IVR/General/Silencio.wav'" />
+			<param name="corteMaxIntentos" expr="'SI'" />
+			<param name="idLlamada" expr="AppState.idLlamada" />
+			<param name="intentos" expr="2" />
+			<param name="parametros_marcas_navegacion" expr="AppState.parametros_marcas_navegacion" />
+			<param name="traza_error" expr="''" />
+			<param name="traza_hangup" expr="''" />
+			<param name="usa_asterisco" expr="'NO'" />
+			<param name="var_timeout" expr="5" />
+			<filled>
+				<if cond="Emitir_Menu_PacksSubdialog.Token != 'undefined'">
+  					<assign name="AppState.indexPack" expr="Emitir_Menu_PacksSubdialog.Token" /> 
+  				</if>
+				<if cond="Emitir_Menu_PacksSubdialog.willaccept != 'undefined'">
+  					<assign name="AppState.willaccept" expr="Emitir_Menu_PacksSubdialog.willaccept" /> 
+  				</if>
+				<goto next="#Backend1" />
+			</filled>
+		</subdialog>
+		
+	</form>
+
+	<!-- This is the Backend logic block -->
+	<form id="Backend1">
+
+		<var name="AppStateString" expr="JSON.stringify(AppState)" />
+    	<var name="Flujo" expr="'Main'" />
+    	<var name="Mensaje" expr="'indexPack: '+AppState.indexPack" />	
+		<block>
+			<data name="Backend1Data" src="../src/Tools/Log.jsp" method="post"  enctype="multipart/form-data"
+				namelist="AppStateString Flujo Mensaje" />
+        	<if cond="typeof Backend1Data.errorMsg == 'undefined'">
+        		<assign name="AppState.Backend1Result" expr="Backend1Data" />
+				<goto next="#FinMarca_PACKS" />
+        	<else/>
+        		<throw event="error.com.genesyslab.composer.servererror" messageexpr="Backend1Data.errorMsg" />
+        	</if>
+		</block>
+	</form>
+
+	<!-- This is the Backend logic block -->
+	<form id="ActualizaCDR">
+
+		<var name="AppStateString" expr="JSON.stringify(AppState)" />	
+		<block>
+			<data name="ActualizaCDRData" src="../src/Tools/ActualizaCDR.jsp" method="post"  enctype="multipart/form-data"
+				namelist="AppStateString" />
+        	<if cond="typeof ActualizaCDRData.errorMsg == 'undefined'">
+        		<assign name="AppState.ActualizaCDRResult" expr="ActualizaCDRData" />
+				<goto next="#Inicio_Marca_MPPAL" />
+        	<else/>
+        		<throw event="error.com.genesyslab.composer.servererror" messageexpr="ActualizaCDRData.errorMsg" />
+        	</if>
+		</block>
+		
+		<catch event="error.badfetch">
+			<goto next="#Inicio_Marca_MPPAL" />
+    	</catch>
+		<catch event="error.com.genesyslab.composer.servererror">
+			<goto next="#Inicio_Marca_MPPAL" />
+    	</catch>
 	</form>
 
 </vxml>

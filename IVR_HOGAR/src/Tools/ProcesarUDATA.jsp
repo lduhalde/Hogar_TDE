@@ -114,14 +114,21 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 			cliente_datos.put("mercado",out.getString("Var_Tipo_Temp"));
 		}
 		
-		if(!out.isNull("RutClientePCS")){
-			cliente_datos.put("RUT",out.getString("RutClientePCS").replace("-",""));
-		}
 		
-		if(!out.isNull("RUT")){
-			cliente_datos.put("RUT",out.getString("RUT"));
+		
+		if(!out.isNull("RUT") || !out.isNull("RutClientePCS")){
+			String r = "";
+			if(!out.isNull("RutClientePCS")){
+				r = out.getString("RutClientePCS");
+				char dv = r.charAt(r.length()-1);
+		    	String rutsindv = r.substring(0,r.length()-1);
+		    	r= rutsindv+"-"+dv;
+			}else{
+				r = out.getString("RUT");
+			}
+			cliente_datos.put("RUT",r);
 			JSONObject IndividualIdentification = new JSONObject();
-			IndividualIdentification.put("number",out.getString("RUT"));
+			IndividualIdentification.put("number",r);
 			IndividualIdentification.put("type","RUT");
 			cliente_datos.put("IndividualIdentification",IndividualIdentification);
 			IndividualIdentification=null;

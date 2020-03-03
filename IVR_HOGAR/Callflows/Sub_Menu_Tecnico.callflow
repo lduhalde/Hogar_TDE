@@ -101,25 +101,25 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_ONPMUkETEeqAbdVH3o8SjA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_R4N0pBTyEeq-P_JMPRlZrg" name="Emitir_Menu_Tecnico" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Menu_Dinamico.callflow">
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0pRTyEeq-P_JMPRlZrg" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0phTyEeq-P_JMPRlZrg" name="OpcionesDTMF" value="AppState.OpcionesDTMF" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0pxTyEeq-P_JMPRlZrg" name="OpcionesMenu" value="AppState.OpcionesMenu" description="Tarjetas en Formato TIPO1:NUMERO1|TIPO2:NUMERO2"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0qBTyEeq-P_JMPRlZrg" name="Token" value="Menu_Token" description="Token del Menu Seleccionado" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0qRTyEeq-P_JMPRlZrg" name="audioMaxIntentos" value="'IVR/General/MaximoIntentos.wav'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0qhTyEeq-P_JMPRlZrg" name="audioNoInput" value="" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0qxTyEeq-P_JMPRlZrg" name="audioNoMatch" value="" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0rBTyEeq-P_JMPRlZrg" name="audio_adicional" value="''" description="Audio a emitir al final del menu"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0rRTyEeq-P_JMPRlZrg" name="audio_finalizado" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0rhTyEeq-P_JMPRlZrg" name="audio_para" value="'es-CL/IVR/General/Silencio.wav'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0rxTyEeq-P_JMPRlZrg" name="corteMaxIntentos" value="'SI'" description="Si el menú debe cortar luego del máximo intentos"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0sBTyEeq-P_JMPRlZrg" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0sRTyEeq-P_JMPRlZrg" name="intentos" value="2" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0shTyEeq-P_JMPRlZrg" name="parametros_marcas_navegacion" value="" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0sxTyEeq-P_JMPRlZrg" name="traza_error" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0tBTyEeq-P_JMPRlZrg" name="traza_hangup" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0tRTyEeq-P_JMPRlZrg" name="usa_asterisco" value="'NO'" description="Si el menu va a emitir mensaje Asterisco para volver a menu anterior"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0thTyEeq-P_JMPRlZrg" name="var_timeout" value="5" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0txTyEeq-P_JMPRlZrg" name="willaccept" value="willaccept" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEUF1WEeqdktYx_hzrSw" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEUV1WEeqdktYx_hzrSw" name="OpcionesDTMF" value="AppState.OpcionesDTMF" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEUl1WEeqdktYx_hzrSw" name="OpcionesMenu" value="AppState.OpcionesMenu" description="Tarjetas en Formato TIPO1:NUMERO1|TIPO2:NUMERO2"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEU11WEeqdktYx_hzrSw" name="Token" value="Menu_Token" description="Token del Menu Seleccionado" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEVF1WEeqdktYx_hzrSw" name="audioMaxIntentos" value="'IVR/General/MaximoIntentos.wav'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEVV1WEeqdktYx_hzrSw" name="audioNoInput" value="'IVR/General/NoMatch.wav'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEVl1WEeqdktYx_hzrSw" name="audioNoMatch" value="'IVR/General/NoMatch.wav'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEV11WEeqdktYx_hzrSw" name="audio_adicional" value="''" description="Audio a emitir al final del menu"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEWF1WEeqdktYx_hzrSw" name="audio_finalizado" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEWV1WEeqdktYx_hzrSw" name="audio_para" value="'es-CL/IVR/General/Silencio.wav'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEWl1WEeqdktYx_hzrSw" name="corteMaxIntentos" value="'SI'" description="Si el menú debe cortar luego del máximo intentos"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEW11WEeqdktYx_hzrSw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEXF1WEeqdktYx_hzrSw" name="intentos" value="2" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEXV1WEeqdktYx_hzrSw" name="parametros_marcas_navegacion" value="AppState.parametros_marcas_navegacion" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEXl1WEeqdktYx_hzrSw" name="traza_error" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEX11WEeqdktYx_hzrSw" name="traza_hangup" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEYF1WEeqdktYx_hzrSw" name="usa_asterisco" value="'NO'" description="Si el menu va a emitir mensaje Asterisco para volver a menu anterior"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEYV1WEeqdktYx_hzrSw" name="var_timeout" value="5" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_ygyEYl1WEeqdktYx_hzrSw" name="willaccept" value="willaccept" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_R4N0uBTyEeq-P_JMPRlZrg" name="FinMarcaMenuTecnico" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
@@ -130,14 +130,14 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0vRTyEeq-P_JMPRlZrg" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_R4N0vhTyEeq-P_JMPRlZrg" name="Branch_Menu_Tecnico" category="Branching">
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAkEHAEeqmsrHy8XT3nw" name="AGENDAMIENTO" expression="AppState.Menu_Token=='AGENDAMIENTO'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAkUHAEeqmsrHy8XT3nw" name="PRBLM_LLAMADAS" expression="AppState.Menu_Token=='PRBLM_LLAMADAS'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAkkHAEeqmsrHy8XT3nw" name="PRBLM_TV" expression="AppState.Menu_Token=='PRBLM_TV'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAk0HAEeqmsrHy8XT3nw" name="PRBLM_TV_FIBRA" expression="AppState.Menu_Token=='PRBLM_TV_FIBRA'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAlEHAEeqmsrHy8XT3nw" name="PRBLM_NAVEGACION" expression="AppState.Menu_Token=='PRBLM_NAVEGACION'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAlUHAEeqmsrHy8XT3nw" name="PRBLM_NAVEGACION_FIBRA" expression="AppState.Menu_Token=='PRBLM_NAVEGACION'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAlkHAEeqmsrHy8XT3nw" name="EJECUTIVO" expression="AppState.Menu_Token=='EJECUTIVO'" postAction="AppState.salida_mp='EJECUTIVO'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_6SuAl0HAEeqmsrHy8XT3nw" name="VOLVER" expression="AppState.Menu_Token=='VOLVER'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_a4XkYF1dEeqdktYx_hzrSw" name="AGENDAMIENTO" expression="AppState.Menu_Token=='AGENDAMIENTO'" postAction="AppState.salida_mp='AGENDAMIENTO';&#xD;&#xA;AppState.vdn='TDE_ALAM_AGENDA'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_a4XkYV1dEeqdktYx_hzrSw" name="PRBLM_LLAMADAS" expression="AppState.Menu_Token=='PRBLM_LLAMADAS'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_a4XkYl1dEeqdktYx_hzrSw" name="PRBLM_TV" expression="AppState.Menu_Token=='PRBLM_TV'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_a4XkY11dEeqdktYx_hzrSw" name="PRBLM_TV_FIBRA" expression="AppState.Menu_Token=='PRBLM_TV_FIBRA'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_a4XkZF1dEeqdktYx_hzrSw" name="PRBLM_NAVEGACION" expression="AppState.Menu_Token=='PRBLM_NAVEGACION'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_a4XkZV1dEeqdktYx_hzrSw" name="PRBLM_NAVEGACION_FIBRA" expression="AppState.Menu_Token=='PRBLM_NAVEGACION'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_a4XkZl1dEeqdktYx_hzrSw" name="EJECUTIVO" expression="AppState.Menu_Token=='EJECUTIVO'" postAction="AppState.salida_mp='EJECUTIVO';&#xD;&#xA;AppState.vdn='TDE_ALAM_TEC_BAM'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_a4XkZ11dEeqdktYx_hzrSw" name="VOLVER" expression="AppState.Menu_Token=='VOLVER'"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_4eHG5RTzEeq-P_JMPRlZrg" name="SetAppnameMARCAS" category="Backend" uri="../src/Tools/cambiarAppnameMarcas.jsp">
       <exceptions>error.badfetch</exceptions>
