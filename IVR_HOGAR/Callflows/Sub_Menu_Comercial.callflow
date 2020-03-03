@@ -89,10 +89,9 @@
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_R4NNkBTyEeq-P_JMPRlZrg" name="Obtener_Menu_Comercial" category="Backend" uri="../src/Menu/Obtener_Menu_Comercial.jsp">
       <exceptions>error.badfetch</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_vvUKwBTzEeq-P_JMPRlZrg" name="OpcionesMenu" value="OpcionesMenu" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_vvUKwRTzEeq-P_JMPRlZrg" name="OpcionesDTMF" value="OpcionesDTMF" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_vvUKwhTzEeq-P_JMPRlZrg" name="cliente_datos" value="cliente_datos" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_vvUKwxTzEeq-P_JMPRlZrg" name="packSeleccionado" value="AppState.indexPack" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_3KgkgF2CEeqHqa-J0ckgaw" name="OpcionesMenu" value="OpcionesMenu" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_3KgkgV2CEeqHqa-J0ckgaw" name="OpcionesDTMF" value="OpcionesDTMF" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_3Kgkgl2CEeqHqa-J0ckgaw" name="cliente_datos" value="cliente_datos" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_R4N0oBTyEeq-P_JMPRlZrg" name="Inicio_Marca_MPPAL" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
