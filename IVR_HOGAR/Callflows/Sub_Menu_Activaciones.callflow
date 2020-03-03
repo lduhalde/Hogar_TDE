@@ -151,15 +151,15 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_VEgjaDlCEeqAQY2LdpR-zA" name="vdnServDestino" value="vdnServDestino" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_EPtJcDlCEeqAQY2LdpR-zA" name="Sub_Activaciones_LDI" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Activaciones_LDI.callflow">
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_WKxn4DlCEeqAQY2LdpR-zA" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_WKxn4TlCEeqAQY2LdpR-zA" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_WKxn4jlCEeqAQY2LdpR-zA" name="cliente_productos" value="AppState.cliente_productos" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_WKxn4zlCEeqAQY2LdpR-zA" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_WKxn5DlCEeqAQY2LdpR-zA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_WKxn5TlCEeqAQY2LdpR-zA" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_WKxn5jlCEeqAQY2LdpR-zA" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_WKxn5zlCEeqAQY2LdpR-zA" name="vdn" value="vdn" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_WKxn6DlCEeqAQY2LdpR-zA" name="vdnServDestino" value="vdnServDestino" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_thRmUFPzEeq-SKPDFW83VA" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_thRmUVPzEeq-SKPDFW83VA" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_thRmUlPzEeq-SKPDFW83VA" name="cliente_productos" value="AppState.cliente_productos" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_thRmU1PzEeq-SKPDFW83VA" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_thRmVFPzEeq-SKPDFW83VA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_thRmVVPzEeq-SKPDFW83VA" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_thRmVlPzEeq-SKPDFW83VA" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_thRmV1PzEeq-SKPDFW83VA" name="vdn" value="vdn" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_thRmWFPzEeq-SKPDFW83VA" name="vdnServDestino" value="vdnServDestino" description="Enter Description" type="output"/>
     </blocks>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_02m3AAscEeefgozPnLPD-g" fromBlock="_yFeMJAscEeefgozPnLPD-g" toBlock="_zC0JsLC9Eea4K57rnf44gQ"/>
     <links xmi:type="gvp:CallflowExceptionLink" xmi:id="_S2fDgCQpEeetZvwIJCPNag" name="connection.disconnect.hangup" fromBlock="_Z6Z-QJhsEeGerrt71FTn3g" toBlock="_PDYlVCQpEeetZvwIJCPNag"/>
