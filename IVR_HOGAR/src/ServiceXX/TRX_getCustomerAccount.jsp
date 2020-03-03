@@ -117,14 +117,14 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 					GeographicalAddressResponse = respJSON.getJSONObject("Body").getJSONObject("CustomerAccount").getJSONArray("GeographicalAddress");
 					for(int g=0; g<GeographicalAddressResponse.length();g++){
 						JSONObject GeographicalAddress = GeographicalAddressResponse.getJSONObject(g);
-						fEPCS.Debug("["+jspName+"] GeographicalAddress : "+GeographicalAddress.toString(), "INFO");
+						//fEPCS.Debug("["+jspName+"] GeographicalAddress : "+GeographicalAddress.toString(), "INFO");
 						if(GeographicalAddress.has("Address")){
 							if(GeographicalAddress.getJSONObject("Address").has("xygoAddressId") && GeographicalAddress.getJSONObject("Address").has("addressLine1") &&	GeographicalAddress.getJSONObject("Address").has("addressNumber")){
 								JSONObject address = new JSONObject();
 								address.put("addressId",GeographicalAddress.getJSONObject("Address").getString("xygoAddressId")); 
 								address.put("address",GeographicalAddress.getJSONObject("Address").getString("addressLine1")+" "+GeographicalAddress.getJSONObject("Address").getString("addressNumber"));
 								address.put("addressComumune",GeographicalAddress.getJSONObject("GeographicArea").getString("commune"));
-								fEPCS.Debug("["+jspName+"] Address : "+address.toString(), "INFO");
+								//fEPCS.Debug("["+jspName+"] Address : "+address.toString(), "INFO");
 								addressArray.put(address);
 							}else{
 								fEPCS.Debug("["+jspName+"] DIRECCION INCOMPLETA", "INFO");
