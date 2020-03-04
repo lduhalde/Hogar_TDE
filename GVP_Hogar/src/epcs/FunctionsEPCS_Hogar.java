@@ -39,6 +39,7 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 	public String  hostIvrToDB     = "127.0.0.1";
 	public int     portIvrToDB     = 50081;
 	public String InstanceID = "";
+	public static JSONObject Token_API = new JSONObject();
 	public FunctionsEPCS_Hogar(String ParametersFile)
 	{
 		super(ParametersFile);  			
@@ -409,7 +410,7 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 
 		return RequestHeader; 
 	}
-	
+
 	public String GetCustomerInfo(String movil,String IDllamada, String processID, String SourceID){
 		String wsName = "GetCustomerInfo";
 		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
@@ -562,222 +563,222 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		}
 		return resp;
 	}
-	
+
 	//GetCustomerAccountBalance
 
-		public String GetCustomerAccountBalance(String movil, String externalId, String IDllamada, String processID, String SourceID){
-			String wsName = "GetCustomerAccountBalance";
-			String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
-			int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
-			boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
+	public String GetCustomerAccountBalance(String movil, String externalId, String IDllamada, String processID, String SourceID){
+		String wsName = "GetCustomerAccountBalance";
+		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
+		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
 
 
-			String resp = "";
-			JSONObject request = new JSONObject();
+		String resp = "";
+		JSONObject request = new JSONObject();
 
-			JSONObject CustomerAccount = new JSONObject();
-			JSONObject BusinessInteraction = new JSONObject();
+		JSONObject CustomerAccount = new JSONObject();
+		JSONObject BusinessInteraction = new JSONObject();
 
-			JSONObject Asset = new JSONObject();
-			JSONObject MSISDN = new JSONObject();
+		JSONObject Asset = new JSONObject();
+		JSONObject MSISDN = new JSONObject();
 
-			JSONObject Body = new JSONObject();
+		JSONObject Body = new JSONObject();
 
-			try {	 
-				JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
+		try {	 
+			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
 
-				MSISDN.put("SN", movil);
-				Asset.put("MSISDN", MSISDN);
+			MSISDN.put("SN", movil);
+			Asset.put("MSISDN", MSISDN);
 
-				BusinessInteraction.put("interactionExternalID", externalId);
+			BusinessInteraction.put("interactionExternalID", externalId);
 
-				CustomerAccount.put("BusinessInteraction", BusinessInteraction);
-				CustomerAccount.put("Asset", Asset);
+			CustomerAccount.put("BusinessInteraction", BusinessInteraction);
+			CustomerAccount.put("Asset", Asset);
 
-				Body.put("CustomerAccount", CustomerAccount);
+			Body.put("CustomerAccount", CustomerAccount);
 
-				request.put("RequestHeader", header);
-				request.put("Body", Body);
+			request.put("RequestHeader", header);
+			request.put("Body", Body);
 
-				Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
-				resp = ejecutarRest(url,request,maxTimeout, debug);				
-				Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+			Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
+			resp = ejecutarRest(url,request,maxTimeout, debug);				
+			Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
 
-			}catch(Exception e) {
-				e.printStackTrace();
-				Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
-			}finally { 
-				request = null; 
-				CustomerAccount = null; 
-				Asset = null; 
-				MSISDN = null;
-				Body = null; 
-			}
-			return resp;
+		}catch(Exception e) {
+			e.printStackTrace();
+			Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
+		}finally { 
+			request = null; 
+			CustomerAccount = null; 
+			Asset = null; 
+			MSISDN = null;
+			Body = null; 
 		}
-		public String GetCustomerAccountBalanceAndCharge(String movil, String externalId, String IDllamada, String processID, String SourceID){
-			String wsName = "GetCustomerAccountBalanceAndCharge";
-			String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
-			int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
-			boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
+		return resp;
+	}
+	public String GetCustomerAccountBalanceAndCharge(String movil, String externalId, String IDllamada, String processID, String SourceID){
+		String wsName = "GetCustomerAccountBalanceAndCharge";
+		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
+		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
 
 
-			String resp = "";
-			JSONObject request = new JSONObject();
+		String resp = "";
+		JSONObject request = new JSONObject();
 
-			JSONObject CustomerAccount = new JSONObject();
-			JSONObject BusinessInteraction = new JSONObject();
+		JSONObject CustomerAccount = new JSONObject();
+		JSONObject BusinessInteraction = new JSONObject();
 
-			JSONObject Asset = new JSONObject();
-			JSONObject MSISDN = new JSONObject();
+		JSONObject Asset = new JSONObject();
+		JSONObject MSISDN = new JSONObject();
 
-			JSONObject Body = new JSONObject();
+		JSONObject Body = new JSONObject();
 
-			try {	 
-				JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
+		try {	 
+			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
 
-				MSISDN.put("SN", movil);
-				Asset.put("MSISDN", MSISDN);
+			MSISDN.put("SN", movil);
+			Asset.put("MSISDN", MSISDN);
 
-				BusinessInteraction.put("interactionExternalID", externalId);
+			BusinessInteraction.put("interactionExternalID", externalId);
 
-				CustomerAccount.put("BusinessInteraction", BusinessInteraction);
-				CustomerAccount.put("Asset", Asset);
+			CustomerAccount.put("BusinessInteraction", BusinessInteraction);
+			CustomerAccount.put("Asset", Asset);
 
-				Body.put("CustomerAccount", CustomerAccount);
+			Body.put("CustomerAccount", CustomerAccount);
 
-				request.put("RequestHeader", header);
-				request.put("Body", Body);
+			request.put("RequestHeader", header);
+			request.put("Body", Body);
 
-				Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
-				resp = ejecutarRest(url,request,maxTimeout, debug);				
-				Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+			Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
+			resp = ejecutarRest(url,request,maxTimeout, debug);				
+			Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
 
-			}catch(Exception e) {
-				e.printStackTrace();
-				Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
-			}finally { 
-				request = null; 
-				CustomerAccount = null; 
-				Asset = null; 
-				MSISDN = null;
-				Body = null; 
-			}
-			return resp;
+		}catch(Exception e) {
+			e.printStackTrace();
+			Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
+		}finally { 
+			request = null; 
+			CustomerAccount = null; 
+			Asset = null; 
+			MSISDN = null;
+			Body = null; 
 		}
-		public String GetUsageThresholdCounter(String movil, String ProductID, String IDllamada, String processID, String SourceID){
-			String wsName = "GetUsageThresholdCounter";
-			String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
-			int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
-			boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
+		return resp;
+	}
+	public String GetUsageThresholdCounter(String movil, String ProductID, String IDllamada, String processID, String SourceID){
+		String wsName = "GetUsageThresholdCounter";
+		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
+		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
 
 
-			String resp = "";
-			JSONObject request = new JSONObject();
+		String resp = "";
+		JSONObject request = new JSONObject();
 
-			JSONObject CustomerAccount = new JSONObject();
+		JSONObject CustomerAccount = new JSONObject();
 
-			JSONObject Asset = new JSONObject();
-			JSONObject MSISDN = new JSONObject();
-			JSONObject Product = new JSONObject();
+		JSONObject Asset = new JSONObject();
+		JSONObject MSISDN = new JSONObject();
+		JSONObject Product = new JSONObject();
 
-			JSONObject Body = new JSONObject();
+		JSONObject Body = new JSONObject();
 
-			try {	 
-				JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
-				
-				if(!ProductID.equals("")){
-					Product.put("ID", ProductID);
-					Body.put("Product", Product);
-				}
+		try {	 
+			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
 
-				MSISDN.put("SN", movil);
-				Asset.put("MSISDN", MSISDN);
-				CustomerAccount.put("Asset", Asset);
-				Body.put("CustomerAccount", CustomerAccount);
-
-				request.put("RequestHeader", header);
-				request.put("Body", Body);
-
-				Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
-				resp = ejecutarRest(url,request,maxTimeout, debug);				
-				Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
-
-			}catch(Exception e) {
-				e.printStackTrace();
-				Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
-			}finally { 
-				request = null; 
-				CustomerAccount = null; 
-				Asset = null; 
-				MSISDN = null;
-				Body = null; 
+			if(!ProductID.equals("")){
+				Product.put("ID", ProductID);
+				Body.put("Product", Product);
 			}
-			return resp;
+
+			MSISDN.put("SN", movil);
+			Asset.put("MSISDN", MSISDN);
+			CustomerAccount.put("Asset", Asset);
+			Body.put("CustomerAccount", CustomerAccount);
+
+			request.put("RequestHeader", header);
+			request.put("Body", Body);
+
+			Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
+			resp = ejecutarRest(url,request,maxTimeout, debug);				
+			Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
+		}finally { 
+			request = null; 
+			CustomerAccount = null; 
+			Asset = null; 
+			MSISDN = null;
+			Body = null; 
 		}
-		// createNotification (SMS)
+		return resp;
+	}
+	// createNotification (SMS)
 
-		public String CreateNotification(String externalID, String senderAlias, String originSystem, String receiver, String subject, String textMessage, String SourceID, String processID, String IDllamada)
-		{
-			String wsName = "CreateNotification";
-			String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
-			int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
-			boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
+	public String CreateNotification(String externalID, String senderAlias, String originSystem, String receiver, String subject, String textMessage, String SourceID, String processID, String IDllamada)
+	{
+		String wsName = "CreateNotification";
+		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
+		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
 
-			String resp = "";
-			JSONObject request = new JSONObject();
-		    JSONObject body = new JSONObject();
-		    JSONObject Notification = new JSONObject();
-			JSONArray ArrayParameter= new JSONArray();
-			JSONArray ArrayMessage= new JSONArray();
-			JSONObject Parameter = new JSONObject();
-		    JSONObject Message = new JSONObject();
-			
-		    try {
-		    	 
-					Message.put("deliveryMethod","CellPhone");
-					Message.put("senderAlias",senderAlias);
-					Message.put("receiver",receiver);
-					Message.put("subject",subject);
-					Message.put("textMessage",textMessage);
-			
-					Parameter.put("name", "requestId");
-					Parameter.put("value", IDllamada);
-					ArrayMessage.put(Message);
-					ArrayParameter.put(Parameter);
+		String resp = "";
+		JSONObject request = new JSONObject();
+		JSONObject body = new JSONObject();
+		JSONObject Notification = new JSONObject();
+		JSONArray ArrayParameter= new JSONArray();
+		JSONArray ArrayMessage= new JSONArray();
+		JSONObject Parameter = new JSONObject();
+		JSONObject Message = new JSONObject();
 
-					Notification.put("Message",ArrayMessage);            
-					Notification.put("originSystem", originSystem);
-		            Notification.put("externalID", externalID);
-					Notification.put("Parameter", ArrayParameter);            
-					
-				    body.put("Notification", Notification);
+		try {
 
-		            JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
-				    request.put("RequestHeader", header);
-				    request.put("Body", body);
+			Message.put("deliveryMethod","CellPhone");
+			Message.put("senderAlias",senderAlias);
+			Message.put("receiver",receiver);
+			Message.put("subject",subject);
+			Message.put("textMessage",textMessage);
 
-				    Debug("[FunctionsEPCS_PostPago."+wsName+"] Request "+request, "DEBUG");
-				    resp = ejecutarRest(url,request,maxTimeout, debug);				
-				    Debug("[FunctionsEPCS_PostPago."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+			Parameter.put("name", "requestId");
+			Parameter.put("value", IDllamada);
+			ArrayMessage.put(Message);
+			ArrayParameter.put(Parameter);
 
-		        }catch(Exception e) {
-				    e.printStackTrace();
-				    Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
-				}finally { 
-					request = null;           
-					body = null;              
-					Notification = null;      
-					Message = null;           
-					Parameter = null;         
-				
-				}
-				return resp;
-		    }
+			Notification.put("Message",ArrayMessage);            
+			Notification.put("originSystem", originSystem);
+			Notification.put("externalID", externalID);
+			Notification.put("Parameter", ArrayParameter);            
+
+			body.put("Notification", Notification);
+
+			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
+			request.put("RequestHeader", header);
+			request.put("Body", body);
+
+			Debug("[FunctionsEPCS_PostPago."+wsName+"] Request "+request, "DEBUG");
+			resp = ejecutarRest(url,request,maxTimeout, debug);				
+			Debug("[FunctionsEPCS_PostPago."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
+		}finally { 
+			request = null;           
+			body = null;              
+			Notification = null;      
+			Message = null;           
+			Parameter = null;         
+
+		}
+		return resp;
+	}
 	/*
 	 * GetActivities
 	 */
-	
+
 	/*
 	 * GetBundleProductOffering
 	 */
@@ -786,7 +787,7 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
 		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
 		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
-		
+
 		String resp = "";
 		JSONObject request = new JSONObject();
 		try {	 
@@ -811,17 +812,17 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
 		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
 		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
-		
+
 		String resp = "";
 		JSONObject request = new JSONObject();
-		
+
 		JSONObject body = new JSONObject();
 		JSONObject BillDocument = new JSONObject();
 		JSONObject CustomerAccount = new JSONObject();
 		JSONObject IndividualIdentification = new JSONObject();
 		JSONObject IssuingCompany = new JSONObject();
 		JSONObject OrganizationName = new JSONObject();
-		
+
 		try {	 
 			IndividualIdentification.put("number", Rut);
 			IndividualIdentification.put("type", "RUT");
@@ -832,7 +833,7 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 			BillDocument.put("CustomerAccount", CustomerAccount);
 			BillDocument.put("IssuingCompany", IssuingCompany);
 			body.put("BillDocument", BillDocument);
-			
+
 			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
 			request.put("RequestHeader", header);
 			request.put("Body", body);
@@ -943,7 +944,7 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 			Servicerequest.put("stateReason", stateReason);
 			Servicerequest.put("IndividualIdentification", individualIdentification);
 			if(Technical != null) {
- 				Servicerequest.put("Technical", Technical);
+				Servicerequest.put("Technical", Technical);
 			}
 			body.put("ServiceRequest", Servicerequest);
 			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
@@ -971,7 +972,7 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
 		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
 		String areaActivacion = Params.GetValue("areaActivacion_"+wsName, "Activación de Línea");
-		
+
 
 		String resp = ""; 
 		JSONObject request = new JSONObject();  
@@ -995,31 +996,31 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 				JSONObject entity = new JSONObject();
 				JSONObject equipmentInstallmentEvaluation = new JSONObject();
 				JSONObject productEvaluation = new JSONObject();
-				
+
 				entity.put("creditCheckDescription", "Credit Check Desc");
 				entity.put("creditCheckResultCode", "Pass");
-				
+
 				equipmentInstallmentEvaluation.put("maxQuantityEquipmentsWithInstallments", "5");
 				equipmentInstallmentEvaluation.put("maxQuantityPaymentsForEquipmentsWithInstallments", "3");
-				
+
 				entity.put("equipmentInstallmentEvaluation", equipmentInstallmentEvaluation);
-				
+
 				productEvaluation.put("advancedBilling", "0");
 				productEvaluation.put("maxAmountInsurancePOs", "0");
 				productEvaluation.put("maxFixedRecurringPayment", "40000");
 				productEvaluation.put("maxQuantityAdditionalPOs", "0");
 				productEvaluation.put("maxQuantityBasicPOs", "10");
 				productEvaluation.put("productFamily", "Mobile");
-				
+
 				entity.put("productEvaluation", productEvaluation);
-				
+
 				CustomerCreditCheck.put("entity", entity);
-				
+
 				RelatedEntity.put("CustomerCreditCheck",CustomerCreditCheck);
-				
+
 
 			}
-			
+
 			CustomerOrder.put("area", area); 
 			CustomerOrder.put("channel", "IVR");
 			CustomerOrder.put("createdBy", CustomerAccountID);
@@ -1039,19 +1040,19 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 				Individual.put("IndividualName", IndividualName);
 				CustomerAccount.put("Individual", Individual);
 			}
-			
+
 			RelatedParty.put("CustomerAccount", CustomerAccount);
 			RelatedParty.put("IndividualIdentification", IndividualIdentification); 
 			RelatedEntity.put("Account", Account);
 			RelatedEntity.put("SalesChannel", SalesChannel);
-			
+
 			if(GeographicAddress != null) {
 				RelatedEntity.put("GeographicAddress",GeographicAddress);
 			}
 			CustomerOrder.put("ServiceRequest", ServiceRequest);
 			CustomerOrder.put("RelatedParty", RelatedParty);
 			CustomerOrder.put("RelatedEntity", RelatedEntity);
-			
+
 			body.put("CustomerOrder", CustomerOrder);
 			JSONObject header = crearHeader(wsName, IDllamada, processID, sourceID);
 			request.put("RequestHeader", header);
@@ -1366,71 +1367,71 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		 * Descripcion: Se debe cambiar URL y version de WS. http://10.49.15.149:7010/ES/JSON/CreateOneClickToOrder/v2
 		 *              Se modifica request para WS CreateOneClickToOrder/v2
 		 *              Se agrega parametro "bscsCustomerId" tipo String, último parametro
-		
+
 		 * Url antes modificación:
 			String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
-					
+
 		 * Url modificada:
 			String url = Params.GetValue("URL_"+wsName, "http://10.49.15.149:7010/ES/JSON/"+wsName+"/v2");	
 
-         ***
+		 ***
 		 * Fecha: 2019-05-11
 		 * Descripcion: Se agrega cualidad para generar 2 requests. 
 		 *              Request para compra de bolsa con saldo (operationType = "CompraBolsa")
 		 *              Request para compra de bolsa con ptos ZE (operationType = "BolsaPuntos")
 		 *  
-         ***
+		 ***
 		 * Fecha: 2019-06-10
 		 * Descripcion: Se agrega cualidad para generar:
 		 *              Request para Cambio de Plan (operationType = "CambioPlan")	
 		 *              y se agrega opción por defecto
-		**********/				
-				
+		 **********/				
+
 		String wsName = "CreateOneClickToOrder";
 		String url = Params.GetValue("URL_"+wsName, "http://10.49.15.149:7010/ES/JSON/"+wsName+"/v2");
 		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
 		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
-		
+
 		String resp = "";
-		
+
 		JSONObject request = new JSONObject();
 		JSONObject body = new JSONObject();
-		
+
 		JSONObject Asset = new JSONObject(); //->body
 		JSONObject MSISDN = new JSONObject();//->Asset
-		
+
 		JSONObject CustomerOrder = new JSONObject();//->body
 		JSONObject SalesChannel = new JSONObject(); //->CustomerOrder
-		
+
 		JSONArray ArrayCustomerOrderItem = new JSONArray(); //->body
-		
+
 		JSONObject CustomerOrderItem1 = new JSONObject();//->ArrayCustomerOrderItem
 		JSONObject CustomerOrderItem2 = new JSONObject();//->ArrayCustomerOrderItem
-		
+
 		JSONObject ProductOffering1 = new JSONObject();//->CustomerOrderItem1			
 		JSONObject ProductOffering2 = new JSONObject();//->CustomerOrderItem2
 		JSONObject quantity = new JSONObject();	//->ProductOffering
-		
+
 		JSONObject Account = new JSONObject(); //->RelatedEntity
 		JSONObject BillingAccount = new JSONObject(); //->Account
 		JSONObject RelatedEntity = new JSONObject(); //->body
-		
+
 		JSONObject RelatedParty = new JSONObject(); //->body
 		JSONObject CustomerAccount = new JSONObject(); //->RelatedParty
 		JSONObject LoyaltyAccount = new JSONObject(); //->CustomerAccount
 		JSONObject LoyaltyBalance = new JSONObject(); //->LoyaltyAccount
 		JSONObject remainingPoints = new JSONObject(); //->LoyaltyBalance
-		
+
 		JSONObject Product = new JSONObject(); //->CustomerOrderItem
 		JSONObject ProductSpecification = new JSONObject(); //->Product
 		JSONObject ProductSpecCharacteristic = new JSONObject(); //->ProductSpecification
-		
+
 		try {	 
 			Random rng = new Random();
 			long timeStamp=System.currentTimeMillis()/1000;
 			long dig = rng.nextInt(900)+99;
 			String requestID = "0078"+timeStamp+dig;				
-			
+
 			MSISDN.put("SN", SN);
 			Asset.put("ID",planActual);
 			Asset.put("MSISDN", MSISDN);			
@@ -1443,42 +1444,42 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 			CustomerOrder.put("requestID", requestID);
 			CustomerOrder.put("subArea", subArea);
 			CustomerOrder.put("operationType", operationType);
-			
+
 			SalesChannel.put("createBy", "AUTOMATICOENTEL");
 			SalesChannel.put("orderCommercialChannel", "IVR");
-			
+
 			BillingAccount.put("bscsCustomerId", bscsCustomerId);
 			Account.put("BillingAccount", BillingAccount);
 			RelatedEntity.put("Account", Account);			
-			
+
 			CustomerOrder.put("SalesChannel", SalesChannel);
 			CustomerOrder.put("RelatedEntity", RelatedEntity);
-			
+
 			remainingPoints.put("amount", PtosZEToBurn);
 			LoyaltyBalance.put("remainingPoints", remainingPoints);
 			LoyaltyAccount.put("LoyaltyBalance", LoyaltyBalance);
 			CustomerAccount.put("LoyaltyAccount", LoyaltyAccount);
 			RelatedParty.put("CustomerAccount", CustomerAccount);
-			
+
 			CustomerOrderItem1.put("action", action);
 			CustomerOrderItem1.put("biType", biType_Item);
-			
+
 			quantity.put("amount", 1);
-			
+
 			ProductOffering1.put("ID", PO_ID);
 			ProductOffering1.put("quantity", quantity);			
-			
+
 			CustomerOrderItem1.put("ProductOffering", ProductOffering1);	
-			
+
 			ProductSpecCharacteristic.put("name", Product_name);
 			ProductSpecCharacteristic.put("value", Product_value);
 			ProductSpecCharacteristic.put("classification", classification);
 			ProductSpecification.put("ProductSpecCharacteristic", ProductSpecCharacteristic);
 			Product.put("ProductSpecification", ProductSpecification);
-			
+
 			CustomerOrderItem2.put("action", action);
 			CustomerOrderItem2.put("biType", biType_Item);
-			
+
 			ProductOffering2.put("ID", PO_ID_DISC);
 			ProductOffering2.put("Product", Product);
 			ProductOffering2.put("quantity", quantity);	
@@ -1486,49 +1487,49 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 
 			ArrayCustomerOrderItem.put(CustomerOrderItem1);
 			ArrayCustomerOrderItem.put(CustomerOrderItem2);
-	
-			switch (operationType){
-				case "BolsaPuntos":					
-					Debug("[FunctionsEPCS."+wsName+"] Request para BolsaPuntos ", "DEBUG");
-					
-					CustomerOrder.put("RelatedParty", RelatedParty);
 
-					body.put("Asset", Asset);	
-					body.put("CustomerOrder", CustomerOrder);
-					body.put("CustomerOrderItem", ArrayCustomerOrderItem);							
-					
+			switch (operationType){
+			case "BolsaPuntos":					
+				Debug("[FunctionsEPCS."+wsName+"] Request para BolsaPuntos ", "DEBUG");
+
+				CustomerOrder.put("RelatedParty", RelatedParty);
+
+				body.put("Asset", Asset);	
+				body.put("CustomerOrder", CustomerOrder);
+				body.put("CustomerOrderItem", ArrayCustomerOrderItem);							
+
 				break;
-				
-				case "CompraBolsa":
-					Debug("[FunctionsEPCS."+wsName+"] Request para CompraBolsa" , "DEBUG");
-					
-					body.put("Asset", Asset);	
-					body.put("CustomerOrder", CustomerOrder);
-					body.put("CustomerOrderItem", CustomerOrderItem1);	
-					
+
+			case "CompraBolsa":
+				Debug("[FunctionsEPCS."+wsName+"] Request para CompraBolsa" , "DEBUG");
+
+				body.put("Asset", Asset);	
+				body.put("CustomerOrder", CustomerOrder);
+				body.put("CustomerOrderItem", CustomerOrderItem1);	
+
 				break;
-				
-				case "CambioPlan":
-					Debug("[FunctionsEPCS."+wsName+"] Request para CambioPlan", "DEBUG");
-					
-					body.put("Asset", Asset);	
-					body.put("CustomerOrder", CustomerOrder);
-					body.put("CustomerOrderItem", CustomerOrderItem1);	
-					
+
+			case "CambioPlan":
+				Debug("[FunctionsEPCS."+wsName+"] Request para CambioPlan", "DEBUG");
+
+				body.put("Asset", Asset);	
+				body.put("CustomerOrder", CustomerOrder);
+				body.put("CustomerOrderItem", CustomerOrderItem1);	
+
 				break;				
-				
-	            default: 
-	            	//usa estructura de case "CompraBolsa" como request por defecto
-	            	Debug("[FunctionsEPCS."+wsName+"] Request por defecto/generico ", "DEBUG");
-	            	
-					body.put("Asset", Asset);	
-					body.put("CustomerOrder", CustomerOrder);
-					body.put("CustomerOrderItem", CustomerOrderItem1);					
-			
+
+			default: 
+				//usa estructura de case "CompraBolsa" como request por defecto
+				Debug("[FunctionsEPCS."+wsName+"] Request por defecto/generico ", "DEBUG");
+
+				body.put("Asset", Asset);	
+				body.put("CustomerOrder", CustomerOrder);
+				body.put("CustomerOrderItem", CustomerOrderItem1);					
+
 			}
-			
+
 			//***
-			
+
 			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
 			request.put("RequestHeader", header);
 			request.put("Body", body);
@@ -1550,15 +1551,15 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 			RelatedEntity= null;
 			//***
 			RelatedParty = null;
-			
+
 			CustomerOrderItem1 = null;
 			CustomerOrderItem2 = null;
-			
+
 			ProductOffering1 = null;
 			ProductOffering2 = null;
 			//***
 			quantity = null;
-		
+
 		}
 		return resp;
 	}
@@ -1600,7 +1601,7 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		}
 		return resp;
 	}
-	
+
 	public String SetSignalRefresh(JSONObject body, String IDllamada, String processID, String SourceID){
 		String wsName="SetSignalRefresh";
 		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.86:7011/ES/JSON/"+wsName+"/v1");
@@ -1628,9 +1629,9 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		}
 		return resp;
 	}
-	
-	
-	public String Get_TokenAPI(String URLToken, String ClientID, String ClientSecret, String GrantType) throws JSONException, IOException{
+
+
+	public String GetTokenAPI(String URLToken, String ClientID, String ClientSecret, String GrantType) throws JSONException, IOException{
 
 		/*
 		 * Desc:  Recupera y retorna JSON de respuesta con información de TOKEN
@@ -1640,65 +1641,109 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		 * Fecha: 2020-02-11		 
 		 *        
 		 * */
-		
+
 		String resp_JsonToken = "";
-		String wsName="Get_TokenAPI";
+		String wsName="GetTokenAPI";
+		Debug("[FunctionsEPCS."+wsName+"] INICIO", "DEBUG");
 		
 		try {
-			
+
 			URL url_gettoken = new URL(URLToken);
-	        Map<String,Object> params = new LinkedHashMap<>();
-	        
-	        params.put("client_id", ClientID);
-	        params.put("client_secret", ClientSecret);
-	        params.put("grant_type", GrantType);        
-	
-	        StringBuilder postData = new StringBuilder();
-	        
-	        for (Map.Entry<String,Object> param : params.entrySet()) {
-	        	
-	            if (postData.length() != 0) postData.append('&');
-	            postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
-	            postData.append('=');
-	            postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
-	            
-	        }
-	        
-	        byte[] postDataBytes = postData.toString().getBytes("UTF-8");
-	
-	        HttpURLConnection conn = (HttpURLConnection)url_gettoken.openConnection();
-	        
-	        conn.setRequestMethod("POST");
-	        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-	        conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
-	        conn.setDoOutput(true);
-	        conn.getOutputStream().write(postDataBytes);
-	
-	        Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-	       
-	        StringBuilder sb = new StringBuilder();
-	        for (int c; (c = in.read()) >= 0;)
-	            sb.append((char)c);
-	        resp_JsonToken = sb.toString();
-			      
-      
-        } catch (MalformedURLException e) {
-            Debug("[FunctionsEPCS."+wsName+"] URL no es valida: " + e.getMessage(), "DEBUG");
-            
-        } catch (IOException e) {
-            Debug("[FunctionsEPCS."+wsName+"] Error de I/O: " + e.getMessage(), "DEBUG");
-            
-        } catch (Exception e2) {
-            e2.printStackTrace();
-            Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e2.getMessage(), "DEBUG");
-			
-        }
-		
+			Map<String,Object> params = new LinkedHashMap<>();
+
+			params.put("client_id", ClientID);
+			params.put("client_secret", ClientSecret);
+			params.put("grant_type", GrantType);        
+
+			StringBuilder postData = new StringBuilder();
+
+			for (Map.Entry<String,Object> param : params.entrySet()) {
+
+				if (postData.length() != 0) postData.append('&');
+				postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+				postData.append('=');
+				postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+
+			}
+
+			byte[] postDataBytes = postData.toString().getBytes("UTF-8");
+
+			HttpURLConnection conn = (HttpURLConnection)url_gettoken.openConnection();
+
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+			conn.setDoOutput(true);
+			conn.getOutputStream().write(postDataBytes);
+
+			Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+
+			StringBuilder sb = new StringBuilder();
+			for (int c; (c = in.read()) >= 0;)
+				sb.append((char)c);
+			resp_JsonToken = sb.toString();
+
+		} catch (MalformedURLException e) {
+			Debug("[FunctionsEPCS."+wsName+"] URL no es valida: " + e.getMessage(), "DEBUG");
+
+		} catch (IOException e) {
+			Debug("[FunctionsEPCS."+wsName+"] Error de I/O: " + e.getMessage(), "DEBUG");
+
+		} catch (Exception e2) {
+			e2.printStackTrace();
+			Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e2.getMessage(), "DEBUG");
+
+		}
+
+
 		return resp_JsonToken;
-		
+
 	}	
-	
-	
-	
-	
+	public void SetTokenAPI(){
+		String wsName="SetTokenAPI";
+		String URLToken = Params.GetValue("URL_GetTokenAPI", "https://apiinternaluat2.entel.cl/auth/oauth/v2/token");
+		String ClientID = Params.GetValue("USER_GetTokenAPI", "l779febd401d7348cba2ba4cabecd183cc");
+		String ClientSecret= Params.GetValue("PASS_GetTokenAPI", "aeb13fb74957479e9e6a023a5ceb87eb");
+		String GrantType= Params.GetValue("GRANT_GetTokenAPI", "client_credentials");
+		Debug("[FunctionsEPCS."+wsName+"] INICIO", "DEBUG");
+		try {
+				JSONObject newToken = new JSONObject(GetTokenAPI(URLToken, ClientID, ClientSecret, GrantType));
+				if(newToken.has("access_token")){
+					int time = (int) (System.currentTimeMillis()/1000);
+					newToken.put("last_call", time);
+					String token_string = newToken.getString("token_type")+" "+newToken.getString("access_token");
+					newToken.put("token_string", token_string);
+					Token_API = newToken;
+				}else{
+					Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: No se encuentra access_token", "DEBUG");
+					Token_API = newToken;
+				}
+		} catch (JSONException e) {
+			Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
+		} catch (IOException e) {
+			Debug("[FunctionsEPCS."+wsName+"] Error de I/O: " + e.getMessage(), "DEBUG");
+		}
+	}
+	public void ValidateTokenAPI(){
+		Debug("[FunctionsEPCS.ValidateTokenAPI] INICIO", "DEBUG");
+		try {
+			if(!Token_API.has("last_call")){
+				SetTokenAPI();
+			}else{
+				int last_call = Token_API.getInt("last_call");
+				Debug("[FunctionsEPCS.ValidateTokenAPI] last_call: "+last_call, "DEBUG");
+				int time = (int) (System.currentTimeMillis()/1000);
+				int expires_in = Integer.parseInt(Token_API.getString("expires_in"));
+				Debug("[FunctionsEPCS.ValidateTokenAPI] expires_in: "+expires_in, "DEBUG");
+				if((time-last_call)>=expires_in){
+					SetTokenAPI();
+				}
+			}
+			Debug("[FunctionsEPCS.ValidateTokenAPI] Token_API: "+Token_API.toString(), "DEBUG");
+		} catch (JSONException e) {
+			Debug("[FunctionsEPCS.ValidateTokenAPI] Ocurrió un error: "+e.getMessage(), "DEBUG");
+		}
+	}
+
+
 }
