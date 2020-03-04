@@ -120,9 +120,11 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 			String r = "";
 			if(!out.isNull("RutClientePCS")){
 				r = out.getString("RutClientePCS");
-				char dv = r.charAt(r.length()-1);
-		    	String rutsindv = r.substring(0,r.length()-1);
-		    	r= rutsindv+"-"+dv;
+				if(r.indexOf("-") == -1){
+					char dv = r.charAt(r.length()-1);
+			    	String rutsindv = r.substring(0,r.length()-1);
+			    	r= rutsindv+"-"+dv;
+				}
 			}else{
 				r = out.getString("RUT");
 			}
