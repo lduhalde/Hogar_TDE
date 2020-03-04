@@ -154,7 +154,17 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_hLlZZF4iEeqR6o7rc-PFBw" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_hLlZZV4iEeqR6o7rc-PFBw" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
     </blocks>
-    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_i7VqUF4jEeqR6o7rc-PFBw" name="Sub_Menu_Dificultad_Llamadas" category="Subdialog"/>
+    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_i7VqUF4jEeqR6o7rc-PFBw" name="Sub_Menu_Dificultad_Llamadas" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Menu_Dificultades_Llamadas.callflow">
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_aANlwF5MEeq86vwlS5JcZQ" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_aANlwV5MEeq86vwlS5JcZQ" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_aANlwl5MEeq86vwlS5JcZQ" name="cliente_productos" value="AppState.cliente_productos" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_aANlw15MEeq86vwlS5JcZQ" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_aANlxF5MEeq86vwlS5JcZQ" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_aANlxV5MEeq86vwlS5JcZQ" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_aANlxl5MEeq86vwlS5JcZQ" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_aANlx15MEeq86vwlS5JcZQ" name="vdn" value="vdn" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_aANlyF5MEeq86vwlS5JcZQ" name="vdnServDestino" value="vdnServDestino" description="Enter Description" type="output"/>
+    </blocks>
     <links xmi:type="gvp:CallflowExceptionLink" xmi:id="_S2fDgCQpEeetZvwIJCPNag" name="connection.disconnect.hangup" fromBlock="_Z6Z-QJhsEeGerrt71FTn3g" toBlock="_PDYlVCQpEeetZvwIJCPNag"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_ZoRlQJ_lEeiEmN8umv-nEA" fromBlock="_4aNd75_kEeiEmN8umv-nEA" toBlock="_4aNd7Z_kEeiEmN8umv-nEA"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_aAROgJ_lEeiEmN8umv-nEA" fromBlock="_4aNd7Z_kEeiEmN8umv-nEA" toBlock="_4aNd85_kEeiEmN8umv-nEA"/>
