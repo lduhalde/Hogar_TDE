@@ -100,25 +100,25 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_kvuXQkESEeqAbdVH3o8SjA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_R4N0pBTyEeq-P_JMPRlZrg" name="Emitir_Menu_Comercial" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Menu_Dinamico.callflow">
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0pRTyEeq-P_JMPRlZrg" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0phTyEeq-P_JMPRlZrg" name="OpcionesDTMF" value="AppState.OpcionesDTMF" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0pxTyEeq-P_JMPRlZrg" name="OpcionesMenu" value="AppState.OpcionesMenu" description="Tarjetas en Formato TIPO1:NUMERO1|TIPO2:NUMERO2"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0qBTyEeq-P_JMPRlZrg" name="Token" value="Menu_Token" description="Token del Menu Seleccionado" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0qRTyEeq-P_JMPRlZrg" name="audioMaxIntentos" value="'IVR/General/MaximoIntentos.wav'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0qhTyEeq-P_JMPRlZrg" name="audioNoInput" value="" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0qxTyEeq-P_JMPRlZrg" name="audioNoMatch" value="" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0rBTyEeq-P_JMPRlZrg" name="audio_adicional" value="''" description="Audio a emitir al final del menu"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0rRTyEeq-P_JMPRlZrg" name="audio_finalizado" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0rhTyEeq-P_JMPRlZrg" name="audio_para" value="'es-CL/IVR/General/Silencio.wav'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0rxTyEeq-P_JMPRlZrg" name="corteMaxIntentos" value="'SI'" description="Si el menú debe cortar luego del máximo intentos"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0sBTyEeq-P_JMPRlZrg" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0sRTyEeq-P_JMPRlZrg" name="intentos" value="2" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0shTyEeq-P_JMPRlZrg" name="parametros_marcas_navegacion" value="" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0sxTyEeq-P_JMPRlZrg" name="traza_error" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0tBTyEeq-P_JMPRlZrg" name="traza_hangup" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0tRTyEeq-P_JMPRlZrg" name="usa_asterisco" value="'NO'" description="Si el menu va a emitir mensaje Asterisco para volver a menu anterior"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0thTyEeq-P_JMPRlZrg" name="var_timeout" value="5" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0txTyEeq-P_JMPRlZrg" name="willaccept" value="willaccept" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP48F4KEeqR6o7rc-PFBw" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP48V4KEeqR6o7rc-PFBw" name="OpcionesDTMF" value="AppState.OpcionesDTMF" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP48l4KEeqR6o7rc-PFBw" name="OpcionesMenu" value="AppState.OpcionesMenu" description="Tarjetas en Formato TIPO1:NUMERO1|TIPO2:NUMERO2"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP4814KEeqR6o7rc-PFBw" name="Token" value="Menu_Token" description="Token del Menu Seleccionado" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP49F4KEeqR6o7rc-PFBw" name="audioMaxIntentos" value="'IVR/General/MaximoIntentos.wav'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP49V4KEeqR6o7rc-PFBw" name="audioNoInput" value="'IVR/General/NoMatch.wav'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP49l4KEeqR6o7rc-PFBw" name="audioNoMatch" value="'IVR/General/NoMatch.wav'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP4914KEeqR6o7rc-PFBw" name="audio_adicional" value="''" description="Audio a emitir al final del menu"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP4-F4KEeqR6o7rc-PFBw" name="audio_finalizado" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP4-V4KEeqR6o7rc-PFBw" name="audio_para" value="'es-CL/IVR/General/Silencio.wav'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP4-l4KEeqR6o7rc-PFBw" name="corteMaxIntentos" value="'SI'" description="Si el menú debe cortar luego del máximo intentos"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP4-14KEeqR6o7rc-PFBw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP4_F4KEeqR6o7rc-PFBw" name="intentos" value="2" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP4_V4KEeqR6o7rc-PFBw" name="parametros_marcas_navegacion" value="AppState.parametros_marcas_navegacion" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP4_l4KEeqR6o7rc-PFBw" name="traza_error" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP4_14KEeqR6o7rc-PFBw" name="traza_hangup" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP5AF4KEeqR6o7rc-PFBw" name="usa_asterisco" value="'NO'" description="Si el menu va a emitir mensaje Asterisco para volver a menu anterior"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP5AV4KEeqR6o7rc-PFBw" name="var_timeout" value="5" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__mP5Al4KEeqR6o7rc-PFBw" name="willaccept" value="willaccept" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_R4N0uBTyEeq-P_JMPRlZrg" name="FinMarcaMenuComercial" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
@@ -129,12 +129,12 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_R4N0vRTyEeq-P_JMPRlZrg" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_R4N0vhTyEeq-P_JMPRlZrg" name="Branch_Menu_Comercial" category="Branching">
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_tI3dcFPfEeqOh-kpT0w2Dw" name="SALDO_NUMERO" expression="AppState.Menu_Token=='SALDO_NUMERO'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_tI3dcVPfEeqOh-kpT0w2Dw" name="PLAN_MONTO_LPAGOS" expression="AppState.Menu_Token=='PLAN_MONTO_LPAGOS'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_tI3dclPfEeqOh-kpT0w2Dw" name="ACTIVACIONES" expression="AppState.Menu_Token=='ACTIVACIONES'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_tI3dc1PfEeqOh-kpT0w2Dw" name="COMPRA_BOLSA" expression="AppState.Menu_Token=='COMPRA_BOLSA'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_tI3ddFPfEeqOh-kpT0w2Dw" name="EJECUTIVO" expression="AppState.Menu_Token=='EJECUTIVO'" postAction="AppState.salida_mp='EJECUTIVO'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_tI3ddVPfEeqOh-kpT0w2Dw" name="VOLVER" expression="AppState.Menu_Token=='VOLVER'" postAction="AppState.salida_mp='VOLVER'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_y6lMsF4MEeqR6o7rc-PFBw" name="SALDO_NUMERO" expression="AppState.Menu_Token=='SALDO_NUMERO'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_y6lMsV4MEeqR6o7rc-PFBw" name="PLAN_MONTO_LPAGOS" expression="AppState.Menu_Token=='PLAN_MONTO_LPAGOS'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_y6lMsl4MEeqR6o7rc-PFBw" name="ACTIVACIONES" expression="AppState.Menu_Token=='ACTIVACIONES'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_y6lMs14MEeqR6o7rc-PFBw" name="COMPRA_BOLSA" expression="AppState.Menu_Token=='COMPRA_BOLSA'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_y6lMtF4MEeqR6o7rc-PFBw" name="EJECUTIVO" expression="AppState.Menu_Token=='EJECUTIVO'" postAction="AppState.salida_mp='EJECUTIVO';AppState.vdn='TDE_ALAM_COM_INTERNET'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_y6lMtV4MEeqR6o7rc-PFBw" name="VOLVER" expression="AppState.Menu_Token=='VOLVER'" postAction="AppState.salida_mp='VOLVER'"/>
     </blocks>
     <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_R4ObsBTyEeq-P_JMPRlZrg" name="Sub_Menu_Saldo_Numero" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Menu_Saldo_Numero.callflow">
       <parameters xmi:type="datatypes:Parameter" xmi:id="_jMe_gBT3Eeq-P_JMPRlZrg" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
@@ -389,7 +389,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_b-uKkhTyEeq-P_JMPRlZrg" x="5" y="5"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_b-tjgRTyEeq-P_JMPRlZrg" fontName="Ubuntu"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_b-uKkBTyEeq-P_JMPRlZrg" points="[53, 25, -461, -213]$[53, 24, -461, -214]$[514, 24, 0, -214]$[514, 213, 0, -25]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_b-uKkBTyEeq-P_JMPRlZrg" points="[53, 25, -461, -213]$[53, 43, -461, -195]$[514, 43, 0, -195]$[514, 213, 0, -25]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_b-v_wBTyEeq-P_JMPRlZrg" id="(0.8865248226950354,1.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_b-v_wRTyEeq-P_JMPRlZrg" id="(0.6277372262773723,0.18)"/>
     </edges>
@@ -486,7 +486,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_FHR-IRUFEeq-P_JMPRlZrg" x="-4" y="-236"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_FHRXEhUFEeq-P_JMPRlZrg" fontName="Ubuntu"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_FHRXExUFEeq-P_JMPRlZrg" points="[-18, 25, -383, -417]$[-18, 75, -383, -367]$[42, 75, -323, -367]$[42, 95, -323, -347]$[365, 95, 0, -347]$[365, 417, 0, -25]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_FHRXExUFEeq-P_JMPRlZrg" points="[-18, 25, -383, -417]$[-18, 75, -383, -367]$[42, 75, -323, -367]$[42, 111, -323, -331]$[365, 111, 0, -331]$[365, 417, 0, -25]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FHSlMBUFEeq-P_JMPRlZrg" id="(0.36879432624113473,1.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FHSlMRUFEeq-P_JMPRlZrg" id="(0.5181818181818182,0.0)"/>
     </edges>

@@ -102,6 +102,8 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 					String CFS = fEPCS.Params.GetValue("CFSS_"+technology.toUpperCase(),"CFSS_HG_BARRING_POS_PRE_TFI,CFSS_HG_BARRING_POS_TFI");
 					String rfsLDI = fEPCS.Params.GetValue("RFS_LDI_"+technology.toUpperCase(),"BAR_VOICE_INTERNATIONAL");
 					String rfsCEL = fEPCS.Params.GetValue("RFS_CEL_"+technology.toUpperCase(),"BAR_NUMBER_MOVIL");
+					String bloq_ldi = "true";
+					String bloq_cel = "true";
 					fEPCS.Debug("["+jspName+"] technology: "+technology, "INFO");
 					fEPCS.Debug("["+jspName+"] CFSS: "+CFS, "INFO");
 					fEPCS.Debug("["+jspName+"] rfsLDI: "+rfsLDI, "INFO");
@@ -121,16 +123,17 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		        							if(CFS.indexOf(Services.getJSONObject(s).getString("serviceSpecification"))>-1){
 		        								fEPCS.Debug("["+jspName+"] BARRING ENCONTRADO", "INFO");
 		        								JSONArray serviceCharacteristics = Services.getJSONObject(s).getJSONArray("serviceCharacteristics");
-		        								String bloq_ldi = "true";
-		        								String bloq_cel = "true";
 		        								for(int sc=0; sc<serviceCharacteristics.length();sc++){
-		        									if(serviceCharacteristics.getJSONObject(sc).getString("name").equals(rfsLDI)){
-		        										fEPCS.Debug("["+jspName+"] serviceCharacteristics LDI ENCONTRADA", "INFO");
-		        										bloq_ldi = serviceCharacteristics.getJSONObject(sc).getString("value");
-		        									}
-													if(serviceCharacteristics.getJSONObject(sc).getString("name").equals(rfsCEL)){
-														fEPCS.Debug("["+jspName+"] serviceCharacteristics CELULAR ENCONTRADA", "INFO");
-														bloq_cel = serviceCharacteristics.getJSONObject(sc).getString("value");
+		        									fEPCS.Debug("["+jspName+"] serviceCharacteristics: "+serviceCharacteristics.getJSONObject(sc).toString(), "INFO");
+		        									if(serviceCharacteristics.getJSONObject(sc).has("name")){
+		        										if(serviceCharacteristics.getJSONObject(sc).getString("name").equals(rfsLDI)){
+		        											fEPCS.Debug("["+jspName+"] serviceCharacteristics LDI ENCONTRADA", "INFO");
+		        											bloq_ldi = serviceCharacteristics.getJSONObject(sc).getString("value");
+		        										}
+														if(serviceCharacteristics.getJSONObject(sc).getString("name").equals(rfsCEL)){
+															fEPCS.Debug("["+jspName+"] serviceCharacteristics CELULAR ENCONTRADA", "INFO");
+															bloq_cel = serviceCharacteristics.getJSONObject(sc).getString("value");
+		        										}
 		        									}
 		        								}
 		        								bundle.put("BLOQUEO_LDI",bloq_ldi);
@@ -148,6 +151,10 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		        			if(bundle.has("BLOQUEO_LDI")){
     							break;
     						}
+		        		}
+		        		if(!bundle.has("BLOQUEO_LDI")){
+		        			bundle.put("BLOQUEO_LDI",bloq_ldi);
+							bundle.put("BLOQUEO_CEL",bloq_cel);
 		        		}
 		        		Products=null;
 					}else{

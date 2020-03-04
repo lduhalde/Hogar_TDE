@@ -110,12 +110,13 @@
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_HMrHpe6VEemIYNuZM9VwEw" name="Procesar_UDATA" condition="" category="Backend" uri="../src/Tools/ProcesarUDATA.jsp">
       <exceptions>None</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_gKhFQO6VEemIYNuZM9VwEw" name="separador" value="&quot;\\*&quot;" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_gKhFQe6VEemIYNuZM9VwEw" name="VarIN" value="AppState.UserData2Genesys" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_gKhFQu6VEemIYNuZM9VwEw" name="OUT" value="UDATA" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_gKhFQ-6VEemIYNuZM9VwEw" name="cliente_datos" value="cliente_datos" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_gKhFRO6VEemIYNuZM9VwEw" name="Var_Tipo_Call" value="Var_Tipo_Call" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_gKhFRe6VEemIYNuZM9VwEw" name="Var_PCS" value="Var_PCS" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_Hy17YF4VEeqR6o7rc-PFBw" name="separador" value="&quot;\\*&quot;" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_Hy17YV4VEeqR6o7rc-PFBw" name="VarIN" value="AppState.UserData2Genesys" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_Hy17Yl4VEeqR6o7rc-PFBw" name="OUT" value="UDATA" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_Hy17Y14VEeqR6o7rc-PFBw" name="cliente_datos" value="cliente_datos" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_Hy17ZF4VEeqR6o7rc-PFBw" name="Var_Tipo_Call" value="Var_Tipo_Call" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_Hy17ZV4VEeqR6o7rc-PFBw" name="Var_PCS" value="Var_PCS" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_Hy17Zl4VEeqR6o7rc-PFBw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:AssignBlock" xmi:id="_Kb41pO6VEemIYNuZM9VwEw" name="AsteriskID" category="Assign">
       <assignData xmi:type="datatypes:KeyValuePairItem" xmi:id="_Kb41pe6VEemIYNuZM9VwEw" Key="AsteriskID" Value="(AppState.UDATA.UNIQUEID) ? AppState.UDATA.UNIQUEID : AppState.idLlamada;"/>
@@ -248,23 +249,23 @@
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_u42M811ZEeqGUNm436aUDQ" name="AGENDAMIENTO" expression="AppState.salida_mp==&quot;AGENDAMIENTO&quot;" postAction="AppState.AudioTransferencia='IVR/Sub_Transferencia/Ejecutivo.wav'"/>
     </blocks>
     <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_B8T8JBTzEeq-P_JMPRlZrg" name="Sub_Transferencia" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Transferencia.callflow">
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBwF2BEeqHqa-J0ckgaw" name="APPNAME" value="AppState.salida_mp=='IVR_BLOQUEOS' ? 'BLOQUEOS_TDE' : AppState.parametros_marcas_navegacion.appName" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBwV2BEeqHqa-J0ckgaw" name="CODIOFERTA" value="AppState.cliente_datos.codi_oferta" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBwl2BEeqHqa-J0ckgaw" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBw12BEeqHqa-J0ckgaw" name="IVR_ACCESOS" value="AppState.IVR_ACCESOS" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBxF2BEeqHqa-J0ckgaw" name="MERCADO" value="AppState.cliente_datos.mercado" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBxV2BEeqHqa-J0ckgaw" name="MOVIL_INGRESADO" value="(AppState.cliente_datos.PCS_Seleccionado) ? AppState.cliente_datos.PCS_Seleccionado : AppState.ANI;" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBxl2BEeqHqa-J0ckgaw" name="SCORING" value="AppState.cliente_datos.nmro_scoring" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBx12BEeqHqa-J0ckgaw" name="SEGMENTO" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFByF2BEeqHqa-J0ckgaw" name="SERVICIODESTINO" value="AppState.vdnServDestino" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFByV2BEeqHqa-J0ckgaw" name="UData4Ast" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFByl2BEeqHqa-J0ckgaw" name="UData_EPA" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBy12BEeqHqa-J0ckgaw" name="VDN" value="AppState.vdn" description="VDN o Punto de Ruteo"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBzF2BEeqHqa-J0ckgaw" name="audio_transferencia" value="AppState.AudioTransferencia" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBzV2BEeqHqa-J0ckgaw" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBzl2BEeqHqa-J0ckgaw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFBz12BEeqHqa-J0ckgaw" name="parametros_marcas_navegacion" value="AppState.parametros_marcas_navegacion" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_yPFB0F2BEeqHqa-J0ckgaw" name="tokentransferencia" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dsF4VEeqR6o7rc-PFBw" name="APPNAME" value="AppState.parametros_marcas_navegacion.appName" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dsV4VEeqR6o7rc-PFBw" name="CODIOFERTA" value="AppState.cliente_datos.codi_oferta" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dsl4VEeqR6o7rc-PFBw" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-ds14VEeqR6o7rc-PFBw" name="IVR_ACCESOS" value="AppState.IVR_ACCESOS" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dtF4VEeqR6o7rc-PFBw" name="MERCADO" value="AppState.cliente_datos.mercado" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dtV4VEeqR6o7rc-PFBw" name="MOVIL_INGRESADO" value="(AppState.cliente_datos.PCS_Seleccionado) ? AppState.cliente_datos.PCS_Seleccionado : AppState.ANI;" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dtl4VEeqR6o7rc-PFBw" name="SCORING" value="AppState.cliente_datos.nmro_scoring" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dt14VEeqR6o7rc-PFBw" name="SEGMENTO" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-duF4VEeqR6o7rc-PFBw" name="SERVICIODESTINO" value="AppState.vdnServDestino" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-duV4VEeqR6o7rc-PFBw" name="UData4Ast" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dul4VEeqR6o7rc-PFBw" name="UData_EPA" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-du14VEeqR6o7rc-PFBw" name="VDN" value="AppState.vdn" description="VDN o Punto de Ruteo"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dvF4VEeqR6o7rc-PFBw" name="audio_transferencia" value="AppState.AudioTransferencia" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dvV4VEeqR6o7rc-PFBw" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dvl4VEeqR6o7rc-PFBw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dv14VEeqR6o7rc-PFBw" name="parametros_marcas_navegacion" value="AppState.parametros_marcas_navegacion" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_qd-dwF4VEeqR6o7rc-PFBw" name="tokentransferencia" value="''" description="Enter Description"/>
     </blocks>
     <blocks xmi:type="gvp:PromptBlock" xmi:id="_i5kYIDhlEequNqIw1gkaVA" name="InicioMenu" category="Prompt" interruptible="False">
       <prompts xmi:type="datatypes_1:PromptItem" xmi:id="_qyNIUDhlEequNqIw1gkaVA" name="InicioMenu_PromptMsg1" value="Resources/Prompts/es-CL/IVR/Menus/ParaConsultarPorTuProducto.wav" interpretAs="Audio" type="Resource" format="" armBaseUrl="" armPersonalityID="" armFileExt="" customInterpretAsItem=""/>
@@ -444,7 +445,7 @@
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_dwnwkBTzEeq-P_JMPRlZrg" fromBlock="_B8T8JBTzEeq-P_JMPRlZrg" toBlock="_UiSp4Nz8EeKItrUHz40pEQ"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_eEJJgBTzEeq-P_JMPRlZrg" name="default" fromBlock="_9jLYsBTyEeq-P_JMPRlZrg" toBlock="_UiSp4Nz8EeKItrUHz40pEQ"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_i5zosDhlEequNqIw1gkaVA" fromBlock="_0hdVQA97EeqwUPl5Gh33eA" toBlock="_i5kYIDhlEequNqIw1gkaVA"/>
-    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_i1QrIEEREeqAbdVH3o8SjA" name="OK" fromBlock="_WDik8PWKEemkbs2bFThpbw" toBlock="_hsS38EEREeqAbdVH3o8SjA"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_i1QrIEEREeqAbdVH3o8SjA" name="OK" fromBlock="_WDik8PWKEemkbs2bFThpbw" toBlock="_hfZ0wFyXEequi9oTKrfaSw"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_p8howEEREeqAbdVH3o8SjA" fromBlock="_hsS38EEREeqAbdVH3o8SjA" toBlock="_pSTnFUEREeqAbdVH3o8SjA"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_v0SGUEEREeqAbdVH3o8SjA" fromBlock="_u_w5IEEREeqAbdVH3o8SjA" toBlock="_9jLYsBTyEeq-P_JMPRlZrg"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_zRE9UEEREeqAbdVH3o8SjA" fromBlock="_zRDIIkEREeqAbdVH3o8SjA" toBlock="_zRDvMEEREeqAbdVH3o8SjA"/>
@@ -944,7 +945,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_SuJhBPWLEemkbs2bFThpbw" x="-145" y="-29"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_SuJhAfWLEemkbs2bFThpbw" fontName="Ubuntu"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SuJhAvWLEemkbs2bFThpbw" points="[51, 25, 347, -654]$[51, 324, 347, -355]$[-296, 324, 0, -355]$[-296, 654, 0, -25]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SuJhAvWLEemkbs2bFThpbw" points="[51, 25, 362, -886]$[51, 478, 362, -433]$[-311, 478, 0, -433]$[-311, 886, 0, -25]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SuKvIPWLEemkbs2bFThpbw" id="(0.6699029126213593,1.0)"/>
     </edges>
     <edges xmi:type="notation:Edge" xmi:id="_bmCq0AYKEeqIXJnGtN7W7g" type="3002" element="_bmA1oAYKEeqIXJnGtN7W7g" source="_amvxAAYKEeqIXJnGtN7W7g" target="_B1ZtdPG1EemeldLxW1KUQA">
@@ -1081,12 +1082,12 @@
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_i51d4jhlEequNqIw1gkaVA" points="[-24, -50, 351, 748]$[-375, -798, 0, 0]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i55vUDhlEequNqIw1gkaVA" id="(0.48936170212765956,1.0)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_i1SgUEEREeqAbdVH3o8SjA" type="3001" element="_i1QrIEEREeqAbdVH3o8SjA" source="_WDh95PWKEemkbs2bFThpbw" target="_hsQbsEEREeqAbdVH3o8SjA" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+    <edges xmi:type="notation:Connector" xmi:id="_i1SgUEEREeqAbdVH3o8SjA" type="3001" element="_i1QrIEEREeqAbdVH3o8SjA" source="_WDh95PWKEemkbs2bFThpbw" target="_hfetQFyXEequi9oTKrfaSw" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
       <children xmi:type="notation:DecorationNode" xmi:id="_i1SgU0EREeqAbdVH3o8SjA" type="4074">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_i1SgVEEREeqAbdVH3o8SjA" x="-7" y="-11"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_i1SgUUEREeqAbdVH3o8SjA" fontName="Ubuntu"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_i1SgUkEREeqAbdVH3o8SjA" points="[0, 25, 26, -654]$[0, 74, 26, -605]$[482, 74, 508, -605]$[482, 644, 508, -35]$[-26, 644, 0, -35]$[-26, 654, 0, -25]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_i1SgUkEREeqAbdVH3o8SjA" points="[0, 25, 28, -514]$[0, 17, 28, -522]$[480, 17, 508, -522]$[480, 495, 508, -44]$[-28, 495, 0, -44]$[-28, 514, 0, -25]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i1WxwEEREeqAbdVH3o8SjA" id="(0.5194174757281553,0.88)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_p8i24EEREeqAbdVH3o8SjA" type="3001" element="_p8howEEREeqAbdVH3o8SjA" source="_hsQbsEEREeqAbdVH3o8SjA" target="_pSTnEUEREeqAbdVH3o8SjA" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
