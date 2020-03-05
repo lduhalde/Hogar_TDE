@@ -1644,7 +1644,6 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 
 		String resp_JsonToken = "";
 		String wsName="GetTokenAPI";
-		Debug("[FunctionsEPCS."+wsName+"] INICIO", "DEBUG");
 		
 		try {
 
@@ -1688,7 +1687,7 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 
 		} catch (IOException e) {
 			Debug("[FunctionsEPCS."+wsName+"] Error de I/O: " + e.getMessage(), "DEBUG");
-
+			e.printStackTrace();
 		} catch (Exception e2) {
 			e2.printStackTrace();
 			Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e2.getMessage(), "DEBUG");
@@ -1705,18 +1704,23 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		String ClientID = Params.GetValue("USER_GetTokenAPI", "l779febd401d7348cba2ba4cabecd183cc");
 		String ClientSecret= Params.GetValue("PASS_GetTokenAPI", "aeb13fb74957479e9e6a023a5ceb87eb");
 		String GrantType= Params.GetValue("GRANT_GetTokenAPI", "client_credentials");
-		Debug("[FunctionsEPCS."+wsName+"] INICIO", "DEBUG");
 		try {
-				JSONObject newToken = new JSONObject(GetTokenAPI(URLToken, ClientID, ClientSecret, GrantType));
-				if(newToken.has("access_token")){
-					int time = (int) (System.currentTimeMillis()/1000);
-					newToken.put("last_call", time);
-					String token_string = newToken.getString("token_type")+" "+newToken.getString("access_token");
-					newToken.put("token_string", token_string);
-					Token_API = newToken;
+				String resp = GetTokenAPI(URLToken, ClientID, ClientSecret, GrantType);
+				Debug("[FunctionsEPCS."+wsName+"] resp GetTokenAPI: "+resp.replaceAll("\n", " "), "DEBUG");
+				if(resp.startsWith("{")){
+					JSONObject newToken = new JSONObject(resp);
+					if(newToken.has("access_token")){
+						int time = (int) (System.currentTimeMillis()/1000);
+						newToken.put("last_call", time);
+						String token_string = newToken.getString("token_type")+" "+newToken.getString("access_token");
+						newToken.put("token_string", token_string);
+						Token_API = newToken;
+					}else{
+						Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: No se encuentra access_token", "DEBUG");
+						Token_API = newToken;
+					}
 				}else{
-					Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: No se encuentra access_token", "DEBUG");
-					Token_API = newToken;
+					Debug("[FunctionsEPCS."+wsName+"] Respuesta no es JSON", "DEBUG");
 				}
 		} catch (JSONException e) {
 			Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
@@ -1725,7 +1729,6 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		}
 	}
 	public void ValidateTokenAPI(){
-		Debug("[FunctionsEPCS.ValidateTokenAPI] INICIO", "DEBUG");
 		try {
 			if(!Token_API.has("last_call")){
 				SetTokenAPI();
