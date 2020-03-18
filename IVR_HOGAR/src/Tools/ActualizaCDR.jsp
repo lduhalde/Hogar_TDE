@@ -11,6 +11,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 	//Parametros de Entradas
 	JSONObject cliente_datos = new JSONObject();
     JSONObject result = new JSONObject();
+    JSONObject cliente_productos = new JSONObject();
     JSONObject  DataEnvioSckt = new JSONObject();
     String nameJSP="TRX_ACTUALIZA_CDR";
     String trx="TRX_ACTUALIZA_CDR";
@@ -24,21 +25,17 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     try{
     	
     	cliente_datos = (state.has("cliente_datos") ) ? state.getJSONObject("cliente_datos") : new JSONObject();
+    	cliente_productos = (state.has("cliente_productos") ) ? state.getJSONObject("cliente_productos") : new JSONObject();
+    	JSONArray bundles = cliente_productos.getJSONArray("Bundles");
         String uniqueid = state.optString("AsteriskID");
+        String idLlamada = state.optString("idLlamada");
     	String mercado = cliente_datos.optString("mercado");
     	String segmento = cliente_datos.optString("segmento");
-    	String Rut = "";
-    	String plan = cliente_datos.optString("PO_PLAN");
+    	String Rut = cliente_datos.getString("RUT");
+    	String plan = bundles.getJSONObject(state.getInt("indexPack")).getString("bundleId");
     	String appname = parametros_marcas_navegacion.optString("appName");
-    	
-    	if(!cliente_datos.optJSONObject("IndividualIdentification").isNull("number")){
-    		if(!cliente_datos.optJSONObject("IndividualIdentification").isNull("type")){
-    			if(cliente_datos.optJSONObject("IndividualIdentification").getString("type").equalsIgnoreCase("RUT")){
-    				Rut=cliente_datos.optJSONObject("IndividualIdentification").getString("number"); 
-				}
-		 	}
-    	}
-    
+
+
     	fEPCS.Debug("["+nameJSP+"] APPNAME: "+appname, "INFO"); 	 
     	fEPCS.Debug("["+nameJSP+"] UNIQUEID: "+uniqueid, "INFO"); 
     	fEPCS.Debug("["+nameJSP+"] MERCADO: "+mercado, "INFO"); 
@@ -47,8 +44,8 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	fEPCS.Debug("["+nameJSP+"] PLAN: "+plan, "INFO"); 
     	
     	DataEnvioSckt.put("servicio",fEPCS.getParametro(trx + "_DB"));
-		DataEnvioSckt.put("query",fEPCS.getParametro(trx + "_SP"));
-		DataEnvioSckt.put("parameters",uniqueid+"|"+mercado+"|"+segmento+"|"+Rut+"|"+plan+"|"+appname);
+		DataEnvioSckt.put("query",fEPCS.getParametro(trx + "_SP")); 
+		DataEnvioSckt.put("parameters",uniqueid+"|"+idLlamada+"|"+appname+"|"+mercado+"|"+segmento+"|"+Rut+"|"+plan);
 		DataEnvioSckt.put("select","1");
 		DataEnvioSckt.put("requestID",state.getString("idLlamada"));
 			
@@ -80,5 +77,6 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 <%-- GENERATED: DO NOT REMOVE --%> 
 <%@page import="org.json.JSONObject"%>
 <%@page import="org.json.JSONException"%>
+<%@page import="org.json.JSONArray"%>
 <%@page import="java.util.Map"%>
 <%@include file="../../include/backend.jspf" %>

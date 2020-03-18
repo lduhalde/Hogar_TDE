@@ -21,12 +21,9 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
         String AudioDefecto="IVR/General/Silencio.wav";
         String audioDTMF="/IVR/Menus/marca";
     	
-    	fEPCS.Debug("["+jspName+"] Inicio", "INFO");
-		int pack = Integer.parseInt(additionalParams.get("packSeleccionado"));
-		fEPCS.Debug("["+jspName+"] index pack seleccionado : "+pack, "INFO");
+		fEPCS.Debug("["+jspName+"] Inicio", "INFO");
 		
-		JSONObject bundle = cliente_productos.getJSONArray("Bundles").getJSONObject(pack);
-		cliente_datos.put("bundle_seleccionado",bundle);
+		JSONObject bundle = cliente_datos.getJSONObject("bundle_seleccionado");
 		fEPCS.Debug("["+jspName+"] Bundle: "+bundle.toString(), "INFO");
 		
 		
@@ -40,11 +37,6 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		if(!bundle.isNull("mercado")){
 			mercado = bundle.getString("mercado");
 			fEPCS.Debug("["+jspName+"] mercado : "+mercado, "INFO");
-		}
-		if(!bundle.isNull("MSISDN")){
-			String MSISDN = bundle.getString("MSISDN");
-			fEPCS.Debug("["+jspName+"] MSISDN : "+MSISDN, "INFO");	
-			cliente_datos.put("PCS_Seleccionado",MSISDN);
 		}
 		
 		int cont =1;
