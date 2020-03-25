@@ -75,12 +75,16 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 					
 						cliente_datos.put("taxDocumentID",obj.toString());
 						
-					}else if (key.equals("INDIVIDUALIDENTIFICATION")) {
-						value=value.replace("#", "\"");
+					}else if (key.equalsIgnoreCase("INDIVIDUALIDENTIFICATION")) {
+						if(value.indexOf("#") != -1){
+							value=value.replace("#", "\"");
+						} else{
+							value = value.replace("\\", "");
+						}
 						JSONObject obj = new JSONObject(value);
 						out.put(key,obj);
 						
-						cliente_datos.put("IndividualIdentification",obj.toString());
+						cliente_datos.put("IndividualIdentification",obj);
 						
 					}else if (key.equals("BILLINGACCOUNT")) {
 						value=value.replace("#", "\"");
