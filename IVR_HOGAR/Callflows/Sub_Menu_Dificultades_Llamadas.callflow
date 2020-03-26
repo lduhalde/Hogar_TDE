@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:datatypes="http://studio.genesyslab.com/common/datatypes/" xmlns:datatypes_1="http://studio.genesyslab.com/gvp/datatypes/" xmlns:gvp="http://studio.genesyslab.com/gvp/" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xsi:schemaLocation="http://studio.genesyslab.com/common/datatypes/ http://studio.genesyslab.com/common/#//datatypes http://studio.genesyslab.com/gvp/datatypes/ http://studio.genesyslab.com/gvp/#//datatypes">
-  <gvp:CallflowDiagram xmi:id="_9dxf4OjoEd2eUOAcyP5XCQ" name="Sub_Menu_Plan_Monto" designedUsing="Composer 8.1.400.36" callflowType="Subcallflow">
+  <gvp:CallflowDiagram xmi:id="_9dxf4OjoEd2eUOAcyP5XCQ" name="Sub_Menu_Dificultades_Llamadas" designedUsing="Composer 8.1.400.36" callflowType="Subcallflow">
     <history>8.1.3</history>
     <history>8.1.300.01</history>
     <blocks xmi:type="gvp:ExitBlock" xmi:id="_-THHwF9dEd6I4IvG6U_ZgQ" name="Exit_MenuSaldoNumero" condition="" terminating="true" category="Exit" returnMode="true">
@@ -58,18 +58,18 @@
       <variables xmi:type="datatypes:Variable" xmi:id="_PJDGjBT3Eeq-P_JMPRlZrg" name="willaccept" value="''" description="Enter Description" type="User"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_zC0JsLC9Eea4K57rnf44gQ" name="Branch_Menu" category="Branching">
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_u287MBT6Eeq-P_JMPRlZrg" name="MONTO_LPAGOS" expression="AppState.Menu_Token=='1'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_u287MRT6Eeq-P_JMPRlZrg" name="PLAN" expression="AppState.Menu_Token=='2'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_u287MhT6Eeq-P_JMPRlZrg" name="VOLVER" expression="AppState.Menu_Token=='9'" postAction="AppState.salida_mp='GOTOMENU'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_Q8B6EGIeEeq-L_M2k009ug" name="DIF_CELULAR" expression="AppState.Menu_Token=='1'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_Q8B6EWIeEeq-L_M2k009ug" name="DIF_REDFIJA" expression="AppState.Menu_Token=='2'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_Q8B6EmIeEeq-L_M2k009ug" name="VOLVER" expression="AppState.Menu_Token=='9'" postAction="AppState.salida_mp='GOTOMENU'"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_xBWRQMBgEeaJlpHI8PldBw" name="Branch_Volver_MenuAnterior" category="Branching">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_cZwI4OqYEeiFTMj7SluHuw" name="Volver Menu Anterior" expression="AppState.salida_mp=='MANTERIOR'" postAction=""/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_JfvToAscEeefgozPnLPD-g" name="Inicio_Marca_Menu" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_JjCwIOptEeiFTMj7SluHuw" name="INICIO" value="'SI'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_JjCwIeptEeiFTMj7SluHuw" name="TRAZA" value="'MENU_NUMPLAN_ZE'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_JjCwIuptEeiFTMj7SluHuw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_pm3fUGIiEeq-L_M2k009ug" name="INICIO" value="'SI'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_pm3fUWIiEeq-L_M2k009ug" name="TRAZA" value="'MENU_DIFICULTAD_LLAMADAS'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_pm3fUmIiEeq-L_M2k009ug" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_yFeMJAscEeefgozPnLPD-g" name="Fin_Marca_Menu" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
@@ -108,10 +108,10 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_4aNd95_kEeiEmN8umv-nEA" name="RC" value="'0'" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_4aNd-J_kEeiEmN8umv-nEA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
-    <blocks xmi:type="gvp:MenuBlock" xmi:id="_tOYTxegTEei0FtDHlQBUxg" name="Menu" category="Menu" userInput="true" outputResult="Variable(Menu_Token)" timeout="4" numberOfRetriesAllowed="2" useOriginalPrompts="true">
+    <blocks xmi:type="gvp:MenuBlock" xmi:id="_tOYTxegTEei0FtDHlQBUxg" name="Menu" category="Menu" userInput="true" outputResult="Variable(Menu_Token)" timeout="4" numberOfRetriesAllowed="2" useSingleCounterForNomatchAndNoinput="true" useOriginalPrompts="true">
       <exceptions>noinput</exceptions>
       <exceptions>nomatch</exceptions>
-      <prompts xmi:type="datatypes_1:PromptItem" xmi:id="_R_zUQBT7Eeq-P_JMPRlZrg" name="Menu" value="Resources/Prompts/es-CL/IVR/Menus/Menu_Monto_Plan.wav" interpretAs="Audio" type="Resource" format="" armBaseUrl="" armPersonalityID="" armFileExt="" customInterpretAsItem=""/>
+      <prompts xmi:type="datatypes_1:PromptItem" xmi:id="_fC0BAGI-Eeq-L_M2k009ug" name="Menu" value="Resources/Prompts/es-CL/IVR/Menus/62_MenuDificultadesLlamadas_A.wav" interpretAs="Audio" type="Resource" format="" armBaseUrl="" armPersonalityID="" armFileExt="" customInterpretAsItem=""/>
       <retryPrompts xmi:type="datatypes_1:RetryPromptItem" xmi:id="_HWkHIOggEei0FtDHlQBUxg" name="noinput1">
         <prompts xmi:type="datatypes_1:PromptItem" xmi:id="_HWkHIeggEei0FtDHlQBUxg" name="noinput1_prompt1" value="Resources/Prompts/es-CL/IVR/General/NoMatch.vox" interpretAs="Audio" type="Resource" format="" armBaseUrl="" armPersonalityID="" armFileExt="" customInterpretAsItem=""/>
       </retryPrompts>
@@ -158,24 +158,26 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_QZEHYepaEeiFTMj7SluHuw" name="Mensaje" value="'LAST_EVENT_NAME: '+AppState.LAST_EVENT_NAME+'  LAST_EVENT_MSG: '+AppState.LAST_EVENT_MSG" description="Enter Description"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_RYuNlepaEeiFTMj7SluHuw" name="LogInicioSubFlujo" category="Backend" uri="../src/Tools/Log.jsp">
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_rEqnUOpaEeiFTMj7SluHuw" name="Flujo" value="'Sub_Menu_Numero_Plan_PtsZE'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_rEqnUepaEeiFTMj7SluHuw" name="Mensaje" value="'INICIO SUBFLUJO: &lt;Sub_Menu_Numero_Plan_PuntosZE>'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_8PQ90GIiEeq-L_M2k009ug" name="Flujo" value="'Sub_Menu_Dificultades_Llamadas'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_8PQ90WIiEeq-L_M2k009ug" name="Mensaje" value="'INICIO SUBFLUJO: &lt;Sub_Menu_Dificultades_Llamadas>'" description="Enter Description"/>
     </blocks>
-    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_B4W0MCgCEeqg2-aREOTdiw" name="Sub_Consulta_Plan" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Consulta_Plan.callflow">
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnicCgCEeqg2-aREOTdiw" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnicSgCEeqg2-aREOTdiw" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnicigCEeqg2-aREOTdiw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnicygCEeqg2-aREOTdiw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnidCgCEeqg2-aREOTdiw" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_MrnidSgCEeqg2-aREOTdiw" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_B4W0MCgCEeqg2-aREOTdiw" name="Sub_Dificultad_RedFija" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Dificultad_RedFija.callflow">
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_nzjGUGU9Eeq_uNAnrmuCMA" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_nzjGUWU9Eeq_uNAnrmuCMA" name="Var_PCS" value="(AppState.cliente_datos.PCS_Seleccionado) ? AppState.cliente_datos.PCS_Seleccionado : AppState.ANI;" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_nzjGUmU9Eeq_uNAnrmuCMA" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_nzjGU2U9Eeq_uNAnrmuCMA" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_nzjGVGU9Eeq_uNAnrmuCMA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_nzjGVWU9Eeq_uNAnrmuCMA" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_nzjGVmU9Eeq_uNAnrmuCMA" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
     </blocks>
-    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_e3f9dC17EeqeQatRDXnC2Q" name="Sub_Consulta_Monto_Pagar" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Consulta_Monto_Pagar.callflow">
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_zndlYC17EeqeQatRDXnC2Q" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_zndlYS17EeqeQatRDXnC2Q" name="cliente_datos" value="cliente_datos" description="Enter Description" type="inout"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_zndlYi17EeqeQatRDXnC2Q" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_zndlYy17EeqeQatRDXnC2Q" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_zndlZC17EeqeQatRDXnC2Q" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_zndlZS17EeqeQatRDXnC2Q" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_e3f9dC17EeqeQatRDXnC2Q" name="Sub_Dificultad_Celular" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Dificultad_Celular.callflow">
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_iDXQYGU9Eeq_uNAnrmuCMA" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_iDXQYWU9Eeq_uNAnrmuCMA" name="Var_PCS" value="(AppState.cliente_datos.PCS_Seleccionado) ? AppState.cliente_datos.PCS_Seleccionado : AppState.ANI;" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_iDXQYmU9Eeq_uNAnrmuCMA" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_iDXQY2U9Eeq_uNAnrmuCMA" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_iDXQZGU9Eeq_uNAnrmuCMA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_iDXQZWU9Eeq_uNAnrmuCMA" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_iDXQZmU9Eeq_uNAnrmuCMA" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
     </blocks>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_02m3AAscEeefgozPnLPD-g" fromBlock="_yFeMJAscEeefgozPnLPD-g" toBlock="_zC0JsLC9Eea4K57rnf44gQ"/>
     <links xmi:type="gvp:CallflowExceptionLink" xmi:id="_S2fDgCQpEeetZvwIJCPNag" name="connection.disconnect.hangup" fromBlock="_Z6Z-QJhsEeGerrt71FTn3g" toBlock="_PDYlVCQpEeetZvwIJCPNag"/>
@@ -202,9 +204,9 @@
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_JivuAOqVEeiFTMj7SluHuw" name="Volver Menu Anterior" fromBlock="_xBWRQMBgEeaJlpHI8PldBw" toBlock="_JfvToAscEeefgozPnLPD-g"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_trBwEBT5Eeq-P_JMPRlZrg" name="Option9" fromBlock="_tOYTxegTEei0FtDHlQBUxg" toBlock="_yFeMJAscEeefgozPnLPD-g"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_oLd6oBT6Eeq-P_JMPRlZrg" name="VOLVER" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_lVhKEHktEeeRb7G8HD7cyg"/>
-    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_B4Z3gCgCEeqg2-aREOTdiw" name="PLAN" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_B4W0MCgCEeqg2-aREOTdiw"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_B4Z3gCgCEeqg2-aREOTdiw" name="DIF_REDFIJA" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_B4W0MCgCEeqg2-aREOTdiw"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_EAGj0CgCEeqg2-aREOTdiw" fromBlock="_B4W0MCgCEeqg2-aREOTdiw" toBlock="_lVhKEHktEeeRb7G8HD7cyg"/>
-    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_fvv0EC17EeqeQatRDXnC2Q" name="MONTO_LPAGOS" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_e3f9dC17EeqeQatRDXnC2Q"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_fvv0EC17EeqeQatRDXnC2Q" name="DIF_CELULAR" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_e3f9dC17EeqeQatRDXnC2Q"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_hOmXsC17EeqeQatRDXnC2Q" fromBlock="_e3f9dC17EeqeQatRDXnC2Q" toBlock="_lVhKEHktEeeRb7G8HD7cyg"/>
     <namespaces xmi:type="datatypes:Property" xmi:id="_3FJJMZhjEeGerrt71FTn3g" name="gvp" value="http://www.genesyslab.com/2006/vxml21-extension"/>
     <systemProperties xmi:type="datatypes:Property" xmi:id="_AgnmYPECEeWPUKGIA4zsog" name="RetainInputTypeVariableDefaultValue" value="false"/>
@@ -369,7 +371,7 @@
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_EOfkQJ_lEeiEmN8umv-nEA" type="3001" element="_EOVzQJ_lEeiEmN8umv-nEA" source="_zC0wwLC9Eea4K57rnf44gQ" target="_4aNd5Z_kEeiEmN8umv-nEA" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
       <children xmi:type="notation:DecorationNode" xmi:id="_EOfkQ5_lEeiEmN8umv-nEA" type="4074">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_EOpVQJ_lEeiEmN8umv-nEA" x="19" y="-135"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EOpVQJ_lEeiEmN8umv-nEA" x="21" y="-26"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_EOfkQZ_lEeiEmN8umv-nEA" fontName="Segoe UI"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_EOfkQp_lEeiEmN8umv-nEA" points="[51, 25, -552, -806]$[51, 58, -552, -773]$[563, 58, -40, -773]$[563, 693, -40, -138]$[603, 693, 0, -138]$[603, 806, 0, -25]"/>
