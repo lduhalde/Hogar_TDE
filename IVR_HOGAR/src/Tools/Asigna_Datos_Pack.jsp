@@ -32,8 +32,12 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		}
 		if(!bundle.isNull("MSISDN")){
 			String MSISDN = bundle.getString("MSISDN");
-			fEPCS.Debug("["+jspName+"] MSISDN : "+MSISDN, "INFO");	
-			cliente_datos.put("PCS_Seleccionado",MSISDN);
+			if(!MSISDN.equals("null")){
+				fEPCS.Debug("["+jspName+"] MSISDN : "+MSISDN, "INFO");	
+				cliente_datos.put("PCS_Seleccionado",MSISDN);
+			}else{
+				fEPCS.Debug("["+jspName+"] SIN MSISDN", "INFO");	
+			}
 		}
 		
 		result.put("cliente_datos", cliente_datos);

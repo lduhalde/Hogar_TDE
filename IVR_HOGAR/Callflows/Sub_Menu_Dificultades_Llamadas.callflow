@@ -58,9 +58,9 @@
       <variables xmi:type="datatypes:Variable" xmi:id="_PJDGjBT3Eeq-P_JMPRlZrg" name="willaccept" value="''" description="Enter Description" type="User"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_zC0JsLC9Eea4K57rnf44gQ" name="Branch_Menu" category="Branching">
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_Q8B6EGIeEeq-L_M2k009ug" name="DIF_CELULAR" expression="AppState.Menu_Token=='1'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_Q8B6EWIeEeq-L_M2k009ug" name="DIF_REDFIJA" expression="AppState.Menu_Token=='2'"/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_Q8B6EmIeEeq-L_M2k009ug" name="VOLVER" expression="AppState.Menu_Token=='9'" postAction="AppState.salida_mp='GOTOMENU'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_dehAMG-FEeqXhru9DURxAw" name="DIF_CELULAR" expression="AppState.Menu_Token=='1'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_dehAMW-FEeqXhru9DURxAw" name="DIF_REDFIJA" expression="AppState.Menu_Token=='2'"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_dehAMm-FEeqXhru9DURxAw" name="OTRAS" expression="AppState.Menu_Token=='3'" postAction="AppState.salida_mp='EJECUTIVO'"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_xBWRQMBgEeaJlpHI8PldBw" name="Branch_Volver_MenuAnterior" category="Branching">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_cZwI4OqYEeiFTMj7SluHuw" name="Volver Menu Anterior" expression="AppState.salida_mp=='MANTERIOR'" postAction=""/>
@@ -124,9 +124,9 @@
       <retryPrompts xmi:type="datatypes_1:RetryPromptItem" xmi:id="_HWkHJuggEei0FtDHlQBUxg" name="nomatch2">
         <prompts xmi:type="datatypes_1:PromptItem" xmi:id="_HWkHJ-ggEei0FtDHlQBUxg" name="nomatch2_prompt1" value="Resources/Prompts/es-CL/IVR/General/NoMatch.vox" interpretAs="Audio" type="Resource" format="" armBaseUrl="" armPersonalityID="" armFileExt="" customInterpretAsItem=""/>
       </retryPrompts>
-      <menuOptions xmi:type="datatypes_1:MenuItem" xmi:id="_qDsnkBT6Eeq-P_JMPRlZrg" name="Option1" returnValue="1" dtmf="1" postAction=""/>
-      <menuOptions xmi:type="datatypes_1:MenuItem" xmi:id="_qDsnkRT6Eeq-P_JMPRlZrg" name="Option2" returnValue="2" dtmf="2" postAction=""/>
-      <menuOptions xmi:type="datatypes_1:MenuItem" xmi:id="_qDsnkhT6Eeq-P_JMPRlZrg" name="Option9" returnValue="9" dtmf="9" postAction=""/>
+      <menuOptions xmi:type="datatypes_1:MenuItem" xmi:id="_hoyBMG-FEeqXhru9DURxAw" name="Option1" returnValue="1" dtmf="1" postAction=""/>
+      <menuOptions xmi:type="datatypes_1:MenuItem" xmi:id="_hoyBMW-FEeqXhru9DURxAw" name="Option2" returnValue="2" dtmf="2" postAction=""/>
+      <menuOptions xmi:type="datatypes_1:MenuItem" xmi:id="_hoyBMm-FEeqXhru9DURxAw" name="Option3" returnValue="3" dtmf="3" postAction=""/>
     </blocks>
     <blocks xmi:type="gvp:PromptBlock" xmi:id="_LfatUepZEeiFTMj7SluHuw" name="Prompt_Maximo_Intentos" category="Prompt">
       <prompts xmi:type="datatypes_1:PromptItem" xmi:id="_mtnEQBT0Eeq-P_JMPRlZrg" name="Prompt_Maximo_Intentos" value="Resources/Prompts/es-CL/IVR/General/MaximoIntentos.wav" interpretAs="Audio" type="Resource" format="" armBaseUrl="" armPersonalityID="" armFileExt="" customInterpretAsItem=""/>
@@ -202,8 +202,8 @@
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_Tqs3QOpaEeiFTMj7SluHuw" fromBlock="_Z6Z-QJhsEeGerrt71FTn3g" toBlock="_RYuNlepaEeiFTMj7SluHuw"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_T1nGwOpaEeiFTMj7SluHuw" fromBlock="_RYuNlepaEeiFTMj7SluHuw" toBlock="_JfvToAscEeefgozPnLPD-g"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_JivuAOqVEeiFTMj7SluHuw" name="Volver Menu Anterior" fromBlock="_xBWRQMBgEeaJlpHI8PldBw" toBlock="_JfvToAscEeefgozPnLPD-g"/>
-    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_trBwEBT5Eeq-P_JMPRlZrg" name="Option9" fromBlock="_tOYTxegTEei0FtDHlQBUxg" toBlock="_yFeMJAscEeefgozPnLPD-g"/>
-    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_oLd6oBT6Eeq-P_JMPRlZrg" name="VOLVER" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_lVhKEHktEeeRb7G8HD7cyg"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_trBwEBT5Eeq-P_JMPRlZrg" name="Option3" fromBlock="_tOYTxegTEei0FtDHlQBUxg" toBlock="_yFeMJAscEeefgozPnLPD-g"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_oLd6oBT6Eeq-P_JMPRlZrg" name="OTRAS" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_lVhKEHktEeeRb7G8HD7cyg"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_B4Z3gCgCEeqg2-aREOTdiw" name="DIF_REDFIJA" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_B4W0MCgCEeqg2-aREOTdiw"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_EAGj0CgCEeqg2-aREOTdiw" fromBlock="_B4W0MCgCEeqg2-aREOTdiw" toBlock="_lVhKEHktEeeRb7G8HD7cyg"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_fvv0EC17EeqeQatRDXnC2Q" name="DIF_CELULAR" fromBlock="_zC0JsLC9Eea4K57rnf44gQ" toBlock="_e3f9dC17EeqeQatRDXnC2Q"/>

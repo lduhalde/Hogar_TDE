@@ -141,7 +141,7 @@
     <blocks xmi:type="gvp:MenuBlock" xmi:id="_wRWzjiZDEemNOf_8cmbzlA" name="Menu_Repetir" category="Menu" userInput="true" outputResult="Variable(Menu_Token)" timeout="5" numberOfRetriesAllowed="2" useSingleCounterForNomatchAndNoinput="true" useOriginalPrompts="true" language="Locale(Spanish - Chile (es-CL))">
       <exceptions>noinput</exceptions>
       <exceptions>nomatch</exceptions>
-      <prompts xmi:type="datatypes_1:PromptItem" xmi:id="_VJQ4IGX6EemEn_YYfPNFjA" name="Menu_Repetir_PromptMsg1" value="Resources/Prompts/es-CL/IVR/ConsultaMontoPagar/Boleta06.wav" interpretAs="Audio" type="Resource" format="" armBaseUrl="" armPersonalityID="" armFileExt="" customInterpretAsItem=""/>
+      <prompts xmi:type="datatypes_1:PromptItem" xmi:id="_mYwP8G-IEeqXhru9DURxAw" name="Menu_Repetir_PromptMsg1" value="Resources/Prompts/es-CL/IVR/Menus/SubMenu_OpMonto_Repetir-LPagos.wav" interpretAs="Audio" type="Resource" format="" armBaseUrl="" armPersonalityID="" armFileExt="" customInterpretAsItem=""/>
       <retryPrompts xmi:type="datatypes_1:RetryPromptItem" xmi:id="_FX2TsFYpEemtc5XdqZrlfA" name="noinput1">
         <prompts xmi:type="datatypes_1:PromptItem" xmi:id="_FX2TsVYpEemtc5XdqZrlfA" name="noinput1" value="Resources/Prompts/es-CL/IVR/General/NoMatch.wav" interpretAs="Audio" type="Resource" format="" armBaseUrl="" armPersonalityID="" armFileExt="" customInterpretAsItem=""/>
       </retryPrompts>
