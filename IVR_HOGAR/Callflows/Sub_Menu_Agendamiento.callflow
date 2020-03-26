@@ -158,11 +158,11 @@
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_2_bYRG7NEeqiyrcl7CbAmA" name="ValidarHorario" category="Backend" uri="../src/ServiceXX/TRX_ivrtodb_horario.jsp">
       <exceptions>error.badfetch</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_2_bYRW7NEeqiyrcl7CbAmA" name="idHorario" value="AppState.vdn" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_2_bYRm7NEeqiyrcl7CbAmA" name="fecha" value="''" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_2_bYR27NEeqiyrcl7CbAmA" name="statusHorario" value="statusHorario" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_2_bYSG7NEeqiyrcl7CbAmA" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_2_bYSW7NEeqiyrcl7CbAmA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_l-Q64G9dEeqXhru9DURxAw" name="idHorario" value="AppState.vdn" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_l-Q64W9dEeqXhru9DURxAw" name="fecha" value="''" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_l-Q64m9dEeqXhru9DURxAw" name="statusHorario" value="statusHorario" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_l-Q6429dEeqXhru9DURxAw" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_l-Q65G9dEeqXhru9DURxAw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_2_bYSm7NEeqiyrcl7CbAmA" name="BranchHorario" category="Branching">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_mi--gG7OEeqiyrcl7CbAmA" name="HABIL" expression="AppState.trx_respuesta==&quot;OK&quot; &amp;&amp; AppState.statusHorario==&quot;OK&quot;" postAction="AppState.salida_mp='AGENDAMIENTO'"/>

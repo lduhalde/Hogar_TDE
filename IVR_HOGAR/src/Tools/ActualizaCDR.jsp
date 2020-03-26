@@ -26,13 +26,15 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	
     	cliente_datos = (state.has("cliente_datos") ) ? state.getJSONObject("cliente_datos") : new JSONObject();
     	cliente_productos = (state.has("cliente_productos") ) ? state.getJSONObject("cliente_productos") : new JSONObject();
-    	JSONArray bundles = cliente_productos.getJSONArray("Bundles");
         String uniqueid = state.optString("AsteriskID");
         String idLlamada = state.optString("idLlamada");
     	String mercado = cliente_datos.optString("mercado");
     	String segmento = cliente_datos.optString("segmento");
     	String Rut = cliente_datos.getString("RUT");
-    	String plan = bundles.getJSONObject(state.getInt("indexPack")).getString("bundleId");
+    	String plan = " ";
+    	if(cliente_datos.has("bundle_seleccionado")){
+    		plan = cliente_datos.getJSONObject("bundle_seleccionado").getString("bundleId");
+    	}
     	String appname = parametros_marcas_navegacion.optString("appName");
 
 
@@ -53,8 +55,9 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		fEPCS.Debug("["+nameJSP+"] respuestaDB: "+respuestaDB, "INFO");
 			
 		if(!respuestaDB.equals("[]")){
-			JSONObject resp = new JSONObject(respuestaDB);
-			if(resp.optString("errorCode").equals("0")){
+			JSONArray aResp = new JSONArray(respuestaDB);
+			JSONObject resp = aResp.getJSONObject(0);
+			if(resp.optString("rc").equals("OK")){
 				trx_respuesta="OK";
 				fEPCS.Debug("["+nameJSP+"] Actualización OK");
 			}
