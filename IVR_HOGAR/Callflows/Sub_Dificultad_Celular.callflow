@@ -62,8 +62,8 @@
       <variables xmi:type="datatypes:Variable" xmi:id="_NYE8QmSYEeq_uNAnrmuCMA" name="Var_PCS" value="''" description="Enter Description" type="Input"/>
       <globalProperties xmi:type="datatypes:Property" xmi:id="_bUCeMPEFEeWPUKGIA4zsog" name="fetchaudio" value="'Silencio.wav'"/>
     </blocks>
-    <blocks xmi:type="gvp:AssignBlock" xmi:id="_SlRb0Pj0EeaJNZp-c_YjzQ" name="Volver_Mppal" category="Assign">
-      <assignData xmi:type="datatypes:KeyValuePairItem" xmi:id="_SlRb0fj0EeaJNZp-c_YjzQ" Key="salida_mp" Value="'GOTOMENU'"/>
+    <blocks xmi:type="gvp:AssignBlock" xmi:id="_SlRb0Pj0EeaJNZp-c_YjzQ" name="VOLVER" category="Assign">
+      <assignData xmi:type="datatypes:KeyValuePairItem" xmi:id="_aIuE0HBQEeqqDduRlydLcQ" Key="salida_mp" Value="'VOLVER'"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="__4PnZCOlEeen9PYS1WKsgg" name="FinMarcaHangUp" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
@@ -149,26 +149,24 @@
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_Ihq3cGLPEeq_uNAnrmuCMA" name="Branch_Bloqueo_CEL" condition="" category="Branching">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_YX5o8GLSEeq_uNAnrmuCMA" name="HABILITADO" expression="AppState.cliente_datos.bundle_seleccionado.BLOQUEO_CEL == 'false'"/>
     </blocks>
-    <blocks xmi:type="gvp:BackendBlock" xmi:id="_53krcGLXEeq_uNAnrmuCMA" name="TRX_getCustomerAccountBalanceAndCharge" category="Backend" uri="../src/ServiceXX/TRX_getCustomerAccountBalanceAndCharge.jsp">
+    <blocks xmi:type="gvp:BackendBlock" xmi:id="_53krcGLXEeq_uNAnrmuCMA" name="TRX_getCustomerAccountBalance" category="Backend" uri="../src/ServiceXX/TRX_getCustomerAccountBalance.jsp">
       <exceptions>error.badfetch</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_4mRUQGLaEeq_uNAnrmuCMA" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_4mRUQWLaEeq_uNAnrmuCMA" name="Var_SALDO" value="Var_SALDO" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_4mRUQmLaEeq_uNAnrmuCMA" name="processID" value="AppState.processCode" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_4mRUQ2LaEeq_uNAnrmuCMA" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_4mRURGLaEeq_uNAnrmuCMA" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_4mRURWLaEeq_uNAnrmuCMA" name="PCS" value="AppState.Var_PCS" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_4mRURmLaEeq_uNAnrmuCMA" name="Var_SALDO_VIGENCIA" value="Var_SALDO_VIGENCIA" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_4mRUR2LaEeq_uNAnrmuCMA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_4mRUSGLaEeq_uNAnrmuCMA" name="opcion" value="'saldo'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_4mRUSWLaEeq_uNAnrmuCMA" name="cliente_datos" value="cliente_datos" description="Enter Description" type="inout"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_4mRUSmLaEeq_uNAnrmuCMA" name="conCobro" value="AppState.conCobro" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_O58yMHBDEeqqDduRlydLcQ" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_O59ZQHBDEeqqDduRlydLcQ" name="Var_SALDO" value="Var_SALDO" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_O59ZQXBDEeqqDduRlydLcQ" name="processID" value="AppState.processCode" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_O59ZQnBDEeqqDduRlydLcQ" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_O59ZQ3BDEeqqDduRlydLcQ" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_O59ZRHBDEeqqDduRlydLcQ" name="PCS" value="AppState.Var_PCS" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_O59ZRXBDEeqqDduRlydLcQ" name="Var_SALDO_VIGENCIA" value="Var_SALDO_VIGENCIA" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_O59ZRnBDEeqqDduRlydLcQ" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_O59ZR3BDEeqqDduRlydLcQ" name="cliente_datos" value="cliente_datos" description="Enter Description" type="inout"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_53krfWLXEeq_uNAnrmuCMA" name="Branching_trx_respuesta_OK" condition="" category="Branching">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_kFYlAGSZEeq_uNAnrmuCMA" name="OK" expression="AppState.trx_respuesta == 'OK' &amp;&amp; AppState.Var_SALDO >= 100" postAction=""/>
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_kFYlAWSZEeq_uNAnrmuCMA" name="SaldoInsuficiente" expression="AppState.trx_respuesta == 'OK' &amp;&amp; AppState.Var_SALDO &lt; 100"/>
     </blocks>
-    <blocks xmi:type="gvp:AssignBlock" xmi:id="_53krgGLXEeq_uNAnrmuCMA" name="AsignarMarcaCABCH" category="Assign">
-      <assignData xmi:type="datatypes:KeyValuePairItem" xmi:id="_LjCyMGLZEeq_uNAnrmuCMA" Key="var_marca" Value="'CUSTOMERACCOUNTBALANCECH'"/>
+    <blocks xmi:type="gvp:AssignBlock" xmi:id="_53krgGLXEeq_uNAnrmuCMA" name="AsignarMarcaCAB" category="Assign">
+      <assignData xmi:type="datatypes:KeyValuePairItem" xmi:id="_Q8wXcHBDEeqqDduRlydLcQ" Key="var_marca" Value="'CUSTOMERACCOUNTBALANCE'"/>
     </blocks>
     <blocks xmi:type="gvp:PromptBlock" xmi:id="_YE1e1GLZEeq_uNAnrmuCMA" name="PromptSND" category="Prompt">
       <prompts xmi:type="datatypes_1:PromptItem" xmi:id="_YE1e1WLZEeq_uNAnrmuCMA" name="SND_Prompt" value="Resources/Prompts/es-CL/IVR/General/SND.wav" interpretAs="Audio" type="Resource" format="" armBaseUrl="" armPersonalityID="" armFileExt="" customInterpretAsItem=""/>
@@ -245,7 +243,7 @@
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_kkNwoGLZEeq_uNAnrmuCMA" fromBlock="_YE1e1GLZEeq_uNAnrmuCMA" toBlock="_YE1e2mLZEeq_uNAnrmuCMA"/>
     <links xmi:type="gvp:CallflowExceptionLink" xmi:id="_rNBQoGLZEeq_uNAnrmuCMA" name="error.badfetch" fromBlock="_53krcGLXEeq_uNAnrmuCMA" toBlock="_YE1e1mLZEeq_uNAnrmuCMA"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_yZI5EGLZEeq_uNAnrmuCMA" name="default" fromBlock="_53krfWLXEeq_uNAnrmuCMA" toBlock="_YE1e1mLZEeq_uNAnrmuCMA"/>
-    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_2KYWEGLZEeq_uNAnrmuCMA" fromBlock="_YE1e2mLZEeq_uNAnrmuCMA" toBlock="_-THHwF9dEd6I4IvG6U_ZgQ"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_2KYWEGLZEeq_uNAnrmuCMA" fromBlock="_YE1e2mLZEeq_uNAnrmuCMA" toBlock="_SlRb0Pj0EeaJNZp-c_YjzQ"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_S_ZZkGLaEeq_uNAnrmuCMA" fromBlock="_C2omQGLaEeq_uNAnrmuCMA" toBlock="_C2n_NGLaEeq_uNAnrmuCMA"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_TQQgEGLaEeq_uNAnrmuCMA" fromBlock="_C2n_NGLaEeq_uNAnrmuCMA" toBlock="_C2omRGLaEeq_uNAnrmuCMA"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_cSumIGLaEeq_uNAnrmuCMA" name="SaldoInsuficiente" fromBlock="_53krfWLXEeq_uNAnrmuCMA" toBlock="_C2omQGLaEeq_uNAnrmuCMA"/>
@@ -254,7 +252,7 @@
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_2pMQoGLnEeq_uNAnrmuCMA" name="default" fromBlock="_Ihq3cGLPEeq_uNAnrmuCMA" toBlock="_rmRHFSTHEemdBN7Cbje-0w"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_u6BwEGLoEeq_uNAnrmuCMA" name="OK" fromBlock="_53krfWLXEeq_uNAnrmuCMA" toBlock="_sNDMcGLoEeq_uNAnrmuCMA"/>
     <links xmi:type="gvp:CallflowOutputLink" xmi:id="_1D2OAGLoEeq_uNAnrmuCMA" fromBlock="_sNDMcGLoEeq_uNAnrmuCMA" toBlock="_-THHwF9dEd6I4IvG6U_ZgQ"/>
-    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_8UejAGLoEeq_uNAnrmuCMA" fromBlock="_C2omRGLaEeq_uNAnrmuCMA" toBlock="_-THHwF9dEd6I4IvG6U_ZgQ"/>
+    <links xmi:type="gvp:CallflowOutputLink" xmi:id="_8UejAGLoEeq_uNAnrmuCMA" fromBlock="_C2omRGLaEeq_uNAnrmuCMA" toBlock="_SlRb0Pj0EeaJNZp-c_YjzQ"/>
     <namespaces xmi:type="datatypes:Property" xmi:id="_3FJJMZhjEeGerrt71FTn3g" name="gvp" value="http://www.genesyslab.com/2006/vxml21-extension"/>
     <systemProperties xmi:type="datatypes:Property" xmi:id="_AgnmYPECEeWPUKGIA4zsog" name="RetainInputTypeVariableDefaultValue" value="false"/>
   </gvp:CallflowDiagram>
@@ -448,7 +446,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_9jh95STHEemdBN7Cbje-0w" x="5" y="5"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_9jh94iTHEemdBN7Cbje-0w" fontName="Ubuntu"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_9jh94yTHEemdBN7Cbje-0w" points="[2, 26, -249, -299]$[2, 169, -249, -156]$[252, 169, 1, -156]$[252, 301, 1, -24]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_9jh94yTHEemdBN7Cbje-0w" points="[0, 25, -250, -213]$[0, 110, -250, -128]$[250, 110, 0, -128]$[250, 213, 0, -25]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9jik8CTHEemdBN7Cbje-0w" id="(0.509090909090909,1.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9jik8STHEemdBN7Cbje-0w" id="(0.5363636363636364,0.06)"/>
     </edges>
@@ -604,14 +602,13 @@
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZKuQGLZEeq_uNAnrmuCMA" id="(0.7441860465116279,1.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZKuQWLZEeq_uNAnrmuCMA" id="(0.4970414201183432,0.0)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_2KY9IGLZEeq_uNAnrmuCMA" type="3001" element="_2KYWEGLZEeq_uNAnrmuCMA" source="_YE1e0GLZEeq_uNAnrmuCMA" target="_-THHwV9dEd6I4IvG6U_ZgQ" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+    <edges xmi:type="notation:Connector" xmi:id="_2KY9IGLZEeq_uNAnrmuCMA" type="3001" element="_2KYWEGLZEeq_uNAnrmuCMA" source="_YE1e0GLZEeq_uNAnrmuCMA" target="_SlQ0wPj0EeaJNZp-c_YjzQ" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
       <children xmi:type="notation:DecorationNode" xmi:id="_2KY9I2LZEeq_uNAnrmuCMA" type="4074">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_2KY9JGLZEeq_uNAnrmuCMA" x="5" y="5"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_2KY9IWLZEeq_uNAnrmuCMA" fontName="Segoe UI"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2KY9ImLZEeq_uNAnrmuCMA" points="[1, 26, -378, -824]$[1, 757, -378, -93]$[380, 757, 1, -93]$[380, 826, 1, -24]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2KY9ImLZEeq_uNAnrmuCMA" points="[0, 25, -550, -466]$[0, 417, -550, -74]$[550, 417, 0, -74]$[550, 466, 0, -25]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2KaLQGLZEeq_uNAnrmuCMA" id="(0.47904191616766467,0.94)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2KaLQWLZEeq_uNAnrmuCMA" id="(0.5,0.0)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_S_aAoGLaEeq_uNAnrmuCMA" type="3001" element="_S_ZZkGLaEeq_uNAnrmuCMA" source="_C2nYJGLaEeq_uNAnrmuCMA" target="_C2nYIGLaEeq_uNAnrmuCMA" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
       <children xmi:type="notation:DecorationNode" xmi:id="_S_ansGLaEeq_uNAnrmuCMA" type="4074">
@@ -684,14 +681,13 @@
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1D3cIGLoEeq_uNAnrmuCMA" id="(0.509090909090909,1.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1D3cIWLoEeq_uNAnrmuCMA" id="(0.4909090909090909,0.0)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_8UfKEGLoEeq_uNAnrmuCMA" type="3001" element="_8UejAGLoEeq_uNAnrmuCMA" source="_C2n_MGLaEeq_uNAnrmuCMA" target="_-THHwV9dEd6I4IvG6U_ZgQ" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
+    <edges xmi:type="notation:Connector" xmi:id="_8UfKEGLoEeq_uNAnrmuCMA" type="3001" element="_8UejAGLoEeq_uNAnrmuCMA" source="_C2n_MGLaEeq_uNAnrmuCMA" target="_SlQ0wPj0EeaJNZp-c_YjzQ" roundedBendpointsRadius="10" routing="Rectilinear" closestDistance="true" lineColor="16711680">
       <children xmi:type="notation:DecorationNode" xmi:id="_8UfKE2LoEeq_uNAnrmuCMA" type="4074">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_8UfKFGLoEeq_uNAnrmuCMA" x="5" y="5"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_8UfKEWLoEeq_uNAnrmuCMA" fontName="Segoe UI"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_8UfKEmLoEeq_uNAnrmuCMA" points="[1, 27, 67, -790]$[1, 690, 67, -127]$[-65, 690, 1, -127]$[-65, 793, 1, -24]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_8UfKEmLoEeq_uNAnrmuCMA" points="[0, 25, -90, -466]$[0, 417, -90, -74]$[90, 417, 0, -74]$[90, 466, 0, -25]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8UgYMGLoEeq_uNAnrmuCMA" id="(0.5057471264367817,1.0)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8UgYMWLoEeq_uNAnrmuCMA" id="(0.509090909090909,0.0)"/>
     </edges>
   </notation:Diagram>
 </xmi:XMI>
