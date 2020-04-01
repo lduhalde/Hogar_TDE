@@ -694,8 +694,8 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 	}
 
 
-	public String ExecuteSCHAMAN(JSONObject request, String method, String idLlamada){
-		String wsName="ExecuteSCHAMAN";
+	public String ExecuteAPI(JSONObject request, String method, String idLlamada){
+		String wsName="ExecuteAPI";
 		String url = Params.GetValue("URL_"+method, "https://apiinternaluat.entel.cl/customer/v1/customerProblem/troubleshoot/search");
 		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+method, "1000000"));
 		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+method,"false"));
