@@ -484,6 +484,119 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		}
 		return resp;
 	}
+	
+	
+	public String CreateProductOrder(String CustomerAccountID, String billingID, String addressId, String bscsCustomerId, String RUT, String billingCycle, String area,String mode,String orderType,String subArea,String requester, String serviceIdExt, String IDllamada,String processID,String sourceID){
+		/*
+		 * Sobre carga metodo 
+		 * Crea request para activación LDI
+		 * 
+		 * 2020-03-17
+		 * 
+		 * Gabriel Santis Villalón
+		 * Sistemas S.A.
+		 * */
+		String wsName="CreateProductOrder";
+		String url = Params.GetValue("URL_"+wsName, "http://10.49.15.149:7010/ES/JSON/"+wsName+"/v1");
+		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));			
+		
+		String resp = ""; 
+		JSONObject request = new JSONObject();  
+		JSONObject body = new JSONObject(); 
+		JSONObject CustomerOrder = new JSONObject();
+		JSONObject CustomerAccount = new JSONObject();
+		JSONObject Individual = new JSONObject();
+		JSONObject IndividualName = new JSONObject();
+		JSONObject SalesChannel = new JSONObject();
+		JSONObject RelatedParty = new JSONObject();
+		JSONObject RelatedEntity = new JSONObject(); 
+		JSONObject BillingAccountProfile = new JSONObject();
+		JSONObject AssetSelection = new JSONObject();
+		JSONObject Account = new JSONObject();
+		JSONObject BillingAccount = new JSONObject();
+				
+		try {
+
+			CustomerOrder.put("orderType", orderType); 
+			CustomerOrder.put("area", "Cambio");
+			CustomerOrder.put("subArea", subArea);
+			CustomerOrder.put("requestID", IDllamada);
+			CustomerOrder.put("createdBy", CustomerAccountID);
+			CustomerOrder.put("createdDate", ObtenerFechaXML());
+			CustomerOrder.put("channel", "IVR");		
+			CustomerOrder.put("mode", "NON_INTERACTIVE"); 
+			CustomerOrder.put("owner", CustomerAccountID);
+			CustomerOrder.put("requester", CustomerAccountID);
+			
+			CustomerOrder.put("serviceIdExt", serviceIdExt);
+			
+			SalesChannel.put("createBy", "AUTOMATICOENTEL");
+			SalesChannel.put("orderCommercialChannel", "IVR");
+			
+			IndividualName.put("firstName", "");
+			IndividualName.put("lastName", "");
+			
+			Individual.put("IndividualName", IndividualName);
+			CustomerAccount.put("ID", CustomerAccountID);
+			CustomerAccount.put("Individual", Individual);
+			
+			
+			RelatedParty.put("CustomerAccount", CustomerAccount);
+			
+			BillingAccount.put("type", "Account");
+			BillingAccount.put("billingID", billingID);
+			BillingAccount.put("billingCycle", billingCycle);
+			
+			BillingAccount.put("billingCycle", CustomerAccountID);
+					
+			
+			Account.put("reference", billingID);
+			Account.put("BillingAccount", BillingAccount);
+			
+			Account.put("type", "billing");
+			
+			BillingAccountProfile.put("type", "billing");
+			BillingAccountProfile.put("paymentMethod", "Cash");
+			BillingAccountProfile.put("currency", "CLP");
+			BillingAccountProfile.put("billType", "Monthly");
+			BillingAccountProfile.put("addressId", addressId);
+			BillingAccountProfile.put("bscsBillingAccountId", bscsCustomerId);
+			BillingAccountProfile.put("billingProfileId", RUT);
+						
+			Account.put("BillingAccountProfile", BillingAccountProfile);
+			
+			RelatedEntity.put("Account", Account);	
+			
+			RelatedEntity.put("SalesChannel", SalesChannel);	
+						
+			CustomerOrder.put("RelatedParty", RelatedParty);
+			CustomerOrder.put("RelatedEntity", RelatedEntity);			
+			
+			body.put("CustomerOrder", CustomerOrder);
+			JSONObject header = crearHeader(wsName, IDllamada, processID, sourceID);
+			request.put("RequestHeader", header);
+			request.put("Body", body);
+
+			Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
+			resp = ejecutarRest(url,request,maxTimeout, debug);				
+			Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage());
+		}finally { 
+			request = null;    
+			body = null;
+			RelatedParty= null;
+			RelatedEntity= null;
+			BillingAccountProfile= null;
+			CustomerOrder=null;
+		}
+		return resp;
+	}	
+	
+	
 	public String CreateProductOrderItem(String PO_ID,String CustomerAccountID, String shoppingCartID, String action,JSONArray Resource,String biType,String roleRelated, String IDllamada, String processID, String SourceID){
 		String wsName="CreateProductOrderItem";
 		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
@@ -1640,6 +1753,104 @@ public class FunctionsEPCS_Hogar extends FunctionsGVP
 		return resp;
 	}
 
+	
+	public String UpdateProductOrderItem(String shoppingCartID, String ItemServiceID, String ServiceID, String serviceSpecification, String srvCharacteristics_name, String srvCharacteristics_value, String IDllamada, String processID, String SourceID){
+		/*
+		/*
+		 * se agrega a FunctionsEPCS_Hogar.java
+		 * Crea request para activación LDI
+		 * 
+		 * 2020-03-17
+		 * 
+		 * Gabriel Santis Villalón
+		 * Sistemas S.A.
+		 * 
+		 * */
+		String wsName="UpdateProductOrderItem";
+		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
+		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
+
+
+		String resp = ""; 
+		JSONObject request = new JSONObject();  
+		JSONObject body = new JSONObject(); 
+		JSONObject CustomerOrderItem = new JSONObject();
+		JSONObject CustomerOrder = new JSONObject(); 
+		JSONObject Service = new JSONObject();
+		JSONObject serviceCharacteristics = new JSONObject();
+		
+		try {
+
+			CustomerOrder.put("shoppingCartID", shoppingCartID);
+			
+			serviceCharacteristics.put("name", srvCharacteristics_name);
+			serviceCharacteristics.put("value", srvCharacteristics_value);
+			
+			Service.put("id", ServiceID);
+			Service.put("serviceSpecification", serviceSpecification);
+			Service.put("serviceCharacteristics", serviceCharacteristics);
+			
+			CustomerOrderItem.put("ID", ItemServiceID);
+			CustomerOrderItem.put("CustomerOrder", CustomerOrder);
+			CustomerOrderItem.put("Service", Service);
+	
+
+			body.put("CustomerOrderItem", CustomerOrderItem);
+			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
+			request.put("RequestHeader", header);
+			request.put("Body", body);
+
+			Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
+			resp = ejecutarRest(url,request,maxTimeout, debug);				
+			Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage());
+		}finally { 
+			request = null;    
+			body = null;
+			CustomerOrderItem= null; 
+			CustomerOrder= null; 
+		}
+		
+		return resp;
+	}	
+	
+	public String GetProductOrder(String shoppingCartID, String IDllamada, String processID, String SourceID){
+		String wsName="GetProductOrder";
+		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
+		int maxTimeout = Integer.parseInt(Params.GetValue("TIMEOUT_"+wsName, "1000000"));
+		boolean debug = Boolean.parseBoolean(Params.GetValue("DEBUG_"+wsName,"false"));
+
+		String resp = ""; 
+		JSONObject request = new JSONObject();  
+		JSONObject body = new JSONObject();  
+		JSONObject CustomerOrder = new JSONObject(); 
+		try { 
+			CustomerOrder.put("shoppingCartID", shoppingCartID);
+			body.put("CustomerOrder", CustomerOrder);
+			JSONObject header = crearHeader(wsName, IDllamada, processID, SourceID);
+			request.put("RequestHeader", header);
+			request.put("Body", body);
+
+			Debug("[FunctionsEPCS."+wsName+"] Request "+request, "DEBUG");
+			resp = ejecutarRest(url,request,maxTimeout, debug);				
+			Debug("[FunctionsEPCS."+wsName+"] Response "+resp.replaceAll("\n", ""), "DEBUG");
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			Debug("[FunctionsEPCS."+wsName+"] Ocurrió un error: "+e.getMessage(), "DEBUG");
+		}finally { 
+			request = null;    
+			body = null; 
+			CustomerOrder= null; 
+		}
+		return resp;
+	}	
+	
+	
 	public String UpdateProductOrderItem(String IDllamada, String processID, String SourceID, String shoppingCartID,String action, String CustomerOrderItemID, JSONArray Resources, JSONObject ProductOffering){
 		String wsName="UpdateProductOrderItem";
 		String url = Params.GetValue("URL_"+wsName, "http://10.49.4.232:7011/ES/JSON/"+wsName+"/v1");
