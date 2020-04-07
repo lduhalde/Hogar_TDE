@@ -10,6 +10,7 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 	 * autor: Gabriel Santis Villalon
 	 * Fecha: 2020-02-12
 	 * Descripción: Busca flag y datos relacionados para activar servicio LDI/Llamada Celular 
+	 *              genera valores para varibles de audios y activaión del servicio LDI/LLAMCEL
 	 *              
 	*/ 		
 	
@@ -30,8 +31,27 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     String serviceSpecification = "";
     String serviceId = "";
     String serviceEnabled = "";
-    String rfsSpecification = ""; 
-    String key_serviceCharacteristics = "";
+    String rfsSpecification = "";
+    
+    String srvCharacteristics_name = "";
+    String srvCharacteristics_value = "";
+    
+    String serviceIdExt = "NO SE ENCONTRO";    
+    
+    String baseAudios = "IVR/";
+    String subAudios = "";
+    
+	String mnuDesactivo = "";
+	String mnuActivo = "";
+	String SND = "";
+	
+	String MayorUnoActivo = "";
+	String MayorUnoDesActivo = "";
+	
+	String ActivacionOK = "";
+	String DesActivacionOK = "";
+	
+	String ContIndicador = "";
     
     FunctionsEPCS_Hogar fEPCS = new FunctionsEPCS_Hogar(state.getString("ConfigFile"), state.getString("idLlamada"));
     
@@ -80,20 +100,66 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	
 		switch (Activacion) {
 		case "LDI":
-			key_serviceCharacteristics = "BAR_VOICE_INTERNATIONAL";
+			srvCharacteristics_name = "BAR_VOICE_INTERNATIONAL";
+			srvCharacteristics_value = "false";
+			
+			subAudios = baseAudios + "Sub_Activaciones_LDI/";
+			
+			mnuDesactivo = subAudios + "84.wav";
+		    mnuActivo = subAudios + "85.wav";
+			SND = subAudios + "88.wav";
+			
+			MayorUnoActivo = subAudios +  "82.wav";
+			MayorUnoDesActivo = subAudios +  "83.wav";
+			
+			ActivacionOK = subAudios + "89.wav";
+			DesActivacionOK = subAudios + "90.wav";
+			
+			ContIndicador = "ACTIVAR_LH_LDI";
+						
 			break;
+			
 		case "LLAMCEL":
-			key_serviceCharacteristics = "BAR_NUMBER_MOVIL";
+			srvCharacteristics_name = "BAR_NUMBER_MOVIL";
+			srvCharacteristics_value = "false";
+			
+			subAudios = baseAudios + "Sub_Activaciones_Llamada_Celular/";		
+			
+			mnuDesactivo = subAudios + "72.wav";
+			mnuActivo = subAudios + "73.wav";
+			SND = subAudios + "78.wav";
+			
+			MayorUnoActivo = subAudios +  "70.wav";
+			MayorUnoDesActivo = subAudios +  "71.wav";
+			
+			ActivacionOK = subAudios + "79.wav";
+			DesActivacionOK = subAudios + "80.wav";		
+			
+			ContIndicador = "ACTIVAR_LH_LLAMCEL";
+						
 			break;				
 
 		default:
-			key_serviceCharacteristics = "NOK";
+			srvCharacteristics_name = "NOK";
+			srvCharacteristics_value = "NULL";
 			break;
 		}
 		
-		fEPCS.Debug("["+jspName+"] GSV LOG ### SN consultado: "+SN, "INFO");
-		fEPCS.Debug("["+jspName+"] GSV LOG ### Activando: "+Activacion, "INFO");
-		fEPCS.Debug("["+jspName+"] GSV LOG ### key_serviceCharacteristics: "+key_serviceCharacteristics, "INFO"); 
+		fEPCS.Debug("["+jspName+"] GSV LOG ### SN: "+SN, "INFO"); 
+		fEPCS.Debug("["+jspName+"] GSV LOG ### Activando: "+Activacion, "INFO"); 
+		fEPCS.Debug("["+jspName+"] GSV LOG ### srvCharacteristics_name: "+srvCharacteristics_name, "INFO"); 
+		fEPCS.Debug("["+jspName+"] GSV LOG ### srvCharacteristics_value: "+srvCharacteristics_value, "INFO"); 
+		
+
+		fEPCS.Debug("["+jspName+"] GSV LOG ### Prompt Menu desactivo: "+mnuDesactivo, "INFO"); 
+		fEPCS.Debug("["+jspName+"] GSV LOG ### Prompt Menu activo: "+mnuActivo, "INFO"); 
+		fEPCS.Debug("["+jspName+"] GSV LOG ### Prompt Menu SND: "+SND, "INFO"); 
+		fEPCS.Debug("["+jspName+"] GSV LOG ### Prompt Cont Mayor Uno y Activo: "+MayorUnoActivo, "INFO"); 
+		fEPCS.Debug("["+jspName+"] GSV LOG ### Prompt Cont Mayor Uno DesActivo: "+MayorUnoDesActivo, "INFO"); 
+		fEPCS.Debug("["+jspName+"] GSV LOG ### Prompt Activacion OK: "+ActivacionOK, "INFO"); 
+		fEPCS.Debug("["+jspName+"] GSV LOG ### Prompt DesActivacion OK: "+DesActivacionOK, "INFO"); 
+		fEPCS.Debug("["+jspName+"] GSV LOG ### Prompt ContIndicador: "+ContIndicador, "INFO"); 
+		
     	
 		String sTrx_datos_respuesta=fEPCS.GetAsset(Body, idLlamada, processCode, sourceID);   
 		
@@ -143,6 +209,22 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 			
 			fEPCS.Debug("["+jspName+"] GSV LOG ### Product(1).name: "+Product_name, "INFO");
 			fEPCS.Debug("["+jspName+"] GSV LOG ### Product(1).id: "+Product_id, "INFO");    			
+
+			
+			//### Busca valor para serviceIdExt			
+			JSONArray ProductSpecCharacteristics = Product.getJSONObject("ProductSpecification").getJSONArray("ProductSpecCharacteristic");
+			for (int p = 0; p < ProductSpecCharacteristics.length(); p++) {
+				    				
+				JSONObject ProductSpecCharacteristic = (JSONObject) ProductSpecCharacteristics.get(p);
+				
+				if ( ProductSpecCharacteristic.getString("name").equalsIgnoreCase("serviceIdExt") ) {
+					
+					serviceIdExt = ProductSpecCharacteristic.getString("value");
+					fEPCS.Debug("["+jspName+"] GSV LOG ### ...ProductSpecCharacteristic("+p+").serviceIdExt: " + serviceIdExt, "INFO");  
+					
+				}
+
+			}			
 			
 			//### Services	
 			JSONArray Services = Product.getJSONArray("Service");	
@@ -219,14 +301,25 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     }finally{
     	
     	result.put("trx_respuesta", trx_respuesta);
-    	result.put("Product_poBundle", Product_poBundle);
-    	result.put("Product_name", Product_name);
-    	result.put("Product_id", Product_id);
-    	result.put("serviceSpecification", serviceSpecification);
+    	
+    	result.put("PO_BASIC", Product_name);
+    	result.put("cfsSpecification", serviceSpecification);
     	result.put("serviceId", serviceId);
-    	result.put("serviceEnabled", serviceEnabled);
+    	result.put("serviceIdExt", serviceIdExt);
+    	result.put("serviceSpecification", serviceSpecification);
     	result.put("rfsSpecification", rfsSpecification);	
-    	result.put("key_serviceCharacteristics", key_serviceCharacteristics);
+    	result.put("srvCharacteristics_name", srvCharacteristics_name);
+    	result.put("srvCharacteristics_value", srvCharacteristics_value);
+
+    	result.put("mnuDesactivo", mnuDesactivo);
+    	result.put("mnuActivo", mnuActivo);
+    	result.put("MayorUnoActivo", MayorUnoActivo);
+    	result.put("MayorUnoDesActivo", MayorUnoDesActivo);
+    	result.put("SND", SND);
+    	result.put("ActivacionOK", ActivacionOK);
+    	result.put("DesActivacionOK", DesActivacionOK);
+    	result.put("Var_ContIndicador", ContIndicador);
+
     	
     	result.put("parametros_marcas_navegacion", parametros_marcas_navegacion);
     	fEPCS.Debug("["+jspName+"] GSV LOG ### FIN result: "+result.toString(), "INFO");

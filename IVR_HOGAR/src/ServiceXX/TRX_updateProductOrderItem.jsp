@@ -10,35 +10,35 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     JSONObject respJSON = new JSONObject();
     String codigoResp="";
     JSONObject parametros_marcas_navegacion = (state.has("parametros_marcas_navegacion") ) ? state.getJSONObject("parametros_marcas_navegacion") : new JSONObject();
-    FunctionsEPCS_PostPago fEPCS = new FunctionsEPCS_PostPago(state.getString("ConfigFile"), state.getString("idLlamada"));
+    
+    FunctionsEPCS_Hogar fEPCS = new FunctionsEPCS_Hogar(state.getString("ConfigFile"), state.getString("idLlamada"));
+    
     String trx_respuesta = "NOK";
     JSONObject BillingAccount = null;
     JSONObject cliente_datos = (state.has("cliente_datos") ) ? state.getJSONObject("cliente_datos") : new JSONObject();
     try{
 		
-		String CustomerOrderItemID = additionalParams.get("CustomerOrderItemID");
-		String action = additionalParams.get("action");
-		String IS_Activacion = additionalParams.get("IS_Activacion");
-		String shoppingCartID = additionalParams.get("shoppingCartID"); 
+		String ItemServiceID = additionalParams.get("ItemServiceID");
+		String shoppingCartID = additionalParams.get("shoppingCartID");
+		String ServiceID = additionalParams.get("ServiceID");
+		String serviceSpecification = additionalParams.get("serviceSpecification"); 
+    	String srvCharacteristics_name = additionalParams.get("srvCharacteristics_name");
+    	String srvCharacteristics_value = additionalParams.get("srvCharacteristics_value");
     	String processID = additionalParams.get("processID");
     	String sourceID = additionalParams.get("sourceID");
     	String idLlamada = additionalParams.get("idLlamada");
-    	String MSISDN = additionalParams.get("MSISDN");
-    	String ICCID = additionalParams.get("ICCID");
-    	String IS_Bloqueos = additionalParams.get("IS_Bloqueos");
-    	String ReasonBloqueo = additionalParams.get("ReasonBloqueo");
-    	BillingAccount = (!cliente_datos.isNull("BillingAccountPO") ) ? cliente_datos.getJSONObject("BillingAccountPO") : new JSONObject();
     	
     	
     	fEPCS.Debug("[TRX_updateProductOrderItem] INICIO", "INFO"); 
+    	fEPCS.Debug("[TRX_updateProductOrderItem] ItemServiceID: "+ItemServiceID, "INFO");
     	fEPCS.Debug("[TRX_updateProductOrderItem] shoppingCartID: "+shoppingCartID, "INFO");
-    	fEPCS.Debug("[TRX_updateProductOrderItem] action: "+action, "INFO");
-    	fEPCS.Debug("[TRX_updateProductOrderItem] MSISDN: "+MSISDN, "INFO");
-    	fEPCS.Debug("[TRX_updateProductOrderItem] ICCID: "+ICCID, "INFO");
+    	fEPCS.Debug("[TRX_updateProductOrderItem] ServiceID: "+ServiceID, "INFO");
+    	fEPCS.Debug("[TRX_updateProductOrderItem] serviceSpecification: "+serviceSpecification, "INFO");
+    	fEPCS.Debug("[TRX_updateProductOrderItem] srvCharacteristics_name: "+srvCharacteristics_name, "INFO");
+    	fEPCS.Debug("[TRX_updateProductOrderItem] srvCharacteristics_value: "+srvCharacteristics_value, "INFO");
     	fEPCS.Debug("[TRX_updateProductOrderItem] processID: "+processID, "INFO");
     	fEPCS.Debug("[TRX_updateProductOrderItem] sourceID: "+sourceID, "INFO");
     	fEPCS.Debug("[TRX_updateProductOrderItem] idLlamada: "+idLlamada, "INFO");
-    	fEPCS.Debug("[TRX_updateProductOrderItem] BillingAccountPO: "+BillingAccount.toString(), "INFO");
     	
     	parametros_marcas_navegacion=fEPCS.startNavegacion(state,"TRX_PRODUCTORDERITEM");
     	parametros_marcas_navegacion.put("DATA","UPDATE");
@@ -46,60 +46,60 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     	String description = "";
     	String codeCanonical = "";
     	
-    	JSONArray Resource = null;
-    	if(IS_Activacion.equals("SI")){
-    		action = null;
-	    	String resource = "[{ " +  
-					"         \"resourceCharacteristics\":[  " + 
-					"            {  " + 
-					"               \"name\":\"resourceNumber\"," + 
-					"               \"value\":\""+MSISDN+"\"" + 
-					"            }" + 
-					"         ]," + 
-					"         \"ResorceSpecification\":{" + 
-					"			\"ID\" : \"LRS_MSISDN_POSTPAID\"" + 
-					"		}}," + 
-					"      {\"resourceCharacteristics\":[  " + 
-					"            {  " + 
-					"               \"name\":\"serialNumber\"," + 
-					"               \"value\":\""+ICCID+"\"" + 
-					"            }]," + 
-					"        \"ResorceSpecification\":{" + 
-					"			\"ID\":\"PRS_SIM_POS\"" + 
-					"		}}]";
-	    	Resource = new JSONArray(resource);
-    	}
+//     	JSONArray Resource = null;
+//     	if(IS_Activacion.equals("SI")){
+//     		action = null;
+// 	    	String resource = "[{ " +  
+// 					"         \"resourceCharacteristics\":[  " + 
+// 					"            {  " + 
+// 					"               \"name\":\"resourceNumber\"," + 
+// 					"               \"value\":\""+MSISDN+"\"" + 
+// 					"            }" + 
+// 					"         ]," + 
+// 					"         \"ResorceSpecification\":{" + 
+// 					"			\"ID\" : \"LRS_MSISDN_POSTPAID\"" + 
+// 					"		}}," + 
+// 					"      {\"resourceCharacteristics\":[  " + 
+// 					"            {  " + 
+// 					"               \"name\":\"serialNumber\"," + 
+// 					"               \"value\":\""+ICCID+"\"" + 
+// 					"            }]," + 
+// 					"        \"ResorceSpecification\":{" + 
+// 					"			\"ID\":\"PRS_SIM_POS\"" + 
+// 					"		}}]";
+// 	    	Resource = new JSONArray(resource);
+//     	}
     	
-    	JSONObject PO = null;
-    	if(IS_Bloqueos.equals("SI")){
-    		PO = new JSONObject();
-    		JSONObject Product = new JSONObject();
-    		JSONObject ProductSpe = new JSONObject(); 
-    		JSONArray ArrproductSpecCharacteristic = new JSONArray();
-    		if(!BillingAccount.isNull("BillingAccountProfile") && !BillingAccount.isNull("BillingAccount")){
-    			if(!BillingAccount.getJSONObject("BillingAccount").optString("billingID").equals("")){
-		    		JSONObject productSpecCharacteristic = new JSONObject();
-		    		productSpecCharacteristic.put("name", "billingID");		
-		    		productSpecCharacteristic.put("classification", "CONF");		
-		    		productSpecCharacteristic.put("value", BillingAccount.getJSONObject("BillingAccount").getString("billingID"));		
-		    		ArrproductSpecCharacteristic.put(productSpecCharacteristic);	
-    			}
-    			if(!BillingAccount.getJSONObject("BillingAccountProfile").optString("billingProfileId").equals(""))	{
-		    		JSONObject productSpecCharacteristicBillingProfileId = new JSONObject();
-		    		productSpecCharacteristicBillingProfileId.put("name","BillingProfileId");
-		    		productSpecCharacteristicBillingProfileId.put("classification","CONF");
-		    		productSpecCharacteristicBillingProfileId.put("value",BillingAccount.getJSONObject("BillingAccountProfile").optString("billingProfileId"));
-		    		ArrproductSpecCharacteristic.put(productSpecCharacteristicBillingProfileId); 
-	    		}
-    		}
-    		ProductSpe.put("ProductSpecCharacteristic",ArrproductSpecCharacteristic);
-    		Product.put("ProductSpecification",ProductSpe);
-    		PO.put("Product",Product);
-    	}
+//     	JSONObject PO = null;
+//     	if(IS_Bloqueos.equals("SI")){
+//     		PO = new JSONObject();
+//     		JSONObject Product = new JSONObject();
+//     		JSONObject ProductSpe = new JSONObject(); 
+//     		JSONArray ArrproductSpecCharacteristic = new JSONArray();
+//     		if(!BillingAccount.isNull("BillingAccountProfile") && !BillingAccount.isNull("BillingAccount")){
+//     			if(!BillingAccount.getJSONObject("BillingAccount").optString("billingID").equals("")){
+// 		    		JSONObject productSpecCharacteristic = new JSONObject();
+// 		    		productSpecCharacteristic.put("name", "billingID");		
+// 		    		productSpecCharacteristic.put("classification", "CONF");		
+// 		    		productSpecCharacteristic.put("value", BillingAccount.getJSONObject("BillingAccount").getString("billingID"));		
+// 		    		ArrproductSpecCharacteristic.put(productSpecCharacteristic);	
+//     			}
+//     			if(!BillingAccount.getJSONObject("BillingAccountProfile").optString("billingProfileId").equals(""))	{
+// 		    		JSONObject productSpecCharacteristicBillingProfileId = new JSONObject();
+// 		    		productSpecCharacteristicBillingProfileId.put("name","BillingProfileId");
+// 		    		productSpecCharacteristicBillingProfileId.put("classification","CONF");
+// 		    		productSpecCharacteristicBillingProfileId.put("value",BillingAccount.getJSONObject("BillingAccountProfile").optString("billingProfileId"));
+// 		    		ArrproductSpecCharacteristic.put(productSpecCharacteristicBillingProfileId); 
+// 	    		}
+//     		}
+//     		ProductSpe.put("ProductSpecCharacteristic",ArrproductSpecCharacteristic);
+//     		Product.put("ProductSpecification",ProductSpe);
+//     		PO.put("Product",Product);
+//     	}
     	 
     	String status="";
-      		
-    	String sTrx_datos_respuesta=fEPCS.UpdateProductOrderItem(idLlamada,processID,sourceID,shoppingCartID,action,CustomerOrderItemID,Resource,PO);
+    	                                  
+    	String sTrx_datos_respuesta=fEPCS.UpdateProductOrderItem(shoppingCartID, ItemServiceID, ServiceID, serviceSpecification, srvCharacteristics_name, srvCharacteristics_value, idLlamada, processID, sourceID);
     	fEPCS.Debug("[TRX_updateProductOrderItem] sTrx_datos_respuesta: "+sTrx_datos_respuesta, "INFO");
     	
 		respJSON = new JSONObject(sTrx_datos_respuesta);

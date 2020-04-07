@@ -18,8 +18,9 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
     JSONObject BillingAccount = null;
     JSONObject Asset = null;
     JSONObject IndividualName = null;
-    FunctionsEPCS_PostPago fEPCS = new FunctionsEPCS_PostPago(state.getString("ConfigFile"), state.getString("idLlamada"));
-    JSONObject GeographicAddress = null;
+    
+    FunctionsEPCS_Hogar fEPCS = new FunctionsEPCS_Hogar(state.getString("ConfigFile"), state.getString("idLlamada"));
+    
     
     try{
     	cliente_datos = (state.has("cliente_datos") ) ? state.getJSONObject("cliente_datos") : new JSONObject();
@@ -29,69 +30,50 @@ public JSONObject performLogic(JSONObject state, Map<String, String> additionalP
 		if(!MSISDN.equals("") && MSISDN.length()<11 && !MSISDN.startsWith("56")){
 			MSISDN="56"+MSISDN;
 		}
-		String areaActivacion = fEPCS.Params.GetValue("areaActivacion_CreateProductOrder", "Activación de Línea");
-		String CA_ID=additionalParams.get("CustomerAccountID");
+		
+		String area = additionalParams.get("area");
+		String CustomerAccountID = additionalParams.get("CustomerAccountID");
 		String RUT = additionalParams.get("RUT");
-		String area = additionalParams.get("area"); 
-		String ServiceRequestID = additionalParams.get("ServiceRequestID");
+		String billingID = additionalParams.get("billingID");
+		String addressId = additionalParams.get("addressId");
+		String billingCycle = additionalParams.get("billingCycle");
+		String bscsCustomerId = additionalParams.get("bscsCustomerId");
+		String processID = additionalParams.get("processID");		
+		String sourceID = additionalParams.get("sourceID");
+		String idLlamada = additionalParams.get("idLlamada");
+		String mode = additionalParams.get("mode");
+		String orderType = additionalParams.get("orderType");
+		String subArea = additionalParams.get("subArea");
+		String serviceIdExt = additionalParams.get("serviceIdExt");					 
+
 		fEPCS.Debug("[TRX_createProductOrder] cliente_datos:"+cliente_datos, "INFO");
-		IndividualIdentification =  !cliente_datos.isNull("IndividualIdentification") ? (cliente_datos.getJSONObject("IndividualIdentification")) : new JSONObject();
-		BillingAccount = (!cliente_datos.isNull("BillingAccountPO") ) ? cliente_datos.getJSONObject("BillingAccountPO") : new JSONObject();
-		String processID = additionalParams.get("processID");
-    	String sourceID = additionalParams.get("sourceID");
-    	String idLlamada = additionalParams.get("idLlamada");
 		
     	fEPCS.Debug("[TRX_createProductOrder] INICIO", "INFO");
-    	fEPCS.Debug("[TRX_createProductOrder] MSISDN: "+MSISDN, "INFO");
-    	fEPCS.Debug("[TRX_createProductOrder] ServiceRequestID: "+ServiceRequestID, "INFO");
-    	fEPCS.Debug("[TRX_createProductOrder] CustomerAccountID: "+CA_ID, "INFO");
+    	
+    	fEPCS.Debug("[TRX_createProductOrder] area: "+area, "INFO");
+    	fEPCS.Debug("[TRX_createProductOrder] CustomerAccountID: "+CustomerAccountID, "INFO");
     	fEPCS.Debug("[TRX_createProductOrder] RUT: "+RUT, "INFO");
-    	fEPCS.Debug("[TRX_createProductOrder] AREA: "+area, "INFO");
-    	fEPCS.Debug("[TRX_createProductOrder] IndividualIdentification: "+IndividualIdentification, "INFO"); 
-    	fEPCS.Debug("[TRX_createProductOrder] BillingAccount: "+BillingAccount, "INFO");
+    	fEPCS.Debug("[TRX_createProductOrder] billingID: "+billingID, "INFO");
+    	fEPCS.Debug("[TRX_createProductOrder] addressId: "+addressId, "INFO");
+    	fEPCS.Debug("[TRX_createProductOrder] billingCycle: "+billingCycle, "INFO"); 
+    	fEPCS.Debug("[TRX_createProductOrder] bscsCustomerId: "+bscsCustomerId, "INFO");
     	fEPCS.Debug("[TRX_createProductOrder] processID: "+processID, "INFO");
     	fEPCS.Debug("[TRX_createProductOrder] sourceID: "+sourceID, "INFO");
-    	
-    	 
+    	fEPCS.Debug("[TRX_createProductOrder] IDllamada: "+idLlamada, "INFO");
+    	fEPCS.Debug("[TRX_createProductOrder] MSISDN: "+MSISDN, "INFO");
+    	fEPCS.Debug("[TRX_createProductOrder] mode: "+mode, "INFO");
+    	fEPCS.Debug("[TRX_createProductOrder] orderType: "+orderType, "INFO");
+    	fEPCS.Debug("[TRX_createProductOrder] subArea: "+subArea, "INFO");
+    	fEPCS.Debug("[TRX_createProductOrder] serviceIdExt: "+serviceIdExt, "INFO");
+    	                                             
     	String description = "";
-    	String codeCanonical = "";
-    	String number=MSISDN;
-    	if(RUT.length()>6){
-    		//Formatear el RUT de colocando un "-" guion medio antes del DV
-    		RUT=RUT.substring(0,RUT.length()-1)+"-"+RUT.substring(RUT.length()-1);
-    		number=RUT;
-    		type="1";
-    	}
-    	
-    	if(area.equalsIgnoreCase(areaActivacion)){
-    		IndividualName = new JSONObject(); 
-			IndividualName.put("firstName", cliente_datos.optJSONObject("IndividualIdentificationTransunion").optJSONObject("Individual").optString("firstName"));
-			IndividualName.put("lastName",  cliente_datos.optJSONObject("IndividualIdentificationTransunion").optJSONObject("Individual").optString("lastName"));
-			GeographicAddress = cliente_datos.optJSONObject("GeographicAddress");
-			if(GeographicAddress != null) {
-				GeographicAddress.getJSONObject("Address").put("streetNameFull", GeographicAddress.getJSONObject("Address").getJSONObject("StreetNameFull"));
-				GeographicAddress.getJSONObject("Address").remove("StreetNameFull");
-			}		
-    	}
-    	if(IndividualIdentification == null || IndividualIdentification.equals("undefined")){
-    		IndividualIdentification = new JSONObject();
-    		IndividualIdentification.put("number",number);
-    		IndividualIdentification.put("type",type); 
-    		fEPCS.Debug("[TRX_createProductOrder] SIN IndividualIdentification", "INFO");  
-    	}
-    	
-    	
-    	ServiceRequest = new JSONObject();
-    	ServiceRequest.put("ID",ServiceRequestID);
-    	
-    	String mode = "NON_INTERACTIVE";
-    	String orderType = "Orden";
-    	String subArea = "Móvil - Postpago";
-    	String requester = CA_ID+"-"+idLlamada;
-    	sTrx_datos_respuesta=fEPCS.CreateProductOrder(MSISDN,BillingAccount,CA_ID,IndividualIdentification,ServiceRequest,area,mode,orderType,subArea,requester,IndividualName,GeographicAddress,idLlamada,processID,sourceID);
     	String status = "";
-    	fEPCS.Debug("[TRX_createProductOrder] sTrx_datos_respuesta: "+sTrx_datos_respuesta, "INFO");
-		respJSON = new JSONObject(sTrx_datos_respuesta);
+    	String codeCanonical = "";
+    	                           
+        sTrx_datos_respuesta=fEPCS.CreateProductOrder(CustomerAccountID,billingID,addressId,bscsCustomerId,RUT,billingCycle,area,mode,orderType,subArea,"requester",serviceIdExt,idLlamada,processID,sourceID);
+    	fEPCS.Debug("[TRX_getProductOrder] sTrx_datos_respuesta: "+sTrx_datos_respuesta, "INFO");
+		respJSON = new JSONObject(sTrx_datos_respuesta); 
+  
 		
 		if(!respJSON.isNull("faultstring")) {
     		description = respJSON.getString("faultstring");
