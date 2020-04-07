@@ -67,9 +67,9 @@
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_JfvToAscEeefgozPnLPD-g" name="Inicio_Marca_Menu" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_JjCwIOptEeiFTMj7SluHuw" name="INICIO" value="'SI'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_JjCwIeptEeiFTMj7SluHuw" name="TRAZA" value="'MENU_NUMPLAN_ZE'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_JjCwIuptEeiFTMj7SluHuw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_63Q_QGPGEeqHpZYMlIogSw" name="INICIO" value="'SI'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_63Q_QWPGEeqHpZYMlIogSw" name="TRAZA" value="'MENU_PLAN_MONTO'" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_63Q_QmPGEeqHpZYMlIogSw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BackendBlock" xmi:id="_yFeMJAscEeefgozPnLPD-g" name="Fin_Marca_Menu" category="Backend" uri="../src/Tools/Crear_Traza.jsp">
       <exceptions>None</exceptions>
