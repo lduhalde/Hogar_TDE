@@ -269,14 +269,14 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_x3nlU8mXEem71b7l6bXjhA" name="RC" value="'0'" description="Enter Description"/>
       <parameters xmi:type="datatypes:Parameter" xmi:id="_x3nlVMmXEem71b7l6bXjhA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
-    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_FIG5RYbWEemnhdhG4aZQEw" name="EPA_ONLINE" category="Subdialog" enableStatus="Disabled" uri="workspace:///IVR_CC/Callflows/Sub_Epa_Online.callflow">
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_FIG5RobWEemnhdhG4aZQEw" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_FIG5R4bWEemnhdhG4aZQEw" name="Uniqueid" value="AppState.parametros_marcas_navegacion.AsteriskID" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_FIG5SIbWEemnhdhG4aZQEw" name="cliente_datos" value="AppState.cliente_datos" description="JSONObject con informacion del Cliente"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_FIG5SYbWEemnhdhG4aZQEw" name="idCanal" value="'111'" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_FIG5SobWEemnhdhG4aZQEw" name="idLlamada" value="AppState.idLlamada" description="Variable sacada del GVPSessionID"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_FIG5S4bWEemnhdhG4aZQEw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_FIG5TIbWEemnhdhG4aZQEw" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
+    <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_FIG5RYbWEemnhdhG4aZQEw" name="EPA_ONLINE" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Epa_Online.callflow">
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_VUCBsH6REeqY1sMOxV_R5A" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_VUCBsX6REeqY1sMOxV_R5A" name="Uniqueid" value="AppState.parametros_marcas_navegacion.AsteriskID" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_VUCBsn6REeqY1sMOxV_R5A" name="cliente_datos" value="AppState.cliente_datos" description="JSONObject con informacion del Cliente"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_VUCBs36REeqY1sMOxV_R5A" name="idCanal" value="'124'" description="Consulta Numero HOGAR"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_VUCBtH6REeqY1sMOxV_R5A" name="idLlamada" value="AppState.idLlamada" description="Variable sacada del GVPSessionID"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_VUCBtX6REeqY1sMOxV_R5A" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="_VUCBtn6REeqY1sMOxV_R5A" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_qxz-cMTwEem59egPTFMzuw" name="Primera_entrega_info" category="Branching">
       <conditions xmi:type="datatypes:BranchItem" xmi:id="_qxz-ccTwEem59egPTFMzuw" name="SI" expression="AppState.contador == 0"/>
