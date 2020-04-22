@@ -162,8 +162,8 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_O59ZR3BDEeqqDduRlydLcQ" name="cliente_datos" value="cliente_datos" description="Enter Description" type="inout"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_53krfWLXEeq_uNAnrmuCMA" name="Branching_trx_respuesta_OK" condition="" category="Branching">
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_kFYlAGSZEeq_uNAnrmuCMA" name="OK" expression="AppState.trx_respuesta == 'OK' &amp;&amp; AppState.Var_SALDO >= 100" postAction=""/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_kFYlAWSZEeq_uNAnrmuCMA" name="SaldoInsuficiente" expression="AppState.trx_respuesta == 'OK' &amp;&amp; AppState.Var_SALDO &lt; 100"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_eCQQQIPaEeqBFOqbUZD7SA" name="OK" expression="AppState.trx_respuesta == 'OK' &amp;&amp; AppState.Var_SALDO >= 2" postAction=""/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_eCQQQYPaEeqBFOqbUZD7SA" name="SaldoInsuficiente" expression="AppState.trx_respuesta == 'OK' &amp;&amp; AppState.Var_SALDO &lt; 2"/>
     </blocks>
     <blocks xmi:type="gvp:AssignBlock" xmi:id="_53krgGLXEeq_uNAnrmuCMA" name="AsignarMarcaCAB" category="Assign">
       <assignData xmi:type="datatypes:KeyValuePairItem" xmi:id="_Q8wXcHBDEeqqDduRlydLcQ" Key="var_marca" Value="'CUSTOMERACCOUNTBALANCE'"/>
@@ -203,17 +203,15 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_C2omSWLaEeq_uNAnrmuCMA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="output"/>
     </blocks>
     <blocks xmi:type="gvp:SubdialogBlock" xmi:id="_jo2MNGLnEeq_uNAnrmuCMA" name="ActivacionCelular" category="Subdialog" uri="workspace:///IVR_HOGAR/Callflows/Sub_Activaciones_Llamada_Celular.callflow">
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_jo2MNWLnEeq_uNAnrmuCMA" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_jo2zQGLnEeq_uNAnrmuCMA" name="Var_PCS" value="AppState.Var_PCS" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_jo2zQWLnEeq_uNAnrmuCMA" name="Var_SALDO" value="AppState.Var_SALDO" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_jo2zQmLnEeq_uNAnrmuCMA" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_jo2zQ2LnEeq_uNAnrmuCMA" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_jo2zRGLnEeq_uNAnrmuCMA" name="maximoIntentos" value="3" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_jo2zRWLnEeq_uNAnrmuCMA" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_jo2zRmLnEeq_uNAnrmuCMA" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_jo2zR2LnEeq_uNAnrmuCMA" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_jo2zSGLnEeq_uNAnrmuCMA" name="trx_datos_respuesta" value="trx_datos_respuesta" description="Enter Description" type="output"/>
-      <parameters xmi:type="datatypes:Parameter" xmi:id="_jo2zSWLnEeq_uNAnrmuCMA" name="trx_respuesta" value="trx_respuesta" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__Y72YIQBEeqj9fNRKOf3Pw" name="ConfigFile" value="AppState.ConfigFile" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__Y72YYQBEeqj9fNRKOf3Pw" name="cliente_datos" value="AppState.cliente_datos" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__Y72YoQBEeqj9fNRKOf3Pw" name="cliente_productos" value="" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__Y72Y4QBEeqj9fNRKOf3Pw" name="idLlamada" value="AppState.idLlamada" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__Y72ZIQBEeqj9fNRKOf3Pw" name="parametros_marcas_navegacion" value="parametros_marcas_navegacion" description="Enter Description" type="inout"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__Y72ZYQBEeqj9fNRKOf3Pw" name="salida_mp" value="salida_mp" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__Y72ZoQBEeqj9fNRKOf3Pw" name="sourceID" value="AppState.sourceID" description="Enter Description"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__Y72Z4QBEeqj9fNRKOf3Pw" name="vdn" value="vdn" description="Enter Description" type="output"/>
+      <parameters xmi:type="datatypes:Parameter" xmi:id="__Y72aIQBEeqj9fNRKOf3Pw" name="vdnServDestino" value="vdnServDestino" description="Enter Description" type="output"/>
       <fetchAudioMinimum xmi:type="datatypes:MultiSourceProperty" xmi:id="_jo2zSmLnEeq_uNAnrmuCMA" value=""/>
     </blocks>
     <blocks xmi:type="gvp:AssignBlock" xmi:id="_sNDMcGLoEeq_uNAnrmuCMA" name="EJECUTIVO" category="Assign">

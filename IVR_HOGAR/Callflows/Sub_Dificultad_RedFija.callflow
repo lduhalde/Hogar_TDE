@@ -90,8 +90,8 @@
       <parameters xmi:type="datatypes:Parameter" xmi:id="_bKEgCHBDEeqqDduRlydLcQ" name="cliente_datos" value="cliente_datos" description="Enter Description" type="inout"/>
     </blocks>
     <blocks xmi:type="gvp:BranchingBlock" xmi:id="_53krfWLXEeq_uNAnrmuCMA" name="Branching_trx_respuesta_OK" condition="" category="Branching">
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_xonU8GSjEeq_uNAnrmuCMA" name="OK" expression="AppState.trx_respuesta == 'OK' &amp;&amp; AppState.Var_SALDO >= 100" postAction=""/>
-      <conditions xmi:type="datatypes:BranchItem" xmi:id="_xonU8WSjEeq_uNAnrmuCMA" name="SaldoInsuficiente" expression="AppState.trx_respuesta == 'OK' &amp;&amp; AppState.Var_SALDO &lt; 100"/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_inTIwIPaEeqBFOqbUZD7SA" name="OK" expression="AppState.trx_respuesta == 'OK' &amp;&amp; AppState.Var_SALDO >= 2" postAction=""/>
+      <conditions xmi:type="datatypes:BranchItem" xmi:id="_inTIwYPaEeqBFOqbUZD7SA" name="SaldoInsuficiente" expression="AppState.trx_respuesta == 'OK' &amp;&amp; AppState.Var_SALDO &lt; 2"/>
     </blocks>
     <blocks xmi:type="gvp:AssignBlock" xmi:id="_53krgGLXEeq_uNAnrmuCMA" name="AsignarMarcaCAB" category="Assign">
       <assignData xmi:type="datatypes:KeyValuePairItem" xmi:id="_XGjnQHBDEeqqDduRlydLcQ" Key="var_marca" Value="'CUSTOMERACCOUNTBALANCE'"/>
